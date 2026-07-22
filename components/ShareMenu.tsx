@@ -63,8 +63,12 @@ export default function ShareMenu({
   const encodedTitle = encodeURIComponent(title);
 
   // X/Twitter's intent auto-appends `url=`; if we also put the URL inside the
-  // text the tweet duplicates it. Strip it once here.
-  const twitterText = encodeURIComponent(text.replace(SITE_URL_REGEX, '').trim());
+  // text the tweet duplicates it. Strip it once here, and tag the game +
+  // author accounts.
+  const twitterText = encodeURIComponent(
+    text.replace(SITE_URL_REGEX, '').trim() +
+      '\n\n@ClinicleGame @PraneetMylavarapu',
+  );
 
   const options: { label: string; href?: string; onClick?: () => void; icon: React.ReactNode }[] =
     [

@@ -33,10 +33,10 @@ export default function SiteHeader() {
   return (
     <>
       <header className="sticky top-0 z-30 bg-bg/85 backdrop-blur-xl">
-        <div className="mx-auto max-w-3xl px-3 sm:px-4 h-16 flex items-center justify-between">
+        <div className="mx-auto max-w-2xl px-4 sm:px-5 h-16 sm:h-20 flex items-center justify-between">
           <Link
             href="/"
-            className="flex items-center group -ml-1 px-2 py-1 rounded-full hover:bg-surface-2 transition-colors"
+            className="flex items-center hover:opacity-80 transition-opacity"
             aria-label="Clinicle home"
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -45,7 +45,7 @@ export default function SiteHeader() {
               alt="Clinicle"
               width={690}
               height={252}
-              className="h-11 sm:h-12 w-auto"
+              className="h-11 sm:h-14 w-auto"
             />
           </Link>
           <button
@@ -53,7 +53,7 @@ export default function SiteHeader() {
             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={menuOpen}
             onClick={() => setMenuOpen((v) => !v)}
-            className="inline-flex items-center justify-center h-11 w-11 -mr-1 rounded-full text-fg hover:bg-surface-2 active:scale-95 transition-all"
+            className="inline-flex items-center justify-center h-11 w-11 -mr-2 rounded-full text-fg hover:bg-surface-2 active:scale-95 transition-all"
           >
             {menuOpen ? <CloseIcon /> : <MenuIcon />}
           </button>

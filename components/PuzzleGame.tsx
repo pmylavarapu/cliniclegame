@@ -585,7 +585,8 @@ function WinBanner({
       <div className="flex flex-col sm:flex-row gap-2">
         <a
           href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
-            shareText.replace(/https?:\/\/[^\s]+/g, '').trim(),
+            shareText.replace(/https?:\/\/[^\s]+/g, '').trim() +
+              '\n\n@ClinicleGame @PraneetMylavarapu',
           )}&url=${encodeURIComponent(
             typeof window !== 'undefined'
               ? window.location.origin + '/'

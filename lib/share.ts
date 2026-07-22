@@ -1,16 +1,7 @@
 import type { GameState } from './types';
 
 const SITE_URL = 'https://clinicle.app';
-
-function bragTag(state: GameState): string {
-  if (!state.won) return 'Beaten';
-  const n = state.guesses.length - state.hintsUsed;
-  if (n <= 3) return '🎯 Brilliant';
-  if (n <= 6) return '🔥 Solid';
-  if (n <= 12) return '💪 Made it';
-  if (n <= 20) return '⏳ Grind';
-  return '🐢 Marathon';
-}
+const SITE_DISPLAY = 'clinicle.app';
 
 function scoreEmoji(rank: number | null): string {
   if (rank === 1) return '🟩';
@@ -23,7 +14,7 @@ function scoreEmoji(rank: number | null): string {
 function starLine(difficulty?: number): string {
   if (!difficulty) return '';
   const filled = Math.max(1, Math.min(5, difficulty));
-  return '★'.repeat(filled) + '☆'.repeat(5 - filled);
+  return ' ' + '★'.repeat(filled) + '☆'.repeat(5 - filled);
 }
 
 function formatTime(ms?: number): string | null {
@@ -31,7 +22,17 @@ function formatTime(ms?: number): string | null {
   const total = Math.max(0, Math.floor(ms / 1000));
   const m = Math.floor(total / 60);
   const s = total % 60;
-  return m === 0 ? `${s}s` : `${m}m${String(s).padStart(2, '0')}s`;
+  if (m === 0) return `${s}s`;
+  return s === 0 ? `${m}m` : `${m}m ${s}s`;
+}
+
+function formatHints(n: number): string {
+  if (n === 0) return 'no hints';
+  return n === 1 ? '1 hint' : `${n} hints`;
+}
+
+function formatGuesses(n: number): string {
+  return n === 1 ? '1 guess' : `${n} guesses`;
 }
 
 export function buildShareString(
@@ -40,28 +41,32 @@ export function buildShareString(
   difficulty?: number,
 ): string {
   const bars = state.guesses.map((g) => scoreEmoji(g.rank));
-
   const grid: string[] = [];
   for (let i = 0; i < bars.length; i += 10) {
     grid.push(bars.slice(i, i + 10).join(''));
   }
 
   const stars = starLine(difficulty);
-  const titleParts = [`🩺 Clinicle #${num}`];
-  if (stars) titleParts.push(stars);
-  const title = titleParts.join(' ');
+  const time = formatTime(state.timeMs);
+  const bits: string[] = [];
+  if (state.won) {
+    bits.push(formatGuesses(state.guesses.length));
+    if (time) bits.push(time);
+    bits.push(formatHints(state.hintsUsed));
+  }
 
-  const timePart = formatTime(state.timeMs);
-  const outcome = state.won
-    ? `${bragTag(state)} · ${state.guesses.length}/? guesses${timePart ? ` · ${timePart}` : ''}`
-    : `${bragTag(state)} · gave up`;
-  const hintPart = state.hintsUsed > 0
-    ? ` · ${state.hintsUsed} hint${state.hintsUsed === 1 ? '' : 's'}`
-    : '';
+  const headline = state.won
+    ? `I solved today's Clinicle #${num}${stars} in ${bits.join(', ')}.`
+    : `Clinicle #${num}${stars} beat me today.`;
 
   return [
-    `${title} — ${outcome}${hintPart}`,
+    headline,
     ...grid,
-    `Play today: ${SITE_URL} #Clinicle`,
+    `Play today at ${SITE_DISPLAY}`,
   ].join('\n');
+}
+
+/** Full https:// form of the site URL, for use as the twitter intent `url` param. */
+export function siteUrl(): string {
+  return SITE_URL;
 }
