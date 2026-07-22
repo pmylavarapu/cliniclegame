@@ -5,20 +5,23 @@
 :root {
   --bg: 255 255 255;
   --fg: 17 17 17;
+  --fg-soft: 55 65 81;
   --muted: 107 114 128;
-  --border: 229 231 235;
-  --border-strong: 209 213 219;
+  --border: 224 224 224;
+  --border-strong: 200 200 200;
   --surface-2: 249 250 251;
 
   --hot: 132 204 22;
   --warm: 217 155 47;
   --cold: 209 213 219;
 
-  --primary: 37 99 235;
+  --primary: 44 108 234;
   --hint: 21 128 61;
   --danger: 24 24 27;
+  --link: 44 108 234;
+  --closeness: 21 128 61;
 
-  --ring: 37 99 235;
+  --ring: 44 108 234;
 
   color-scheme: light;
 }
@@ -32,10 +35,16 @@ html {
 html, body {
   background: rgb(var(--bg));
   color: rgb(var(--fg));
-  font-feature-settings: "cv11", "ss01";
+  font-feature-settings: "ss01";
 }
 
 .tabular { font-variant-numeric: tabular-nums; }
+
+.wordmark {
+  font-family: var(--font-nunito), "Century Gothic", "URW Gothic", "Avant Garde", ui-sans-serif, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
 
 :where(button, a, input, [tabindex]):focus-visible {
   outline: 2px solid rgb(var(--ring) / 0.85);
