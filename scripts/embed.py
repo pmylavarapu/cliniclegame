@@ -58,11 +58,25 @@ def load_cache() -> tuple[list[str], np.ndarray] | tuple[list[str], None]:
     return words, vecs
 
 
+def _parse_retry_delay(err: Exception) -> float | None:
+    """Extract retryDelay (seconds) from a Google API RESOURCE_EXHAUSTED error."""
+    import re
+
+    s = str(err)
+    m = re.search(r"'retryDelay':\s*'(\d+(?:\.\d+)?)s'", s)
+    if m:
+        return float(m.group(1))
+    m = re.search(r"retry in ([\d.]+)s", s)
+    if m:
+        return float(m.group(1))
+    return None
+
+
 def embed_batch(client, phrases: list[str]) -> np.ndarray:
     from google.genai import types
 
     last_err: Exception | None = None
-    for attempt in range(6):
+    for attempt in range(8):
         try:
             resp = client.models.embed_content(
                 model=MODEL,
@@ -80,9 +94,12 @@ def embed_batch(client, phrases: list[str]) -> np.ndarray:
             return arr / norms
         except Exception as e:  # noqa: BLE001
             last_err = e
-            wait = min(60.0, 2**attempt)
+            hinted = _parse_retry_delay(e)
+            # Honor server hint if present; otherwise exponential backoff
+            wait = (hinted + 2.0) if hinted is not None else min(120.0, 2 ** (attempt + 1))
             print(
-                f"  batch failed (attempt {attempt + 1}/6): {e}; retrying in {wait}s",
+                f"  batch failed (attempt {attempt + 1}/8): {type(e).__name__}: "
+                f"{str(e)[:200]}...; sleeping {wait:.1f}s",
                 file=sys.stderr,
             )
             time.sleep(wait)
