@@ -212,7 +212,7 @@ export default function PuzzleGame({ puzzle, vocab }: Props) {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Enter a word or phrase"
-              className="flex-1 min-w-0 h-12 sm:h-14 px-4 sm:px-5 text-body sm:text-lede rounded-full bg-surface-2 border border-transparent outline-none focus:border-primary focus:bg-white focus:ring-4 focus:ring-primary/15 transition-all placeholder:text-muted font-medium"
+              className="flex-1 min-w-0 h-12 sm:h-14 px-4 sm:px-5 text-base sm:text-lede rounded-full bg-surface-2 border border-transparent outline-none focus:border-primary focus:bg-white focus:ring-4 focus:ring-primary/15 transition-all placeholder:text-muted font-medium"
               autoComplete="off"
               autoCapitalize="off"
               spellCheck={false}
