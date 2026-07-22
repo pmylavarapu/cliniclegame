@@ -505,7 +505,7 @@ function ReferenceBar({
   rank1000: number;
 }) {
   return (
-    <p className="mb-3 px-3 sm:px-4 py-2.5 rounded-xl bg-surface-2 text-caption text-muted leading-relaxed">
+    <p className="mt-3 text-caption text-muted leading-relaxed">
       For reference, the 10th closest word has a similarity score of{' '}
       <span className="tabular font-semibold text-fg">
         {rank10.toFixed(1)}
