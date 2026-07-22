@@ -67,7 +67,7 @@ export default function RootLayout({
             <div>
               Developed by{' '}
               <a
-                href="https://github.com/pmylavarapu"
+                href="https://twitter.com/PMylavarapuMD"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-link font-medium hover:underline"

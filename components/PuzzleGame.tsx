@@ -175,34 +175,42 @@ export default function PuzzleGame({ puzzle, vocab }: Props) {
 
   return (
     <div>
-      <div className="mb-8">
-        <div className="flex items-center gap-3 text-caption text-muted mb-3 tabular">
-          <span className="font-semibold text-fg">Puzzle {puzzle.num}</span>
+      <div className="mb-6">
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-caption mb-4">
+          <span className="text-eyebrow uppercase text-muted font-bold tracking-[0.06em]">
+            Guess the diagnosis
+          </span>
           <span className="text-border-strong">·</span>
-          <span>{dateLabel}</span>
+          <span className="font-semibold text-fg tabular">
+            Puzzle {puzzle.num}
+          </span>
+          <span className="text-border-strong">·</span>
+          <span className="tabular text-muted">{dateLabel}</span>
           {puzzle.difficulty ? (
             <>
               <span className="text-border-strong">·</span>
-              <DifficultyStars value={puzzle.difficulty} />
+              <span className="inline-flex items-center gap-1.5">
+                <DifficultyStars value={puzzle.difficulty} />
+                <span className="text-caption font-semibold text-fg">
+                  {difficultyLabel(puzzle.difficulty)}
+                </span>
+              </span>
             </>
           ) : null}
         </div>
-        <h1 className="text-title-2xl font-bold text-fg tracking-tight mb-4">
-          Guess the diagnosis
-        </h1>
-        <p className="text-lede text-fg-soft">
-          Any medical word or phrase — anatomy, symptoms, drugs, diagnoses.
-          The closer to today&rsquo;s answer, the higher the score.
-        </p>
-      </div>
-
-      <div className="mb-8 rounded-2xl bg-surface-2 px-5 py-4">
-        <div className="text-eyebrow uppercase text-muted font-bold mb-2">
-          Prompt
-        </div>
-        <div className="text-body text-fg leading-relaxed">
+        <p className="text-title-lg font-bold text-fg tracking-tight leading-snug mb-4">
           {puzzle.prompt}
-        </div>
+        </p>
+        <p className="text-body text-fg-soft">
+          Type any medical word or phrase. Closer meanings score higher —{' '}
+          <span className="font-semibold text-fg">
+            heart attack
+          </span>{' '}
+          scores near{' '}
+          <span className="font-semibold text-fg">myocardial infarction</span>,
+          but far from{' '}
+          <span className="font-semibold text-fg">arthritis</span>. Rank 1 wins.
+        </p>
       </div>
 
       {!gameOver && (
@@ -277,6 +285,7 @@ export default function PuzzleGame({ puzzle, vocab }: Props) {
               </span>
             )}
           </div>
+          <GuessTableHeader />
           {bestGuess && !gameOver && (
             <div className="mb-3">
               <GuessRow guess={bestGuess} isBest />
@@ -304,6 +313,11 @@ export default function PuzzleGame({ puzzle, vocab }: Props) {
       )}
     </div>
   );
+}
+
+function difficultyLabel(value: number): string {
+  const clamped = Math.max(1, Math.min(5, value));
+  return ['Easy', 'Light', 'Medium', 'Hard', 'Brutal'][clamped - 1];
 }
 
 function DifficultyStars({ value }: { value: number }) {
@@ -347,6 +361,22 @@ function formatDate(iso: string) {
   });
 }
 
+const ROW_GRID =
+  'grid grid-cols-[3.25rem_1fr_3.5rem_3.5rem] sm:grid-cols-[4rem_1fr_4rem_4.5rem] gap-2 sm:gap-3 items-center';
+
+function GuessTableHeader() {
+  return (
+    <div
+      className={`${ROW_GRID} px-3 sm:px-4 pb-2 text-eyebrow uppercase text-muted font-bold`}
+    >
+      <div>Rank</div>
+      <div>Guess</div>
+      <div className="text-right">Score</div>
+      <div className="text-right">%tile</div>
+    </div>
+  );
+}
+
 function GuessRow({
   guess,
   isBest,
@@ -377,26 +407,30 @@ function GuessRow({
     fgClass = 'text-fg';
   }
 
+  const dimClass = guess.rank === 1 ? 'opacity-100' : 'opacity-70';
+
   return (
     <div
       style={bgStyle}
       className={[
-        'flex items-center gap-3 sm:gap-4 px-4 sm:px-5 py-3 rounded-xl mb-1.5 transition-transform',
+        ROW_GRID,
+        'px-3 sm:px-4 py-3 rounded-xl mb-1.5 transition-transform',
         isBest ? 'ring-2 ring-fg/80 ring-offset-2 ring-offset-bg' : '',
         recent ? 'animate-in' : '',
       ].join(' ')}
     >
       <div
-        className={[
-          'flex-none tabular text-caption font-bold w-8 sm:w-10',
-          fgClass,
-          guess.rank === 1 ? 'opacity-100' : 'opacity-60',
-        ].join(' ')}
+        className={`tabular text-ui font-bold ${fgClass} ${dimClass}`}
       >
-        {guess.rank ?? '—'}
+        {guess.rank ? `#${guess.rank}` : '—'}
       </div>
-      <div className="flex-1 min-w-0 flex items-baseline gap-2 flex-wrap">
-        <span className={`text-lede font-bold truncate max-w-full ${fgClass}`}>
+      <div className="min-w-0 flex items-baseline gap-2 flex-wrap">
+        <span className={`tabular text-caption font-semibold ${fgClass} opacity-60`}>
+          {guess.order}.
+        </span>
+        <span
+          className={`text-lede font-bold truncate max-w-full ${fgClass}`}
+        >
           {guess.word}
         </span>
         {guess.isHint && (
@@ -413,18 +447,14 @@ function GuessRow({
         )}
       </div>
       <div
-        className={`flex-none tabular text-ui font-bold w-14 sm:w-16 text-right ${fgClass}`}
+        className={`tabular text-ui font-bold text-right ${fgClass}`}
       >
         {guess.score.toFixed(1)}
       </div>
       <div
-        className={[
-          'flex-none tabular text-caption font-semibold w-10 sm:w-14 text-right',
-          fgClass,
-          guess.rank === 1 ? 'opacity-100' : 'opacity-70',
-        ].join(' ')}
+        className={`tabular text-caption font-semibold text-right ${fgClass} ${dimClass}`}
       >
-        {inTop ? `${percentile.toFixed(1)}` : '—'}
+        {inTop ? `${percentile.toFixed(1)}%` : '—'}
       </div>
     </div>
   );

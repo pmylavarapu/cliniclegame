@@ -9,17 +9,15 @@ export default function PageShell({
 }) {
   return (
     <article className="animate-in">
-      <div className="flex items-baseline justify-between gap-4 pb-3 mb-8 border-b border-border">
-        <div className="flex items-baseline gap-3">
-          {eyebrow && (
-            <span className="text-eyebrow uppercase text-muted font-semibold">
-              {eyebrow}
-            </span>
-          )}
-          <h1 className="text-title-lg font-semibold text-fg tracking-tight leading-none">
-            {title}
-          </h1>
-        </div>
+      <div className="mb-6">
+        {eyebrow && (
+          <div className="text-eyebrow uppercase text-muted font-bold tracking-[0.06em] mb-3">
+            {eyebrow}
+          </div>
+        )}
+        <h1 className="text-title-2xl font-bold text-fg tracking-tight leading-tight">
+          {title}
+        </h1>
       </div>
       <div className="prose-clinicle">{children}</div>
     </article>

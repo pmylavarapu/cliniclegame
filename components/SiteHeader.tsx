@@ -36,20 +36,17 @@ export default function SiteHeader() {
         <div className="mx-auto max-w-3xl px-4 h-14 flex items-center justify-between">
           <Link
             href="/"
-            className="flex items-center gap-2 group -ml-1 px-2 py-1 rounded-full hover:bg-surface-2 transition-colors"
+            className="flex items-center group -ml-1 px-2 py-1 rounded-full hover:bg-surface-2 transition-colors"
             aria-label="Clinicle home"
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/logo.png"
-              alt=""
+              alt="Clinicle"
               width={740}
               height={312}
-              className="h-6 w-auto"
+              className="h-8 w-auto"
             />
-            <span className="text-title-sm font-bold tracking-tight text-fg">
-              Clinicle
-            </span>
           </Link>
           <button
             type="button"
