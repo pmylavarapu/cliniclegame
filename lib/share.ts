@@ -20,18 +20,40 @@ function scoreEmoji(rank: number | null): string {
   return '⬜';
 }
 
-export function buildShareString(state: GameState, num: number): string {
+function starLine(difficulty?: number): string {
+  if (!difficulty) return '';
+  const filled = Math.max(1, Math.min(5, difficulty));
+  return '★'.repeat(filled) + '☆'.repeat(5 - filled);
+}
+
+function formatTime(ms?: number): string | null {
+  if (ms == null) return null;
+  const total = Math.max(0, Math.floor(ms / 1000));
+  const m = Math.floor(total / 60);
+  const s = total % 60;
+  return m === 0 ? `${s}s` : `${m}m${String(s).padStart(2, '0')}s`;
+}
+
+export function buildShareString(
+  state: GameState,
+  num: number,
+  difficulty?: number,
+): string {
   const bars = state.guesses.map((g) => scoreEmoji(g.rank));
 
-  // Wrap at 10 for readable columns
   const grid: string[] = [];
   for (let i = 0; i < bars.length; i += 10) {
     grid.push(bars.slice(i, i + 10).join(''));
   }
 
-  const title = `🩺 Clinicle #${num}`;
+  const stars = starLine(difficulty);
+  const titleParts = [`🩺 Clinicle #${num}`];
+  if (stars) titleParts.push(stars);
+  const title = titleParts.join(' ');
+
+  const timePart = formatTime(state.timeMs);
   const outcome = state.won
-    ? `${bragTag(state)} · ${state.guesses.length}/? guesses`
+    ? `${bragTag(state)} · ${state.guesses.length}/? guesses${timePart ? ` · ${timePart}` : ''}`
     : `${bragTag(state)} · gave up`;
   const hintPart = state.hintsUsed > 0
     ? ` · ${state.hintsUsed} hint${state.hintsUsed === 1 ? '' : 's'}`

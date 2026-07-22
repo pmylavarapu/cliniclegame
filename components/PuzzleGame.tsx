@@ -3,9 +3,17 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import type { Guess, Puzzle } from '@/lib/types';
 import { decodeScores, normalizeGuess, scoreFromStored } from '@/lib/scores';
-import { loadGame, saveGame, recordCompletion, loadStats } from '@/lib/storage';
+import {
+  loadGame,
+  saveGame,
+  recordCompletion,
+  loadStats,
+  fastestSolveMs,
+} from '@/lib/storage';
 import { buildShareString } from '@/lib/share';
 import ShareMenu from './ShareMenu';
+import GuessDistribution from './GuessDistribution';
+import NextPuzzleCountdown from './NextPuzzleCountdown';
 
 type Props = {
   puzzle: Puzzle;
@@ -39,6 +47,8 @@ export default function PuzzleGame({ puzzle, vocab }: Props) {
   const [input, setInput] = useState('');
   const [error, setError] = useState<string | null>(null);
   const [lastAdded, setLastAdded] = useState<string | null>(null);
+  const [startedAt, setStartedAt] = useState<number | null>(null);
+  const [finalTimeMs, setFinalTimeMs] = useState<number | undefined>(undefined);
   const inputRef = useRef<HTMLInputElement>(null);
   const savedRef = useRef(false);
 
@@ -49,21 +59,38 @@ export default function PuzzleGame({ puzzle, vocab }: Props) {
       setHintsUsed(g.hintsUsed);
       setGaveUp(g.gaveUp);
       setWon(g.won);
+      setStartedAt(g.startedAt ?? Date.now());
+      setFinalTimeMs(g.timeMs);
+    } else {
+      setStartedAt(Date.now());
     }
   }, [puzzle.date]);
 
   useEffect(() => {
-    saveGame({ date: puzzle.date, guesses, hintsUsed, gaveUp, won });
-  }, [puzzle.date, guesses, hintsUsed, gaveUp, won]);
+    if (startedAt == null) return;
+    saveGame({
+      date: puzzle.date,
+      guesses,
+      hintsUsed,
+      gaveUp,
+      won,
+      startedAt,
+      timeMs: finalTimeMs,
+    });
+  }, [puzzle.date, guesses, hintsUsed, gaveUp, won, startedAt, finalTimeMs]);
 
   const gameOver = won || gaveUp;
 
   useEffect(() => {
     if (gameOver && !savedRef.current) {
       savedRef.current = true;
-      recordCompletion(puzzle.date, guesses.length, hintsUsed, won, gaveUp);
+      const t = won && startedAt != null && finalTimeMs == null
+        ? Date.now() - startedAt
+        : finalTimeMs;
+      if (t !== undefined && finalTimeMs == null) setFinalTimeMs(t);
+      recordCompletion(puzzle.date, guesses.length, hintsUsed, won, gaveUp, t);
     }
-  }, [gameOver, puzzle.date, guesses.length, hintsUsed, won, gaveUp]);
+  }, [gameOver, puzzle.date, guesses.length, hintsUsed, won, gaveUp, startedAt, finalTimeMs]);
 
   const submitGuess = (raw: string, isHint = false) => {
     setError(null);
@@ -149,10 +176,16 @@ export default function PuzzleGame({ puzzle, vocab }: Props) {
   return (
     <div>
       <div className="mb-8">
-        <div className="flex items-baseline gap-3 text-caption text-muted mb-3 tabular">
+        <div className="flex items-center gap-3 text-caption text-muted mb-3 tabular">
           <span className="font-semibold text-fg">Puzzle {puzzle.num}</span>
           <span className="text-border-strong">·</span>
           <span>{dateLabel}</span>
+          {puzzle.difficulty ? (
+            <>
+              <span className="text-border-strong">·</span>
+              <DifficultyStars value={puzzle.difficulty} />
+            </>
+          ) : null}
         </div>
         <h1 className="text-title-2xl font-bold text-fg tracking-tight mb-4">
           Guess the diagnosis
@@ -228,6 +261,7 @@ export default function PuzzleGame({ puzzle, vocab }: Props) {
           guesses={guesses}
           hintsUsed={hintsUsed}
           gaveUp={gaveUp}
+          timeMs={finalTimeMs}
         />
       )}
 
@@ -270,6 +304,35 @@ export default function PuzzleGame({ puzzle, vocab }: Props) {
       )}
     </div>
   );
+}
+
+function DifficultyStars({ value }: { value: number }) {
+  const clamped = Math.max(1, Math.min(5, value));
+  return (
+    <span className="inline-flex items-center gap-0.5" aria-label={`Difficulty ${clamped} out of 5`}>
+      {[1, 2, 3, 4, 5].map((n) => (
+        <span
+          key={n}
+          className={
+            n <= clamped
+              ? 'text-fg text-[13px] leading-none'
+              : 'text-border-strong text-[13px] leading-none'
+          }
+          aria-hidden="true"
+        >
+          ★
+        </span>
+      ))}
+    </span>
+  );
+}
+
+function formatDuration(ms: number): string {
+  const total = Math.max(0, Math.floor(ms / 1000));
+  const m = Math.floor(total / 60);
+  const s = total % 60;
+  if (m === 0) return `${s}s`;
+  return `${m}m ${String(s).padStart(2, '0')}s`;
 }
 
 function formatDate(iso: string) {
@@ -373,17 +436,21 @@ function WinBanner({
   guesses,
   hintsUsed,
   gaveUp,
+  timeMs,
 }: {
   puzzle: Puzzle;
   won: boolean;
   guesses: Guess[];
   hintsUsed: number;
   gaveUp: boolean;
+  timeMs?: number;
 }) {
   const stats = loadStats();
+  const bestMs = fastestSolveMs(stats);
   const shareText = buildShareString(
-    { date: puzzle.date, guesses, hintsUsed, gaveUp, won },
+    { date: puzzle.date, guesses, hintsUsed, gaveUp, won, timeMs },
     puzzle.num,
+    puzzle.difficulty,
   );
 
   return (
@@ -427,6 +494,40 @@ function WinBanner({
             · {hintsUsed} hint{hintsUsed === 1 ? '' : 's'}
           </>
         )}
+        {won && timeMs !== undefined && (
+          <>
+            {' '}
+            · <span className="tabular">{formatDuration(timeMs)}</span>
+            {bestMs !== undefined && bestMs < timeMs && (
+              <>
+                {' '}
+                · best <span className="tabular">{formatDuration(bestMs)}</span>
+              </>
+            )}
+            {bestMs !== undefined && bestMs === timeMs && stats.wins > 1 && (
+              <> · 🎉 new best</>
+            )}
+          </>
+        )}
+      </div>
+
+      {won && (
+        <div className="mb-6">
+          <GuessDistribution
+            stats={stats}
+            today={{ guesses: guesses.length, won }}
+            variant="oncolor"
+          />
+        </div>
+      )}
+
+      <div
+        className={[
+          'mb-6 py-4 rounded-2xl',
+          won ? 'bg-white/15' : 'bg-white',
+        ].join(' ')}
+      >
+        <NextPuzzleCountdown variant={won ? 'oncolor' : 'default'} />
       </div>
       <div
         className={[

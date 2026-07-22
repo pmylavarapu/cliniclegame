@@ -7,6 +7,8 @@ export type Puzzle = {
   secret: string;
   top1000: TopEntry[];
   scores: string;
+  /** 1–5 stars, computed at precompute time from top-neighbor cosine spread. */
+  difficulty?: number;
 };
 
 export type PuzzleIndex = {
@@ -28,6 +30,19 @@ export type GameState = {
   hintsUsed: number;
   gaveUp: boolean;
   won: boolean;
+  /** Milliseconds elapsed from first render to solve/give-up. */
+  timeMs?: number;
+  /** Epoch ms of the first render for the current puzzle (not persisted after solve). */
+  startedAt?: number;
+};
+
+export type HistoryEntry = {
+  guesses: number;
+  hints: number;
+  won: boolean;
+  gaveUp: boolean;
+  /** Milliseconds to solve (only present for wins). */
+  timeMs?: number;
 };
 
 export type Stats = {
@@ -38,5 +53,5 @@ export type Stats = {
   totalGuesses: number;
   totalHints: number;
   lastPlayedDate?: string;
-  history: Record<string, { guesses: number; hints: number; won: boolean; gaveUp: boolean }>;
+  history: Record<string, HistoryEntry>;
 };

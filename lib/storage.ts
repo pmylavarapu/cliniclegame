@@ -61,10 +61,17 @@ export function emptyStats(): Stats {
   };
 }
 
-export function recordCompletion(date: string, guesses: number, hints: number, won: boolean, gaveUp: boolean) {
+export function recordCompletion(
+  date: string,
+  guesses: number,
+  hints: number,
+  won: boolean,
+  gaveUp: boolean,
+  timeMs?: number,
+) {
   const s = loadStats();
   if (s.history[date]) return s;
-  s.history[date] = { guesses, hints, won, gaveUp };
+  s.history[date] = { guesses, hints, won, gaveUp, timeMs };
   s.played += 1;
   s.totalGuesses += guesses;
   s.totalHints += hints;
@@ -82,6 +89,28 @@ export function recordCompletion(date: string, guesses: number, hints: number, w
   s.lastPlayedDate = date;
   saveStats(s);
   return s;
+}
+
+/** Fastest solve in ms across all winning games, if any. */
+export function fastestSolveMs(s: Stats): number | undefined {
+  let best: number | undefined;
+  for (const entry of Object.values(s.history)) {
+    if (entry.won && typeof entry.timeMs === 'number') {
+      if (best === undefined || entry.timeMs < best) best = entry.timeMs;
+    }
+  }
+  return best;
+}
+
+/** { guessCount: numGamesWonInThatManyGuesses } — for the win-distribution histogram. */
+export function guessDistribution(s: Stats): Map<number, number> {
+  const dist = new Map<number, number>();
+  for (const entry of Object.values(s.history)) {
+    if (entry.won) {
+      dist.set(entry.guesses, (dist.get(entry.guesses) ?? 0) + 1);
+    }
+  }
+  return dist;
 }
 
 function isYesterday(prev: string, cur: string): boolean {

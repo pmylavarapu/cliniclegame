@@ -131,12 +131,31 @@ def main() -> None:
         top_idx = order[:TOP_N]
         top1000 = [[vocab[i], float(round(sims_pct[i], 2))] for i in top_idx]
 
+        # Difficulty stars (1 = easy … 5 = hard). A target with a very close
+        # nearest neighbor (near-synonym) is easier to find; an isolated
+        # target (top neighbor far away in cosine space) is harder.
+        # Rank-2 similarity is the signal since rank-1 is the word itself.
+        # Thresholds are calibrated to the observed distribution across the
+        # current schedule (p20 ≈ 0.918, p50 ≈ 0.949, p80 ≈ 0.972).
+        nearest = float(sims[order[1]]) if len(order) > 1 else 0.0
+        if nearest >= 0.97:
+            difficulty = 1
+        elif nearest >= 0.95:
+            difficulty = 2
+        elif nearest >= 0.93:
+            difficulty = 3
+        elif nearest >= 0.91:
+            difficulty = 4
+        else:
+            difficulty = 5
+
         num = _puzzle_num(iso)
         payload = {
             "date": iso,
             "num": num,
             "prompt": prompts.get(dx, ""),
             "secret": dx,
+            "difficulty": difficulty,
             "top1000": top1000,
             "scores": encode_scores(sims_pct.astype(np.float32)),
         }
