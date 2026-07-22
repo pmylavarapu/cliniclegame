@@ -1,0 +1,21 @@
+node_modules/
+.next/
+out/
+.env
+.env.local
+.env*.local
+.vercel
+*.tsbuildinfo
+next-env.d.ts
+.DS_Store
+
+# Python pipeline
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Large intermediate artifacts (not committed)
+data/embeddings/
+data/cache/
+data/hf-cache/

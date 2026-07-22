@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: 255 255 255;
+  --fg: 17 17 17;
+  --muted: 107 114 128;
+  --border: 229 231 235;
+
+  --hot: 132 204 22;
+  --warm: 217 155 47;
+  --cold: 209 213 219;
+
+  --primary: 37 99 235;
+  --hint: 21 128 61;
+  --danger: 24 24 27;
+
+  color-scheme: light;
+}
+
+html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+html, body {
+  background: rgb(var(--bg));
+  color: rgb(var(--fg));
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+.tabular { font-variant-numeric: tabular-nums; }

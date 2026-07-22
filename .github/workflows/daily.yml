@@ -1,0 +1,86 @@
+name: Extend puzzle horizon
+
+on:
+  schedule:
+    - cron: '0 6 * * *'   # 06:00 UTC daily
+  workflow_dispatch:
+    inputs:
+      date_start:
+        description: 'YYYY-MM-DD, inclusive (default today)'
+        required: false
+      date_end:
+        description: 'YYYY-MM-DD, inclusive (default today+60)'
+        required: false
+
+concurrency:
+  group: clinicle-daily
+  cancel-in-progress: false
+
+jobs:
+  extend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Python deps
+        run: pip install -r scripts/requirements.txt
+
+      - name: Cache HuggingFace models
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/huggingface
+          key: hf-sapbert-v1
+
+      - name: Cache embeddings
+        uses: actions/cache@v4
+        with:
+          path: data/embeddings
+          key: emb-${{ hashFiles('data/vocab.txt') }}
+
+      - name: Ensure vocab exists
+        run: '[ -s data/vocab.txt ] || python3 scripts/build_vocab.py'
+
+      - name: Ensure schedule exists
+        run: '[ -s data/schedule.json ] || python3 scripts/schedule.py'
+
+      - name: Embed vocab (idempotent, cached)
+        run: '[ -s data/embeddings/vocab.npy ] || python3 scripts/embed.py'
+
+      - name: Generate prompts for upcoming diagnoses
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          if [ -z "$ANTHROPIC_API_KEY" ]; then
+            echo "No ANTHROPIC_API_KEY set; skipping prompt generation"; exit 0
+          fi
+          python3 - <<'PY'
+          import json
+          from datetime import date, timedelta
+          sched = json.loads(open("data/schedule.json").read())
+          horizon = (date.today() + timedelta(days=90)).isoformat()
+          upcoming = sorted({v for k, v in sched.items() if k <= horizon and k >= date.today().isoformat()})
+          with open("/tmp/dx_subset.txt", "w") as f:
+              f.write("\n".join(upcoming))
+          PY
+          DX_SUBSET=/tmp/dx_subset.txt python3 scripts/prompts.py
+
+      - name: Precompute puzzles
+        env:
+          DATE_START: ${{ github.event.inputs.date_start }}
+          DATE_END: ${{ github.event.inputs.date_end }}
+        run: python3 scripts/precompute.py
+
+      - name: Commit new puzzles
+        run: |
+          git config user.name  'clinicle-bot'
+          git config user.email 'clinicle-bot@users.noreply.github.com'
+          git add public/puzzles/ public/vocab.json public/index.json data/prompts.json
+          if git diff --cached --quiet; then
+            echo "no changes"; exit 0
+          fi
+          git commit -m "extend puzzle horizon"
+          git push

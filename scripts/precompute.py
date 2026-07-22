@@ -1,0 +1,146 @@
+"""For each scheduled date, precompute the puzzle JSON the frontend loads.
+
+Reads:
+  data/schedule.json
+  data/prompts.json
+  data/embeddings/vocab.npy + vocab.words
+
+Writes:
+  public/vocab.json                 (once per run)
+  public/puzzles/YYYY-MM-DD.json    (one per date in range)
+  public/index.json                 (list of available dates + latest)
+
+Puzzle JSON schema:
+  {
+    "date": "YYYY-MM-DD",
+    "num": <int>,
+    "prompt": "...",
+    "secret": "diagnosis",
+    "top1000": [["word", 87.34], ...],
+    "scores": "<base64 Uint16 array>"
+  }
+
+Score encoding: stored = round((similarity_percent + 30) * 100), clamped to [0, 65535].
+Decode: similarity_percent = stored / 100 - 30.
+Rationale: SapBERT cosine can be slightly negative on medical/common word pairs;
+30-pt offset gives 5-6k range for negatives while keeping resolution.
+
+Env:
+  DATE_START, DATE_END (inclusive, YYYY-MM-DD). Defaults: today .. today+30.
+"""
+from __future__ import annotations
+
+import base64
+import json
+import os
+import sys
+from datetime import date, timedelta
+from pathlib import Path
+
+import numpy as np
+
+ROOT = Path(__file__).resolve().parent.parent
+DATA = ROOT / "data"
+PUB = ROOT / "public"
+PUZZLES = PUB / "puzzles"
+EMB = DATA / "embeddings"
+
+TOP_N = 1000
+
+
+def parse_date(s: str | None, default: date) -> date:
+    if not s:
+        return default
+    return date.fromisoformat(s)
+
+
+def encode_scores(arr: np.ndarray) -> str:
+    # arr: float32, similarity in percent (roughly -30..100)
+    q = np.clip(np.round((arr + 30) * 100), 0, 65535).astype(np.uint16)
+    return base64.b64encode(q.tobytes()).decode("ascii")
+
+
+def main() -> None:
+    schedule = json.loads((DATA / "schedule.json").read_text())
+    prompts = json.loads((DATA / "prompts.json").read_text()) if (DATA / "prompts.json").exists() else {}
+
+    vocab = (EMB / "vocab.words").read_text().splitlines()
+    vecs = np.load(EMB / "vocab.npy")
+    if vecs.shape[0] != len(vocab):
+        raise SystemExit(f"vocab/vecs size mismatch: {vecs.shape[0]} vs {len(vocab)}")
+
+    word_to_idx = {w: i for i, w in enumerate(vocab)}
+
+    today = date.today()
+    d0 = parse_date(os.environ.get("DATE_START"), today)
+    d1 = parse_date(os.environ.get("DATE_END"), today + timedelta(days=30))
+
+    print(f"Precomputing {(d1 - d0).days + 1} puzzles from {d0} to {d1}")
+
+    PUZZLES.mkdir(parents=True, exist_ok=True)
+    # Ship vocab.json once (frontend caches it)
+    (PUB / "vocab.json").write_text(json.dumps(vocab))
+
+    all_dates: list[str] = []
+    if (PUB / "index.json").exists():
+        try:
+            all_dates = json.loads((PUB / "index.json").read_text()).get("dates", [])
+        except Exception:
+            pass
+    existing = set(all_dates)
+
+    d = d0
+    n = 0
+    latest = None
+    while d <= d1:
+        iso = d.isoformat()
+        dx = schedule.get(iso)
+        if not dx:
+            print(f"  {iso}: no scheduled diagnosis; skipping", file=sys.stderr)
+            d += timedelta(days=1)
+            continue
+        if dx not in word_to_idx:
+            print(f"  {iso}: '{dx}' not in vocab; skipping", file=sys.stderr)
+            d += timedelta(days=1)
+            continue
+
+        sec_idx = word_to_idx[dx]
+        sec_vec = vecs[sec_idx]
+        sims = (vecs @ sec_vec)  # cosine (L2-normalized)
+        sims_pct = sims * 100.0
+
+        order = np.argsort(-sims_pct)
+        top_idx = order[:TOP_N]
+        top1000 = [[vocab[i], float(round(sims_pct[i], 2))] for i in top_idx]
+
+        num = _puzzle_num(iso)
+        payload = {
+            "date": iso,
+            "num": num,
+            "prompt": prompts.get(dx, ""),
+            "secret": dx,
+            "top1000": top1000,
+            "scores": encode_scores(sims_pct.astype(np.float32)),
+        }
+        (PUZZLES / f"{iso}.json").write_text(json.dumps(payload, separators=(",", ":")))
+        n += 1
+        latest = iso
+        if iso not in existing:
+            all_dates.append(iso)
+        d += timedelta(days=1)
+
+    all_dates = sorted(set(all_dates))
+    if not latest and all_dates:
+        latest = max(all_dates)
+    (PUB / "index.json").write_text(json.dumps({"latest": latest, "dates": all_dates}))
+    print(f"Precomputed {n} puzzles. Index has {len(all_dates)} dates.")
+
+
+def _puzzle_num(iso: str) -> int:
+    # Puzzle number = days since 2026-01-01
+    epoch = date(2026, 1, 1)
+    return (date.fromisoformat(iso) - epoch).days + 1
+
+
+if __name__ == "__main__":
+    main()
