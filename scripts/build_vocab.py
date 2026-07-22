@@ -37,8 +37,14 @@ ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
 DIAGNOSES = DATA / "diagnoses.txt"
 ADJUNCTS = DATA / "adjuncts.txt"
+MULTIWORD = DATA / "multiword_medical.txt"
 MESH_CACHE = DATA / "mesh_desc.xml"
 OUT = DATA / "vocab.txt"
+
+MEDICAL_SEED_URL = (
+    "https://raw.githubusercontent.com/glutanimate/wordlist-medicalterms-en/"
+    "master/wordlist.txt"
+)
 
 MESH_YEAR = os.environ.get("MESH_YEAR", "2025")
 MESH_URL = os.environ.get(
@@ -54,8 +60,6 @@ ENGLISH_URL = (
 )
 
 # Names / eponyms / non-medical strays that leaked in via the old scraped source.
-# Kept as a small explicit denylist; MeSH-derived vocab shouldn't contain most of these
-# but we double-check anyway.
 DENYLIST = {
     "vasey", "cabot's", "cabot", "sudek", "brocki", "brock", "sinskey",
     "turck's", "turck", "kent's", "kent", "sinistr", "tachy-",
@@ -64,6 +68,14 @@ DENYLIST = {
     "fuck", "shit", "damn", "bitch", "cunt",
     "nigger", "faggot", "retard", "retarded",
 }
+
+# Rejection patterns for the scraped glutanimate wordlist (eponym fragments,
+# possessives, prefix scraps). Only applied to that source, not to the
+# hand-curated files.
+_STRIP_PATTERNS = (
+    re.compile(r"'s?$"),            # cabot's → cabot (then rejected as too-short)
+    re.compile(r"^-|-$"),           # -tachy, tachy- → drop
+)
 
 PHRASE_RE = re.compile(r"^[a-z0-9][a-z0-9 '\-]{1,58}[a-z0-9]$")
 
@@ -110,6 +122,34 @@ def download_mesh(url: str, dest: Path) -> None:
                     pct = written * 100 // total
                     print(f"\r  {written // (1024 * 1024)} MB / {total // (1024 * 1024)} MB ({pct}%)", end="", file=sys.stderr)
         print(file=sys.stderr)
+
+
+def load_medical_seed() -> set[str]:
+    """Fetch the glutanimate medical wordlist and filter aggressively.
+
+    Applied filters (only to this scraped source, not to hand-curated files):
+      - normalize (lowercase, punctuation → space)
+      - drop possessive suffixes ('s) and leading/trailing hyphens
+      - drop tokens < 5 chars unless they're in a curated allowlist
+      - drop denylisted eponyms and known non-medical strays
+    """
+    print(f"  fetching {MEDICAL_SEED_URL}")
+    r = requests.get(MEDICAL_SEED_URL, timeout=60)
+    r.raise_for_status()
+    words: set[str] = set()
+    for line in r.text.splitlines():
+        raw = line.strip().lower()
+        for pat in _STRIP_PATTERNS:
+            raw = pat.sub("", raw)
+        w = normalize(raw)
+        if not w or " " in w:  # keep only single-token terms from this source
+            continue
+        if len(w) < 5:
+            continue  # too short → usually a fragment
+        if not acceptable(w):
+            continue
+        words.add(w)
+    return words
 
 
 def parse_mesh(path: Path) -> set[str]:
@@ -171,18 +211,22 @@ def load_common_english() -> set[str]:
 
 
 def main() -> None:
+    mesh: set[str] = set()
     print("Loading MeSH descriptors + entry terms...")
-    if not MESH_CACHE.exists():
+    if MESH_CACHE.exists():
+        mesh = parse_mesh(MESH_CACHE)
+        print(f"  {len(mesh)} MeSH phrases")
+    else:
         try:
             download_mesh(MESH_URL, MESH_CACHE)
+            mesh = parse_mesh(MESH_CACHE)
+            print(f"  {len(mesh)} MeSH phrases")
         except Exception as e:
-            raise SystemExit(
-                f"\nFailed to download MeSH from {MESH_URL}: {e}\n"
-                f"Download it manually and place at {MESH_CACHE}, then re-run.\n"
-                f"Alternate URL patterns: nlmpubs.nlm.nih.gov/projects/mesh/MESH_FILES/xmlmesh/desc{MESH_YEAR}.xml"
+            print(
+                f"  WARN: MeSH unavailable ({e}). Continuing without it.\n"
+                f"  For full coverage, download {MESH_URL} to {MESH_CACHE} and re-run.",
+                file=sys.stderr,
             )
-    mesh = parse_mesh(MESH_CACHE)
-    print(f"  {len(mesh)} MeSH phrases")
 
     print("Loading curated diagnoses...")
     dx = load_diagnoses()
@@ -192,6 +236,19 @@ def main() -> None:
     adj = load_adjuncts()
     print(f"  {len(adj)} adjuncts")
 
+    print("Loading multi-word medical phrases...")
+    mw = _load_curated(MULTIWORD)
+    print(f"  {len(mw)} multi-word phrases")
+
+    seed: set[str] = set()
+    if not mesh:
+        print("Loading medical seed wordlist (fallback for missing MeSH)...")
+        try:
+            seed = load_medical_seed()
+            print(f"  {len(seed)} filtered medical seed terms")
+        except Exception as e:
+            print(f"  WARN: seed wordlist unavailable: {e}", file=sys.stderr)
+
     print(f"Loading top {ENGLISH_CAP} common English words...")
     try:
         en = load_common_english()
@@ -200,10 +257,18 @@ def main() -> None:
         print(f"  WARN: skipping common English: {e}", file=sys.stderr)
         en = set()
 
-    combined = mesh | dx | adj | en
-    if VOCAB_CAP and len(combined) > VOCAB_CAP:
-        # Prefer shorter phrases when capping (more likely to be well-known concepts)
-        combined = set(sorted(combined, key=lambda w: (len(w), w))[:VOCAB_CAP])
+    # Curated + MeSH content is always kept; the seed and English fills only
+    # get capped when we exceed the budget. This protects multi-word medical
+    # phrases (which are long) from being truncated in favor of short garbage.
+    core = mesh | dx | adj | mw
+    fill = (seed | en) - core
+    combined = set(core)
+    if VOCAB_CAP:
+        remaining = max(0, VOCAB_CAP - len(combined))
+        # Shorter fill terms first (more likely to be recognizable)
+        combined |= set(sorted(fill, key=lambda w: (len(w), w))[:remaining])
+    else:
+        combined |= fill
 
     print(f"Total unique vocab: {len(combined)} (cap {VOCAB_CAP})")
     OUT.write_text("\n".join(sorted(combined)) + "\n")

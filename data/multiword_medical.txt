@@ -1,0 +1,752 @@
+# Curated multi-word medical phrases — clinical presentations, diseases,
+# anatomical structures, procedures, findings, and drug classes.
+# One phrase per line. Lines starting with # are comments.
+# Normalized to lowercase; multi-word is fine.
+
+# --- Cardiovascular ---
+myocardial infarction
+acute myocardial infarction
+non st elevation myocardial infarction
+st elevation myocardial infarction
+heart attack
+heart failure
+congestive heart failure
+acute heart failure
+chronic heart failure
+left ventricular failure
+right ventricular failure
+diastolic heart failure
+systolic heart failure
+atrial fibrillation
+atrial flutter
+ventricular fibrillation
+ventricular tachycardia
+supraventricular tachycardia
+sinus tachycardia
+sinus bradycardia
+heart block
+first degree heart block
+second degree heart block
+third degree heart block
+complete heart block
+long qt syndrome
+brugada syndrome
+wolff parkinson white syndrome
+aortic stenosis
+aortic regurgitation
+aortic dissection
+aortic aneurysm
+abdominal aortic aneurysm
+thoracic aortic aneurysm
+mitral stenosis
+mitral regurgitation
+mitral valve prolapse
+tricuspid regurgitation
+pulmonary hypertension
+pulmonary embolism
+pulmonary edema
+deep vein thrombosis
+superficial venous thrombosis
+thrombophlebitis
+varicose veins
+peripheral artery disease
+peripheral vascular disease
+carotid stenosis
+coronary artery disease
+coronary artery bypass graft
+percutaneous coronary intervention
+angina pectoris
+stable angina
+unstable angina
+prinzmetal angina
+takotsubo cardiomyopathy
+dilated cardiomyopathy
+hypertrophic cardiomyopathy
+restrictive cardiomyopathy
+peripartum cardiomyopathy
+cardiac tamponade
+pericardial effusion
+pericarditis
+constrictive pericarditis
+myocarditis
+endocarditis
+infective endocarditis
+rheumatic fever
+rheumatic heart disease
+patent foramen ovale
+atrial septal defect
+ventricular septal defect
+patent ductus arteriosus
+tetralogy of fallot
+transposition of the great arteries
+coarctation of the aorta
+essential hypertension
+secondary hypertension
+malignant hypertension
+hypertensive emergency
+hypertensive urgency
+hypotension
+orthostatic hypotension
+shock
+cardiogenic shock
+septic shock
+hypovolemic shock
+distributive shock
+obstructive shock
+anaphylactic shock
+neurogenic shock
+
+# --- Pulmonary ---
+pneumonia
+community acquired pneumonia
+hospital acquired pneumonia
+ventilator associated pneumonia
+aspiration pneumonia
+atypical pneumonia
+lobar pneumonia
+bronchopneumonia
+pneumocystis pneumonia
+legionella pneumonia
+tuberculosis
+latent tuberculosis
+active tuberculosis
+miliary tuberculosis
+asthma
+severe asthma
+status asthmaticus
+chronic obstructive pulmonary disease
+copd exacerbation
+emphysema
+chronic bronchitis
+acute bronchitis
+bronchiolitis
+bronchiectasis
+cystic fibrosis
+interstitial lung disease
+idiopathic pulmonary fibrosis
+sarcoidosis
+hypersensitivity pneumonitis
+pulmonary embolism
+pulmonary infarction
+pleural effusion
+empyema
+pneumothorax
+tension pneumothorax
+spontaneous pneumothorax
+hemothorax
+lung cancer
+non small cell lung cancer
+small cell lung cancer
+mesothelioma
+acute respiratory distress syndrome
+respiratory failure
+hypoxemic respiratory failure
+hypercapnic respiratory failure
+sleep apnea
+obstructive sleep apnea
+central sleep apnea
+whooping cough
+croup
+epiglottitis
+laryngitis
+pharyngitis
+strep throat
+common cold
+
+# --- Gastrointestinal ---
+gastroesophageal reflux disease
+peptic ulcer disease
+gastric ulcer
+duodenal ulcer
+gastritis
+gastroenteritis
+inflammatory bowel disease
+crohn's disease
+ulcerative colitis
+irritable bowel syndrome
+celiac disease
+diverticulitis
+diverticulosis
+appendicitis
+cholecystitis
+cholelithiasis
+choledocholithiasis
+cholangitis
+primary sclerosing cholangitis
+primary biliary cholangitis
+pancreatitis
+acute pancreatitis
+chronic pancreatitis
+hepatitis
+hepatitis a
+hepatitis b
+hepatitis c
+hepatitis d
+hepatitis e
+alcoholic hepatitis
+autoimmune hepatitis
+cirrhosis
+alcoholic cirrhosis
+liver failure
+acute liver failure
+chronic liver failure
+non alcoholic fatty liver disease
+non alcoholic steatohepatitis
+hepatocellular carcinoma
+colorectal cancer
+colon cancer
+rectal cancer
+gastric cancer
+esophageal cancer
+esophageal varices
+mallory weiss tear
+boerhaave syndrome
+achalasia
+gastroparesis
+small bowel obstruction
+large bowel obstruction
+volvulus
+intussusception
+ischemic colitis
+mesenteric ischemia
+hemorrhoids
+anal fissure
+perianal abscess
+pilonidal cyst
+
+# --- Renal / Genitourinary ---
+acute kidney injury
+chronic kidney disease
+end stage renal disease
+nephrotic syndrome
+nephritic syndrome
+glomerulonephritis
+minimal change disease
+focal segmental glomerulosclerosis
+membranous nephropathy
+iga nephropathy
+diabetic nephropathy
+hypertensive nephrosclerosis
+polycystic kidney disease
+renal cell carcinoma
+transitional cell carcinoma
+kidney stones
+nephrolithiasis
+urinary tract infection
+pyelonephritis
+cystitis
+prostatitis
+benign prostatic hyperplasia
+prostate cancer
+bladder cancer
+testicular cancer
+testicular torsion
+epididymitis
+orchitis
+erectile dysfunction
+
+# --- Neurology ---
+stroke
+ischemic stroke
+hemorrhagic stroke
+subarachnoid hemorrhage
+intracerebral hemorrhage
+subdural hematoma
+epidural hematoma
+transient ischemic attack
+migraine
+tension headache
+cluster headache
+temporal arteritis
+giant cell arteritis
+trigeminal neuralgia
+bell's palsy
+parkinson's disease
+alzheimer's disease
+vascular dementia
+lewy body dementia
+frontotemporal dementia
+multiple sclerosis
+amyotrophic lateral sclerosis
+myasthenia gravis
+guillain barre syndrome
+epilepsy
+generalized tonic clonic seizure
+absence seizure
+focal seizure
+status epilepticus
+meningitis
+bacterial meningitis
+viral meningitis
+fungal meningitis
+encephalitis
+brain abscess
+brain tumor
+glioblastoma
+meningioma
+pituitary adenoma
+hydrocephalus
+normal pressure hydrocephalus
+peripheral neuropathy
+diabetic neuropathy
+carpal tunnel syndrome
+sciatica
+cervical radiculopathy
+lumbar radiculopathy
+spinal cord injury
+cauda equina syndrome
+concussion
+traumatic brain injury
+delirium
+essential tremor
+
+# --- Endocrine ---
+diabetes mellitus
+type 1 diabetes
+type 2 diabetes
+gestational diabetes
+diabetic ketoacidosis
+hyperosmolar hyperglycemic state
+hypoglycemia
+hyperglycemia
+hypothyroidism
+hyperthyroidism
+graves disease
+hashimoto thyroiditis
+thyroid storm
+myxedema coma
+thyroid cancer
+papillary thyroid carcinoma
+follicular thyroid carcinoma
+medullary thyroid carcinoma
+anaplastic thyroid carcinoma
+cushing syndrome
+cushing disease
+addison disease
+adrenal insufficiency
+pheochromocytoma
+primary hyperaldosteronism
+hyperparathyroidism
+hypoparathyroidism
+hypercalcemia
+hypocalcemia
+osteoporosis
+osteopenia
+osteomalacia
+rickets
+paget disease of bone
+diabetes insipidus
+syndrome of inappropriate antidiuretic hormone
+polycystic ovary syndrome
+metabolic syndrome
+obesity
+
+# --- Rheumatology / Musculoskeletal ---
+rheumatoid arthritis
+osteoarthritis
+psoriatic arthritis
+ankylosing spondylitis
+reactive arthritis
+gout
+pseudogout
+systemic lupus erythematosus
+sjogren syndrome
+scleroderma
+systemic sclerosis
+polymyositis
+dermatomyositis
+polymyalgia rheumatica
+vasculitis
+granulomatosis with polyangiitis
+microscopic polyangiitis
+churg strauss syndrome
+polyarteritis nodosa
+kawasaki disease
+takayasu arteritis
+henoch schonlein purpura
+behcet disease
+antiphospholipid syndrome
+mixed connective tissue disease
+fibromyalgia
+chronic fatigue syndrome
+back pain
+low back pain
+neck pain
+frozen shoulder
+rotator cuff tear
+tennis elbow
+golfer elbow
+plantar fasciitis
+achilles tendinitis
+patellar tendinitis
+meniscus tear
+anterior cruciate ligament tear
+hip fracture
+femoral neck fracture
+compression fracture
+stress fracture
+osteomyelitis
+septic arthritis
+disc herniation
+
+# --- Hematology / Oncology ---
+anemia
+iron deficiency anemia
+vitamin b12 deficiency anemia
+folate deficiency anemia
+sickle cell anemia
+sickle cell disease
+thalassemia
+aplastic anemia
+hemolytic anemia
+autoimmune hemolytic anemia
+paroxysmal nocturnal hemoglobinuria
+polycythemia vera
+essential thrombocythemia
+myelofibrosis
+thrombocytopenia
+immune thrombocytopenic purpura
+thrombotic thrombocytopenic purpura
+hemolytic uremic syndrome
+disseminated intravascular coagulation
+hemophilia a
+hemophilia b
+von willebrand disease
+factor v leiden
+protein c deficiency
+protein s deficiency
+antithrombin deficiency
+acute myeloid leukemia
+chronic myeloid leukemia
+acute lymphoblastic leukemia
+chronic lymphocytic leukemia
+hairy cell leukemia
+hodgkin lymphoma
+non hodgkin lymphoma
+diffuse large b cell lymphoma
+follicular lymphoma
+burkitt lymphoma
+mantle cell lymphoma
+mucosa associated lymphoid tissue lymphoma
+multiple myeloma
+monoclonal gammopathy of undetermined significance
+waldenstrom macroglobulinemia
+neutropenia
+febrile neutropenia
+lymphoma
+leukemia
+breast cancer
+ductal carcinoma in situ
+lobular carcinoma in situ
+invasive ductal carcinoma
+invasive lobular carcinoma
+inflammatory breast cancer
+ovarian cancer
+cervical cancer
+endometrial cancer
+uterine cancer
+pancreatic cancer
+skin cancer
+melanoma
+basal cell carcinoma
+squamous cell carcinoma
+kaposi sarcoma
+soft tissue sarcoma
+osteosarcoma
+ewing sarcoma
+retinoblastoma
+neuroblastoma
+wilms tumor
+tumor lysis syndrome
+
+# --- Infectious disease ---
+sepsis
+severe sepsis
+septic shock
+bacteremia
+fungemia
+viremia
+influenza
+covid 19
+coronavirus disease
+long covid
+hiv infection
+acquired immunodeficiency syndrome
+opportunistic infection
+lyme disease
+rocky mountain spotted fever
+malaria
+dengue fever
+zika virus
+ebola virus
+yellow fever
+typhoid fever
+cholera
+salmonella infection
+shigellosis
+campylobacter infection
+listeriosis
+botulism
+tetanus
+diphtheria
+mumps
+measles
+rubella
+varicella
+shingles
+herpes zoster
+herpes simplex
+epstein barr virus
+cytomegalovirus infection
+mononucleosis
+scarlet fever
+rheumatic fever
+syphilis
+gonorrhea
+chlamydia infection
+trichomoniasis
+pelvic inflammatory disease
+toxic shock syndrome
+necrotizing fasciitis
+cellulitis
+erysipelas
+impetigo
+abscess
+scabies
+lice infestation
+tinea
+candidiasis
+oral thrush
+esophageal candidiasis
+aspergillosis
+cryptococcosis
+histoplasmosis
+coccidioidomycosis
+blastomycosis
+mucormycosis
+tetany
+rabies
+leprosy
+plague
+anthrax
+
+# --- Obstetrics / Gynecology ---
+pregnancy
+ectopic pregnancy
+molar pregnancy
+miscarriage
+spontaneous abortion
+threatened abortion
+missed abortion
+preeclampsia
+eclampsia
+gestational hypertension
+gestational diabetes
+placenta previa
+placental abruption
+placenta accreta
+placenta percreta
+preterm labor
+postpartum hemorrhage
+postpartum depression
+hyperemesis gravidarum
+endometriosis
+adenomyosis
+uterine fibroids
+uterine leiomyoma
+menorrhagia
+amenorrhea
+dysmenorrhea
+premenstrual syndrome
+premenstrual dysphoric disorder
+polycystic ovary syndrome
+ovarian torsion
+ovarian cyst
+menopause
+perimenopause
+postmenopausal bleeding
+
+# --- Dermatology ---
+psoriasis
+plaque psoriasis
+guttate psoriasis
+pustular psoriasis
+inverse psoriasis
+eczema
+atopic dermatitis
+contact dermatitis
+seborrheic dermatitis
+stasis dermatitis
+urticaria
+angioedema
+rosacea
+acne vulgaris
+acne rosacea
+hidradenitis suppurativa
+alopecia
+alopecia areata
+androgenetic alopecia
+vitiligo
+lichen planus
+pemphigus vulgaris
+bullous pemphigoid
+erythema multiforme
+stevens johnson syndrome
+toxic epidermal necrolysis
+erythema nodosum
+pyoderma gangrenosum
+seborrheic keratosis
+actinic keratosis
+molluscum contagiosum
+warts
+verruca vulgaris
+
+# --- Ophthalmology / ENT ---
+cataract
+glaucoma
+open angle glaucoma
+closed angle glaucoma
+macular degeneration
+diabetic retinopathy
+hypertensive retinopathy
+retinal detachment
+retinal vein occlusion
+retinal artery occlusion
+uveitis
+conjunctivitis
+allergic conjunctivitis
+bacterial conjunctivitis
+viral conjunctivitis
+keratitis
+corneal ulcer
+dry eye syndrome
+optic neuritis
+optic neuropathy
+strabismus
+amblyopia
+otitis media
+otitis externa
+mastoiditis
+cholesteatoma
+meniere disease
+labyrinthitis
+vestibular neuritis
+benign paroxysmal positional vertigo
+tinnitus
+sensorineural hearing loss
+conductive hearing loss
+sinusitis
+acute sinusitis
+chronic sinusitis
+allergic rhinitis
+nasal polyps
+tonsillitis
+peritonsillar abscess
+
+# --- Psychiatry ---
+major depressive disorder
+persistent depressive disorder
+bipolar disorder
+schizophrenia
+schizoaffective disorder
+generalized anxiety disorder
+panic disorder
+social anxiety disorder
+obsessive compulsive disorder
+post traumatic stress disorder
+acute stress disorder
+attention deficit hyperactivity disorder
+autism spectrum disorder
+anorexia nervosa
+bulimia nervosa
+binge eating disorder
+substance use disorder
+alcohol use disorder
+opioid use disorder
+suicide attempt
+suicidal ideation
+personality disorder
+borderline personality disorder
+antisocial personality disorder
+narcissistic personality disorder
+
+# --- Common presentations / symptoms ---
+chest pain
+shortness of breath
+difficulty breathing
+abdominal pain
+back pain
+joint pain
+headache
+dizziness
+vertigo
+palpitations
+syncope
+loss of consciousness
+altered mental status
+confusion
+memory loss
+weakness
+fatigue
+malaise
+weight loss
+weight gain
+loss of appetite
+fever
+chills
+night sweats
+nausea and vomiting
+diarrhea
+constipation
+blood in stool
+melena
+hematochezia
+hematuria
+blood in urine
+dysuria
+urinary frequency
+urinary urgency
+urinary incontinence
+hemoptysis
+epistaxis
+sore throat
+runny nose
+cough
+productive cough
+dry cough
+wheezing
+skin rash
+itching
+jaundice
+
+# --- Drug classes ---
+antibiotic therapy
+beta blocker
+calcium channel blocker
+ace inhibitor
+angiotensin receptor blocker
+diuretic
+loop diuretic
+thiazide diuretic
+potassium sparing diuretic
+statin
+proton pump inhibitor
+h2 blocker
+antihistamine
+corticosteroid
+oral contraceptive
+insulin therapy
+oral hypoglycemic
+metformin therapy
+warfarin therapy
+heparin therapy
+antiplatelet therapy
+selective serotonin reuptake inhibitor
+tricyclic antidepressant
+monoamine oxidase inhibitor
+benzodiazepine
+opioid analgesic
+nonsteroidal anti inflammatory drug
+chemotherapy
+radiation therapy
+immunotherapy

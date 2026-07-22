@@ -24,6 +24,9 @@ from tqdm import tqdm
 MODEL = os.environ.get("GEMINI_EMBED_MODEL", "gemini-embedding-001")
 DIM = int(os.environ.get("GEMINI_EMBED_DIM", "768"))
 BATCH = int(os.environ.get("EMBED_BATCH", "100"))
+# Free tier is 100 RPM. Pace conservatively below that.
+RPM = int(os.environ.get("EMBED_RPM", "90"))
+MIN_INTERVAL = 60.0 / RPM
 TASK_TYPE = "SEMANTIC_SIMILARITY"
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -107,11 +110,43 @@ def main() -> None:
     print(f"Cached: {len(cached_words)}   To embed: {len(to_embed)}")
 
     if to_embed:
-        print(f"Model: {MODEL}   dim: {DIM}   batch: {BATCH}")
+        print(f"Model: {MODEL}   dim: {DIM}   batch: {BATCH}   pacing: {RPM} RPM")
         new_vecs: list[np.ndarray] = []
-        for i in tqdm(range(0, len(to_embed), BATCH), desc="embed"):
-            batch = to_embed[i : i + BATCH]
-            new_vecs.append(embed_batch(client, batch))
+        last_call = 0.0
+        cache_words = list(cached_words)
+        cache_vecs_stack: list[np.ndarray] = [cached_vecs] if cached_vecs is not None else []
+        try:
+            for i in tqdm(range(0, len(to_embed), BATCH), desc="embed"):
+                elapsed = time.time() - last_call
+                if elapsed < MIN_INTERVAL:
+                    time.sleep(MIN_INTERVAL - elapsed)
+                batch = to_embed[i : i + BATCH]
+                vecs_batch = embed_batch(client, batch)
+                last_call = time.time()
+                new_vecs.append(vecs_batch)
+                # Incrementally checkpoint every ~50 batches so we don't lose
+                # progress if the run is interrupted or hits the daily quota.
+                if (len(new_vecs) % 50) == 0:
+                    cur_new = np.vstack(new_vecs)
+                    stack = cache_vecs_stack + [cur_new]
+                    cur_all = np.vstack(stack)
+                    cur_words = cache_words + to_embed[: (i + BATCH)]
+                    np.save(EMB / "vocab.npy", cur_all)
+                    (EMB / "vocab.words").write_text("\n".join(cur_words) + "\n")
+        except Exception:
+            # Save whatever we've collected before re-raising
+            if new_vecs:
+                partial = np.vstack(new_vecs)
+                stack = cache_vecs_stack + [partial]
+                cur_all = np.vstack(stack)
+                cur_words = cache_words + to_embed[: len(cur_all) - len(cache_words)]
+                np.save(EMB / "vocab.npy", cur_all)
+                (EMB / "vocab.words").write_text("\n".join(cur_words) + "\n")
+                print(
+                    f"\n  saved partial checkpoint: {len(cur_words)} phrases embedded",
+                    file=sys.stderr,
+                )
+            raise
         new_arr = np.vstack(new_vecs) if new_vecs else np.zeros((0, DIM), dtype=np.float32)
         if cached_vecs is not None and cached_vecs.shape[1] != new_arr.shape[1]:
             print(

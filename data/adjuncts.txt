@@ -353,3 +353,123 @@ remission
 relapse
 complication
 comorbidity
+
+# --- Prefix families (hyper/hypo/brady/tachy × common roots) ---
+hyperkinesis
+hyperkinesia
+hypokinesis
+hypokinesia
+bradykinesia
+tachykinesia
+dyskinesia
+akinesia
+akinesis
+hyperreflexia
+hyporeflexia
+areflexia
+hyperesthesia
+hypesthesia
+hypesthesias
+paresthesia
+paresthesias
+anesthesia
+hyperalgesia
+hypoalgesia
+analgesia
+hyperpnea
+hypopnea
+apnea
+tachypnea
+bradypnea
+dyspnea
+orthopnea
+polypnea
+hyperglycemia
+hypoglycemia
+euglycemia
+hyperkalemia
+hypokalemia
+hypernatremia
+hyponatremia
+hypercalcemia
+hypocalcemia
+hyperphosphatemia
+hypophosphatemia
+hypermagnesemia
+hypomagnesemia
+hyperchloremia
+hypochloremia
+hyperbilirubinemia
+hyperlipidemia
+hyperlipoproteinemia
+hypercholesterolemia
+hypertriglyceridemia
+hyperuricemia
+hyperammonemia
+hyperventilation
+hypoventilation
+tachycardia
+bradycardia
+tachyarrhythmia
+bradyarrhythmia
+hypertension
+hypotension
+hyperthermia
+hypothermia
+normothermia
+hyperthyroidism
+hypothyroidism
+hyperparathyroidism
+hypoparathyroidism
+hypercortisolism
+hypocortisolism
+hyperinsulinemia
+hypoinsulinemia
+hyperandrogenism
+hypogonadism
+hypergonadism
+polyuria
+oliguria
+anuria
+nocturia
+dysuria
+hematuria
+proteinuria
+glycosuria
+ketonuria
+
+# --- Additional common cardiac / pulmonary presentations ---
+acute coronary syndrome
+non st elevation acs
+st elevation acs
+cardiac arrest
+sudden cardiac death
+new onset atrial fibrillation
+rate controlled atrial fibrillation
+rate control
+rhythm control
+cardioversion
+defibrillation
+implantable cardioverter defibrillator
+pacemaker
+cardiac resynchronization therapy
+ventricular assist device
+extracorporeal membrane oxygenation
+cardiogenic shock
+mixed shock
+right heart failure
+left heart failure
+biventricular failure
+preserved ejection fraction
+reduced ejection fraction
+midrange ejection fraction
+diastolic dysfunction
+systolic dysfunction
+cardiac output
+stroke volume
+ejection fraction
+central venous pressure
+pulmonary capillary wedge pressure
+mean arterial pressure
+systemic vascular resistance
+pulmonary vascular resistance
