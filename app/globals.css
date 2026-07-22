@@ -3,53 +3,24 @@
 @tailwind utilities;
 
 :root {
-  --bg: 250 250 250;
-  --surface: 255 255 255;
-  --surface-2: 244 244 245;
-  --fg: 24 24 27;
-  --fg-soft: 63 63 70;
-  --muted: 113 113 122;
-  --border: 228 228 231;
-  --border-strong: 212 212 216;
+  --bg: 255 255 255;
+  --fg: 17 17 17;
+  --muted: 107 114 128;
+  --border: 229 231 235;
+  --border-strong: 209 213 219;
+  --surface-2: 249 250 251;
 
-  --hot: 16 185 129;
-  --warm: 245 158 11;
-  --cold: 228 228 231;
+  --hot: 132 204 22;
+  --warm: 217 155 47;
+  --cold: 209 213 219;
 
-  --primary: 79 70 229;
-  --primary-fg: 255 255 255;
-  --primary-soft: 238 242 255;
-  --hint: 5 150 105;
-  --danger: 39 39 42;
+  --primary: 37 99 235;
+  --hint: 21 128 61;
+  --danger: 24 24 27;
 
-  --ring: 99 102 241;
+  --ring: 37 99 235;
 
   color-scheme: light;
-}
-
-:root.dark {
-  --bg: 9 9 11;
-  --surface: 24 24 27;
-  --surface-2: 39 39 42;
-  --fg: 244 244 245;
-  --fg-soft: 212 212 216;
-  --muted: 161 161 170;
-  --border: 39 39 42;
-  --border-strong: 63 63 70;
-
-  --hot: 52 211 153;
-  --warm: 251 191 36;
-  --cold: 39 39 42;
-
-  --primary: 129 140 248;
-  --primary-fg: 15 23 42;
-  --primary-soft: 30 27 75;
-  --hint: 52 211 153;
-  --danger: 244 244 245;
-
-  --ring: 129 140 248;
-
-  color-scheme: dark;
 }
 
 html {
@@ -61,18 +32,11 @@ html {
 html, body {
   background: rgb(var(--bg));
   color: rgb(var(--fg));
-  font-feature-settings: "cv11", "ss01", "ss03";
-}
-
-body {
-  background-image:
-    radial-gradient(1200px 500px at 50% -200px, rgb(var(--primary) / 0.06), transparent 60%);
-  background-attachment: fixed;
+  font-feature-settings: "cv11", "ss01";
 }
 
 .tabular { font-variant-numeric: tabular-nums; }
 
-/* Slightly nicer focus rings across all interactive elements */
 :where(button, a, input, [tabindex]):focus-visible {
   outline: 2px solid rgb(var(--ring) / 0.85);
   outline-offset: 2px;

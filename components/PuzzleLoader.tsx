@@ -46,7 +46,7 @@ export default function PuzzleLoader({ requestedDate }: Props) {
 
   if (error) {
     return (
-      <div className="rounded-xl border border-red-200 dark:border-red-900/50 bg-red-50 dark:bg-red-950/40 text-red-700 dark:text-red-300 px-4 py-3 text-sm">
+      <div className="rounded-lg border border-red-200 bg-red-50 text-red-700 px-4 py-3 text-sm">
         {error}
       </div>
     );
@@ -56,7 +56,7 @@ export default function PuzzleLoader({ requestedDate }: Props) {
   return (
     <>
       {notice && (
-        <div className="mb-4 rounded-lg border border-border bg-surface-2 px-3 py-2 text-xs text-fg-soft">
+        <div className="mb-4 rounded-lg border border-border bg-surface-2 px-3 py-2 text-xs text-muted">
           {notice}
         </div>
       )}
@@ -68,15 +68,11 @@ export default function PuzzleLoader({ requestedDate }: Props) {
 function PuzzleSkeleton() {
   return (
     <div className="animate-in">
-      <div className="mb-6">
-        <div className="skeleton h-3 w-32 mb-3" />
-        <div className="skeleton h-7 w-64 mb-3" />
-        <div className="skeleton h-4 w-full mb-1.5" />
-        <div className="skeleton h-4 w-4/5 mb-4" />
-        <div className="skeleton h-20 w-full rounded-xl" />
-      </div>
+      <div className="skeleton h-4 w-11/12 mb-2" />
+      <div className="skeleton h-4 w-2/3 mb-5" />
+      <div className="skeleton h-4 w-full mb-1.5" />
+      <div className="skeleton h-4 w-4/5 mb-6" />
       <div className="skeleton h-11 w-full mb-4 rounded-lg" />
-      <div className="skeleton h-12 w-full mb-2 rounded-lg" />
       <div className="skeleton h-12 w-full mb-2 rounded-lg" />
       <div className="skeleton h-12 w-full rounded-lg" />
     </div>

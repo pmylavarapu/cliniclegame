@@ -140,71 +140,48 @@ export default function PuzzleGame({ puzzle, vocab }: Props) {
 
   return (
     <div>
-      <section className="mb-6">
-        <div className="flex items-center gap-2 text-xs uppercase tracking-[0.14em] text-muted mb-2">
-          <span>Puzzle</span>
-          <span className="tabular text-fg-soft font-medium">#{puzzle.num}</span>
-          <span className="mx-1 h-1 w-1 rounded-full bg-border-strong" />
-          <span className="tabular">{puzzle.date}</span>
-        </div>
-        <h1 className="text-2xl sm:text-[28px] font-semibold tracking-tight leading-tight mb-3">
-          Guess the diagnosis
-        </h1>
-        <p className="text-fg-soft leading-relaxed">
-          Enter medical terms — the closer their meaning is to today&rsquo;s secret
-          diagnosis, the higher the score. Rank 1 wins.
-        </p>
-        <div className="mt-4 rounded-xl border border-border bg-surface px-4 py-3 shadow-card">
-          <div className="text-[11px] uppercase tracking-[0.14em] text-muted mb-1">
-            Prompt
-          </div>
-          <div className="text-fg leading-relaxed">{puzzle.prompt}</div>
-        </div>
-      </section>
+      <p className="text-fg leading-relaxed mb-3">
+        Today is puzzle <span className="font-semibold">#{puzzle.num}</span>. Guess
+        medical terms. The closer you get to the secret diagnosis, the higher your
+        score will be. Guess the secret word to win.
+      </p>
+      <p className="text-fg leading-relaxed mb-6">
+        <span className="font-semibold">Prompt:</span> {puzzle.prompt}
+      </p>
 
       {!gameOver && (
         <form onSubmit={onSubmit} className="mb-3">
           <div className="flex flex-col sm:flex-row gap-2">
-            <div className="relative flex-1 min-w-0">
-              <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted pointer-events-none">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="11" cy="11" r="7" />
-                  <path d="m21 21-4.3-4.3" />
-                </svg>
-              </span>
-              <input
-                ref={inputRef}
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                placeholder="Enter a medical term…"
-                className="w-full h-11 pl-9 pr-3 rounded-lg border border-border bg-surface text-base outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-shadow placeholder:text-muted"
-                autoComplete="off"
-                autoCapitalize="off"
-                spellCheck={false}
-              />
-            </div>
+            <input
+              ref={inputRef}
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              placeholder="Enter a guess"
+              className="flex-1 min-w-0 h-11 border border-border rounded-lg px-3.5 text-base bg-white outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-shadow placeholder:text-muted"
+              autoComplete="off"
+              autoCapitalize="off"
+              spellCheck={false}
+            />
             <div className="flex gap-2">
               <button
                 type="submit"
-                className="flex-1 sm:flex-none h-11 px-5 rounded-lg bg-primary text-primary-fg font-medium shadow-card hover:brightness-110 active:brightness-95 transition-[filter,transform] active:translate-y-px"
+                className="flex-1 sm:flex-none h-11 px-5 rounded-lg bg-primary text-white font-medium shadow-card hover:brightness-110 active:brightness-95 active:translate-y-px transition-[filter,transform]"
               >
                 Guess
               </button>
               <button
                 type="button"
                 onClick={useHint}
-                title="Reveal a mid-ranked word"
-                className="h-11 px-3.5 rounded-lg border border-border bg-surface text-fg-soft font-medium hover:text-fg hover:border-border-strong transition-colors"
+                className="h-11 px-4 rounded-lg bg-hint text-white font-medium shadow-card hover:brightness-110 active:brightness-95 active:translate-y-px transition-[filter,transform]"
               >
                 Hint
               </button>
               <button
                 type="button"
                 onClick={giveUp}
-                title="Give up and reveal the answer"
-                className="h-11 px-3.5 rounded-lg border border-border bg-surface text-fg-soft font-medium hover:text-fg hover:border-border-strong transition-colors"
+                className="h-11 px-4 rounded-lg bg-danger text-white font-medium shadow-card hover:brightness-110 active:brightness-95 active:translate-y-px transition-[filter,transform]"
               >
-                Give up
+                Give Up
               </button>
             </div>
           </div>
@@ -221,9 +198,7 @@ export default function PuzzleGame({ puzzle, vocab }: Props) {
               </>
             )}
             {error && (
-              <span className="ml-auto text-red-600 dark:text-red-400 animate-in">
-                {error}
-              </span>
+              <span className="ml-auto text-red-600 animate-in">{error}</span>
             )}
           </div>
         </form>
@@ -244,7 +219,9 @@ export default function PuzzleGame({ puzzle, vocab }: Props) {
           <div className="text-[11px] uppercase tracking-[0.14em] text-muted mb-1.5 px-1">
             Best so far
           </div>
-          <GuessRow guess={bestGuess} highlighted />
+          <div className="rounded-xl border border-border bg-white shadow-card overflow-hidden">
+            <GuessRow guess={bestGuess} />
+          </div>
         </div>
       )}
 
@@ -258,7 +235,7 @@ export default function PuzzleGame({ puzzle, vocab }: Props) {
               Score
             </div>
           </div>
-          <div className="rounded-xl border border-border bg-surface overflow-hidden shadow-card">
+          <div className="rounded-xl border border-border bg-white overflow-hidden shadow-card">
             <ul className="divide-y divide-border">
               {sorted.map((g) => (
                 <li key={g.order}>
@@ -271,54 +248,38 @@ export default function PuzzleGame({ puzzle, vocab }: Props) {
       )}
 
       {guesses.length === 0 && !gameOver && (
-        <div className="mt-8 rounded-xl border border-dashed border-border-strong px-6 py-10 text-center">
-          <div className="text-3xl mb-2" aria-hidden="true">🩺</div>
-          <p className="text-fg font-medium">Make your first guess</p>
-          <p className="text-muted text-sm mt-1">
-            Try a general term like <span className="text-fg-soft">infection</span>{' '}
-            or <span className="text-fg-soft">tumor</span> to gauge the field.
-          </p>
-        </div>
+        <p className="text-muted text-sm mt-6 text-center">
+          Enter your first guess to start.
+        </p>
       )}
     </div>
   );
 }
 
-function GuessRow({
-  guess,
-  highlighted,
-  recent,
-}: {
-  guess: Guess;
-  highlighted?: boolean;
-  recent?: boolean;
-}) {
+function GuessRow({ guess, recent }: { guess: Guess; recent?: boolean }) {
   const pct = Math.max(0, Math.min(100, guess.score));
   const isWinner = guess.rank === 1;
   const barClass = isWinner
-    ? 'from-hot/25 to-hot/10'
+    ? 'from-hot/40 to-hot/15'
     : guess.rank
-      ? 'from-warm/25 to-warm/5'
-      : 'from-cold/60 to-cold/20';
+      ? 'from-warm/35 to-warm/10'
+      : 'from-cold/70 to-cold/30';
   const rankBadge = isWinner
     ? 'bg-hot text-white'
     : guess.rank
-      ? 'bg-warm/15 text-warm dark:text-warm'
+      ? 'bg-warm/15 text-[rgb(var(--warm))]'
       : 'bg-surface-2 text-muted';
 
   return (
     <div
       className={[
-        'group relative flex items-center h-12 px-3',
-        highlighted
-          ? 'rounded-xl border border-border bg-surface shadow-card'
-          : '',
+        'relative flex items-center h-12 px-3',
         recent ? 'animate-in' : '',
       ].join(' ')}
     >
       <div
         aria-hidden="true"
-        className={`absolute inset-y-0 left-0 bg-gradient-to-r ${barClass} rounded-r-md transition-[width] duration-500 ease-out`}
+        className={`absolute inset-y-0 left-0 bg-gradient-to-r ${barClass} transition-[width] duration-500 ease-out`}
         style={{ width: `${pct}%` }}
       />
       <div className="relative flex-1 flex items-center justify-between text-sm gap-3 min-w-0">
@@ -337,7 +298,7 @@ function GuessRow({
             )}
           </span>
         </div>
-        <span className="tabular text-fg-soft font-medium">
+        <span className="tabular text-fg font-medium">
           {guess.score.toFixed(1)}
         </span>
       </div>
@@ -372,7 +333,7 @@ function WinBanner({
   };
 
   return (
-    <div className="mb-6 rounded-2xl border border-border bg-surface p-5 sm:p-6 shadow-elevated animate-in">
+    <div className="mb-6 rounded-xl border border-border bg-white p-5 shadow-card animate-in">
       <div className="flex items-center gap-2 text-xs uppercase tracking-[0.14em] text-muted mb-1.5">
         {won ? (
           <>
@@ -386,12 +347,12 @@ function WinBanner({
           </>
         )}
       </div>
-      <div className="text-xl sm:text-2xl font-semibold tracking-tight mb-1">
+      <div className="text-lg font-semibold mb-1">
         {won
           ? `Solved in ${guesses.length} guess${guesses.length === 1 ? '' : 'es'}`
           : 'Answer revealed'}
       </div>
-      <div className="text-sm text-muted mb-5">
+      <div className="text-sm text-muted mb-4">
         The diagnosis was{' '}
         <span className="font-semibold text-fg">{puzzle.secret}</span>
         {hintsUsed > 0 && (
@@ -401,7 +362,7 @@ function WinBanner({
           </>
         )}
       </div>
-      <div className="grid grid-cols-4 gap-2 sm:gap-3 mb-5">
+      <div className="grid grid-cols-4 gap-2 mb-4">
         <Stat label="Played" value={stats.played} />
         <Stat
           label="Win %"
@@ -412,7 +373,7 @@ function WinBanner({
       </div>
       <button
         onClick={share}
-        className="w-full h-11 rounded-lg bg-primary text-primary-fg font-medium shadow-card hover:brightness-110 active:brightness-95 transition-[filter,transform] active:translate-y-px"
+        className="w-full h-11 rounded-lg bg-primary text-white font-medium shadow-card hover:brightness-110 active:brightness-95 active:translate-y-px transition-[filter,transform]"
       >
         {copied ? 'Copied to clipboard' : 'Share result'}
       </button>
@@ -423,7 +384,7 @@ function WinBanner({
 function Stat({ label, value }: { label: string; value: number | string }) {
   return (
     <div className="rounded-lg bg-surface-2 px-2 py-2.5 text-center">
-      <div className="tabular text-lg sm:text-xl font-semibold text-fg leading-none">
+      <div className="tabular text-lg font-semibold text-fg leading-none">
         {value}
       </div>
       <div className="text-[10px] uppercase tracking-[0.12em] text-muted mt-1.5">

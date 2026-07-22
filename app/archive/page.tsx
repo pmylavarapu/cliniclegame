@@ -17,7 +17,7 @@ export default function ArchivePage() {
 
   if (err) {
     return (
-      <div className="rounded-xl border border-red-200 dark:border-red-900/50 bg-red-50 dark:bg-red-950/40 text-red-700 dark:text-red-300 px-4 py-3 text-sm">
+      <div className="rounded-lg border border-red-200 bg-red-50 text-red-700 px-4 py-3 text-sm">
         {err}
       </div>
     );
@@ -40,24 +40,14 @@ export default function ArchivePage() {
 
   return (
     <div className="animate-in">
-      <div className="mb-6">
-        <div className="text-xs uppercase tracking-[0.14em] text-muted mb-2">
-          Archive
-        </div>
-        <h1 className="text-2xl sm:text-[28px] font-semibold tracking-tight leading-tight mb-1.5">
-          Past puzzles
-        </h1>
-        <p className="text-fg-soft">
-          {sorted.length} puzzle{sorted.length === 1 ? '' : 's'} available.
-          Pick any day to play.
-        </p>
-      </div>
+      <h1 className="text-2xl font-semibold tracking-tight mb-1">Archive</h1>
+      <p className="text-muted text-sm mb-6">Play any past puzzle.</p>
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
         {sorted.map((d, i) => (
           <Link
             key={d}
             href={`/?date=${d}`}
-            className="group rounded-lg border border-border bg-surface px-3 py-2.5 hover:border-primary hover:shadow-card hover:-translate-y-px transition-all"
+            className="group rounded-lg border border-border bg-white px-3 py-2.5 hover:border-primary hover:shadow-card hover:-translate-y-px transition-all"
           >
             <div className="text-[11px] uppercase tracking-[0.12em] text-muted">
               #{sorted.length - i}
