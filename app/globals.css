@@ -58,6 +58,56 @@ html, body {
 }
 .animate-in { animation: slide-in 220ms cubic-bezier(0.16, 1, 0.3, 1); }
 
+.prose-clinicle {
+  color: rgb(var(--fg));
+  font-size: 1rem;
+  line-height: 1.7;
+}
+.prose-clinicle p { margin: 0 0 1.1em; }
+.prose-clinicle p:last-child { margin-bottom: 0; }
+.prose-clinicle h2 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  margin: 2em 0 0.6em;
+  padding-top: 1.2em;
+  border-top: 1px solid rgb(var(--border));
+}
+.prose-clinicle h2:first-of-type {
+  margin-top: 1.6em;
+}
+.prose-clinicle a {
+  color: rgb(var(--link));
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: rgb(var(--link) / 0.35);
+  text-underline-offset: 3px;
+  transition: text-decoration-color 120ms ease;
+}
+.prose-clinicle a:hover { text-decoration-color: rgb(var(--link)); }
+.prose-clinicle strong { font-weight: 800; color: rgb(var(--fg)); }
+.prose-clinicle em { font-style: italic; color: rgb(var(--fg-soft)); }
+.prose-clinicle ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.1em;
+}
+.prose-clinicle ul > li {
+  position: relative;
+  padding-left: 1.1em;
+  margin: 0.45em 0;
+}
+.prose-clinicle ul > li::before {
+  content: "";
+  position: absolute;
+  left: 0.25em;
+  top: 0.75em;
+  width: 4px;
+  height: 4px;
+  border-radius: 999px;
+  background: rgb(var(--border-strong));
+}
+
 @keyframes shimmer {
   0% { background-position: -200% 0; }
   100% { background-position: 200% 0; }

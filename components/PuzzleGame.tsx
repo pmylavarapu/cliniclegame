@@ -5,6 +5,7 @@ import type { Guess, Puzzle } from '@/lib/types';
 import { decodeScores, normalizeGuess, scoreFromStored } from '@/lib/scores';
 import { loadGame, saveGame, recordCompletion, loadStats } from '@/lib/storage';
 import { buildShareString } from '@/lib/share';
+import ShareMenu from './ShareMenu';
 
 type Props = {
   puzzle: Puzzle;
@@ -336,18 +337,11 @@ function WinBanner({
   hintsUsed: number;
   gaveUp: boolean;
 }) {
-  const [copied, setCopied] = useState(false);
   const stats = loadStats();
-  const share = () => {
-    const s = buildShareString(
-      { date: puzzle.date, guesses, hintsUsed, gaveUp, won },
-      puzzle.num,
-    );
-    navigator.clipboard.writeText(s).then(() => {
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    });
-  };
+  const shareText = buildShareString(
+    { date: puzzle.date, guesses, hintsUsed, gaveUp, won },
+    puzzle.num,
+  );
 
   return (
     <div className="mt-4 mb-8 rounded-md border border-border bg-white p-5 shadow-card animate-in">
@@ -388,12 +382,7 @@ function WinBanner({
         <Stat label="Streak" value={stats.currentStreak} />
         <Stat label="Max" value={stats.maxStreak} />
       </div>
-      <button
-        onClick={share}
-        className="w-full h-11 rounded-md bg-primary text-white font-semibold shadow-card hover:brightness-110 active:brightness-95 active:translate-y-px transition-[filter,transform]"
-      >
-        {copied ? 'Copied to clipboard' : 'Share result'}
-      </button>
+      <ShareMenu text={shareText} title={`Clinicle #${puzzle.num}`} />
     </div>
   );
 }
