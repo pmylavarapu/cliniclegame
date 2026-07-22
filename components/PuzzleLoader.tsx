@@ -46,7 +46,7 @@ export default function PuzzleLoader({ requestedDate }: Props) {
 
   if (error) {
     return (
-      <div className="rounded-md border border-red-200 bg-red-50 text-red-700 px-4 py-3 text-sm">
+      <div className="rounded-md border border-red-200 bg-red-50 text-red-700 px-4 py-3 text-caption">
         {error}
       </div>
     );
@@ -56,7 +56,7 @@ export default function PuzzleLoader({ requestedDate }: Props) {
   return (
     <>
       {notice && (
-        <div className="mb-4 rounded-md border border-border bg-surface-2 px-3 py-2 text-xs text-muted">
+        <div className="mb-4 rounded-md border border-border bg-surface-2 px-3 py-2 text-caption text-muted">
           {notice}
         </div>
       )}

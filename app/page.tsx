@@ -15,9 +15,9 @@ export default function Page() {
     <Suspense
       fallback={
         <div className="animate-in">
-          <div className="skeleton h-7 w-64 mb-3" />
-          <div className="skeleton h-4 w-full mb-1.5" />
-          <div className="skeleton h-4 w-4/5" />
+          <div className="skeleton h-4 w-11/12 mb-2" />
+          <div className="skeleton h-4 w-3/4 mb-6" />
+          <div className="skeleton h-11 w-full rounded-md" />
         </div>
       }
     >

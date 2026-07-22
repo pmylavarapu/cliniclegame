@@ -117,7 +117,7 @@ export default function ShareMenu({ text, url, title = 'Clinicle' }: Props) {
           if (canNativeShare) openNativeShare();
           else setOpen((v) => !v);
         }}
-        className="w-full h-11 rounded-md bg-primary text-white font-semibold shadow-card hover:brightness-110 active:brightness-95 active:translate-y-px transition-[filter,transform] inline-flex items-center justify-center gap-2"
+        className="w-full h-11 rounded-md bg-primary text-white text-ui font-medium shadow-card hover:brightness-110 active:brightness-95 active:translate-y-px transition-[filter,transform] inline-flex items-center justify-center gap-2"
         aria-haspopup={canNativeShare ? undefined : 'menu'}
         aria-expanded={canNativeShare ? undefined : open}
       >
@@ -129,7 +129,7 @@ export default function ShareMenu({ text, url, title = 'Clinicle' }: Props) {
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
-          className="mt-2 w-full h-9 rounded-md border border-border text-xs font-semibold uppercase tracking-[0.14em] text-fg-soft hover:text-fg hover:border-border-strong hover:bg-surface-2 transition-colors"
+          className="mt-2 w-full h-9 rounded-md border border-border text-eyebrow uppercase font-semibold text-muted hover:text-fg hover:border-border-strong hover:bg-surface-2 transition-colors"
         >
           More options
         </button>
@@ -150,7 +150,7 @@ export default function ShareMenu({ text, url, title = 'Clinicle' }: Props) {
                   target="_blank"
                   rel="noopener noreferrer"
                   role="menuitem"
-                  className="flex flex-col items-center justify-center gap-1.5 rounded-md px-2 py-3 text-[11px] font-semibold text-fg-soft hover:text-fg hover:bg-surface-2 transition-colors"
+                  className="flex flex-col items-center justify-center gap-1.5 rounded-md px-2 py-3 text-caption font-medium text-fg-soft hover:text-fg hover:bg-surface-2 transition-colors"
                   onClick={() => setOpen(false)}
                 >
                   <span className="text-fg">{opt.icon}</span>
@@ -164,7 +164,7 @@ export default function ShareMenu({ text, url, title = 'Clinicle' }: Props) {
                     opt.onClick?.();
                   }}
                   role="menuitem"
-                  className="flex flex-col items-center justify-center gap-1.5 rounded-md px-2 py-3 text-[11px] font-semibold text-fg-soft hover:text-fg hover:bg-surface-2 transition-colors"
+                  className="flex flex-col items-center justify-center gap-1.5 rounded-md px-2 py-3 text-caption font-medium text-fg-soft hover:text-fg hover:bg-surface-2 transition-colors"
                 >
                   <span className="text-fg">{opt.icon}</span>
                   <span className="text-center leading-tight">{opt.label}</span>

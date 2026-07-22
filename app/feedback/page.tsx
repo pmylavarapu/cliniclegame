@@ -62,12 +62,12 @@ function FeedbackLink({
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="group rounded-md border border-border bg-white px-4 py-3 hover:border-primary hover:shadow-card transition-all"
+      className="group rounded-md border border-border bg-white px-4 py-3 hover:border-primary hover:shadow-card transition-all no-underline"
     >
-      <div className="text-fg font-bold group-hover:text-primary transition-colors">
+      <div className="text-title-sm text-fg font-semibold group-hover:text-primary transition-colors">
         {title}
       </div>
-      <div className="text-sm text-muted mt-0.5">{subtitle}</div>
+      <div className="text-caption text-muted mt-0.5">{subtitle}</div>
     </a>
   );
 }

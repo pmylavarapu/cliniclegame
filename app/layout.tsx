@@ -1,13 +1,13 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { Nunito } from 'next/font/google';
+import { Inter } from 'next/font/google';
 import SiteHeader from '@/components/SiteHeader';
 
-const nunito = Nunito({
+const inter = Inter({
   subsets: ['latin'],
-  weight: ['400', '600', '700', '800'],
+  weight: ['400', '500', '600', '700'],
   display: 'swap',
-  variable: '--font-nunito',
+  variable: '--font-inter',
 });
 
 export const metadata: Metadata = {
@@ -22,17 +22,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={nunito.variable}>
-      <body className="min-h-screen font-sans antialiased text-fg">
+    <html lang="en" className={inter.variable}>
+      <body className="min-h-screen font-sans antialiased text-fg text-body">
         <SiteHeader />
-        <main className="mx-auto max-w-2xl px-5 py-8 sm:py-10">{children}</main>
-        <footer className="mx-auto max-w-2xl px-5 pb-10 pt-6 border-t border-border text-center text-sm text-muted">
+        <main className="mx-auto max-w-2xl px-5 py-10 sm:py-12">{children}</main>
+        <footer className="mx-auto max-w-2xl px-5 pb-10 pt-8 mt-4 border-t border-border text-center text-caption text-muted">
           Developed by{' '}
           <a
             href="https://github.com/pmylavarapu"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-link font-semibold hover:underline"
+            className="text-link font-medium hover:underline"
           >
             @PMylavarapuMD
           </a>{' '}

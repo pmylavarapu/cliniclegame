@@ -10,13 +10,11 @@ export default function PageShell({
   return (
     <article className="animate-in">
       {eyebrow && (
-        <div className="text-[11px] uppercase tracking-[0.16em] text-muted font-bold mb-2">
+        <div className="text-eyebrow uppercase text-muted font-semibold mb-3">
           {eyebrow}
         </div>
       )}
-      <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight leading-tight mb-6">
-        {title}
-      </h1>
+      <h1 className="text-title-xl font-semibold text-fg mb-6">{title}</h1>
       <div className="prose-clinicle">{children}</div>
     </article>
   );

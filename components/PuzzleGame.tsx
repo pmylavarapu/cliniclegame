@@ -146,17 +146,18 @@ export default function PuzzleGame({ puzzle, vocab }: Props) {
 
   return (
     <div>
-      <p className="text-fg leading-relaxed mb-4">
-        Today is puzzle <span className="font-bold">#{puzzle.num}</span>. The
+      <p className="text-lede text-fg mb-4">
+        Today is puzzle <span className="font-semibold">#{puzzle.num}</span>. The
         nearest diagnosis has a SimScore of{' '}
-        <span className="font-bold tabular">{nearestScore.toFixed(3)}</span> and
-        the thousandth nearest has a SimScore of{' '}
-        <span className="font-bold tabular">{thousandthScore.toFixed(3)}</span>.
-        There are <span className="tabular">{vocabSize.toLocaleString()}</span>{' '}
-        diagnoses in the vocabulary.
+        <span className="font-semibold tabular">{nearestScore.toFixed(3)}</span>{' '}
+        and the thousandth nearest has a SimScore of{' '}
+        <span className="font-semibold tabular">{thousandthScore.toFixed(3)}</span>.
+        There are{' '}
+        <span className="tabular">{vocabSize.toLocaleString()}</span> diagnoses
+        in the vocabulary.
       </p>
-      <p className="text-fg leading-relaxed mb-6">
-        <span className="font-bold">Prompt:</span> {puzzle.prompt}
+      <p className="text-body text-fg-soft mb-8">
+        <span className="font-semibold text-fg">Prompt.</span> {puzzle.prompt}
       </p>
 
       {!gameOver && (
@@ -167,40 +168,43 @@ export default function PuzzleGame({ puzzle, vocab }: Props) {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Enter a guess"
-              className="flex-1 min-w-0 h-12 border border-border-strong rounded-md px-4 text-base bg-white outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-shadow placeholder:text-muted"
+              className="flex-1 min-w-0 h-11 border border-border-strong rounded-md px-3.5 text-body bg-white outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-shadow placeholder:text-muted"
               autoComplete="off"
               autoCapitalize="off"
               spellCheck={false}
             />
             <button
               type="submit"
-              className="h-12 px-8 rounded-md bg-primary text-white text-base font-semibold shadow-card hover:brightness-110 active:brightness-95 active:translate-y-px transition-[filter,transform]"
+              className="h-11 px-6 rounded-md bg-primary text-white text-ui font-medium shadow-card hover:brightness-110 active:brightness-95 active:translate-y-px transition-[filter,transform]"
             >
               Guess
             </button>
           </div>
-          <div className="mt-3 flex flex-wrap items-center gap-2 text-xs">
+          <div className="mt-3 flex flex-wrap items-center gap-2">
             <button
               type="button"
               onClick={useHint}
-              className="h-8 px-3 rounded-md border border-border text-fg-soft hover:text-hint hover:border-hint/40 hover:bg-hint/5 transition-colors font-semibold uppercase tracking-wide"
+              className="h-8 px-3 rounded-md border border-border text-eyebrow uppercase font-semibold text-muted hover:text-hint hover:border-hint/40 hover:bg-hint/5 transition-colors"
             >
               Hint
             </button>
             <button
               type="button"
               onClick={giveUp}
-              className="h-8 px-3 rounded-md border border-border text-fg-soft hover:text-danger hover:border-danger/30 hover:bg-danger/5 transition-colors font-semibold uppercase tracking-wide"
+              className="h-8 px-3 rounded-md border border-border text-eyebrow uppercase font-semibold text-muted hover:text-danger hover:border-danger/30 hover:bg-danger/5 transition-colors"
             >
               Give up
             </button>
-            <span className="ml-auto text-muted tabular">
+            <span className="ml-auto text-caption text-muted tabular">
               {guesses.length} guess{guesses.length === 1 ? '' : 'es'}
-              {hintsUsed > 0 && ` · ${hintsUsed} hint${hintsUsed === 1 ? '' : 's'}`}
+              {hintsUsed > 0 &&
+                ` · ${hintsUsed} hint${hintsUsed === 1 ? '' : 's'}`}
             </span>
           </div>
           {error && (
-            <div className="mt-2 text-sm text-red-600 animate-in">{error}</div>
+            <div className="mt-2 text-caption text-red-600 animate-in">
+              {error}
+            </div>
           )}
         </form>
       )}
@@ -235,7 +239,7 @@ export default function PuzzleGame({ puzzle, vocab }: Props) {
       )}
 
       {guesses.length === 0 && !gameOver && (
-        <p className="text-muted text-sm mt-10 text-center">
+        <p className="text-caption text-muted mt-10 text-center">
           Enter your first guess to start.
         </p>
       )}
@@ -245,7 +249,7 @@ export default function PuzzleGame({ puzzle, vocab }: Props) {
 
 function GuessTableHeader() {
   return (
-    <div className="grid grid-cols-[3rem_1fr_5.5rem_7.5rem] sm:grid-cols-[3rem_1fr_6rem_9rem] gap-3 px-1 pb-2 border-b border-border text-fg font-bold text-sm">
+    <div className="grid grid-cols-[3rem_1fr_5.5rem_7.5rem] sm:grid-cols-[3rem_1fr_6rem_9rem] gap-3 px-1 pb-2.5 border-b border-border text-eyebrow uppercase text-muted font-semibold">
       <div>#</div>
       <div>Guess</div>
       <div className="text-right">SimScore</div>
@@ -280,27 +284,27 @@ function GuessRow({
   return (
     <div
       className={[
-        'grid grid-cols-[3rem_1fr_5.5rem_7.5rem] sm:grid-cols-[3rem_1fr_6rem_9rem] gap-3 items-center px-1 py-2.5 border-b border-border text-sm',
+        'grid grid-cols-[3rem_1fr_5.5rem_7.5rem] sm:grid-cols-[3rem_1fr_6rem_9rem] gap-3 items-center px-1 py-2.5 border-b border-border text-ui',
         recent ? 'animate-in' : '',
       ].join(' ')}
     >
-      <div className="tabular text-fg-soft">{guess.rank ?? '—'}</div>
+      <div className="tabular text-muted">{guess.rank ?? '—'}</div>
       <div className="min-w-0">
         <span
           className={[
-            'font-semibold truncate inline-block max-w-full align-middle',
+            'font-medium truncate inline-block max-w-full align-middle',
             isBest ? 'text-link' : 'text-fg',
           ].join(' ')}
         >
           {guess.word}
         </span>
         {guess.isHint && (
-          <span className="ml-1.5 align-middle text-[10px] uppercase tracking-wider text-hint font-bold">
+          <span className="ml-2 align-middle text-eyebrow uppercase text-hint font-semibold">
             hint
           </span>
         )}
       </div>
-      <div className="tabular text-fg text-right font-semibold">
+      <div className="tabular text-fg text-right font-medium">
         {guess.score.toFixed(3)}
       </div>
       <div>
@@ -315,7 +319,7 @@ function GuessRow({
             className={`absolute inset-y-0 left-0 ${barColor} opacity-70`}
             style={{ width: `${pct}%` }}
           />
-          <div className="relative h-full flex items-center justify-center text-[10px] tabular font-semibold text-closeness">
+          <div className="relative h-full flex items-center justify-center text-eyebrow tabular font-semibold text-closeness">
             {percentileLabel}
           </div>
         </div>
@@ -344,8 +348,8 @@ function WinBanner({
   );
 
   return (
-    <div className="mt-4 mb-8 rounded-md border border-border bg-white p-5 shadow-card animate-in">
-      <div className="flex items-center gap-2 text-xs uppercase tracking-[0.14em] text-muted mb-2 font-semibold">
+    <div className="mt-4 mb-8 rounded-md border border-border bg-white p-6 shadow-card animate-in">
+      <div className="flex items-center gap-2 text-eyebrow uppercase text-muted mb-2 font-semibold">
         {won ? (
           <>
             <span className="inline-block h-1.5 w-1.5 rounded-full bg-hot" />
@@ -358,14 +362,14 @@ function WinBanner({
           </>
         )}
       </div>
-      <div className="text-lg font-bold mb-1">
+      <div className="text-title font-semibold text-fg mb-1">
         {won
           ? `Solved in ${guesses.length} guess${guesses.length === 1 ? '' : 'es'}`
           : 'Answer revealed'}
       </div>
-      <div className="text-sm text-muted mb-4">
+      <div className="text-body text-muted mb-5">
         The diagnosis was{' '}
-        <span className="font-bold text-fg">{puzzle.secret}</span>
+        <span className="font-semibold text-fg">{puzzle.secret}</span>
         {hintsUsed > 0 && (
           <>
             {' '}
@@ -373,7 +377,7 @@ function WinBanner({
           </>
         )}
       </div>
-      <div className="grid grid-cols-4 gap-2 mb-4">
+      <div className="grid grid-cols-4 gap-2 mb-5">
         <Stat label="Played" value={stats.played} />
         <Stat
           label="Win %"
@@ -389,11 +393,11 @@ function WinBanner({
 
 function Stat({ label, value }: { label: string; value: number | string }) {
   return (
-    <div className="rounded-md bg-surface-2 px-2 py-2.5 text-center">
-      <div className="tabular text-lg font-bold text-fg leading-none">
+    <div className="rounded-md bg-surface-2 px-2 py-3 text-center">
+      <div className="tabular text-title-sm font-semibold text-fg leading-none">
         {value}
       </div>
-      <div className="text-[10px] uppercase tracking-[0.12em] text-muted mt-1.5 font-semibold">
+      <div className="text-eyebrow uppercase text-muted mt-1.5 font-semibold">
         {label}
       </div>
     </div>
