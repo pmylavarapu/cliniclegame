@@ -16,9 +16,18 @@ Puzzle JSON schema:
     "num": <int>,
     "prompt": "...",
     "secret": "diagnosis",
+    "difficulty": <int 1-5>,
     "top1000": [["word", 87.34], ...],
-    "scores": "<base64 Uint16 array>"
+    "scores": "<base64 Uint16 array>",
+    "synonyms": {"word": ["neighbor1", "neighbor2"], ...}
   }
+
+Synonyms: symmetric adjacency map among top-1000 words with pairwise cosine
+≥ SYNONYM_SIM. Direct pairs only — no transitive merging — so "colitis"
+and "ulcerative colitis" pair without dragging in every -itis. The frontend
+uses this to reject a second guess that means the same as an earlier one
+("heart attack" → "myocardial infarction"). Words with no near-synonyms
+are absent from the map.
 
 Score encoding: stored = round((similarity_percent + 30) * 100), clamped to [0, 65535].
 Decode: similarity_percent = stored / 100 - 30.
@@ -52,6 +61,11 @@ EMB = DATA / "embeddings"
 
 TOP_N = 1000
 MIN_TOP_SIM = float(os.environ.get("MIN_TOP_SIM", "0.55"))
+# Cosine threshold at or above which two top-1000 words are treated as
+# semantic synonyms. Calibrated on Gemini embeddings so that heart-attack ↔
+# MI (~0.95) and colitis ↔ ulcerative colitis (~0.97) pair, but colitis ↔
+# crohns (~0.91) and takotsubo ↔ cardiomyopathy (~0.89) stay distinct.
+SYNONYM_SIM = float(os.environ.get("SYNONYM_SIM", "0.94"))
 
 
 def parse_date(s: str | None, default: date) -> date:
@@ -64,6 +78,31 @@ def encode_scores(arr: np.ndarray) -> str:
     # arr: float32, similarity in percent (roughly -30..100)
     q = np.clip(np.round((arr + 30) * 100), 0, 65535).astype(np.uint16)
     return base64.b64encode(q.tobytes()).decode("ascii")
+
+
+def synonym_map(
+    words: list[str], vecs: np.ndarray, threshold: float
+) -> dict[str, list[str]]:
+    """Symmetric adjacency map of near-synonyms among `words`.
+
+    For each word W, lists all OTHER words X with cosine(W, X) ≥ threshold.
+    No transitive merging — so "colitis" pairs with "ulcerative colitis"
+    without dragging in every -itis via a chain. Words with no near-synonym
+    are omitted from the map.
+    """
+    n = len(words)
+    if n == 0:
+        return {}
+    sims = vecs @ vecs.T
+    # Mask the diagonal so a word isn't its own synonym.
+    np.fill_diagonal(sims, -1.0)
+    out: dict[str, list[str]] = {}
+    for i in range(n):
+        js = np.where(sims[i] >= threshold)[0]
+        if len(js) == 0:
+            continue
+        out[words[i]] = [words[int(j)] for j in js]
+    return out
 
 
 def main() -> None:
@@ -131,6 +170,10 @@ def main() -> None:
         top_idx = order[:TOP_N]
         top1000 = [[vocab[i], float(round(sims_pct[i], 2))] for i in top_idx]
 
+        top_words = [vocab[i] for i in top_idx]
+        top_vecs = vecs[top_idx]
+        synonyms = synonym_map(top_words, top_vecs, SYNONYM_SIM)
+
         # Difficulty stars (1 = easy … 5 = hard). A target with a very close
         # nearest neighbor (near-synonym) is easier to find; an isolated
         # target (top neighbor far away in cosine space) is harder.
@@ -158,6 +201,7 @@ def main() -> None:
             "difficulty": difficulty,
             "top1000": top1000,
             "scores": encode_scores(sims_pct.astype(np.float32)),
+            "synonyms": synonyms,
         }
         (PUZZLES / f"{iso}.json").write_text(json.dumps(payload, separators=(",", ":")))
         n += 1

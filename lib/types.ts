@@ -9,6 +9,14 @@ export type Puzzle = {
   scores: string;
   /** 1–5 stars, computed at precompute time from top-neighbor cosine spread. */
   difficulty?: number;
+  /**
+   * Symmetric near-synonym adjacency map among the top-1000, computed at
+   * precompute time. Direct pairs only — no transitive merging — so
+   * "colitis" pairs with "ulcerative colitis" without dragging in every
+   * -itis. Used to reject a second guess that means the same as an earlier
+   * one. Words with no near-synonyms are absent from the map.
+   */
+  synonyms?: Record<string, string[]>;
 };
 
 export type PuzzleIndex = {

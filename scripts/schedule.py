@@ -16,7 +16,12 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
-DIAGNOSES = DATA / "diagnoses.txt"
+# Prefer the puzzle-eligible subset (see scripts/build_top_diagnoses.py)
+# so schedule picks only clinically prominent conditions. Fall back to the
+# full diagnosis list if the top file hasn't been generated yet.
+TOP_DIAGNOSES = DATA / "diagnoses_top.txt"
+FULL_DIAGNOSES = DATA / "diagnoses.txt"
+DIAGNOSES = TOP_DIAGNOSES if TOP_DIAGNOSES.exists() else FULL_DIAGNOSES
 OUT = DATA / "schedule.json"
 START_FILE = DATA / "schedule_start.txt"
 

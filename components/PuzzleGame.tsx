@@ -33,6 +33,16 @@ export default function PuzzleGame({ puzzle, vocab }: Props) {
     return m;
   }, [puzzle]);
 
+  // word -> Set of near-synonym words. Direct pairs only, so the check
+  // stays symmetric without transitive chaining.
+  const synonymsOf = useMemo(() => {
+    const m = new Map<string, Set<string>>();
+    for (const [w, ns] of Object.entries(puzzle.synonyms ?? {})) {
+      m.set(w, new Set(ns));
+    }
+    return m;
+  }, [puzzle]);
+
   const scores = useMemo(() => decodeScores(puzzle.scores), [puzzle]);
 
   const nearestScore = puzzle.top1000[0]?.[1] ?? 0;
@@ -46,6 +56,7 @@ export default function PuzzleGame({ puzzle, vocab }: Props) {
   const [won, setWon] = useState(false);
   const [input, setInput] = useState('');
   const [error, setError] = useState<string | null>(null);
+  const [suggestion, setSuggestion] = useState<string | null>(null);
   const [lastAdded, setLastAdded] = useState<string | null>(null);
   const [startedAt, setStartedAt] = useState<number | null>(null);
   const [finalTimeMs, setFinalTimeMs] = useState<number | undefined>(undefined);
@@ -94,6 +105,7 @@ export default function PuzzleGame({ puzzle, vocab }: Props) {
 
   const submitGuess = (raw: string, isHint = false) => {
     setError(null);
+    setSuggestion(null);
     const w = normalizeGuess(raw);
     if (!w) return;
     if (guesses.some((g) => g.word === w)) {
@@ -103,9 +115,26 @@ export default function PuzzleGame({ puzzle, vocab }: Props) {
     }
     const idx = vocabIndex.get(w);
     if (idx === undefined) {
+      const near = nearestVocabWord(w, vocab);
+      if (near) setSuggestion(near);
       setError(`"${w}" is not in the vocabulary`);
       flashInput();
       return;
+    }
+    // Semantic dedup: if this word is a near-synonym of a prior guess,
+    // block and tell the user which one it collides with. Symmetric check.
+    if (!isHint) {
+      const mine = synonymsOf.get(w);
+      const prior = guesses.find((g) => {
+        if (mine?.has(g.word)) return true;
+        const theirs = synonymsOf.get(g.word);
+        return theirs?.has(w) ?? false;
+      });
+      if (prior) {
+        setError(`"${w}" means the same as "${prior.word}" — try something else`);
+        flashInput();
+        return;
+      }
     }
     const top = topMap.get(w);
     const score = top ? top.score : scoreFromStored(scores[idx] ?? 0);
@@ -116,6 +145,15 @@ export default function PuzzleGame({ puzzle, vocab }: Props) {
     setLastAdded(w);
     setInput('');
     if (rank === 1) setWon(true);
+  };
+
+  const acceptSuggestion = () => {
+    if (!suggestion) return;
+    const s = suggestion;
+    setInput(s);
+    setSuggestion(null);
+    setError(null);
+    submitGuess(s);
   };
 
   const flashInput = () => {
@@ -248,6 +286,20 @@ export default function PuzzleGame({ puzzle, vocab }: Props) {
           {error && (
             <div className="mt-3 text-caption text-red-600 font-medium animate-in">
               {error}
+              {suggestion && (
+                <>
+                  {' '}
+                  Did you mean{' '}
+                  <button
+                    type="button"
+                    onClick={acceptSuggestion}
+                    className="underline underline-offset-2 font-bold text-primary hover:text-primary/80"
+                  >
+                    {suggestion}
+                  </button>
+                  ?
+                </>
+              )}
             </div>
           )}
           {guesses.length === 0 && (
@@ -316,6 +368,53 @@ export default function PuzzleGame({ puzzle, vocab }: Props) {
       )}
     </div>
   );
+}
+
+// Return the vocab word closest to `w` by Levenshtein distance, if it's
+// close enough to plausibly be a typo. Two-pass: cheap length + first-letter
+// prefilter, then full DP on the survivors. Threshold scales with length so
+// short words don't match anything.
+function nearestVocabWord(w: string, vocab: string[]): string | null {
+  const n = w.length;
+  if (n < 3) return null;
+  const maxDist = n >= 6 ? 2 : 1;
+  const first = w[0];
+  let best: string | null = null;
+  let bestDist = maxDist + 1;
+  for (const v of vocab) {
+    if (Math.abs(v.length - n) > maxDist) continue;
+    if (v[0] !== first) continue;
+    const d = levenshtein(w, v, bestDist);
+    if (d < bestDist) {
+      bestDist = d;
+      best = v;
+      if (d === 1) break;
+    }
+  }
+  return bestDist <= maxDist ? best : null;
+}
+
+// Levenshtein with an early-exit cap. Returns cap+1 (or higher) when the
+// true distance exceeds cap — callers only need to know "close enough".
+function levenshtein(a: string, b: string, cap: number): number {
+  const la = a.length;
+  const lb = b.length;
+  if (Math.abs(la - lb) > cap) return cap + 1;
+  let prev = new Array(lb + 1);
+  let curr = new Array(lb + 1);
+  for (let j = 0; j <= lb; j++) prev[j] = j;
+  for (let i = 1; i <= la; i++) {
+    curr[0] = i;
+    let rowMin = curr[0];
+    for (let j = 1; j <= lb; j++) {
+      const cost = a[i - 1] === b[j - 1] ? 0 : 1;
+      curr[j] = Math.min(prev[j] + 1, curr[j - 1] + 1, prev[j - 1] + cost);
+      if (curr[j] < rowMin) rowMin = curr[j];
+    }
+    if (rowMin > cap) return cap + 1;
+    [prev, curr] = [curr, prev];
+  }
+  return prev[lb];
 }
 
 function difficultyLabel(value: number): string {
