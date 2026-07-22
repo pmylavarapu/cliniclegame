@@ -45,24 +45,18 @@ export default function PuzzleGame({ puzzle, vocab }: Props) {
 
   const scores = useMemo(() => decodeScores(puzzle.scores), [puzzle]);
 
-  // Sorted score copy for per-guess vocab percentile lookups.
-  const sortedScores = useMemo(() => {
-    const arr = new Float32Array(scores.length);
-    for (let i = 0; i < scores.length; i++) arr[i] = scoreFromStored(scores[i]);
-    return Float32Array.from(arr).sort();
-  }, [scores]);
-
-  const percentileOf = (score: number) => {
-    // Fraction of vocab words with a score strictly LESS than this one.
-    // Sorted ascending; binary search for the first index whose value >= score.
-    let lo = 0;
-    let hi = sortedScores.length;
-    while (lo < hi) {
-      const mid = (lo + hi) >>> 1;
-      if (sortedScores[mid] < score) lo = mid + 1;
-      else hi = mid;
-    }
-    return (lo / sortedScores.length) * 100;
+  // Rank-based percentile within the top-1000:
+  //   rank 1    → 100  (perfect)
+  //   rank 1000 → 10   (edge of the neighborhood)
+  //   below top → null → rendered as "<10"
+  // Rescales the whole vocab into a scale where "you're in the ballpark" =
+  // 10%+ and unrelated words are "<10", instead of pretending vocab
+  // percentile is meaningful when Gemini's baseline puts everything above
+  // the 80th percentile.
+  const percentileForRank = (rank: number | null): number | null => {
+    if (rank == null || rank < 1) return null;
+    if (rank > 1000) return null;
+    return 100 - ((rank - 1) * 90) / 999;
   };
 
   const rank10Score = puzzle.top1000[9]?.[1] ?? 0;
@@ -258,6 +252,7 @@ export default function PuzzleGame({ puzzle, vocab }: Props) {
             {puzzle.prompt}
           </blockquote>
         </figure>
+        <ReferenceBar rank10={rank10Score} rank1000={rank1000Score} />
       </div>
 
       {!gameOver && (
@@ -358,7 +353,7 @@ export default function PuzzleGame({ puzzle, vocab }: Props) {
               <GuessRow
                 guess={currentGuess}
                 isCurrent
-                percentile={percentileOf(currentGuess.score)}
+                percentile={percentileForRank(currentGuess.rank)}
               />
             </div>
           )}
@@ -367,14 +362,13 @@ export default function PuzzleGame({ puzzle, vocab }: Props) {
               All guesses (best first)
             </h2>
           </div>
-          <ReferenceBar rank10={rank10Score} rank1000={rank1000Score} />
           <GuessTableHeader />
           {sorted.map((g) => (
             <GuessRow
               key={g.order}
               guess={g}
               recent={g.word === lastAdded}
-              percentile={percentileOf(g.score)}
+              percentile={percentileForRank(g.rank)}
             />
           ))}
         </section>
@@ -497,7 +491,7 @@ function GuessTableHeader() {
     >
       <div>Rank</div>
       <div>Guess</div>
-      <div className="text-right">Score</div>
+      <div className="text-right">Sim Score</div>
       <div className="text-right">%tile</div>
     </div>
   );
@@ -535,8 +529,8 @@ function GuessRow({
   /** Show the "current guess" highlight (ring + ring-offset). */
   isCurrent?: boolean;
   recent?: boolean;
-  /** Percentile of this guess's score within the full vocab (0-100). */
-  percentile: number;
+  /** Rank-based percentile (10-100) if in top-1000, else null → "<10%". */
+  percentile: number | null;
 }) {
   const inTop = guess.rank !== null;
 
@@ -615,10 +609,9 @@ function GuessRow({
   );
 }
 
-function formatPercentile(pct: number): string {
-  // Above 99% we want the decimal so "99.9" stays distinct from "99.0";
-  // below 99 whole-number percent is enough resolution.
-  if (pct >= 99) return `${pct.toFixed(2)}%`;
+function formatPercentile(pct: number | null): string {
+  if (pct == null) return '<10%';
+  if (pct >= 99) return `${pct.toFixed(1)}%`;
   return `${pct.toFixed(0)}%`;
 }
 

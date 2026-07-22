@@ -88,28 +88,65 @@ def encode_scores(arr: np.ndarray) -> str:
     return base64.b64encode(q.tobytes()).decode("ascii")
 
 
+def _shared_prefix_len(a: str, b: str) -> int:
+    n = min(len(a), len(b))
+    i = 0
+    while i < n and a[i] == b[i]:
+        i += 1
+    return i
+
+
+def _morph_related(a: str, b: str) -> bool:
+    """True when a and b look like morphological variants of the same
+    underlying concept.
+
+    Cosine alone can't distinguish 'blood' vs 'bleeding' (0.95, related
+    physiology but not the same term) from 'bruise' vs 'bruising' (0.99,
+    genuinely the same word). A stem-overlap gate cuts the first without
+    losing the second.
+
+    Rules:
+      1. Reduce each word to its last whitespace-separated token
+         ('ulcerative colitis' → 'colitis').
+      2. If the cores match exactly → morph-related.
+      3. If the cores share a 5-character prefix → morph-related.
+      4. Otherwise → not morph-related.
+    """
+    ca = a.split()[-1]
+    cb = b.split()[-1]
+    if ca == cb:
+        return True
+    return _shared_prefix_len(ca, cb) >= 5
+
+
 def synonym_map(
     words: list[str], vecs: np.ndarray, threshold: float
 ) -> dict[str, list[str]]:
     """Symmetric adjacency map of near-synonyms among `words`.
 
-    For each word W, lists all OTHER words X with cosine(W, X) ≥ threshold.
-    No transitive merging — so "colitis" pairs with "ulcerative colitis"
-    without dragging in every -itis via a chain. Words with no near-synonym
-    are omitted from the map.
+    For each word W, lists all OTHER words X where:
+      • cosine(W, X) ≥ threshold, AND
+      • W and X share a morphological stem (see _morph_related).
+
+    The stem gate is what stops loose associations like blood ↔ bleeding
+    from clustering while keeping bruise ↔ bruising and colitis ↔
+    ulcerative colitis. No transitive merging.
     """
     n = len(words)
     if n == 0:
         return {}
     sims = vecs @ vecs.T
-    # Mask the diagonal so a word isn't its own synonym.
     np.fill_diagonal(sims, -1.0)
     out: dict[str, list[str]] = {}
     for i in range(n):
         js = np.where(sims[i] >= threshold)[0]
         if len(js) == 0:
             continue
-        out[words[i]] = [words[int(j)] for j in js]
+        neighbors = [
+            words[int(j)] for j in js if _morph_related(words[i], words[int(j)])
+        ]
+        if neighbors:
+            out[words[i]] = neighbors
     return out
 
 
