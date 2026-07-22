@@ -23,20 +23,26 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={inter.variable}>
-      <body className="min-h-screen font-sans antialiased text-fg text-body">
+      <body className="min-h-screen flex flex-col font-sans antialiased text-fg text-body">
         <SiteHeader />
-        <main className="mx-auto max-w-2xl px-5 py-10 sm:py-12">{children}</main>
-        <footer className="mx-auto max-w-2xl px-5 pb-10 pt-8 mt-4 border-t border-border text-center text-caption text-muted">
-          Developed by{' '}
-          <a
-            href="https://github.com/pmylavarapu"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-link font-medium hover:underline"
-          >
-            @PMylavarapuMD
-          </a>{' '}
-          · Updated {new Date().getFullYear()}
+        <main className="flex-1 mx-auto w-full max-w-2xl px-5 pt-10 sm:pt-14 pb-16">
+          {children}
+        </main>
+        <footer className="border-t border-border">
+          <div className="mx-auto max-w-2xl px-5 py-6 flex flex-col sm:flex-row items-center justify-between gap-2 text-caption text-muted">
+            <div>
+              Developed by{' '}
+              <a
+                href="https://github.com/pmylavarapu"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-link font-medium hover:underline"
+              >
+                @PMylavarapuMD
+              </a>
+            </div>
+            <div className="tabular">Updated {new Date().getFullYear()}</div>
+          </div>
         </footer>
       </body>
     </html>
