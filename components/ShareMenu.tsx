@@ -2,13 +2,22 @@
 
 import { useEffect, useRef, useState } from 'react';
 
+const SITE_URL_REGEX = /https?:\/\/[^\s]+/g;
+
 type Props = {
   text: string;
   url?: string;
   title?: string;
+  variant?: 'default' | 'oncolor';
 };
 
-export default function ShareMenu({ text, url, title = 'Clinicle' }: Props) {
+export default function ShareMenu({
+  text,
+  url,
+  title = 'Clinicle',
+  variant = 'default',
+}: Props) {
+  const onColor = variant === 'oncolor';
   const [open, setOpen] = useState(false);
   const [copied, setCopied] = useState(false);
   const [canNativeShare, setCanNativeShare] = useState(false);
@@ -53,11 +62,15 @@ export default function ShareMenu({ text, url, title = 'Clinicle' }: Props) {
   const encodedUrl = encodeURIComponent(shareUrl);
   const encodedTitle = encodeURIComponent(title);
 
+  // X/Twitter's intent auto-appends `url=`; if we also put the URL inside the
+  // text the tweet duplicates it. Strip it once here.
+  const twitterText = encodeURIComponent(text.replace(SITE_URL_REGEX, '').trim());
+
   const options: { label: string; href?: string; onClick?: () => void; icon: React.ReactNode }[] =
     [
       {
         label: 'X / Twitter',
-        href: `https://twitter.com/intent/tweet?text=${encoded}&url=${encodedUrl}`,
+        href: `https://twitter.com/intent/tweet?text=${twitterText}&url=${encodedUrl}`,
         icon: <TwitterIcon />,
       },
       {
@@ -117,7 +130,10 @@ export default function ShareMenu({ text, url, title = 'Clinicle' }: Props) {
           if (canNativeShare) openNativeShare();
           else setOpen((v) => !v);
         }}
-        className="w-full h-11 rounded-md bg-primary text-white text-ui font-medium shadow-card hover:brightness-110 active:brightness-95 active:translate-y-px transition-[filter,transform] inline-flex items-center justify-center gap-2"
+        className={[
+          'w-full h-12 rounded-full text-ui font-bold hover:brightness-110 active:scale-[0.98] transition-[transform,filter] inline-flex items-center justify-center gap-2',
+          onColor ? 'bg-white text-fg' : 'bg-primary text-white',
+        ].join(' ')}
         aria-haspopup={canNativeShare ? undefined : 'menu'}
         aria-expanded={canNativeShare ? undefined : open}
       >
@@ -129,7 +145,12 @@ export default function ShareMenu({ text, url, title = 'Clinicle' }: Props) {
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
-          className="mt-2 w-full h-9 rounded-md border border-border text-eyebrow uppercase font-semibold text-muted hover:text-fg hover:border-border-strong hover:bg-surface-2 transition-colors"
+          className={[
+            'mt-2 w-full h-9 rounded-full text-eyebrow uppercase font-bold transition-colors',
+            onColor
+              ? 'text-white/80 hover:text-white'
+              : 'text-muted hover:text-fg',
+          ].join(' ')}
         >
           More options
         </button>
@@ -139,7 +160,7 @@ export default function ShareMenu({ text, url, title = 'Clinicle' }: Props) {
         <div
           ref={menuRef}
           role="menu"
-          className="absolute z-30 left-0 right-0 mt-2 rounded-lg border border-border bg-white shadow-lg p-2 animate-in"
+          className="absolute z-30 left-0 right-0 mt-2 rounded-2xl border border-border bg-white shadow-lg p-2 animate-in"
         >
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-1">
             {options.map((opt) =>

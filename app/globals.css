@@ -9,19 +9,23 @@
   --muted: 107 114 128;
   --border: 229 231 235;
   --border-strong: 209 213 219;
-  --surface-2: 249 250 251;
+  --surface-2: 244 244 246;
 
-  --hot: 132 204 22;
-  --warm: 217 155 47;
+  /* Apple-inspired hot/warm/cold tints. Used for row-wide backgrounds. */
+  --hot-r: 52;
+  --hot-g: 199;
+  --hot-b: 89;      /* iOS system green */
+  --warm-r: 255;
+  --warm-g: 149;
+  --warm-b: 0;      /* iOS system orange */
   --cold: 209 213 219;
 
-  --primary: 37 99 235;
-  --hint: 21 128 61;
+  --primary: 0 122 255;   /* iOS system blue */
+  --hint: 52 199 89;
   --danger: 24 24 27;
-  --link: 37 99 235;
-  --closeness: 21 128 61;
+  --link: 0 122 255;
 
-  --ring: 37 99 235;
+  --ring: 0 122 255;
 
   color-scheme: light;
 }
@@ -36,6 +40,7 @@ html, body {
   background: rgb(var(--bg));
   color: rgb(var(--fg));
   font-feature-settings: "cv11", "ss01", "ss03";
+  letter-spacing: -0.011em;
 }
 
 .tabular { font-variant-numeric: tabular-nums; }
@@ -43,20 +48,20 @@ html, body {
 :where(button, a, input, [tabindex]):focus-visible {
   outline: 2px solid rgb(var(--ring) / 0.85);
   outline-offset: 2px;
-  border-radius: 6px;
+  border-radius: 10px;
 }
 
 .prose-clinicle {
   color: rgb(var(--fg));
-  font-size: 0.9375rem;
+  font-size: 1rem;
   line-height: 1.65;
 }
-.prose-clinicle p { margin: 0 0 1em; }
+.prose-clinicle p { margin: 0 0 1.1em; }
 .prose-clinicle p:last-child { margin-bottom: 0; }
 .prose-clinicle h2 {
-  font-size: 1.0625rem;
-  font-weight: 600;
-  letter-spacing: -0.01em;
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
   margin: 2.25em 0 0.6em;
   padding-top: 1.25em;
   border-top: 1px solid rgb(var(--border));
@@ -66,18 +71,17 @@ html, body {
 .prose-clinicle a {
   color: rgb(var(--link));
   font-weight: 500;
-  text-decoration: underline;
-  text-decoration-color: rgb(var(--link) / 0.35);
-  text-underline-offset: 3px;
-  transition: text-decoration-color 120ms ease;
+  text-decoration: none;
+  border-bottom: 1px solid rgb(var(--link) / 0.35);
+  transition: border-color 120ms ease;
 }
-.prose-clinicle a:hover { text-decoration-color: rgb(var(--link)); }
-.prose-clinicle strong { font-weight: 600; color: rgb(var(--fg)); }
+.prose-clinicle a:hover { border-color: rgb(var(--link)); }
+.prose-clinicle strong { font-weight: 700; color: rgb(var(--fg)); }
 .prose-clinicle em { font-style: italic; color: rgb(var(--fg-soft)); }
 .prose-clinicle ul {
   list-style: none;
   padding: 0;
-  margin: 0 0 1em;
+  margin: 0 0 1.1em;
 }
 .prose-clinicle ul > li {
   position: relative;
@@ -88,7 +92,7 @@ html, body {
   content: "";
   position: absolute;
   left: 0.25em;
-  top: 0.7em;
+  top: 0.75em;
   width: 4px;
   height: 4px;
   border-radius: 999px;
@@ -114,5 +118,5 @@ html, body {
   );
   background-size: 200% 100%;
   animation: shimmer 1.4s ease-in-out infinite;
-  border-radius: 8px;
+  border-radius: 12px;
 }
