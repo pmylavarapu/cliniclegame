@@ -511,20 +511,17 @@ function ReferenceBar({
   rank1000: number;
 }) {
   return (
-    <div className="mb-3 px-3 sm:px-4 py-2.5 rounded-xl bg-surface-2 flex items-center justify-between gap-3 text-caption">
-      <span className="text-muted font-medium">
-        For reference
+    <p className="mb-3 px-3 sm:px-4 py-2.5 rounded-xl bg-surface-2 text-caption text-muted leading-relaxed">
+      For reference, the 10th closest word has a similarity score of{' '}
+      <span className="tabular font-semibold text-fg">
+        {rank10.toFixed(1)}
+      </span>{' '}
+      and the 1000th closest word has a similarity score of{' '}
+      <span className="tabular font-semibold text-fg">
+        {rank1000.toFixed(1)}
       </span>
-      <div className="flex items-center gap-3 sm:gap-4 tabular font-semibold">
-        <span className="text-fg">
-          #10 <span className="text-hot">{rank10.toFixed(1)}</span>
-        </span>
-        <span className="text-border-strong">·</span>
-        <span className="text-fg">
-          #1000 <span className="text-muted">{rank1000.toFixed(1)}</span>
-        </span>
-      </div>
-    </div>
+      .
+    </p>
   );
 }
 
