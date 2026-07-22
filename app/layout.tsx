@@ -28,18 +28,17 @@ export default function RootLayout({
           <div className="mx-auto max-w-3xl px-5">
             <Link
               href="/"
-              className="flex items-center justify-center gap-3 sm:gap-4 group hover:opacity-90 transition-opacity"
+              className="flex items-center justify-center group hover:opacity-90 transition-opacity"
               aria-label="Clinicle home"
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/logo.svg"
-                alt=""
-                className="h-14 sm:h-20 w-auto"
+                src="/logo.png"
+                alt="Clinicle"
+                width={740}
+                height={312}
+                className="w-full max-w-[420px] sm:max-w-[520px] h-auto"
               />
-              <span className="wordmark text-5xl sm:text-7xl leading-none tracking-tight">
-                linicle
-              </span>
             </Link>
           </div>
         </header>
