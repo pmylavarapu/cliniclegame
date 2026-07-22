@@ -192,7 +192,7 @@ export default function PuzzleGame({ puzzle, vocab }: Props) {
               ref={inputRef}
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder="Enter a guess"
+              placeholder="Enter a word or phrase"
               className="flex-1 min-w-0 h-12 px-4 text-body bg-transparent outline-none placeholder:text-muted"
               autoComplete="off"
               autoCapitalize="off"

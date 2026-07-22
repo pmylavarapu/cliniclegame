@@ -1,0 +1,355 @@
+# Medical-adjacent vocabulary — anatomy, symptoms, qualifiers, and descriptors
+# that reliably show up when people play the game. Freely edit / add / remove.
+# One phrase per line. Lines starting with # are comments.
+# Normalized to lowercase; multi-word is fine.
+
+# --- Anatomy (gross) ---
+heart
+lung
+lungs
+kidney
+kidneys
+liver
+brain
+stomach
+intestine
+intestines
+bowel
+bowels
+colon
+rectum
+bladder
+uterus
+ovary
+ovaries
+testis
+testes
+prostate
+pancreas
+spleen
+gallbladder
+esophagus
+throat
+tongue
+teeth
+gums
+lip
+lips
+mouth
+nose
+sinus
+sinuses
+ear
+ears
+eye
+eyes
+skin
+scalp
+hair
+nail
+nails
+bone
+bones
+joint
+joints
+muscle
+muscles
+tendon
+tendons
+ligament
+ligaments
+cartilage
+nerve
+nerves
+vein
+veins
+artery
+arteries
+capillary
+capillaries
+blood
+plasma
+lymph
+node
+nodes
+
+# --- Body regions ---
+head
+neck
+shoulder
+shoulders
+arm
+arms
+elbow
+elbows
+wrist
+wrists
+hand
+hands
+finger
+fingers
+chest
+back
+lower back
+upper back
+abdomen
+belly
+pelvis
+hip
+hips
+groin
+buttock
+buttocks
+thigh
+thighs
+knee
+knees
+shin
+shins
+calf
+calves
+ankle
+ankles
+foot
+feet
+toe
+toes
+
+# --- Systems ---
+cardiovascular
+respiratory
+digestive
+gastrointestinal
+genitourinary
+musculoskeletal
+neurological
+endocrine
+immune
+lymphatic
+reproductive
+integumentary
+
+# --- Symptoms and complaints ---
+pain
+ache
+soreness
+tenderness
+stiffness
+weakness
+numbness
+tingling
+itching
+burning
+swelling
+edema
+bruising
+bleeding
+discharge
+rash
+lesion
+bump
+lump
+mass
+nodule
+cyst
+ulcer
+wound
+scar
+scab
+blister
+hives
+redness
+paleness
+sweating
+chills
+fever
+headache
+migraine
+dizziness
+lightheadedness
+vertigo
+fainting
+nausea
+vomiting
+diarrhea
+constipation
+indigestion
+heartburn
+bloating
+cramps
+cramping
+gas
+cough
+sneeze
+wheeze
+wheezing
+shortness of breath
+chest pain
+palpitations
+fatigue
+tiredness
+insomnia
+snoring
+seizure
+convulsion
+tremor
+spasm
+twitch
+paralysis
+confusion
+memory loss
+blurred vision
+double vision
+hearing loss
+ringing in ears
+loss of appetite
+weight loss
+weight gain
+thirst
+frequent urination
+painful urination
+blood in urine
+blood in stool
+jaundice
+
+# --- Qualifiers describing symptoms ---
+acute
+chronic
+sudden
+gradual
+recurrent
+intermittent
+constant
+persistent
+mild
+moderate
+severe
+sharp
+dull
+throbbing
+stabbing
+burning pain
+crushing
+squeezing
+tight
+pressure
+radiating
+localized
+diffuse
+generalized
+bilateral
+unilateral
+left sided
+right sided
+proximal
+distal
+superficial
+deep
+internal
+external
+anterior
+posterior
+medial
+lateral
+upper
+lower
+inner
+outer
+
+# --- Sizes / shapes ---
+small
+large
+big
+tiny
+enlarged
+shrunken
+round
+oval
+irregular
+smooth
+rough
+firm
+soft
+hard
+tender
+non tender
+mobile
+fixed
+
+# --- Colors ---
+red
+pale
+yellow
+blue
+purple
+black
+white
+gray
+pink
+brown
+
+# --- Onset / duration ---
+sudden onset
+gradual onset
+new
+old
+long standing
+worsening
+improving
+resolving
+
+# --- Modifiers / context ---
+after eating
+after exercise
+at rest
+at night
+in the morning
+during sleep
+after injury
+after surgery
+after infection
+family history
+pregnancy
+postpartum
+newborn
+infant
+child
+adult
+elderly
+
+# --- General clinical terms ---
+diagnosis
+prognosis
+treatment
+therapy
+surgery
+biopsy
+imaging
+xray
+x ray
+mri
+ct scan
+ultrasound
+ecg
+ekg
+blood test
+lab test
+prescription
+medication
+antibiotic
+antiviral
+antifungal
+painkiller
+anti inflammatory
+vaccine
+vaccination
+hospitalization
+emergency
+urgent
+critical
+stable
+recovery
+remission
+relapse
+complication
+comorbidity

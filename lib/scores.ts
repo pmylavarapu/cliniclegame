@@ -19,5 +19,10 @@ export function today(): string {
 }
 
 export function normalizeGuess(w: string): string {
-  return w.trim().toLowerCase().replace(/[^a-z0-9-']/g, '');
+  return w
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9 '-]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
 }

@@ -27,6 +27,11 @@ Rationale: SapBERT cosine can be slightly negative on medical/common word pairs;
 
 Env:
   DATE_START, DATE_END (inclusive, YYYY-MM-DD). Defaults: today .. today+30.
+  MIN_TOP_SIM        minimum cosine similarity for the top neighbor of a
+                     candidate secret. Below this the target is considered
+                     weakly embedded and the date is skipped (Gemini embeddings
+                     produce cosines in [-1, 1]; default 0.55 catches obviously
+                     out-of-distribution words like Japanese loanwords).
 """
 from __future__ import annotations
 
@@ -46,6 +51,7 @@ PUZZLES = PUB / "puzzles"
 EMB = DATA / "embeddings"
 
 TOP_N = 1000
+MIN_TOP_SIM = float(os.environ.get("MIN_TOP_SIM", "0.55"))
 
 
 def parse_date(s: str | None, default: date) -> date:
@@ -107,9 +113,21 @@ def main() -> None:
         sec_idx = word_to_idx[dx]
         sec_vec = vecs[sec_idx]
         sims = (vecs @ sec_vec)  # cosine (L2-normalized)
-        sims_pct = sims * 100.0
 
-        order = np.argsort(-sims_pct)
+        # Quality gate: reject weakly-embedded targets. Rank 1 is always the
+        # word itself (sim = 1.0); rank 2 is its nearest true neighbor.
+        order = np.argsort(-sims)
+        second_best = float(sims[order[1]]) if len(order) > 1 else 0.0
+        if second_best < MIN_TOP_SIM:
+            print(
+                f"  {iso}: '{dx}' weakly embedded (top-neighbor cosine "
+                f"{second_best:.3f} < {MIN_TOP_SIM}); skipping",
+                file=sys.stderr,
+            )
+            d += timedelta(days=1)
+            continue
+
+        sims_pct = sims * 100.0
         top_idx = order[:TOP_N]
         top1000 = [[vocab[i], float(round(sims_pct[i], 2))] for i in top_idx]
 
