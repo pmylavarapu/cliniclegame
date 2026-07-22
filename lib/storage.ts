@@ -5,20 +5,44 @@ import type { GameState, Stats } from './types';
 const NS = 'clinicle:v2';
 const GAME_KEY = (date: string) => `${NS}:game:${date}`;
 const STATS_KEY = `${NS}:stats`;
+const BUILD_KEY = `${NS}:build`;
+const MIGRATED_KEY = `${NS}:migrated`;
+
+// Injected by Vercel at build time. On the Claude API side we don't need this
+// value ourselves — we only need it to CHANGE on every deploy so the client
+// can detect a new build and clear its per-puzzle game state.
+const BUILD_ID =
+  process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_SHA ||
+  process.env.NEXT_PUBLIC_BUILD_ID ||
+  'dev';
 
 function migrateFromV1IfNeeded() {
   if (typeof localStorage === 'undefined') return;
-  if (localStorage.getItem(`${NS}:migrated`) === '1') return;
-  // Wipe v1 keys so old games and stats don't linger under the new scoring model.
+  const seenBuild = localStorage.getItem(BUILD_KEY);
+  const migratedV1 = localStorage.getItem(MIGRATED_KEY) === '1';
+  const newBuild = seenBuild !== BUILD_ID;
+
+  if (migratedV1 && !newBuild) return;
+
   const toRemove: string[] = [];
   for (let i = 0; i < localStorage.length; i++) {
     const k = localStorage.key(i);
-    if (k && (k === 'clinicle:stats' || k.startsWith('clinicle:game:'))) {
+    if (!k) continue;
+    // v1 keys are always wiped on first v2 access
+    if (!migratedV1 && (k === 'clinicle:stats' || k.startsWith('clinicle:game:'))) {
+      toRemove.push(k);
+      continue;
+    }
+    // On a new build, wipe per-puzzle GAME state so testers get a fresh puzzle
+    // to play. Stats/streaks (STATS_KEY) survive so we don't obliterate user
+    // history every deploy.
+    if (newBuild && k.startsWith(`${NS}:game:`)) {
       toRemove.push(k);
     }
   }
   for (const k of toRemove) localStorage.removeItem(k);
-  localStorage.setItem(`${NS}:migrated`, '1');
+  localStorage.setItem(MIGRATED_KEY, '1');
+  localStorage.setItem(BUILD_KEY, BUILD_ID);
 }
 
 export function loadGame(date: string): GameState | null {
