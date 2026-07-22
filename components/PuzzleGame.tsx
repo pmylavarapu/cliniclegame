@@ -393,18 +393,22 @@ function GuessRow({
   const inTop = guess.rank !== null;
   const percentile = inTop ? Math.max(0, 1000 - guess.rank!) / 10 : 0;
 
-  // Row background — the whole card tints by rank.
-  // rank 1  → solid green fill
-  // rank N  → warm-orange, opacity scales with closeness (0.55 down to 0.06)
-  // no rank → very subtle gray
+  // Row background — heat map from green (near the answer) through yellow
+  // and orange to pale peach (edge of the top-1000), then a subtle gray
+  // for cold guesses. HSL interpolation across rank so the top of the
+  // list reads visibly hotter than the middle.
   let bgStyle: React.CSSProperties;
   let fgClass: string;
   if (guess.rank === 1) {
     bgStyle = { background: 'rgb(var(--hot-r) var(--hot-g) var(--hot-b))' };
     fgClass = 'text-white';
   } else if (inTop) {
-    const alpha = Math.max(0.06, 0.55 * (1 - (guess.rank! - 1) / 999));
-    bgStyle = { background: `rgb(var(--warm-r) var(--warm-g) var(--warm-b) / ${alpha})` };
+    // p ∈ [0,1] where rank 2 → ~1 (green) and rank 1000 → 0 (pale orange).
+    const p = Math.max(0, (1000 - guess.rank!) / 999);
+    const hue = 25 + (120 - 25) * p;        // orange (25°) → green (120°)
+    const sat = 75 + 15 * p;                 // 75% → 90%
+    const light = 96 - 28 * p;               // pale (96%) → bright (68%)
+    bgStyle = { background: `hsl(${hue} ${sat}% ${light}%)` };
     fgClass = 'text-fg';
   } else {
     bgStyle = { background: 'rgb(var(--surface-2))' };
