@@ -164,7 +164,7 @@ export default function PuzzleGame({ puzzle, vocab }: Props) {
     return [...guesses].sort((a, b) => b.score - a.score);
   }, [guesses]);
 
-  const bestGuess = sorted[0];
+  const currentGuess = guesses[guesses.length - 1];
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -198,14 +198,12 @@ export default function PuzzleGame({ puzzle, vocab }: Props) {
             </>
           ) : null}
         </div>
-        <p className="text-title-lg font-bold text-fg tracking-tight leading-snug mb-4">
+        <p className="text-title sm:text-title-lg font-bold text-fg tracking-tight leading-snug mb-4">
           {puzzle.prompt}
         </p>
-        <p className="text-body text-fg-soft">
+        <p className="text-caption sm:text-body text-fg-soft">
           Type any medical word or phrase. Closer meanings score higher —{' '}
-          <span className="font-semibold text-fg">
-            heart attack
-          </span>{' '}
+          <span className="font-semibold text-fg">heart attack</span>{' '}
           scores near{' '}
           <span className="font-semibold text-fg">myocardial infarction</span>,
           but far from{' '}
@@ -221,14 +219,14 @@ export default function PuzzleGame({ puzzle, vocab }: Props) {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Enter a word or phrase"
-              className="flex-1 min-w-0 h-14 px-5 text-lede rounded-full bg-surface-2 border border-transparent outline-none focus:border-primary focus:bg-white focus:ring-4 focus:ring-primary/15 transition-all placeholder:text-muted font-medium"
+              className="flex-1 min-w-0 h-12 sm:h-14 px-4 sm:px-5 text-body sm:text-lede rounded-full bg-surface-2 border border-transparent outline-none focus:border-primary focus:bg-white focus:ring-4 focus:ring-primary/15 transition-all placeholder:text-muted font-medium"
               autoComplete="off"
               autoCapitalize="off"
               spellCheck={false}
             />
             <button
               type="submit"
-              className="h-14 px-7 rounded-full bg-primary text-white text-ui font-bold hover:brightness-110 active:scale-[0.98] transition-[transform,filter]"
+              className="h-12 sm:h-14 px-5 sm:px-7 rounded-full bg-primary text-white text-ui font-bold hover:brightness-110 active:scale-[0.98] transition-[transform,filter]"
             >
               Guess
             </button>
@@ -274,23 +272,21 @@ export default function PuzzleGame({ puzzle, vocab }: Props) {
       )}
 
       {sorted.length > 0 && (
-        <section className="mt-10">
-          <div className="flex items-baseline justify-between mb-3">
-            <h2 className="text-eyebrow uppercase text-muted font-bold">
-              Your guesses
-            </h2>
-            {bestGuess && !gameOver && (
-              <span className="text-eyebrow uppercase text-muted font-bold">
-                Best so far
-              </span>
-            )}
-          </div>
-          <GuessTableHeader />
-          {bestGuess && !gameOver && (
-            <div className="mb-3">
-              <GuessRow guess={bestGuess} isBest />
+        <section className="mt-8 sm:mt-10">
+          {currentGuess && !gameOver && (
+            <div className="mb-4">
+              <div className="text-eyebrow uppercase text-muted font-bold mb-2">
+                Your last guess
+              </div>
+              <GuessRow guess={currentGuess} isCurrent />
             </div>
           )}
+          <div className="flex items-baseline justify-between mb-2">
+            <h2 className="text-eyebrow uppercase text-muted font-bold">
+              All guesses (best first)
+            </h2>
+          </div>
+          <GuessTableHeader />
           {sorted.map((g) => (
             <GuessRow
               key={g.order}
@@ -379,11 +375,12 @@ function GuessTableHeader() {
 
 function GuessRow({
   guess,
-  isBest,
+  isCurrent,
   recent,
 }: {
   guess: Guess;
-  isBest?: boolean;
+  /** Show the "current guess" highlight (ring + ring-offset). */
+  isCurrent?: boolean;
   recent?: boolean;
 }) {
   const inTop = guess.rank !== null;
@@ -415,7 +412,7 @@ function GuessRow({
       className={[
         ROW_GRID,
         'px-3 sm:px-4 py-3 rounded-xl mb-1.5 transition-transform',
-        isBest ? 'ring-2 ring-fg/80 ring-offset-2 ring-offset-bg' : '',
+        isCurrent ? 'ring-2 ring-fg/80 ring-offset-2 ring-offset-bg' : '',
         recent ? 'animate-in' : '',
       ].join(' ')}
     >
