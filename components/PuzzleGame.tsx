@@ -594,7 +594,7 @@ function WinBanner({
           target="_blank"
           rel="noopener noreferrer"
           className={[
-            'flex-1 inline-flex items-center justify-center gap-2 h-12 rounded-full text-ui font-bold hover:brightness-110 active:scale-[0.98] transition-[transform,filter]',
+            'flex-1 w-full flex items-center justify-center gap-2 h-12 rounded-full text-ui font-bold hover:brightness-110 active:scale-[0.98] transition-[transform,filter]',
             won ? 'bg-white text-fg' : 'bg-fg text-white',
           ].join(' ')}
         >
