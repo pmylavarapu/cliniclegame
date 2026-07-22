@@ -176,11 +176,7 @@ export default function PuzzleGame({ puzzle, vocab }: Props) {
   return (
     <div>
       <div className="mb-6">
-        <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-caption mb-4">
-          <span className="text-eyebrow uppercase text-muted font-bold tracking-[0.06em]">
-            Guess the diagnosis
-          </span>
-          <span className="text-border-strong">·</span>
+        <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1.5 text-caption mb-3">
           <span className="font-semibold text-fg tabular">
             Puzzle {puzzle.num}
           </span>
@@ -198,17 +194,14 @@ export default function PuzzleGame({ puzzle, vocab }: Props) {
             </>
           ) : null}
         </div>
-        <p className="text-title sm:text-title-lg font-bold text-fg tracking-tight leading-snug mb-4">
-          {puzzle.prompt}
-        </p>
-        <p className="text-caption sm:text-body text-fg-soft">
-          Type any medical word or phrase. Closer meanings score higher —{' '}
-          <span className="font-semibold text-fg">heart attack</span>{' '}
-          scores near{' '}
-          <span className="font-semibold text-fg">myocardial infarction</span>,
-          but far from{' '}
-          <span className="font-semibold text-fg">arthritis</span>. Rank 1 wins.
-        </p>
+        <figure className="border-l-[3px] border-primary pl-4 sm:pl-5 my-4">
+          <figcaption className="text-eyebrow uppercase text-muted font-bold tracking-[0.06em] mb-1.5">
+            Guess the diagnosis
+          </figcaption>
+          <blockquote className="text-lede sm:text-title-sm font-medium text-fg leading-snug">
+            {puzzle.prompt}
+          </blockquote>
+        </figure>
       </div>
 
       {!gameOver && (
@@ -231,7 +224,7 @@ export default function PuzzleGame({ puzzle, vocab }: Props) {
               Guess
             </button>
           </div>
-          <div className="mt-4 flex flex-wrap items-center gap-2">
+          <div className="mt-3 flex flex-wrap items-center gap-2">
             <button
               type="button"
               onClick={useHint}
@@ -256,6 +249,20 @@ export default function PuzzleGame({ puzzle, vocab }: Props) {
             <div className="mt-3 text-caption text-red-600 font-medium animate-in">
               {error}
             </div>
+          )}
+          {guesses.length === 0 && (
+            <p className="mt-4 text-caption text-muted leading-relaxed">
+              Any word or phrase — anatomy, symptoms, drugs, diagnoses. Closer
+              meanings score higher —{' '}
+              <span className="font-semibold text-fg">heart attack</span>{' '}
+              scores near{' '}
+              <span className="font-semibold text-fg">
+                myocardial infarction
+              </span>
+              , but far from{' '}
+              <span className="font-semibold text-fg">arthritis</span>. Rank 1
+              wins.
+            </p>
           )}
         </form>
       )}
