@@ -45,10 +45,28 @@ export default function PuzzleGame({ puzzle, vocab }: Props) {
 
   const scores = useMemo(() => decodeScores(puzzle.scores), [puzzle]);
 
-  const nearestScore = puzzle.top1000[0]?.[1] ?? 0;
-  const thousandthScore =
-    puzzle.top1000[puzzle.top1000.length - 1]?.[1] ?? 0;
-  const vocabSize = vocab.length;
+  // Sorted score copy for per-guess vocab percentile lookups.
+  const sortedScores = useMemo(() => {
+    const arr = new Float32Array(scores.length);
+    for (let i = 0; i < scores.length; i++) arr[i] = scoreFromStored(scores[i]);
+    return Float32Array.from(arr).sort();
+  }, [scores]);
+
+  const percentileOf = (score: number) => {
+    // Fraction of vocab words with a score strictly LESS than this one.
+    // Sorted ascending; binary search for the first index whose value >= score.
+    let lo = 0;
+    let hi = sortedScores.length;
+    while (lo < hi) {
+      const mid = (lo + hi) >>> 1;
+      if (sortedScores[mid] < score) lo = mid + 1;
+      else hi = mid;
+    }
+    return (lo / sortedScores.length) * 100;
+  };
+
+  const rank10Score = puzzle.top1000[9]?.[1] ?? 0;
+  const rank1000Score = puzzle.top1000[999]?.[1] ?? 0;
 
   const [guesses, setGuesses] = useState<Guess[]>([]);
   const [hintsUsed, setHintsUsed] = useState(0);
@@ -337,7 +355,11 @@ export default function PuzzleGame({ puzzle, vocab }: Props) {
               <div className="text-eyebrow uppercase text-muted font-bold mb-2">
                 Your last guess
               </div>
-              <GuessRow guess={currentGuess} isCurrent />
+              <GuessRow
+                guess={currentGuess}
+                isCurrent
+                percentile={percentileOf(currentGuess.score)}
+              />
             </div>
           )}
           <div className="flex items-baseline justify-between mb-2">
@@ -345,12 +367,14 @@ export default function PuzzleGame({ puzzle, vocab }: Props) {
               All guesses (best first)
             </h2>
           </div>
+          <ReferenceBar rank10={rank10Score} rank1000={rank1000Score} />
           <GuessTableHeader />
           {sorted.map((g) => (
             <GuessRow
               key={g.order}
               guess={g}
               recent={g.word === lastAdded}
+              percentile={percentileOf(g.score)}
             />
           ))}
         </section>
@@ -479,18 +503,45 @@ function GuessTableHeader() {
   );
 }
 
+function ReferenceBar({
+  rank10,
+  rank1000,
+}: {
+  rank10: number;
+  rank1000: number;
+}) {
+  return (
+    <div className="mb-3 px-3 sm:px-4 py-2.5 rounded-xl bg-surface-2 flex items-center justify-between gap-3 text-caption">
+      <span className="text-muted font-medium">
+        For reference
+      </span>
+      <div className="flex items-center gap-3 sm:gap-4 tabular font-semibold">
+        <span className="text-fg">
+          #10 <span className="text-hot">{rank10.toFixed(1)}</span>
+        </span>
+        <span className="text-border-strong">·</span>
+        <span className="text-fg">
+          #1000 <span className="text-muted">{rank1000.toFixed(1)}</span>
+        </span>
+      </div>
+    </div>
+  );
+}
+
 function GuessRow({
   guess,
   isCurrent,
   recent,
+  percentile,
 }: {
   guess: Guess;
   /** Show the "current guess" highlight (ring + ring-offset). */
   isCurrent?: boolean;
   recent?: boolean;
+  /** Percentile of this guess's score within the full vocab (0-100). */
+  percentile: number;
 }) {
   const inTop = guess.rank !== null;
-  const percentile = inTop ? Math.max(0, 1000 - guess.rank!) / 10 : 0;
 
   // Row background — heat map from green (near the answer) through yellow
   // and orange to pale peach (edge of the top-1000), then a subtle gray
@@ -561,10 +612,17 @@ function GuessRow({
       <div
         className={`tabular text-caption font-semibold text-right ${fgClass} ${dimClass}`}
       >
-        {inTop ? `${percentile.toFixed(1)}%` : '—'}
+        {formatPercentile(percentile)}
       </div>
     </div>
   );
+}
+
+function formatPercentile(pct: number): string {
+  // Above 99% we want the decimal so "99.9" stays distinct from "99.0";
+  // below 99 whole-number percent is enough resolution.
+  if (pct >= 99) return `${pct.toFixed(2)}%`;
+  return `${pct.toFixed(0)}%`;
 }
 
 function WinBanner({

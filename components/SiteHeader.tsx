@@ -33,7 +33,7 @@ export default function SiteHeader() {
   return (
     <>
       <header className="sticky top-0 z-30 bg-bg/85 backdrop-blur-xl">
-        <div className="mx-auto max-w-2xl px-4 sm:px-5 h-16 sm:h-20 flex items-center justify-between">
+        <div className="mx-auto max-w-2xl px-4 sm:px-5 h-20 sm:h-20 flex items-center justify-between">
           <Link
             href="/"
             className="flex items-center hover:opacity-80 transition-opacity"
@@ -45,7 +45,7 @@ export default function SiteHeader() {
               alt="Clinicle"
               width={690}
               height={252}
-              className="h-11 sm:h-14 w-auto"
+              className="h-14 sm:h-14 w-auto"
             />
           </Link>
           <button

@@ -29,10 +29,18 @@ uses this to reject a second guess that means the same as an earlier one
 ("heart attack" → "myocardial infarction"). Words with no near-synonyms
 are absent from the map.
 
-Score encoding: stored = round((similarity_percent + 30) * 100), clamped to [0, 65535].
-Decode: similarity_percent = stored / 100 - 30.
-Rationale: SapBERT cosine can be slightly negative on medical/common word pairs;
-30-pt offset gives 5-6k range for negatives while keeping resolution.
+Score encoding: stored = round((display_percent + 30) * 100), clamped to [0, 65535].
+Decode: display_percent = stored / 100 - 30.
+The +30 offset preserves a small negative range for "colder than the median
+vocab word" guesses.
+
+Displayed score is NOT raw cosine — Gemini embeddings have a very high
+baseline cosine (~0.75-0.85 between arbitrary English strings), so raw
+scores would squash into 75-100 and lose all variance for the user.
+Instead we anchor the median vocab similarity for this puzzle to 0 and
+the exact-match similarity (1.0) to 100:
+    display = (sim - p50) / (1 - p50) * 100
+so a random guess lands near 0 and a true near-synonym stays near the top.
 
 Env:
   DATE_START, DATE_END (inclusive, YYYY-MM-DD). Defaults: today .. today+30.
@@ -166,7 +174,16 @@ def main() -> None:
             d += timedelta(days=1)
             continue
 
-        sims_pct = sims * 100.0
+        # Rescale similarities so the puzzle's median-vocab guess sits at 0
+        # and the exact-match sits at 100. Without this, Gemini's high
+        # baseline cosine squashes every guess into ~75-90 and the score
+        # loses all discriminating power. See module docstring.
+        p50 = float(np.median(sims))
+        denom = max(1e-3, 1.0 - p50)
+        display = (sims - p50) / denom * 100.0
+        display = np.clip(display, -30.0, 100.0)
+
+        sims_pct = display  # legacy name; downstream uses this for storage
         top_idx = order[:TOP_N]
         top1000 = [[vocab[i], float(round(sims_pct[i], 2))] for i in top_idx]
 
