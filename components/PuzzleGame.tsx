@@ -198,7 +198,7 @@ export default function PuzzleGame({ puzzle, vocab }: Props) {
           <figcaption className="text-eyebrow uppercase text-muted font-bold tracking-[0.06em] mb-1.5">
             Guess the diagnosis
           </figcaption>
-          <blockquote className="text-lede sm:text-title-sm font-medium text-fg leading-snug">
+          <blockquote className="text-lede sm:text-title-sm font-medium text-fg leading-relaxed">
             {puzzle.prompt}
           </blockquote>
         </figure>
