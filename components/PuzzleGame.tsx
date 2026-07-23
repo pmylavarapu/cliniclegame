@@ -391,20 +391,6 @@ export default function PuzzleGame({ puzzle, vocab }: Props) {
               )}
             </div>
           )}
-          {guesses.length === 0 && (
-            <p className="mt-4 text-caption text-muted leading-relaxed">
-              Any word or phrase – anatomy, symptoms, drugs, diagnoses. Closer
-              meanings score higher -{' '}
-              <span className="font-semibold text-fg">heart attack</span>{' '}
-              scores near{' '}
-              <span className="font-semibold text-fg">
-                myocardial infarction
-              </span>
-              , but far from{' '}
-              <span className="font-semibold text-fg">arthritis</span>. Rank 1
-              wins.
-            </p>
-          )}
         </form>
       )}
 
