@@ -221,14 +221,8 @@ def build_abbreviation_aliases(vocab_set: set[str]) -> None:
         "lad": "coronary artery disease",
         "lcx": "coronary artery disease",
         "rca": "coronary artery disease",
-        "acs": "myocardial infarction",
-        "stemi": "myocardial infarction",
-        "nstemi": "myocardial infarction",
         "cabg": "coronary artery disease",
         "pci": "coronary artery disease",
-        "tavr": "aortic stenosis",
-        "avr": "aortic stenosis",
-        "mvr": "mitral regurgitation",
         "hfref": "heart failure",
         "hfpef": "heart failure",
         "sob": "dyspnea",
@@ -313,6 +307,11 @@ def main() -> None:
     # Ship abbreviation aliases (frontend uses them to expand PE →
     # pulmonary embolism at guess time).
     build_abbreviation_aliases(set(vocab))
+    # Ship the curated vocab (hand-organized files only) for autocorrect
+    # so 'clot' suggests 'clot', not a fragment like 'thromb'.
+    (PUB / "clean_vocab.json").write_text(
+        json.dumps(sorted(hint_pool_vocab & set(vocab)))
+    )
 
     all_dates: list[str] = []
     if (PUB / "index.json").exists():

@@ -73,6 +73,25 @@ DENYLIST = {
     # Slang / colloquial anatomy that reads as junk in a medical game
     "ass", "asses", "butt", "butts", "balls", "boobs", "tits",
     "dick", "dicks", "nut", "nuts", "piss", "crap", "hell", "god",
+    # Medical Greek/Latin combining-form fragments the glutanimate
+    # wordlist leaked in as standalone entries. They only serve to
+    # confuse autocorrect ('thromb' vs 'thrombus').
+    "thromb", "hemat", "haemat", "nephr", "pneum", "hepat", "gastr",
+    "arthr", "dermat", "angio", "osteo", "cardi", "pulmo", "myelo",
+    "leuko", "lympho", "hemo", "haemo", "phago", "pyelo", "colpo",
+    "hyster", "salping", "oophor", "cephal", "spondyl", "chondr",
+    "morph", "onych", "otic", "phag", "phago", "path", "patho",
+    "phleb", "rhin", "sclero", "steno", "trach", "urin", "hema",
+    "haema", "nephro", "cyto", "hemat", "encephal", "myo", "musc",
+    "arth", "endo", "epi", "hyper", "hypo", "meta", "para", "poly",
+    "peri", "sub", "supra", "trans", "intra", "extra", "inter",
+    "acidem", "carbunc", "chondro", "gnos", "gnosia", "hemat",
+    "hemate", "hyaline", "mors", "orexia", "otomy", "phagia",
+    "orexy", "orexic", "anoretic", "melan", "melano",
+    # Eponym fragments / non-medical name stubs
+    "calot", "vasey", "cabot's", "cabot", "sudek", "brocki",
+    "brock", "sinskey", "turck's", "turck", "kent's", "kent",
+    "sinistr", "tachy-", "brocks", "krukenberg", "cornelia",
 }
 
 # Rejection patterns for the scraped glutanimate wordlist (eponym fragments,

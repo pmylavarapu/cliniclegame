@@ -34,9 +34,20 @@ type Props = {
    * to the full form before scoring so PE = pulmonary embolism, etc.
    */
   aliases?: Record<string, string>;
+  /**
+   * Curated-only vocabulary pool used for autocorrect suggestions.
+   * Prevents autocorrect from suggesting fragments like 'thromb' or
+   * eponym stubs like 'calot'. Falls back to full vocab if absent.
+   */
+  cleanVocab?: string[];
 };
 
-export default function PuzzleGame({ puzzle, vocab, aliases = {} }: Props) {
+export default function PuzzleGame({
+  puzzle,
+  vocab,
+  aliases = {},
+  cleanVocab,
+}: Props) {
   const vocabIndex = useMemo(() => {
     const m = new Map<string, number>();
     for (let i = 0; i < vocab.length; i++) m.set(vocab[i], i);
@@ -187,7 +198,7 @@ export default function PuzzleGame({ puzzle, vocab, aliases = {} }: Props) {
       }
     }
     if (idx === undefined) {
-      const near = nearestVocabWord(w, vocab);
+      const near = nearestVocabWord(w, cleanVocab ?? vocab);
       if (near) setSuggestion(near);
       setError(`"${w}" is not in the vocabulary`);
       flashInput();
@@ -489,6 +500,10 @@ function nearestVocabWord(w: string, vocab: string[]): string | null {
   for (const v of vocab) {
     if (Math.abs(v.length - n) > maxDist) continue;
     if (v[0] !== first) continue;
+    // Skip fragment-style suggestions: a strict prefix of the input
+    // (e.g. 'thromb' when the user typed 'thrombus') is almost always
+    // a broken combining-form, not a helpful autocorrect.
+    if (v.length < n && w.startsWith(v)) continue;
     const d = levenshtein(w, v, bestDist);
     if (d < bestDist) {
       bestDist = d;

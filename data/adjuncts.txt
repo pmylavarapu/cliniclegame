@@ -473,3 +473,39 @@ pulmonary capillary wedge pressure
 mean arterial pressure
 systemic vascular resistance
 pulmonary vascular resistance
+
+# ─── Common bedside terms often typed as guesses ───────────────────────────
+clot
+thrombus
+hurts
+swollen
+stinging
+sweats
+sniffle
+sniffles
+puke
+nauseous
+queasy
+bloated
+lightheaded
+gasp
+gasping
+sprained
+strained
+burned
+blisters
+nosebleed
+toothache
+stuffy nose
+snot
+ooze
+oozing
+pus
+wounds
+gash
+exhausted
+disoriented
+breathless
+racing heart
+heart pounding
+throw up

@@ -2317,7 +2317,6 @@ anginoid
 anginosa
 anginose
 anginous
-angio
 angiocor
 angiodysplasia
 angioedema
@@ -2502,7 +2501,6 @@ anopsy
 anoquan
 anorchia
 anorchid
-anoretic
 anorexia
 anorexia nervosa
 anorexic
@@ -3358,7 +3356,6 @@ artes
 artetus
 artha
 arthopod
-arthr
 arthra
 arthral
 arthralgia
@@ -5536,11 +5533,13 @@ blink
 blinks
 blister
 blistering
+blisters
 blistery
 blistex
 blite
 blites
 bloat
+bloated
 bloating
 bloch
 block
@@ -6081,6 +6080,7 @@ breathe
 breathed
 breather
 breathid
+breathless
 breccia
 breda
 breech
@@ -6506,6 +6506,7 @@ burkitt
 burkitt lymphoma
 burman
 burn
+burned
 burner
 burnet
 burnetii
@@ -6781,7 +6782,6 @@ calorie
 calories
 caloris
 calory
-calot
 calotte
 calpain
 calpha
@@ -7068,7 +7068,6 @@ carden
 cardene
 cardeon
 cardeva
-cardi
 cardia
 cardiac
 cardiac arrest
@@ -7557,7 +7556,6 @@ ceo
 ceous
 cepacia
 cepacol
-cephal
 cephalad
 cephalexin
 cephalgia
@@ -8015,14 +8013,12 @@ choloxin
 choluria
 choluric
 cholybar
-chondr
 chondra
 chondral
 chondri
 chondric
 chondrin
 chondritis
-chondro
 chondrocalcinosis
 chondromalacia
 chondrosarcoma
@@ -8466,6 +8462,7 @@ closest
 closing
 closs
 closure
+clot
 clotest
 cloth
 clothes
@@ -8778,7 +8775,6 @@ colour
 colours
 colovage
 colpitis
-colpo
 colposcopy
 colterol
 coluber
@@ -9177,7 +9173,6 @@ cornea
 corneae
 corneal
 corneal ulcer
-cornelia
 cornell
 corneous
 corner
@@ -10667,7 +10662,6 @@ dermad
 dermal
 dermalon
 dermarx
-dermat
 dermatan
 dermatic
 dermatis
@@ -11259,6 +11253,7 @@ disomi
 disomic
 disomus
 disorder
+disoriented
 disotate
 dispar
 dispatch
@@ -12619,7 +12614,6 @@ encare
 encased
 encasing
 enceinte
-encephal
 encephalitis
 encephalopathy
 enchyma
@@ -13325,6 +13319,7 @@ exforge
 exhale
 exhaled
 exhaust
+exhausted
 exhib
 exhibit
 exhume
@@ -13396,7 +13391,6 @@ extile
 extima
 extina
 extinct
-extra
 extracorporeal membrane oxygenation
 extract
 extradural
@@ -14602,11 +14596,13 @@ gas
 gasbgon
 gaseous
 gasfree
+gash
 gaskin
+gasp
+gasping
 gasser
 gastaut
 gaster
-gastr
 gastral
 gastrectomy
 gastri
@@ -15032,7 +15028,6 @@ gnath
 gnathal
 gnathic
 gnome
-gnosia
 gnrha
 gnu
 goal
@@ -15401,7 +15396,6 @@ hacker
 hacking
 had
 haeckel
-haema
 haemate
 haemin
 haenel
@@ -15646,6 +15640,7 @@ heart
 heart attack
 heart block
 heart failure
+heart pounding
 heartburn
 hearts
 heat
@@ -15740,9 +15735,7 @@ hemagen
 hemal
 hemalum
 hemangioma
-hemat
 hematal
-hemate
 hematemesis
 hematic
 hematin
@@ -15813,7 +15806,6 @@ hepar
 heparan
 heparin
 heparin therapy
-hepat
 hepatectomy
 hepatic
 hepatis
@@ -16310,6 +16302,7 @@ hurst
 hurt
 hurthle
 hurtley
+hurts
 hus
 husband
 huschke
@@ -16324,7 +16317,6 @@ hyalex
 hyalgan
 hyalin
 hyalina
-hyaline
 hyalinosis
 hyaloid
 hyate
@@ -16392,7 +16384,6 @@ hyoidea
 hyomys
 hypafix
 hypaque
-hyper
 hyperab
 hyperacusis
 hyperaldosteronism
@@ -16511,7 +16502,6 @@ hyrtl
 hyseq
 hyskon
 hyssop
-hyster
 hysterectomy
 hysteria
 hysteroscopy
@@ -16995,7 +16985,6 @@ intellectual
 intend
 intense
 intent
-inter
 interim
 interix
 interm
@@ -17023,7 +17012,6 @@ intoe
 intoed
 intox
 intoxication
-intra
 intracerebral
 intracerebral hemorrhage
 intractable
@@ -18543,7 +18531,6 @@ leudet
 leukemia
 leukin
 leukine
-leuko
 leukocytopenia
 leukocytosis
 leukoderma
@@ -18684,6 +18671,7 @@ ligated
 ligator
 light
 lighter
+lightheaded
 lightheadedness
 lights
 lignac
@@ -19835,7 +19823,6 @@ meissl
 mekongi
 mel
 melagra
-melan
 melanex
 melania
 melanin
@@ -19975,7 +19962,6 @@ mess
 message
 mester
 met
-meta
 metabolic
 metabolic syndrome
 metal
@@ -20650,7 +20636,6 @@ mydfrin
 myelica
 myelin
 myelitis
-myelo
 myelodysplasia
 myelofibrosis
 myeloid
@@ -20847,6 +20832,7 @@ nauheim
 nausea
 nausea and vomiting
 nauseam
+nauseous
 nauta
 nav
 naval
@@ -20934,13 +20920,11 @@ neotype
 nepal
 nepeta
 nephel
-nephr
 nephrectomy
 nephric
 nephritic
 nephritic syndrome
 nephritis
-nephro
 nephroblastoma
 nephrocalcinosis
 nephrolithiasis
@@ -21251,6 +21235,7 @@ norvir
 norwalk
 norway
 nose
+nosebleed
 nosegay
 nosema
 nosocomial
@@ -21597,7 +21582,6 @@ onto
 ontrack
 onyalai
 onyalia
-onych
 onychauxis
 onychia
 onycho
@@ -21613,7 +21597,6 @@ oogonia
 oolemma
 ooo
 oophagy
-oophor
 oophorectomy
 oophori
 oophoritis
@@ -21628,6 +21611,8 @@ oothec
 ootheca
 ootid
 ootype
+ooze
+oozing
 oozooid
 opaca
 opacify
@@ -21742,7 +21727,6 @@ orectic
 oregon
 orencia
 oretic
-orexia
 org
 organ
 organa
@@ -21841,7 +21825,6 @@ osteal
 ostein
 osteite
 ostene
-osteo
 osteoarthritis
 osteoblastoma
 osteochondritis
@@ -22210,7 +22193,6 @@ papule
 papules
 paquin
 par
-para
 paraben
 paracentesis
 paracusia
@@ -22362,9 +22344,7 @@ patent foramen ovale
 patents
 paterna
 patey
-path
 pathema
-patho
 pathological
 paths
 pathway
@@ -22757,7 +22737,6 @@ phil
 philip
 philips
 phimosis
-phleb
 phlebitis
 phlebotomy
 phlegm
@@ -23171,7 +23150,6 @@ pms
 pna
 pnd
 pneugel
-pneum
 pneuma
 pneumal
 pneumat
@@ -23249,7 +23227,6 @@ polly
 polo
 polster
 polus
-poly
 polya
 polyarteritis
 polyarteritis nodosa
@@ -23848,11 +23825,11 @@ puffing
 puffs
 puffy
 pugil
+puke
 pulex
 pull
 pulled
 pulling
-pulmo
 pulmon
 pulmonary
 pulmonary capillary wedge pressure
@@ -23929,6 +23906,7 @@ purring
 purse
 pursue
 pursuit
+pus
 push
 pushed
 pushing
@@ -24046,6 +24024,7 @@ quassia
 quassin
 quater
 que
+queasy
 quebec
 queen
 queens
@@ -24121,6 +24100,7 @@ rachial
 rachis
 racial
 racing
+racing heart
 rack
 racket
 racks
@@ -25230,7 +25210,6 @@ salmonella infection
 salmonellosis
 salol
 salon
-salping
 salpingectomy
 salpingitis
 salpinx
@@ -25480,7 +25459,6 @@ sclera
 sclerae
 scleral
 scleritis
-sclero
 scleroderma
 sclerosis
 scoleco
@@ -26250,10 +26228,13 @@ snell
 snellen
 snider
 sniff
+sniffle
+sniffles
 snipe
 snore
 snoring
 snorter
+snot
 snow
 snrna
 snrnp
@@ -26575,7 +26556,6 @@ split
 spoke
 spoken
 spondee
-spondyl
 spondylitis
 spondyloarthritis
 spondyloepiphyseal
@@ -26608,6 +26588,7 @@ spotted
 spouse
 sprague
 sprain
+sprained
 spray
 spread
 spret
@@ -26786,7 +26767,6 @@ stemi
 stender
 stenger
 stenion
-steno
 stenosis
 stensen
 stent
@@ -26858,6 +26838,7 @@ stimate
 stimson
 stimuli
 sting
+stinging
 stinson
 stipa
 stipe
@@ -26914,6 +26895,7 @@ str
 strabismic
 strabismus
 strain
+strained
 strait
 strand
 strands
@@ -26991,6 +26973,7 @@ studios
 study
 stuff
 stuffed
+stuffy nose
 stump
 stunned
 stunt
@@ -27015,7 +26998,6 @@ stypven
 styrax
 styrene
 styrol
-sub
 subacid
 subanal
 subarachnoid
@@ -27159,7 +27141,6 @@ supply
 support
 suppose
 suppurative
-supra
 supraclavicular
 suprane
 supraventricular
@@ -27235,6 +27216,7 @@ swarm
 swaying
 sweat
 sweating
+sweats
 sweden
 swedish
 sween
@@ -27252,6 +27234,7 @@ swing
 swiss
 switch
 switzer
+swollen
 sword
 swyer
 sybiol
@@ -27955,7 +27938,6 @@ throat
 throb
 throbbing
 throe
-thromb
 thrombi
 thrombo
 thrombocytopenia
@@ -27967,8 +27949,10 @@ thrombophilia
 thrombophlebitis
 thrombosis
 thrombotic thrombocytopenic purpura
+thrombus
 through
 throw
+throw up
 thrown
 throws
 thru
@@ -28205,6 +28189,7 @@ toolkit
 tools
 tooth
 tooth extraction
+toothache
 top
 topamax
 tophi
@@ -28315,7 +28300,6 @@ tozeuri
 tr
 trace
 tracer
-trach
 trache
 trachea
 tracheitis
@@ -28364,7 +28348,6 @@ trance
 tranche
 tranmep
 tranny
-trans
 transam
 transfusion
 transfx
@@ -30212,6 +30195,7 @@ woude
 would
 woulfe
 wound
+wounds
 woven
 wow
 wrap
