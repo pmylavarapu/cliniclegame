@@ -324,7 +324,7 @@ export default function PuzzleGame({
           Today&apos;s puzzle
         </div>
         <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-          <h1 className="text-title-lg sm:text-title-xl font-bold tracking-tight text-fg">
+          <h1 className="text-title-sm sm:text-title-md font-bold tracking-tight text-fg">
             Puzzle #{puzzle.num}
           </h1>
           <span className="inline-flex items-baseline gap-2 text-caption">
@@ -350,10 +350,10 @@ export default function PuzzleGame({
       <div className="border-t border-border mb-6" />
       <div className="mb-6 grid grid-cols-1 lg:grid-cols-[1fr_18rem] gap-5 lg:gap-6 items-start">
         <div>
-          <div className="text-eyebrow uppercase text-muted font-bold tracking-[0.08em] mb-2">
+          <div className="text-eyebrow uppercase text-muted font-bold tracking-[0.08em] mb-3">
             Prompt
           </div>
-          <p className="text-lede sm:text-title-sm font-medium text-fg leading-relaxed">
+          <p className="text-title-sm sm:text-title-md font-semibold text-fg leading-[1.55] tracking-[-0.01em]">
             {puzzle.prompt}
           </p>
         </div>
@@ -728,7 +728,7 @@ function GuessRow({
       style={bgStyle}
       className={[
         ROW_GRID,
-        'px-3 sm:px-4 py-3 rounded-lg mb-1.5 transition-transform',
+        'px-3 sm:px-4 py-1.5 sm:py-2 rounded-md mb-1 transition-transform leading-tight',
         isCurrent ? 'ring-2 ring-fg/80 ring-offset-2 ring-offset-bg' : '',
         recent ? 'animate-in' : '',
       ].join(' ')}
