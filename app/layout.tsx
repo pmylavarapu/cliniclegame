@@ -59,11 +59,11 @@ export default function RootLayout({
     <html lang="en" className={inter.variable}>
       <body className="min-h-screen flex flex-col font-sans antialiased text-fg text-body">
         <SiteHeader />
-        <main className="flex-1 mx-auto w-full max-w-2xl px-4 sm:px-5 pt-4 sm:pt-5 pb-16">
+        <main className="flex-1 mx-auto w-full max-w-4xl px-4 sm:px-5 pt-4 sm:pt-5 pb-16">
           {children}
         </main>
         <footer className="border-t border-border">
-          <div className="mx-auto max-w-2xl px-4 sm:px-5 py-5 text-center text-caption text-muted">
+          <div className="mx-auto max-w-4xl px-4 sm:px-5 py-5 text-center text-caption text-muted">
             © 2026{' '}
             <a
               href="https://twitter.com/PMylavarapuMD"

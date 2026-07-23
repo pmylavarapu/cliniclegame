@@ -454,12 +454,20 @@ export default function PuzzleGame({ puzzle, vocab, aliases = {} }: Props) {
       )}
 
       {guesses.length === 0 && !gameOver && (
-        <div className="mt-10 py-12 rounded-2xl bg-surface-2 text-center">
+        <div className="mt-10 py-10 px-5 sm:px-8 rounded-2xl bg-surface-2 text-center">
           <p className="text-title-sm text-fg font-bold">
             Make your first guess
           </p>
           <p className="text-body text-muted mt-1.5">
-            Try something broad – an organ, a symptom, a body system.
+            Try something broad — an organ, a symptom, a body system.
+          </p>
+          <p className="text-caption text-muted mt-3 leading-relaxed max-w-xl mx-auto">
+            Closer meanings score higher —{' '}
+            <span className="font-semibold text-fg">heart attack</span>{' '}
+            scores near{' '}
+            <span className="font-semibold text-fg">myocardial infarction</span>,
+            but far from{' '}
+            <span className="font-semibold text-fg">arthritis</span>. Rank 1 wins.
           </p>
         </div>
       )}

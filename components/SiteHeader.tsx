@@ -31,7 +31,7 @@ export default function SiteHeader() {
   return (
     <>
       <header className="sticky top-0 z-30 bg-bg/95 backdrop-blur-xl border-b border-border/60">
-        <div className="mx-auto max-w-6xl px-4 sm:px-8 h-14 sm:h-16 flex items-center justify-between gap-4">
+        <div className="mx-auto max-w-4xl px-4 sm:px-5 h-14 sm:h-16 flex items-center justify-between gap-4">
           <Link
             href="/"
             className="flex items-center hover:opacity-90 transition-opacity shrink-0"
@@ -39,7 +39,7 @@ export default function SiteHeader() {
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/logo.png"
+              src="/logodark.png"
               alt="Clinicle — the game"
               width={1536}
               height={1024}
