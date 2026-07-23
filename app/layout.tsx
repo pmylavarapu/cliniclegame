@@ -2,6 +2,7 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import SiteHeader from '@/components/SiteHeader';
+import FirebaseAnalytics from '@/components/FirebaseAnalytics';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -11,10 +12,14 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://clinicle.app'),
+  metadataBase: new URL('https://www.cliniclegame.app'),
   title: 'Clinicle – the daily medical diagnosis game',
   description:
     'A new secret diagnosis every day. Guess medical words and phrases – the closer you get, the higher your score. Semantle for medicine.',
+  icons: {
+    icon: '/favicon.png',
+    apple: '/favicon.png',
+  },
   keywords: [
     'Clinicle',
     'daily medical game',
@@ -58,6 +63,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <body className="min-h-screen flex flex-col font-sans antialiased text-fg text-body">
+        <FirebaseAnalytics />
         <SiteHeader />
         <main className="flex-1 mx-auto w-full max-w-4xl px-4 sm:px-5 pt-4 sm:pt-5 pb-16">
           {children}
