@@ -16,9 +16,9 @@ import {
   fastestSolveMs,
 } from '@/lib/storage';
 import { buildShareString } from '@/lib/share';
+
 import { currentRank } from '@/lib/ranks';
 import { checkNewlyUnlocked, type Achievement } from '@/lib/achievements';
-import { buildChallengeUrl } from '@/lib/challenge';
 import {
   computePercentile,
   fetchDistribution,
@@ -29,7 +29,6 @@ import ShareMenu from './ShareMenu';
 import GuessDistribution from './GuessDistribution';
 import NextPuzzleCountdown from './NextPuzzleCountdown';
 import AchievementToast from './AchievementToast';
-import ShareImageButton from './ShareImageButton';
 
 type Props = {
   puzzle: Puzzle;
@@ -786,22 +785,6 @@ function WinBanner({
     puzzle.num,
     puzzle.difficulty,
   );
-  const challengeUrl =
-    typeof window !== 'undefined'
-      ? buildChallengeUrl(
-          {
-            date: puzzle.date,
-            guesses: guesses.length,
-            timeS: timeMs != null ? Math.round(timeMs / 1000) : undefined,
-            hints: hintsUsed,
-            won,
-          },
-          window.location.origin,
-        )
-      : '';
-  const challengeTweet = `Beat me at today's Clinicle #${puzzle.num}${
-    won ? ` — I got it in ${guesses.length}` : ''
-  }.`;
 
   return (
     <div
@@ -943,32 +926,6 @@ function WinBanner({
             variant={won ? 'oncolor' : 'default'}
           />
         </div>
-      </div>
-      <div className="mt-2 flex flex-col sm:flex-row gap-2">
-        <div className="flex-1">
-          <ShareImageButton
-            puzzle={puzzle}
-            guesses={guesses}
-            won={won}
-            timeMs={timeMs}
-            streak={stats.currentStreak}
-            rank={rank}
-            variant={won ? 'oncolor' : 'default'}
-          />
-        </div>
-        <a
-          href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
-            challengeTweet + '\n\n@ClinicleGame',
-          )}&url=${encodeURIComponent(challengeUrl)}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={[
-            'flex-1 w-full inline-flex items-center justify-center gap-2 h-12 rounded-lg text-ui font-bold hover:brightness-110 active:scale-[0.98] transition-[transform,filter]',
-            won ? 'bg-white/20 text-white' : 'bg-primary text-white',
-          ].join(' ')}
-        >
-          Challenge a friend
-        </a>
       </div>
     </div>
   );
