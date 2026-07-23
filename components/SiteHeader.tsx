@@ -5,8 +5,9 @@ import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 const NAV = [
-  { href: '/how-to-play/', label: 'How To', icon: GamepadIcon },
-  { href: '/how-it-works/', label: 'About', icon: BookIcon },
+  { href: '/', label: 'Play', icon: GamepadIcon },
+  { href: '/how-to-play/', label: 'How To', icon: BookIcon },
+  { href: '/how-it-works/', label: 'About', icon: InfoIcon },
   { href: '/feedback/', label: 'Feedback', icon: ChatIcon },
 ];
 
@@ -57,7 +58,7 @@ export default function SiteHeader() {
                 <Link
                   href={item.href}
                   className={[
-                    'inline-flex items-center gap-1.5 py-1 text-caption font-semibold transition-colors',
+                    'inline-flex items-center gap-1.5 py-1 text-caption font-bold uppercase tracking-wider transition-colors',
                     isActive(item.href)
                       ? 'text-primary border-b-2 border-primary'
                       : 'text-fg-soft hover:text-fg',
@@ -178,6 +179,27 @@ function ChatIcon({ className }: { className?: string }) {
       aria-hidden="true"
     >
       <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+    </svg>
+  );
+}
+
+function InfoIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.9"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      aria-hidden="true"
+    >
+      <circle cx="12" cy="12" r="10" />
+      <line x1="12" y1="16" x2="12" y2="12" />
+      <line x1="12" y1="8" x2="12.01" y2="8" />
     </svg>
   );
 }
