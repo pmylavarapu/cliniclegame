@@ -319,11 +319,11 @@ export default function PuzzleGame({
 
   return (
     <div>
-      <p className="mb-5 text-body text-muted leading-relaxed">
+      <p className="mb-4 sm:mb-5 text-caption sm:text-body text-muted leading-relaxed">
         Guess medical terms. The closer you get to the secret diagnosis,
         the higher your score will be. Guess the secret word to win.
       </p>
-      <div className="mb-6 rounded-lg bg-primary/5 ring-1 ring-primary/10 p-5 sm:p-6">
+      <div className="mb-6 rounded-lg bg-primary/5 ring-1 ring-primary/10 p-4 sm:p-6">
         <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1.5 text-caption mb-3">
           <span className="font-semibold text-fg tabular">
             Puzzle {puzzle.num}
@@ -377,29 +377,31 @@ export default function PuzzleGame({
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Enter a word or phrase"
-                className="w-full h-10 sm:h-11 pl-10 pr-4 text-base sm:text-body rounded-lg bg-surface-2 border border-transparent outline-none focus:border-primary focus:bg-white focus:ring-4 focus:ring-primary/15 transition-all placeholder:text-muted font-medium"
+                className="w-full h-12 sm:h-11 pl-10 pr-4 text-base sm:text-body rounded-lg bg-surface-2 border border-transparent outline-none focus:border-primary focus:bg-white focus:ring-4 focus:ring-primary/15 transition-all placeholder:text-muted font-medium"
                 autoComplete="off"
                 autoCapitalize="off"
                 spellCheck={false}
+                inputMode="text"
+                enterKeyHint="send"
               />
             </div>
             <button
               type="submit"
-              className="h-10 sm:h-11 px-8 sm:px-10 rounded-lg bg-primary text-white text-caption font-bold hover:brightness-110 active:scale-[0.98] transition-[transform,filter]"
+              className="flex-1 sm:flex-none h-12 sm:h-11 px-4 sm:px-10 rounded-lg bg-primary text-white text-caption font-bold hover:brightness-110 active:scale-[0.98] transition-[transform,filter]"
             >
               Guess
             </button>
             <button
               type="button"
               onClick={useHint}
-              className="h-10 sm:h-11 px-3.5 rounded-lg bg-hot text-white text-caption font-bold hover:brightness-110 active:scale-[0.98] transition-[transform,filter]"
+              className="flex-1 sm:flex-none h-12 sm:h-11 px-4 sm:px-3.5 rounded-lg bg-hot text-white text-caption font-bold hover:brightness-110 active:scale-[0.98] transition-[transform,filter]"
             >
               Hint
             </button>
             <button
               type="button"
               onClick={giveUp}
-              className="h-10 sm:h-11 px-3.5 rounded-lg bg-red-500 text-white text-caption font-bold hover:brightness-110 active:scale-[0.98] transition-[transform,filter]"
+              className="flex-1 sm:flex-none h-12 sm:h-11 px-4 sm:px-3.5 rounded-lg bg-red-500 text-white text-caption font-bold hover:brightness-110 active:scale-[0.98] transition-[transform,filter]"
             >
               Give up
             </button>
@@ -488,7 +490,7 @@ export default function PuzzleGame({
           <p className="text-caption text-muted mt-1">
             Try something broad — an organ, a symptom, a body system.
           </p>
-          <p className="text-caption text-muted mt-1.5 whitespace-nowrap overflow-x-auto">
+          <p className="text-caption text-muted mt-1.5 sm:whitespace-nowrap sm:overflow-x-auto">
             Closer meanings score higher —{' '}
             <span className="font-semibold text-fg">heart attack</span>{' '}
             scores near{' '}
@@ -613,7 +615,7 @@ function formatDate(iso: string) {
 }
 
 const ROW_GRID =
-  'grid grid-cols-[3.25rem_1fr_3.5rem_3.5rem] sm:grid-cols-[4rem_1fr_4rem_4.5rem] gap-2 sm:gap-3 items-center';
+  'grid grid-cols-[2.5rem_1fr_3.25rem_3rem] sm:grid-cols-[4rem_1fr_4rem_4.5rem] gap-1.5 sm:gap-3 items-center';
 
 function GuessTableHeader() {
   return (
