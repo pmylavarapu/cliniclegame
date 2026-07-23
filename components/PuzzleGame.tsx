@@ -465,7 +465,7 @@ export default function PuzzleGame({ puzzle, vocab, aliases = {} }: Props) {
             Closer meanings score higher —{' '}
             <span className="font-semibold text-fg">heart attack</span>{' '}
             scores near{' '}
-            <span className="font-semibold text-fg">myocardial infarction</span>,
+            <span className="font-semibold text-fg">cardiomyopathy</span>,
             but far from{' '}
             <span className="font-semibold text-fg">arthritis</span>. Rank 1 wins.
           </p>
