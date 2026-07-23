@@ -2,7 +2,12 @@
 
 import { useEffect, useMemo, useRef, useState } from 'react';
 import type { Guess, Puzzle } from '@/lib/types';
-import { decodeScores, normalizeGuess, scoreFromStored } from '@/lib/scores';
+import {
+  decodeScores,
+  normalizeGuess,
+  pluralVariants,
+  scoreFromStored,
+} from '@/lib/scores';
 import {
   loadGame,
   saveGame,
@@ -145,14 +150,32 @@ export default function PuzzleGame({ puzzle, vocab }: Props) {
   const submitGuess = (raw: string, isHint = false) => {
     setError(null);
     setSuggestion(null);
-    const w = normalizeGuess(raw);
+    let w = normalizeGuess(raw);
     if (!w) return;
     if (guesses.some((g) => g.word === w)) {
       setError(`Already guessed "${w}"`);
       flashInput();
       return;
     }
-    const idx = vocabIndex.get(w);
+    let idx = vocabIndex.get(w);
+    // If the exact form isn't in vocab, silently try plural/singular
+    // variants ('varicose vein' → 'varicose veins', 'hearts' → 'heart')
+    // before falling through to the autocorrect suggestion.
+    if (idx === undefined) {
+      for (const alt of pluralVariants(w)) {
+        const j = vocabIndex.get(alt);
+        if (j !== undefined) {
+          if (guesses.some((g) => g.word === alt)) {
+            setError(`Already guessed "${alt}"`);
+            flashInput();
+            return;
+          }
+          w = alt;
+          idx = j;
+          break;
+        }
+      }
+    }
     if (idx === undefined) {
       const near = nearestVocabWord(w, vocab);
       if (near) setSuggestion(near);
