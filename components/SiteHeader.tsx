@@ -56,10 +56,10 @@ export default function SiteHeader() {
                 key={item.href}
                 href={item.href}
                 className={[
-                  'pb-1 text-[13px] uppercase tracking-[0.14em] transition-colors',
+                  'pb-1 text-[13px] uppercase tracking-[0.04em] font-semibold transition-colors',
                   isActive(item.href)
-                    ? 'text-fg font-bold border-b-[3px] border-fg'
-                    : 'text-muted font-semibold hover:text-fg',
+                    ? 'text-fg border-b-[3px] border-fg'
+                    : 'text-muted hover:text-fg',
                 ].join(' ')}
               >
                 {item.label}
