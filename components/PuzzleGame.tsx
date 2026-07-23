@@ -299,7 +299,7 @@ export default function PuzzleGame({ puzzle, vocab }: Props) {
         Guess medical terms. The closer you get to the secret diagnosis,
         the higher your score will be. Guess the secret word to win.
       </p>
-      <div className="mb-6">
+      <div className="mb-6 rounded-2xl bg-primary/5 ring-1 ring-primary/10 p-5 sm:p-6">
         <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1.5 text-caption mb-3">
           <span className="font-semibold text-fg tabular">
             Puzzle {puzzle.num}
@@ -320,7 +320,7 @@ export default function PuzzleGame({ puzzle, vocab }: Props) {
             </>
           ) : null}
         </div>
-        <figure className="border-l-[3px] border-primary pl-4 sm:pl-5 my-4">
+        <figure className="border-l-[3px] border-primary pl-4 sm:pl-5">
           <figcaption className="text-eyebrow uppercase text-muted font-bold tracking-[0.06em] mb-1.5">
             Guess the diagnosis
           </figcaption>
@@ -339,28 +339,28 @@ export default function PuzzleGame({ puzzle, vocab }: Props) {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Enter a word or phrase"
-              className="basis-full sm:basis-0 flex-1 min-w-0 h-12 sm:h-14 px-4 sm:px-5 text-base sm:text-lede rounded-full bg-surface-2 border border-transparent outline-none focus:border-primary focus:bg-white focus:ring-4 focus:ring-primary/15 transition-all placeholder:text-muted font-medium"
+              className="basis-full sm:basis-0 flex-1 min-w-0 h-10 sm:h-11 px-4 text-base sm:text-body rounded-full bg-surface-2 border border-transparent outline-none focus:border-primary focus:bg-white focus:ring-4 focus:ring-primary/15 transition-all placeholder:text-muted font-medium"
               autoComplete="off"
               autoCapitalize="off"
               spellCheck={false}
             />
             <button
               type="submit"
-              className="h-12 sm:h-14 px-5 sm:px-6 rounded-full bg-primary text-white text-ui font-bold hover:brightness-110 active:scale-[0.98] transition-[transform,filter]"
+              className="h-10 sm:h-11 px-4 rounded-full bg-primary text-white text-caption font-bold hover:brightness-110 active:scale-[0.98] transition-[transform,filter]"
             >
               Guess
             </button>
             <button
               type="button"
               onClick={useHint}
-              className="h-12 sm:h-14 px-4 sm:px-5 rounded-full bg-surface-2 text-ui font-semibold text-fg hover:bg-hint/10 hover:text-hint transition-colors"
+              className="h-10 sm:h-11 px-3.5 rounded-full bg-surface-2 text-caption font-semibold text-fg hover:bg-hint/10 hover:text-hint transition-colors"
             >
               Hint
             </button>
             <button
               type="button"
               onClick={giveUp}
-              className="h-12 sm:h-14 px-4 sm:px-5 rounded-full bg-surface-2 text-ui font-semibold text-fg hover:bg-danger/10 hover:text-danger transition-colors"
+              className="h-10 sm:h-11 px-3.5 rounded-full bg-surface-2 text-caption font-semibold text-fg hover:bg-danger/10 hover:text-danger transition-colors"
             >
               Give up
             </button>
