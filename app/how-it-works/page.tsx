@@ -24,15 +24,8 @@ export default function HowItWorksPage() {
         >
           word2vec
         </a>{' '}
-        model from{' '}
-        <a
-          href="https://ldi.upenn.edu/our-work/research-updates/clinical-concept-embeddings-learned-from-massive-sources-of-multimodal-medical-data-to-predict-in-hospital-mortality/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Gary Weissman&apos;s group at Penn LDI
-        </a>{' '}
-        trained on open-access medical case reports, cleaned through{' '}
+        model from Gary Weissman&apos;s group at Penn LDI trained on
+        open-access medical case reports, cleaned through{' '}
         <a
           href="https://allenai.github.io/scispacy/"
           target="_blank"
