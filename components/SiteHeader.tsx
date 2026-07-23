@@ -8,7 +8,6 @@ const NAV = [
   { href: '/', label: 'Play', icon: GamepadIcon },
   { href: '/how-to-play/', label: 'How To', icon: BookIcon },
   { href: '/how-it-works/', label: 'About', icon: InfoIcon },
-  { href: '/feedback/', label: 'Feedback', icon: ChatIcon },
 ];
 
 export default function SiteHeader() {

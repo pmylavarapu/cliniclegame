@@ -74,7 +74,16 @@ export default function RootLayout({
               Praneet Mylavarapu
             </a>{' '}
             <span className="text-border-strong">|</span> Designed using
-            Claude by Anthropic
+            Claude by Anthropic{' '}
+            <span className="text-border-strong">|</span> Feedback{' '}
+            <a
+              href="https://twitter.com/ClinicleGame"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-link font-medium hover:underline"
+            >
+              @ClinicleGame
+            </a>
           </div>
         </footer>
       </body>
