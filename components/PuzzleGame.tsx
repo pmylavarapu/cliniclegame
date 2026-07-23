@@ -320,7 +320,7 @@ export default function PuzzleGame({
         Guess medical terms. The closer you get to the secret diagnosis,
         the higher your score will be. Guess the secret word to win.
       </p>
-      <div className="mb-6 rounded-2xl bg-primary/5 ring-1 ring-primary/10 p-5 sm:p-6">
+      <div className="mb-6 rounded-lg bg-primary/5 ring-1 ring-primary/10 p-5 sm:p-6">
         <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1.5 text-caption mb-3">
           <span className="font-semibold text-fg tabular">
             Puzzle {puzzle.num}
@@ -360,28 +360,28 @@ export default function PuzzleGame({
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Enter a word or phrase"
-              className="basis-full sm:basis-0 flex-1 min-w-0 h-10 sm:h-11 px-4 text-base sm:text-body rounded-full bg-surface-2 border border-transparent outline-none focus:border-primary focus:bg-white focus:ring-4 focus:ring-primary/15 transition-all placeholder:text-muted font-medium"
+              className="basis-full sm:basis-0 flex-1 min-w-0 h-10 sm:h-11 px-4 text-base sm:text-body rounded-lg bg-surface-2 border border-transparent outline-none focus:border-primary focus:bg-white focus:ring-4 focus:ring-primary/15 transition-all placeholder:text-muted font-medium"
               autoComplete="off"
               autoCapitalize="off"
               spellCheck={false}
             />
             <button
               type="submit"
-              className="h-10 sm:h-11 px-4 rounded-full bg-primary text-white text-caption font-bold hover:brightness-110 active:scale-[0.98] transition-[transform,filter]"
+              className="h-10 sm:h-11 px-8 sm:px-10 rounded-lg bg-primary text-white text-caption font-bold hover:brightness-110 active:scale-[0.98] transition-[transform,filter]"
             >
               Guess
             </button>
             <button
               type="button"
               onClick={useHint}
-              className="h-10 sm:h-11 px-3.5 rounded-full bg-hot text-white text-caption font-bold hover:brightness-110 active:scale-[0.98] transition-[transform,filter]"
+              className="h-10 sm:h-11 px-3.5 rounded-lg bg-hot text-white text-caption font-bold hover:brightness-110 active:scale-[0.98] transition-[transform,filter]"
             >
               Hint
             </button>
             <button
               type="button"
               onClick={giveUp}
-              className="h-10 sm:h-11 px-3.5 rounded-full bg-red-500 text-white text-caption font-bold hover:brightness-110 active:scale-[0.98] transition-[transform,filter]"
+              className="h-10 sm:h-11 px-3.5 rounded-lg bg-red-500 text-white text-caption font-bold hover:brightness-110 active:scale-[0.98] transition-[transform,filter]"
             >
               Give up
             </button>
@@ -465,7 +465,7 @@ export default function PuzzleGame({
       )}
 
       {guesses.length === 0 && !gameOver && (
-        <div className="mt-6 py-5 px-4 sm:px-6 rounded-xl bg-surface-2 text-center">
+        <div className="mt-6 py-5 px-4 sm:px-6 rounded-lg bg-surface-2 text-center">
           <p className="text-body text-fg font-bold">Make your first guess</p>
           <p className="text-caption text-muted mt-1">
             Try something broad — an organ, a symptom, a body system.
@@ -676,7 +676,7 @@ function GuessRow({
       style={bgStyle}
       className={[
         ROW_GRID,
-        'px-3 sm:px-4 py-3 rounded-xl mb-1.5 transition-transform',
+        'px-3 sm:px-4 py-3 rounded-lg mb-1.5 transition-transform',
         isCurrent ? 'ring-2 ring-fg/80 ring-offset-2 ring-offset-bg' : '',
         recent ? 'animate-in' : '',
       ].join(' ')}
@@ -771,7 +771,7 @@ function WinBanner({
   return (
     <div
       className={[
-        'mt-4 mb-8 rounded-2xl p-6 sm:p-8 animate-in',
+        'mt-4 mb-8 rounded-lg p-6 sm:p-8 animate-in',
         won ? 'bg-hot text-white' : 'bg-surface-2 text-fg',
       ].join(' ')}
     >
@@ -855,7 +855,7 @@ function WinBanner({
 
       <div
         className={[
-          'mb-6 py-4 rounded-2xl',
+          'mb-6 py-4 rounded-lg',
           won ? 'bg-white/15' : 'bg-white',
         ].join(' ')}
       >
@@ -863,7 +863,7 @@ function WinBanner({
       </div>
       <div
         className={[
-          'grid grid-cols-4 gap-2 mb-6 rounded-xl overflow-hidden',
+          'grid grid-cols-4 gap-2 mb-6 rounded-lg overflow-hidden',
           won ? 'bg-white/15' : 'bg-white',
         ].join(' ')}
       >
@@ -889,7 +889,7 @@ function WinBanner({
           target="_blank"
           rel="noopener noreferrer"
           className={[
-            'flex-1 w-full flex items-center justify-center gap-2 h-12 rounded-full text-ui font-bold hover:brightness-110 active:scale-[0.98] transition-[transform,filter]',
+            'flex-1 w-full flex items-center justify-center gap-2 h-12 rounded-lg text-ui font-bold hover:brightness-110 active:scale-[0.98] transition-[transform,filter]',
             won ? 'bg-white text-fg' : 'bg-fg text-white',
           ].join(' ')}
         >
@@ -925,7 +925,7 @@ function WinBanner({
           target="_blank"
           rel="noopener noreferrer"
           className={[
-            'flex-1 w-full inline-flex items-center justify-center gap-2 h-12 rounded-full text-ui font-bold hover:brightness-110 active:scale-[0.98] transition-[transform,filter]',
+            'flex-1 w-full inline-flex items-center justify-center gap-2 h-12 rounded-lg text-ui font-bold hover:brightness-110 active:scale-[0.98] transition-[transform,filter]',
             won ? 'bg-white/20 text-white' : 'bg-primary text-white',
           ].join(' ')}
         >

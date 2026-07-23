@@ -81,7 +81,7 @@ export default function ShareImageButton({
       onClick={handleClick}
       disabled={busy}
       className={[
-        'w-full h-12 rounded-full text-ui font-bold inline-flex items-center justify-center gap-2 transition-[transform,filter] active:scale-[0.98] hover:brightness-110 disabled:opacity-60 disabled:cursor-wait',
+        'w-full h-12 rounded-lg text-ui font-bold inline-flex items-center justify-center gap-2 transition-[transform,filter] active:scale-[0.98] hover:brightness-110 disabled:opacity-60 disabled:cursor-wait',
         onColor ? 'bg-white/20 text-white' : 'bg-surface-2 text-fg',
       ].join(' ')}
       aria-busy={busy}

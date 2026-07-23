@@ -46,7 +46,7 @@ export default function ChallengeClient() {
         <p>
           <Link
             href="/"
-            className="inline-flex h-11 items-center px-5 rounded-full bg-primary text-white text-ui font-bold no-underline hover:brightness-110"
+            className="inline-flex h-11 items-center px-5 rounded-lg bg-primary text-white text-ui font-bold no-underline hover:brightness-110"
           >
             Play today
           </Link>
@@ -76,7 +76,7 @@ export default function ChallengeClient() {
               : 'They still lead'
       }
     >
-      <div className="rounded-2xl bg-surface-2 p-5 sm:p-6 my-4">
+      <div className="rounded-lg bg-surface-2 p-5 sm:p-6 my-4">
         <div className="text-eyebrow uppercase text-muted font-bold mb-2">
           {settled ? 'Head to head' : 'The challenge'}
         </div>
@@ -130,7 +130,7 @@ export default function ChallengeClient() {
       <p>
         <Link
           href="/"
-          className="inline-flex h-12 items-center px-6 rounded-full bg-primary text-white text-ui font-bold no-underline hover:brightness-110"
+          className="inline-flex h-12 items-center px-6 rounded-lg bg-primary text-white text-ui font-bold no-underline hover:brightness-110"
         >
           {settled ? 'Play today' : `Play ${challenge.date}`}
         </Link>

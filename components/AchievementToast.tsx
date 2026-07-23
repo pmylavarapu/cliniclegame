@@ -38,7 +38,7 @@ export default function AchievementToast({ achievements, onDismiss }: Props) {
       aria-live="polite"
       className="fixed inset-x-0 bottom-4 z-50 flex justify-center px-4 pointer-events-none animate-in"
     >
-      <div className="pointer-events-auto w-full max-w-sm rounded-2xl bg-fg text-white shadow-2xl p-4 flex items-start gap-3">
+      <div className="pointer-events-auto w-full max-w-sm rounded-lg bg-fg text-white shadow-2xl p-4 flex items-start gap-3">
         <div className="text-[28px] leading-none">{cur.emoji}</div>
         <div className="flex-1 min-w-0">
           <div className="text-eyebrow uppercase text-white/60 font-bold tracking-[0.06em] mb-0.5">
@@ -51,14 +51,14 @@ export default function AchievementToast({ achievements, onDismiss }: Props) {
               href={tweetHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center h-8 px-3 rounded-full bg-white text-fg text-caption font-bold hover:brightness-95 active:scale-95 transition-[transform,filter]"
+              className="inline-flex items-center h-8 px-3 rounded-lg bg-white text-fg text-caption font-bold hover:brightness-95 active:scale-95 transition-[transform,filter]"
             >
               Share
             </a>
             <button
               type="button"
               onClick={next}
-              className="inline-flex items-center h-8 px-3 rounded-full text-caption font-semibold text-white/80 hover:text-white transition-colors"
+              className="inline-flex items-center h-8 px-3 rounded-lg text-caption font-semibold text-white/80 hover:text-white transition-colors"
             >
               {idx + 1 < achievements.length ? 'Next' : 'Dismiss'}
             </button>

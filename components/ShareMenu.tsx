@@ -135,7 +135,7 @@ export default function ShareMenu({
           else setOpen((v) => !v);
         }}
         className={[
-          'w-full h-12 rounded-full text-ui font-bold hover:brightness-110 active:scale-[0.98] transition-[transform,filter] inline-flex items-center justify-center gap-2',
+          'w-full h-12 rounded-lg text-ui font-bold hover:brightness-110 active:scale-[0.98] transition-[transform,filter] inline-flex items-center justify-center gap-2',
           onColor ? 'bg-white text-fg' : 'bg-primary text-white',
         ].join(' ')}
         aria-haspopup={canNativeShare ? undefined : 'menu'}
@@ -149,7 +149,7 @@ export default function ShareMenu({
         <div
           ref={menuRef}
           role="menu"
-          className="absolute z-30 left-0 right-0 mt-2 rounded-2xl border border-border bg-white shadow-lg p-2 animate-in"
+          className="absolute z-30 left-0 right-0 mt-2 rounded-lg border border-border bg-white shadow-lg p-2 animate-in"
         >
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-1">
             {options.map((opt) =>
