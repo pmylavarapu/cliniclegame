@@ -48,7 +48,20 @@ jobs:
         run: '[ -s data/schedule.json ] || python3 scripts/schedule.py'
 
       - name: Embed vocab (idempotent, cached)
-        run: '[ -s data/embeddings/vocab.npy ] || python3 scripts/embed.py'
+        env:
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+        run: |
+          if [ -s data/embeddings/vocab.npy ]; then
+            echo "Embeddings cache hit — skipping embed"
+            exit 0
+          fi
+          if [ -z "$GOOGLE_API_KEY" ]; then
+            echo "::error::GOOGLE_API_KEY secret is not set and there is no cached embedding."
+            echo "::error::Add the secret in Repo → Settings → Secrets and variables → Actions,"
+            echo "::error::then re-run this workflow."
+            exit 1
+          fi
+          python3 scripts/embed.py
 
       - name: Generate prompts for upcoming diagnoses
         env:
