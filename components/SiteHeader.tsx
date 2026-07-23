@@ -46,8 +46,8 @@ export default function SiteHeader() {
             <img
               src="/logo.png"
               alt="Clinicle"
-              width={690}
-              height={252}
+              width={1536}
+              height={1024}
               className="h-16 sm:h-20 w-auto"
             />
           </Link>
