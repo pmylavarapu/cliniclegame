@@ -145,21 +145,6 @@ export default function ShareMenu({
         <span>{primaryLabel}</span>
       </button>
 
-      {canNativeShare && (
-        <button
-          type="button"
-          onClick={() => setOpen((v) => !v)}
-          className={[
-            'mt-2 w-full h-9 rounded-full text-eyebrow uppercase font-bold transition-colors',
-            onColor
-              ? 'text-white/80 hover:text-white'
-              : 'text-muted hover:text-fg',
-          ].join(' ')}
-        >
-          More options
-        </button>
-      )}
-
       {open && (
         <div
           ref={menuRef}
