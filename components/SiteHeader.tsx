@@ -39,10 +39,10 @@ export default function SiteHeader() {
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/logowhite.png"
+              src="/logo_long.png"
               alt="Clinicle — the game"
-              width={1536}
-              height={1024}
+              width={2172}
+              height={724}
               className="h-14 sm:h-[72px] w-auto"
             />
           </Link>
