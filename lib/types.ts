@@ -24,6 +24,17 @@ export type Puzzle = {
    * as guesses.
    */
   hints?: [word: string, score: number, rank: number][];
+  /**
+   * Claude's blind attempt at this puzzle, cached at precompute time.
+   * If absent, the "Beat the AI" comparison is hidden.
+   */
+  ai_result?: {
+    won: boolean;
+    guesses: number;
+    hints: number;
+    timeS: number;
+    final_guess: string;
+  };
 };
 
 export type PuzzleIndex = {

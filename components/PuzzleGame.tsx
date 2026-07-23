@@ -19,6 +19,12 @@ import { buildShareString } from '@/lib/share';
 import { currentRank } from '@/lib/ranks';
 import { checkNewlyUnlocked, type Achievement } from '@/lib/achievements';
 import { buildChallengeUrl } from '@/lib/challenge';
+import {
+  computePercentile,
+  fetchDistribution,
+  leaderboardEnabled,
+  recordSolve,
+} from '@/lib/leaderboard';
 import ShareMenu from './ShareMenu';
 import GuessDistribution from './GuessDistribution';
 import NextPuzzleCountdown from './NextPuzzleCountdown';
@@ -853,6 +859,9 @@ function WinBanner({
         </div>
       )}
 
+      {puzzle.ai_result && <AiScoreLine ai={puzzle.ai_result} userGuesses={guesses.length} userWon={won} won={won} />}
+      {won && <GlobalPercentile date={puzzle.date} yourGuesses={guesses.length} onColor={won} />}
+
       <div
         className={[
           'mb-6 py-4 rounded-lg',
@@ -931,6 +940,132 @@ function WinBanner({
         >
           Challenge a friend
         </a>
+      </div>
+    </div>
+  );
+}
+
+function GlobalPercentile({
+  date,
+  yourGuesses,
+  onColor,
+}: {
+  date: string;
+  yourGuesses: number;
+  onColor: boolean;
+}) {
+  const [state, setState] = useState<
+    | { kind: 'off' }
+    | { kind: 'loading' }
+    | { kind: 'ready'; pct: number; total: number }
+  >(() => (leaderboardEnabled() ? { kind: 'loading' } : { kind: 'off' }));
+  const submitted = useRef(false);
+
+  useEffect(() => {
+    if (!leaderboardEnabled()) return;
+    if (submitted.current) return;
+    submitted.current = true;
+    // Fire-and-forget record, then read the current distribution
+    (async () => {
+      await recordSolve(date, yourGuesses);
+      // Small delay so our own write is reflected
+      await new Promise((r) => setTimeout(r, 400));
+      const d = await fetchDistribution(date);
+      if (!d || d.total < 3) {
+        setState({ kind: 'off' });
+        return;
+      }
+      setState({
+        kind: 'ready',
+        pct: computePercentile(d.distribution, yourGuesses),
+        total: d.total,
+      });
+    })();
+  }, [date, yourGuesses]);
+
+  if (state.kind !== 'ready') return null;
+
+  return (
+    <div
+      className={[
+        'mb-6 rounded-lg px-4 py-3 flex items-center justify-between gap-3',
+        onColor ? 'bg-white/15 text-white' : 'bg-white text-fg',
+      ].join(' ')}
+    >
+      <div className="flex items-center gap-2 min-w-0">
+        <span className="text-lg leading-none" aria-hidden="true">
+          🌎
+        </span>
+        <span className="text-caption font-semibold truncate">
+          You beat {state.pct}% of players today
+        </span>
+      </div>
+      <div
+        className={[
+          'text-caption tabular font-semibold shrink-0',
+          onColor ? 'text-white/85' : 'text-muted',
+        ].join(' ')}
+      >
+        {state.total.toLocaleString()} solves
+      </div>
+    </div>
+  );
+}
+
+function AiScoreLine({
+  ai,
+  userGuesses,
+  userWon,
+  won,
+}: {
+  ai: NonNullable<Puzzle['ai_result']>;
+  userGuesses: number;
+  userWon: boolean;
+  won: boolean;
+}) {
+  const aiWon = ai.won;
+  let verdict = 'You tied Claude';
+  let emoji = '🤝';
+  if (userWon && !aiWon) {
+    verdict = 'You beat Claude — it gave up';
+    emoji = '🏆';
+  } else if (userWon && aiWon) {
+    if (userGuesses < ai.guesses) {
+      verdict = `You beat Claude by ${ai.guesses - userGuesses} guess${ai.guesses - userGuesses === 1 ? '' : 'es'}`;
+      emoji = '🏆';
+    } else if (userGuesses > ai.guesses) {
+      verdict = `Claude beat you by ${userGuesses - ai.guesses} guess${userGuesses - ai.guesses === 1 ? '' : 'es'}`;
+      emoji = '🤖';
+    }
+  } else if (!userWon && aiWon) {
+    verdict = `Claude solved it in ${ai.guesses}`;
+    emoji = '🤖';
+  } else if (!userWon && !aiWon) {
+    verdict = 'Neither of you got it';
+    emoji = '😅';
+  }
+
+  const aiScore = ai.won ? `${ai.guesses} guesses` : 'gave up';
+  return (
+    <div
+      className={[
+        'mb-6 rounded-lg px-4 py-3 flex items-center justify-between gap-3',
+        won ? 'bg-white/15 text-white' : 'bg-white text-fg',
+      ].join(' ')}
+    >
+      <div className="flex items-center gap-2 min-w-0">
+        <span className="text-lg leading-none" aria-hidden="true">
+          {emoji}
+        </span>
+        <span className="text-caption font-semibold truncate">{verdict}</span>
+      </div>
+      <div
+        className={[
+          'text-caption tabular font-semibold shrink-0',
+          won ? 'text-white/85' : 'text-muted',
+        ].join(' ')}
+      >
+        Claude: {aiScore}
       </div>
     </div>
   );
