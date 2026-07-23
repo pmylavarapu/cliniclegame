@@ -35,6 +35,11 @@ export default function SiteHeader() {
         <div className="mx-auto max-w-2xl px-4 sm:px-5 h-20 sm:h-20 flex items-center justify-between">
           <Link
             href="/"
+            onClick={() => {
+              if (pathname === '/' || pathname === '') {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }
+            }}
             className="flex items-center hover:opacity-80 transition-opacity"
             aria-label="Clinicle home"
           >
