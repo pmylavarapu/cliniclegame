@@ -12,7 +12,15 @@ function Inner() {
 
 export default function Page() {
   return (
-    <Suspense fallback={<div className="text-muted">Loading…</div>}>
+    <Suspense
+      fallback={
+        <div className="animate-in">
+          <div className="skeleton h-4 w-11/12 mb-2" />
+          <div className="skeleton h-4 w-3/4 mb-6" />
+          <div className="skeleton h-11 w-full rounded-md" />
+        </div>
+      }
+    >
       <Inner />
     </Suspense>
   );

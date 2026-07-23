@@ -61,19 +61,19 @@ to the most recent available date).
 
 ```bash
 pip install -r scripts/requirements.txt
+export GOOGLE_API_KEY=...           # https://aistudio.google.com/app/apikey
 
-# One-off (or when data/diagnoses.txt changes)
+# One-off (or when vocab source changes) — downloads MeSH XML (~350MB) once
 python3 scripts/build_vocab.py       # data/vocab.txt
 python3 scripts/schedule.py          # data/schedule.json (deterministic)
 
-# Every time vocab changes
+# Every time vocab changes — cached, only new phrases hit the API
 python3 scripts/embed.py             # data/embeddings/*
-# For offline use, set SAPBERT_MODEL to a local model dir.
 
 # Add prompts (needs ANTHROPIC_API_KEY)
 python3 scripts/prompts.py
 
-# Emit puzzle JSONs for a date range
+# Emit puzzle JSONs for a date range (skips weakly-embedded targets)
 DATE_START=2026-07-22 DATE_END=2026-08-20 python3 scripts/precompute.py
 ```
 
@@ -82,13 +82,20 @@ to extend the puzzle horizon and commits the generated JSON back to `main`.
 
 ## Design choices
 
-- **SapBERT (`cambridgeltl/SapBERT-from-PubMedBERT-fulltext`)** is a
-  biomedical concept encoder. Cosine similarity between its CLS embeddings is
-  what drives every score in the game.
-- **Vocab** is `diagnoses ∪ 20k common English ∪ 30k common medical`, capped
-  at 50k. Players can guess anything in that set. Rare medical Latin will
-  frequently appear in the top-1000 for medical targets — that's expected and
-  mirrors the original Semantle behavior for domain vocabularies.
+- **Gemini semantic embeddings** (`gemini-embedding-001`, task type
+  `SEMANTIC_SIMILARITY`, 768 dim). Cosine similarity between L2-normalized
+  vectors drives every score in the game. General-purpose modern embeddings
+  handle rare terms (loanwords, eponyms) and multi-word phrases much better
+  than domain-specialized subword encoders.
+- **Vocab** is `MeSH descriptors + entry terms ∪ diagnoses.txt ∪ adjuncts.txt
+  ∪ top-15k common English`, capped at 80k. Multi-word phrases like
+  `myocardial infarction`, `chest pain`, and `pericardial effusion` are
+  first-class guesses. Anatomy, symptoms, qualifiers, and everyday
+  descriptors are in the pool.
+- **Quality gate**: puzzle targets whose top-neighbor cosine is below
+  `MIN_TOP_SIM` (default 0.55) are skipped as poorly embedded — this keeps
+  degenerate puzzles (e.g. rare loanwords the model doesn't understand) out
+  of the daily rotation.
 - **Scheduling** is a seeded shuffle over the deduped diagnosis list, with
   the pool refilled each time it's exhausted (each date across the horizon is
   distinct, and no diagnosis repeats within a single pass through the list).

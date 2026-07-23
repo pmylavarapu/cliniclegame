@@ -16,7 +16,21 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
-DIAGNOSES = DATA / "diagnoses.txt"
+# Prefer the puzzle-eligible subset (see scripts/build_top_diagnoses.py)
+# so schedule picks only clinically prominent conditions. Fall back to the
+# full diagnosis list if the top file hasn't been generated yet.
+COMMON_500 = DATA / "diagnoses_common500.txt"
+TOP_DIAGNOSES = DATA / "diagnoses_top.txt"
+FULL_DIAGNOSES = DATA / "diagnoses.txt"
+# Prefer the hand-curated common-500 subset when it's available so puzzle
+# targets stay in the most-recognizable pool. Fall back to the top-1000
+# auto-curated list, then the full diagnoses file.
+if COMMON_500.exists():
+    DIAGNOSES = COMMON_500
+elif TOP_DIAGNOSES.exists():
+    DIAGNOSES = TOP_DIAGNOSES
+else:
+    DIAGNOSES = FULL_DIAGNOSES
 OUT = DATA / "schedule.json"
 START_FILE = DATA / "schedule_start.txt"
 
@@ -51,9 +65,14 @@ def load_start() -> date:
 
 def main() -> None:
     dx = load_diagnoses()
-    print(f"{len(dx)} unique diagnoses")
+    print(f"{len(dx)} unique diagnoses (from {DIAGNOSES.name})")
     if len(dx) < 365:
-        raise SystemExit(f"Need >=365 diagnoses for no-repeat-per-year guarantee (got {len(dx)})")
+        # Common-500 pool is intentionally smaller; allow it, just note the
+        # repeat cycle to the operator so it's not a surprise.
+        print(
+            f"NOTE: pool is smaller than 365 — diagnoses will repeat every "
+            f"{len(dx)} days."
+        )
 
     rnd = random.Random(SEED)
     pool = dx.copy()

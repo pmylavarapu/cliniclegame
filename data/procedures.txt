@@ -1,0 +1,201 @@
+# Common medical procedures, tests, and interventions. Loaded as core vocab.
+
+# ─── Endoscopy / GI ────────────────────────────────────────────────────────
+colonoscopy
+sigmoidoscopy
+endoscopy
+gastroscopy
+esophagoscopy
+duodenoscopy
+enteroscopy
+laparoscopy
+laparotomy
+ercp
+capsule endoscopy
+paracentesis
+liver biopsy
+hemorrhoidectomy
+appendectomy
+gastrectomy
+splenectomy
+hepatectomy
+pancreatectomy
+
+# ─── Cardiac / vascular ─────────────────────────────────────────────────────
+angiogram
+angiography
+angioplasty
+cardiac catheterization
+cardioversion
+ablation
+stent
+cabg
+bypass
+pacemaker
+defibrillator
+icd
+echo
+echocardiogram
+electrocardiogram
+holter monitor
+stress test
+tavr
+tavi
+pci
+thoracentesis
+thoracotomy
+sternotomy
+pericardiocentesis
+pericardiectomy
+
+# ─── Pulmonary ──────────────────────────────────────────────────────────────
+bronchoscopy
+intubation
+extubation
+tracheostomy
+spirometry
+pulmonary function test
+lung biopsy
+lobectomy
+pneumonectomy
+chest tube
+chest x-ray
+
+# ─── Neurosurgery / neuro ───────────────────────────────────────────────────
+craniotomy
+craniectomy
+laminectomy
+laminotomy
+discectomy
+spinal fusion
+lumbar puncture
+eeg
+electroencephalogram
+emg
+electromyogram
+nerve conduction study
+lp
+
+# ─── GU / renal ─────────────────────────────────────────────────────────────
+cystoscopy
+ureteroscopy
+lithotripsy
+transurethral resection
+prostatectomy
+nephrectomy
+dialysis
+hemodialysis
+peritoneal dialysis
+kidney biopsy
+vasectomy
+circumcision
+
+# ─── OB/GYN ────────────────────────────────────────────────────────────────
+hysterectomy
+hysteroscopy
+myomectomy
+oophorectomy
+salpingectomy
+tubal ligation
+csection
+c-section
+cesarean
+episiotomy
+d&c
+dilation and curettage
+colposcopy
+pap smear
+mammogram
+mammography
+
+# ─── ENT / dental ──────────────────────────────────────────────────────────
+tonsillectomy
+adenoidectomy
+myringotomy
+septoplasty
+rhinoplasty
+sinus surgery
+root canal
+tooth extraction
+
+# ─── Ortho ─────────────────────────────────────────────────────────────────
+arthroscopy
+arthroplasty
+hip replacement
+knee replacement
+casting
+splinting
+open reduction internal fixation
+bone biopsy
+carpal tunnel release
+
+# ─── Ophthalmology ─────────────────────────────────────────────────────────
+cataract surgery
+lasik
+vitrectomy
+enucleation
+tonometry
+fundoscopy
+slit lamp
+
+# ─── Imaging ────────────────────────────────────────────────────────────────
+mri
+magnetic resonance imaging
+ct scan
+computed tomography
+pet scan
+ultrasound
+x-ray
+xray
+fluoroscopy
+dexa scan
+bone density scan
+
+# ─── Vascular access / IR ──────────────────────────────────────────────────
+central line
+arterial line
+picc
+port
+tunneled catheter
+biopsy
+core biopsy
+fine needle aspiration
+embolization
+
+# ─── Skin / minor procedures ───────────────────────────────────────────────
+skin biopsy
+punch biopsy
+shave biopsy
+cryotherapy
+excision
+incision and drainage
+suturing
+
+# ─── Emergency / critical ──────────────────────────────────────────────────
+cpr
+resuscitation
+defibrillation
+intubation
+mechanical ventilation
+ecmo
+transfusion
+
+# ─── Vascular access & phlebotomy ──────────────────────────────────────────
+phlebotomy
+venipuncture
+venesection
+bloodletting
+blood draw
+arterial line
+peripheral iv
+picc line
+port a cath
+port
+hickman
+groshong
+midline catheter
+arterial puncture
+finger stick
+heel stick
+capillary blood sampling
+therapeutic phlebotomy

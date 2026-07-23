@@ -1,5 +1,4 @@
-torch>=2.1
-transformers>=4.40
+google-genai>=0.3
 numpy>=1.26
 requests>=2.31
 anthropic>=0.34

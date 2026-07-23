@@ -1,30 +1,91 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import Link from 'next/link';
+import { Inter } from 'next/font/google';
+import SiteHeader from '@/components/SiteHeader';
+
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  display: 'swap',
+  variable: '--font-inter',
+});
 
 export const metadata: Metadata = {
-  title: 'Clinicle — guess the diagnosis',
-  description: 'Semantle for medical diagnoses. A new secret diagnosis every day.',
+  metadataBase: new URL('https://clinicle.app'),
+  title: 'Clinicle – the daily medical diagnosis game',
+  description:
+    'A new secret diagnosis every day. Guess medical words and phrases – the closer you get, the higher your score. Semantle for medicine.',
+  keywords: [
+    'Clinicle',
+    'daily medical game',
+    'medical Wordle',
+    'medical Semantle',
+    'diagnosis game',
+    'medicine puzzle',
+    'medical vocabulary',
+  ],
+  openGraph: {
+    title: 'Clinicle – the daily medical diagnosis game',
+    description:
+      'One secret diagnosis a day. Guess words and phrases; get closer, get warmer. Free, no login.',
+    url: 'https://clinicle.app',
+    siteName: 'Clinicle',
+    images: [
+      {
+        url: '/logo.png',
+        width: 740,
+        height: 312,
+        alt: 'Clinicle',
+      },
+    ],
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Clinicle – daily medical diagnosis game',
+    description:
+      'One diagnosis a day. Guess words; get closer, get warmer. #Clinicle',
+    images: ['/logo.png'],
+    creator: '@PMylavarapuMD',
+  },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <html lang="en">
-      <body className="min-h-screen">
-        <header className="border-b border-border">
-          <div className="mx-auto max-w-2xl px-5 h-14 flex items-center justify-between">
-            <Link href="/" className="flex items-center gap-2 hover:opacity-70 transition-opacity">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/logo.svg" alt="" width={28} height={28} className="w-7 h-7" />
-              <span className="text-xl font-semibold tracking-tight">linicle</span>
-            </Link>
-            <nav className="flex items-center gap-5 text-sm">
-              <Link href="/" className="hover:text-primary transition-colors">Today</Link>
-              <Link href="/archive/" className="hover:text-primary transition-colors">Archive</Link>
-            </nav>
+    <html lang="en" className={inter.variable}>
+      <body className="min-h-screen flex flex-col font-sans antialiased text-fg text-body">
+        <SiteHeader />
+        <main className="flex-1 mx-auto w-full max-w-4xl px-4 sm:px-5 pt-4 sm:pt-5 pb-16">
+          {children}
+        </main>
+        <footer className="border-t border-border">
+          <div className="mx-auto max-w-4xl px-4 sm:px-5 py-5 text-center text-caption text-muted">
+            © 2026{' '}
+            <a
+              href="https://twitter.com/PMylavarapuMD"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-link font-medium hover:underline"
+            >
+              Praneet Mylavarapu
+            </a>{' '}
+            <span className="text-border-strong">|</span> Designed using
+            Claude by Anthropic{' '}
+            <span className="text-border-strong">|</span> Feedback{' '}
+            <a
+              href="https://twitter.com/ClinicleGame"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-link font-medium hover:underline"
+            >
+              @ClinicleGame
+            </a>
           </div>
-        </header>
-        <main className="mx-auto max-w-2xl px-5 py-8">{children}</main>
+        </footer>
       </body>
     </html>
   );

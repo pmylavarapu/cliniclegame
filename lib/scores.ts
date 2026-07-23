@@ -19,5 +19,42 @@ export function today(): string {
 }
 
 export function normalizeGuess(w: string): string {
-  return w.trim().toLowerCase().replace(/[^a-z0-9-']/g, '');
+  return w
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9 '-]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+/**
+ * Inflection variants of `w` that a user might type instead of the
+ * canonical vocab entry. Multi-word phrases pluralize the last token
+ * only ('varicose vein' → 'varicose veins'). Returned in preference
+ * order for silent substitution — no "did you mean" prompt needed.
+ */
+export function pluralVariants(w: string): string[] {
+  const out: string[] = [];
+  const idx = w.lastIndexOf(' ');
+  const prefix = idx >= 0 ? w.slice(0, idx + 1) : '';
+  const last = idx >= 0 ? w.slice(idx + 1) : w;
+  const push = (v: string) => {
+    const s = prefix + v;
+    if (s && s !== w && !out.includes(s)) out.push(s);
+  };
+  if (last.endsWith('ies') && last.length > 3) {
+    push(last.slice(0, -3) + 'y');
+  }
+  if (last.endsWith('es') && last.length > 3) {
+    push(last.slice(0, -2));
+  }
+  if (last.endsWith('s') && last.length > 2) {
+    push(last.slice(0, -1));
+  }
+  push(last + 's');
+  if (last.endsWith('y') && last.length > 2) {
+    push(last.slice(0, -1) + 'ies');
+  }
+  push(last + 'es');
+  return out;
 }
