@@ -70,6 +70,9 @@ DENYLIST = {
     "yukon", "turismo", "cardoons", "cardoon", "tournay",
     "fuck", "shit", "damn", "bitch", "cunt",
     "nigger", "faggot", "retard", "retarded",
+    # Slang / colloquial anatomy that reads as junk in a medical game
+    "ass", "asses", "butt", "butts", "balls", "boobs", "tits",
+    "dick", "dicks", "nut", "nuts", "piss", "crap", "hell", "god",
 }
 
 # Rejection patterns for the scraped glutanimate wordlist (eponym fragments,

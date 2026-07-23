@@ -10,6 +10,10 @@
 
 # ─── Cardiovascular ────────────────────────────────────────────────────────
 mi|myocardial infarction (heart attack)
+as|aortic stenosis
+ai|aortic regurgitation
+mr|mitral regurgitation
+tr|tricuspid regurgitation
 cad|coronary artery disease
 lad|left anterior descending coronary artery
 lcx|left circumflex coronary artery

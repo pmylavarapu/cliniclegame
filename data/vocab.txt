@@ -1162,6 +1162,7 @@ ahmoism
 ahoehoe
 ahrain
 ahumada
+ai
 aibika
 aical
 aicardi
@@ -3533,7 +3534,6 @@ asplenic
 asporous
 asprin
 asquint
-ass
 assai
 assamar
 assart
@@ -4373,7 +4373,6 @@ ballon
 balloon
 ballot
 ballota
-balls
 balme
 balnei
 balneol
@@ -5757,7 +5756,6 @@ bontril
 bonus
 bonwill
 boob
-boobs
 book
 booking
 bookings
@@ -6572,14 +6570,12 @@ butonate
 butone
 butoxide
 butrans
-butt
 butter
 buttock
 buttocks
 button
 buttons
 buttress
-butts
 butyl
 butylate
 butylene
@@ -9449,7 +9445,6 @@ craniotomy
 cranitis
 cranium
 craniums
-crap
 craps
 craquel
 crash
@@ -10950,9 +10945,7 @@ dicentra
 diceros
 dichotic
 dichroic
-dick
 dicke
-dicks
 diclofenac
 dicodid
 dicofol
@@ -15048,7 +15041,6 @@ goat
 goatpox
 gobbler
 goblet
-god
 godet
 godina
 gods
@@ -15725,7 +15717,6 @@ helidac
 helium
 helix
 helixes
-hell
 helle
 heller
 hellin
@@ -20501,6 +20492,7 @@ mpg
 mph
 mprag
 mprage
+mr
 mracp
 mrcpe
 mrcpi
@@ -21348,12 +21340,10 @@ nursery
 nurses
 nursing
 nusal
-nut
 nutans
 nutgall
 nutmeg
 nutritional
-nuts
 nuttall
 nutten
 nuvera
@@ -22998,7 +22988,6 @@ piromen
 pirquet
 piscary
 piscium
-piss
 pisse
 pissing
 pistil
@@ -28129,7 +28118,6 @@ titrant
 titrate
 titre
 titres
-tits
 titten
 tityus
 tixanox
@@ -28324,6 +28312,7 @@ toynbee
 toyota
 toys
 tozeuri
+tr
 trace
 tracer
 trach
