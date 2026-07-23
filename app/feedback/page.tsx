@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import PageShell from '@/components/PageShell';
 
 export const metadata: Metadata = {
-  title: 'Feedback — Clinicle',
+  title: 'Feedback – Clinicle',
   description: 'Report a bad prompt, a scoring quirk, or just say hello.',
 };
 

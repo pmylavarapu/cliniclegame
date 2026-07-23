@@ -24,7 +24,7 @@ export default function PuzzleLoader({ requestedDate }: Props) {
         if (!idx.dates.includes(date)) {
           const fallback = idx.latest;
           if (!requestedDate) {
-            setNotice(`Today's puzzle isn't out yet — showing #${fallback}`);
+            setNotice(`Today's puzzle isn't out yet – showing #${fallback}`);
           } else {
             setError(`No puzzle for ${requestedDate}`);
             return;

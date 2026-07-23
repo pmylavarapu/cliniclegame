@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import PageShell from '@/components/PageShell';
 
 export const metadata: Metadata = {
-  title: 'How it works — Clinicle',
+  title: 'How it works – Clinicle',
   description:
     'Clinicle in two eras: the 2023 build on Weissman-lab word2vec case-report embeddings, and the 2026 rebuild on Google Gemini semantic embeddings.',
 };
@@ -18,7 +18,7 @@ export default function HowItWorksPage() {
         vocabulary, and a static Next.js frontend.
       </p>
 
-      <h2>2023 — the original</h2>
+      <h2>2023 – the original</h2>
       <p>
         The 2023 backbone was a{' '}
         <a
@@ -72,12 +72,12 @@ export default function HowItWorksPage() {
         >
           SapBERT
         </a>{' '}
-        from Cambridge LTL — both fine-tuned on medical concept synonymy —
+        from Cambridge LTL – both fine-tuned on medical concept synonymy -
         but they lost to the case-report word2vec model on the intuitive
         gameplay it produced.
       </p>
 
-      <h2>2026 — the rebuild</h2>
+      <h2>2026 – the rebuild</h2>
       <p>
         The 2026 version swaps out the entire scoring stack for Google&apos;s{' '}
         <code>gemini-embedding-001</code>. Every word in the game&apos;s vocab
@@ -104,7 +104,7 @@ export default function HowItWorksPage() {
         1,000-diagnosis puzzle-eligible list, a curated multi-word medical
         phrase list (712 entries), an anatomy / symptom / qualifier
         adjuncts file, the top 15,000 common English words for cold
-        guesses, and — new for 2026 — an explicit medical-abbreviations
+        guesses, and – new for 2026 – an explicit medical-abbreviations
         file (MI, CAD, LAD, ITP, COPD, ...). Abbreviations are embedded
         with their expansion text so <em>MI</em> ends up near{' '}
         <em>myocardial infarction</em> instead of near the two-letter
@@ -122,7 +122,7 @@ export default function HowItWorksPage() {
         Dates are assigned diagnoses via a seeded deterministic shuffle
         over the puzzle-eligible list; no diagnosis repeats within a full
         cycle. Prompts are hand-authored (2026) with a historical or
-        etymological angle rather than a textbook-style definition — the
+        etymological angle rather than a textbook-style definition – the
         goal is to force ten to fifteen guesses rather than a one-shot
         solve from a giveaway clinical vignette.
       </p>
@@ -131,7 +131,7 @@ export default function HowItWorksPage() {
       <p>
         The current site is Next.js 15 (App Router) statically exported and
         hosted on Vercel, styled with Tailwind. There is no backend, no
-        login, no tracking — every puzzle is a plain precomputed JSON
+        login, no tracking – every puzzle is a plain precomputed JSON
         file. The data pipeline is small Python scripts wrapping the
         Gemini embeddings API, NumPy for the score table, and stem-gated
         cosine clustering for synonym detection.

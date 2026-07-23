@@ -39,6 +39,8 @@ DIAGNOSES = DATA / "diagnoses.txt"
 ADJUNCTS = DATA / "adjuncts.txt"
 MULTIWORD = DATA / "multiword_medical.txt"
 ABBREVIATIONS = DATA / "abbreviations.txt"
+DRUGS = DATA / "drugs.txt"
+PROCEDURES = DATA / "procedures.txt"
 MESH_CACHE = DATA / "mesh_desc.xml"
 OUT = DATA / "vocab.txt"
 
@@ -267,6 +269,14 @@ def main() -> None:
     abbrev = load_abbreviations()
     print(f"  {len(abbrev)} abbreviations")
 
+    print("Loading drugs...")
+    drugs = _load_curated(DRUGS)
+    print(f"  {len(drugs)} drugs")
+
+    print("Loading procedures...")
+    procs = _load_curated(PROCEDURES)
+    print(f"  {len(procs)} procedures")
+
     seed: set[str] = set()
     if not mesh:
         print("Loading medical seed wordlist (fallback for missing MeSH)...")
@@ -287,7 +297,7 @@ def main() -> None:
     # Curated + MeSH content is always kept; the seed and English fills only
     # get capped when we exceed the budget. This protects multi-word medical
     # phrases (which are long) from being truncated in favor of short garbage.
-    core = mesh | dx | adj | mw
+    core = mesh | dx | adj | mw | abbrev | drugs | procs
     fill = (seed | en) - core
     combined = set(core)
     if VOCAB_CAP:

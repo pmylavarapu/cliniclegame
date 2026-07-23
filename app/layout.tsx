@@ -12,9 +12,9 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://clinicle.app'),
-  title: 'Clinicle — the daily medical diagnosis game',
+  title: 'Clinicle – the daily medical diagnosis game',
   description:
-    'A new secret diagnosis every day. Guess medical words and phrases — the closer you get, the higher your score. Semantle for medicine.',
+    'A new secret diagnosis every day. Guess medical words and phrases – the closer you get, the higher your score. Semantle for medicine.',
   keywords: [
     'Clinicle',
     'daily medical game',
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     'medical vocabulary',
   ],
   openGraph: {
-    title: 'Clinicle — the daily medical diagnosis game',
+    title: 'Clinicle – the daily medical diagnosis game',
     description:
       'One secret diagnosis a day. Guess words and phrases; get closer, get warmer. Free, no login.',
     url: 'https://clinicle.app',
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Clinicle — daily medical diagnosis game',
+    title: 'Clinicle – daily medical diagnosis game',
     description:
       'One diagnosis a day. Guess words; get closer, get warmer. #Clinicle',
     images: ['/logo.png'],

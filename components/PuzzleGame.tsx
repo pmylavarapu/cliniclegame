@@ -143,7 +143,7 @@ export default function PuzzleGame({ puzzle, vocab }: Props) {
         return theirs?.has(w) ?? false;
       });
       if (prior) {
-        setError(`"${w}" means the same as "${prior.word}" — try something else`);
+        setError(`"${w}" means the same as "${prior.word}" – try something else`);
         flashInput();
         return;
       }
@@ -323,8 +323,8 @@ export default function PuzzleGame({ puzzle, vocab }: Props) {
           )}
           {guesses.length === 0 && (
             <p className="mt-4 text-caption text-muted leading-relaxed">
-              Any word or phrase — anatomy, symptoms, drugs, diagnoses. Closer
-              meanings score higher —{' '}
+              Any word or phrase – anatomy, symptoms, drugs, diagnoses. Closer
+              meanings score higher -{' '}
               <span className="font-semibold text-fg">heart attack</span>{' '}
               scores near{' '}
               <span className="font-semibold text-fg">
@@ -386,7 +386,7 @@ export default function PuzzleGame({ puzzle, vocab }: Props) {
             Make your first guess
           </p>
           <p className="text-body text-muted mt-1.5">
-            Try something broad — an organ, a symptom, a body system.
+            Try something broad – an organ, a symptom, a body system.
           </p>
         </div>
       )}
@@ -419,7 +419,7 @@ function nearestVocabWord(w: string, vocab: string[]): string | null {
 }
 
 // Levenshtein with an early-exit cap. Returns cap+1 (or higher) when the
-// true distance exceeds cap — callers only need to know "close enough".
+// true distance exceeds cap – callers only need to know "close enough".
 function levenshtein(a: string, b: string, cap: number): number {
   const la = a.length;
   const lb = b.length;
@@ -550,7 +550,7 @@ function GuessRow({
 }) {
   const inTop = guess.rank !== null;
 
-  // Row background — heat map from green (near the answer) through yellow
+  // Row background – heat map from green (near the answer) through yellow
   // and orange to pale peach (edge of the top-1000), then a subtle gray
   // for cold guesses. HSL interpolation across rank so the top of the
   // list reads visibly hotter than the middle.
@@ -587,7 +587,7 @@ function GuessRow({
       <div
         className={`tabular text-ui font-bold ${fgClass} ${dimClass}`}
       >
-        {guess.rank ? `#${guess.rank}` : '—'}
+        {guess.rank ? `#${guess.rank}` : '-'}
       </div>
       <div className="min-w-0 flex items-baseline gap-2 flex-wrap">
         <span className={`tabular text-caption font-semibold ${fgClass} opacity-60`}>

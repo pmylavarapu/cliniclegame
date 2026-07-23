@@ -17,6 +17,7 @@ abarelix
 abascan
 abasia
 abasic
+abatacept
 abate
 abatic
 abator
@@ -299,6 +300,7 @@ acescent
 aceta
 acetal
 acetals
+acetaminophen
 acetary
 acetas
 acetasol
@@ -637,6 +639,7 @@ acutum
 acutus
 acuvail
 acyclic
+acyclovir
 acyesis
 acylanid
 acylase
@@ -653,6 +656,7 @@ adactyly
 adagen
 adair
 adalat
+adalimumab
 adam
 adamha
 adami
@@ -729,6 +733,7 @@ adenoma
 adenomas
 adenomyosis
 adenoses
+adenosine
 adenosis
 adenosyl
 adenous
@@ -1318,6 +1323,7 @@ alburn
 alburnum
 albus
 albutein
+albuterol
 alcade
 alcaine
 alcalig
@@ -1575,6 +1581,7 @@ allonge
 allopath
 allopeau
 allopora
+allopurinol
 allose
 allosome
 allotope
@@ -1662,6 +1669,7 @@ alpica
 alpine
 alpinus
 alport
+alprazolam
 alprox
 already
 alrex
@@ -1772,6 +1780,7 @@ amanda
 amandin
 amanita
 amanitin
+amantadine
 amantha
 amaphen
 amara
@@ -1916,6 +1925,7 @@ aminosis
 aminosol
 aminosyn
 aminuria
+amiodarone
 amioid
 amioidei
 amipaque
@@ -1931,8 +1941,10 @@ amitosis
 amitotic
 amitraz
 amitril
+amitriptyline
 amitrole
 aml
+amlodipine
 ammacism
 ammeter
 ammite
@@ -1992,6 +2004,7 @@ amotus
 amount
 amounts
 amous
+amoxicillin
 amoxil
 amp
 ampalex
@@ -2011,6 +2024,8 @@ amphocin
 amphojel
 amphoric
 amphotec
+amphotericin
+ampicillin
 ampland
 amplatz
 amplexus
@@ -2306,12 +2321,15 @@ angiocor
 angiodysplasia
 angioedema
 angiogen
+angiogram
+angiography
 angioid
 angiojet
 angioma
 angiomas
 angiomatosis
 angiomax
+angioplasty
 angiorad
 angiosarcoma
 angiotensin receptor blocker
@@ -2775,6 +2793,7 @@ apiol
 apios
 apitoxin
 apium
+apixaban
 apla
 aplasia
 aplastic
@@ -3180,6 +3199,7 @@ arilvax
 arimidex
 arinella
 arinomys
+aripiprazole
 arisaema
 arisarum
 arise
@@ -3324,6 +3344,7 @@ artem
 arteria
 arteriae
 arterial
+arterial line
 arteries
 arterio
 arteriol
@@ -3343,6 +3364,8 @@ arthrex
 arthritis
 arthro
 arthropathy
+arthroplasty
+arthroscopy
 arthrous
 arthur
 arthus
@@ -3721,6 +3744,7 @@ atomize
 atomized
 atomizer
 atomonas
+atomoxetine
 atomy
 atomys
 atonia
@@ -3736,6 +3760,7 @@ atopies
 atopsy
 atopy
 atoria
+atorvastatin
 atory
 atosiban
 atotypes
@@ -3867,6 +3892,7 @@ aufrecht
 aug
 augean
 augmenti
+augmentin
 augurous
 august
 augustan
@@ -4157,6 +4183,7 @@ azalide
 azara
 azarai
 azasite
+azathioprine
 azdone
 azelaic
 azelex
@@ -4167,6 +4194,7 @@ azidine
 azido
 azilect
 azine
+azithromycin
 azlin
 azmacort
 azoic
@@ -4808,6 +4836,7 @@ beliefs
 believe
 believed
 believes
+belimumab
 belite
 belix
 belize
@@ -4917,6 +4946,7 @@ benzoini
 benzol
 benzole
 benzoyl
+benztropine
 benzyl
 bepadin
 bepridil
@@ -5019,6 +5049,7 @@ betula
 betulin
 between
 beurre
+bevacizumab
 bevan
 bevel
 bevelled
@@ -5367,6 +5398,7 @@ bismite
 bismuth
 bisnare
 bisobrin
+bisoprolol
 bisphere
 bispore
 bisque
@@ -5483,6 +5515,7 @@ blenn
 blenniid
 blennoid
 blenny
+bleomycin
 bleph
 blephar
 blepharitis
@@ -5693,6 +5726,8 @@ bondmaid
 bonds
 bonduc
 bone
+bone biopsy
+bone density scan
 bonedog
 bonefos
 boneia
@@ -6188,6 +6223,7 @@ bronchiolitis
 bronchitis
 broncho
 bronchopneumonia
+bronchoscopy
 bronchospasm
 bronchus
 bronitin
@@ -6341,6 +6377,7 @@ buddle
 buddleia
 buddlia
 buddy
+budesonide
 budge
 budget
 budgets
@@ -6448,6 +6485,8 @@ bunsen
 bunyan
 buphenyl
 buprenex
+buprenorphine
+bupropion
 burchard
 burdach
 burden
@@ -6499,6 +6538,7 @@ bushman
 business
 buski
 buspar
+buspirone
 busquet
 busse
 busty
@@ -6574,6 +6614,7 @@ bythnia
 bzyme
 c-port
 c-qur
+c-section
 c3paase
 c5b67
 c5b678
@@ -6681,6 +6722,7 @@ calcined
 calcis
 calcite
 calcitic
+calcitonin
 calcium
 calcium channel blocker
 calculi
@@ -6811,6 +6853,7 @@ camurati
 can
 canada
 canadian
+canagliflozin
 canal
 canales
 canaline
@@ -6957,6 +7000,7 @@ capsula
 capsulae
 capsular
 capsule
+capsule endoscopy
 capsuled
 capsules
 capsure
@@ -6985,6 +7029,7 @@ caraway
 carb
 carbadox
 carbaglu
+carbamazepine
 carbamic
 carbamyl
 carbaril
@@ -6993,6 +7038,7 @@ carbate
 carbene
 carbex
 carbide
+carbidopa
 carbinol
 carbo
 carbodec
@@ -7004,6 +7050,7 @@ carbomer
 carbon
 carbonic
 carbonyl
+carboplatin
 carbowax
 carboxin
 carboxy
@@ -7025,6 +7072,7 @@ cardi
 cardia
 cardiac
 cardiac arrest
+cardiac catheterization
 cardiac output
 cardiac resynchronization therapy
 cardiac tamponade
@@ -7121,6 +7169,7 @@ carotidynia
 carotis
 carpaine
 carpal
+carpal tunnel release
 carpal tunnel syndrome
 carpale
 carpalia
@@ -7170,6 +7219,7 @@ carum
 caruncle
 carus
 carvallo
+carvedilol
 carver
 carvi
 carvone
@@ -7205,6 +7255,7 @@ casio
 casodex
 casoni
 caspase
+caspofungin
 cassava
 casser
 cassette
@@ -7242,6 +7293,7 @@ catapasm
 cataplexy
 catapres
 cataract
+cataract surgery
 catarase
 catarex
 cataria
@@ -7388,6 +7440,7 @@ ceenu
 ceeon
 cefaclor
 cefadyl
+cefazolin
 cefdinir
 cefepime
 cefixime
@@ -7398,6 +7451,8 @@ cefol
 cefotan
 cefotiam
 ceftin
+ceftriaxone
+cefuroxime
 cefzil
 cegka
 ceiling
@@ -7408,6 +7463,7 @@ celebes
 celebra
 celebrex
 celebs
+celecoxib
 celer
 celeriac
 celestin
@@ -7480,6 +7536,7 @@ centra
 centrad
 centrage
 central
+central line
 central sleep apnea
 central venous pressure
 centrale
@@ -7502,6 +7559,7 @@ cepacia
 cepacol
 cephal
 cephalad
+cephalexin
 cephalgia
 cephalic
 cephalin
@@ -7576,6 +7634,7 @@ certain
 certican
 certify
 certiva
+certolizumab
 certriad
 cerulea
 ceruleae
@@ -7628,6 +7687,7 @@ cetiedil
 cetraria
 cetraxal
 cetus
+cetuximab
 cetyl
 cevadine
 cewen
@@ -7809,6 +7869,8 @@ cherry
 chess
 chest
 chest pain
+chest tube
+chest x-ray
 chester
 chestnut
 chevron
@@ -7927,6 +7989,7 @@ cholangitis
 cholanic
 cholate
 chole
+cholecalciferol
 cholecystectomy
 cholecystitis
 choledochal
@@ -8145,6 +8208,7 @@ cionella
 cionitis
 cipro
 ciprodex
+ciprofloxacin
 cir
 circadin
 circaid
@@ -8163,6 +8227,7 @@ circulin
 circulon
 circulus
 circum
+circumcision
 circus
 cirrhosis
 cirri
@@ -8173,12 +8238,14 @@ cirus
 cisco
 ciseaux
 cision
+cisplatin
 cissa
 cistern
 cisterna
 cisterns
 cistron
 cistus
+citalopram
 citanest
 citation
 cite
@@ -8237,6 +8304,7 @@ claravis
 clard
 clarify
 clarinex
+clarithromycin
 clarity
 clark
 clarke
@@ -8326,6 +8394,7 @@ climb
 climbing
 clinac
 clinda
+clindamycin
 clindets
 clindex
 cline
@@ -8371,6 +8440,7 @@ cloforex
 clolar
 clomid
 clonal
+clonazepam
 clone
 cloned
 clonibid
@@ -8380,6 +8450,7 @@ clonism
 clonixin
 clonopin
 clonus
+clopidogrel
 clopidol
 clopirac
 clopra
@@ -8412,6 +8483,7 @@ clove
 clover
 cloward
 cloxapen
+clozapine
 clozaril
 club
 clubbed
@@ -8614,6 +8686,7 @@ colazal
 colazid
 colazide
 colcemid
+colchicine
 colcrys
 cold
 coldrine
@@ -8688,6 +8761,7 @@ colonic
 colonies
 colonize
 colonna
+colonoscopy
 colons
 colony
 colopath
@@ -8705,6 +8779,7 @@ colours
 colovage
 colpitis
 colpo
+colposcopy
 colterol
 coluber
 colubrid
@@ -8820,6 +8895,7 @@ compulsive
 compumed
 compute
 computed
+computed tomography
 computer
 comrey
 comtan
@@ -9074,6 +9150,7 @@ cordran
 cords
 cordy
 core
+core biopsy
 coreg
 corema
 corethra
@@ -9327,6 +9404,7 @@ coxotomy
 cozaar
 cozmo
 cozmore
+cpr
 cprglove
 cpsii
 cpu
@@ -9357,11 +9435,13 @@ craniad
 cranial
 craniata
 craniate
+craniectomy
 cranii
 cranio
 craniofacial
 craniopharyngioma
 craniosynostosis
+craniotomy
 cranitis
 cranium
 craniums
@@ -9579,6 +9659,7 @@ cryonics
 cryopexy
 cryoseal
 cryostat
+cryotherapy
 cryotips
 cryotome
 crypt
@@ -9594,6 +9675,7 @@ cryst
 crystal
 crystals
 crysti
+csection
 csgbi
 css
 csssi
@@ -9809,6 +9891,7 @@ cyanide
 cyanidin
 cyanin
 cyano
+cyanocobalamin
 cyanogen
 cyanol
 cyanopia
@@ -9852,6 +9935,7 @@ cycloid
 cyclokat
 cyclopar
 cyclopes
+cyclophosphamide
 cyclopia
 cyclopic
 cyclopin
@@ -9859,6 +9943,7 @@ cyclops
 cycloses
 cycloset
 cyclosis
+cyclosporine
 cyclothymia
 cyclotol
 cycrin
@@ -9927,12 +10012,14 @@ cystocele
 cystoid
 cystoma
 cystomas
+cystoscopy
 cystose
 cystous
 cysts
 cystyl
 cysview
 cytadren
+cytarabine
 cytarme
 cytase
 cytaster
@@ -9982,6 +10069,7 @@ czapek
 czech
 czermak
 czerny
+d c
 d'acosta
 d'airain
 d'amato
@@ -10090,6 +10178,7 @@ dantrium
 danum
 danysz
 daoust
+dapagliflozin
 daphne
 daphnia
 daphnin
@@ -10097,6 +10186,7 @@ daphnism
 dappen
 dapsone
 daptacel
+daptomycin
 daranide
 daraprim
 darbid
@@ -10319,6 +10409,7 @@ deferens
 deferent
 deferred
 defibrillation
+defibrillator
 defic
 deficit
 definate
@@ -10467,6 +10558,7 @@ dennen
 dennie
 dennis
 denny
+denosumab
 densa
 dense
 density
@@ -10695,6 +10787,7 @@ dewclaw
 deweerd
 dewlap
 deworm
+dexa scan
 dexacen
 dexacort
 dexair
@@ -10855,6 +10948,7 @@ dichroic
 dick
 dicke
 dicks
+diclofenac
 dicodid
 dicofol
 dicon
@@ -10957,6 +11051,7 @@ dilated
 dilated cardiomyopathy
 dilating
 dilation
+dilation and curettage
 dilator
 dilators
 dilaudid
@@ -10966,6 +11061,7 @@ dildos
 diloderm
 dilor
 diltia
+diltiazem
 diluc
 diluent
 dilut
@@ -11123,6 +11219,7 @@ disc
 disc herniation
 discalis
 discase
+discectomy
 discharge
 disci
 discitis
@@ -11302,8 +11399,10 @@ dobbert
 dobbhoff
 dobie
 dobsonia
+dobutamine
 dobutrex
 doc
+docetaxel
 dochmius
 docibin
 docimasy
@@ -11324,6 +11423,7 @@ dodson
 doe
 doehle
 does
+dofetilide
 dog
 dogberry
 dogbone
@@ -11382,6 +11482,7 @@ donders
 done
 donec
 donee
+donepezil
 dones
 donjoy
 donna
@@ -11496,8 +11597,10 @@ doxiden
 doxides
 doxil
 doxinate
+doxorubicin
 doxychel
 doxycin
+doxycycline
 doyen
 doyne
 dozen
@@ -11699,6 +11802,7 @@ duhring
 dui
 duke
 dukes
+dulaglutide
 dulbecco
 dulcin
 dulcite
@@ -11711,6 +11815,7 @@ dulera
 dull
 dullness
 dulong
+duloxetine
 dulse
 dumas
 dumb
@@ -11733,6 +11838,7 @@ duodena
 duodenal
 duodenal ulcer
 duodeni
+duodenoscopy
 duodenum
 duoderm
 duodopa
@@ -12003,6 +12109,7 @@ echis
 echites
 echium
 echo
+echocardiogram
 echoes
 echoflow
 echogen
@@ -12017,6 +12124,7 @@ eclectic
 eclipse
 eclipta
 ecmnesia
+ecmo
 eco
 ecock
 ecoflex
@@ -12130,6 +12238,7 @@ edulis
 edvaxhib
 edward
 edwards
+eeg
 eelworm
 eemri
 eepshead
@@ -12275,8 +12384,11 @@ elective
 electra
 electric
 electro
+electrocardiogram
 electrocution
+electroencephalogram
 electrolyte
+electromyogram
 electron
 eleek
 elegans
@@ -12392,6 +12504,7 @@ embolia
 embolic
 embolies
 embolism
+embolization
 embolize
 embolus
 emboly
@@ -12421,6 +12534,7 @@ emetic
 emetine
 emetrol
 emezine
+emg
 emgel
 emiangle
 emictory
@@ -12444,6 +12558,7 @@ emomys
 emotion
 emotions
 empacho
+empagliflozin
 empasma
 empathic
 empathy
@@ -12488,6 +12603,7 @@ enables
 enablex
 enabling
 enahist
+enalapril
 enaline
 enamel
 enamelum
@@ -12572,6 +12688,7 @@ endoral
 endorsed
 endosaph
 endosarc
+endoscopy
 endosol
 endosolv
 endosome
@@ -12701,6 +12818,7 @@ enterobiasis
 enterococcal
 enterocolitis
 enteron
+enteroscopy
 enterovirus
 enterra
 enters
@@ -12730,6 +12848,7 @@ entsol
 entuss
 entylan
 entypy
+enucleation
 enulose
 enure
 enuresis
@@ -12793,6 +12912,7 @@ epimer
 epimere
 epimys
 epinal
+epinephrine
 epiotic
 epipen
 epiphysitis
@@ -12801,6 +12921,7 @@ epipial
 epipl
 epiploa
 episcleritis
+episiotomy
 episode
 episome
 epistar
@@ -12816,6 +12937,7 @@ epivir
 epizoa
 epizoic
 epizoon
+eplerenone
 epley
 epoetin
 epogen
@@ -12866,6 +12988,7 @@ erbitux
 erbium
 ercaf
 ercal
+ercp
 ercule
 erdheim
 erecaid
@@ -12952,6 +13075,7 @@ erythroblastosis
 erythrocytosis
 erythroderma
 erythromelalgia
+erythromycin
 eryzole
 esaote
 esban
@@ -12961,6 +13085,7 @@ escaped
 eschar
 eschars
 escin
+escitalopram
 esclim
 escobar
 escort
@@ -12979,11 +13104,13 @@ esoate
 esocine
 esodic
 esodon
+esomeprazole
 esophageal
 esophageal cancer
 esophageal candidiasis
 esophageal varices
 esophagitis
+esophagoscopy
 esophagus
 esophyx
 esotropia
@@ -13036,11 +13163,13 @@ esylate
 etalous
 etamon
 etamys
+etanercept
 etc
 etching
 eternal
 eternod
 ethal
+ethambutol
 ethanal
 ethane
 ethanol
@@ -13069,7 +13198,9 @@ etial
 etieri
 etist
 etite
+etomidate
 etomys
+etoposide
 etousae
 etrafon
 etrex
@@ -13173,6 +13304,7 @@ excimer
 exciple
 excise
 excised
+excision
 excite
 excited
 exciter
@@ -13187,6 +13319,7 @@ exec
 execute
 exemia
 exempt
+exenatide
 exendin
 exergic
 exesion
@@ -13277,6 +13410,7 @@ extreme
 extremity
 extro
 extrude
+extubation
 exubera
 exudate
 exude
@@ -13371,12 +13505,14 @@ falope
 false
 falsify
 falta
+famciclovir
 fame
 fames
 familial
 family
 family history
 famine
+famotidine
 famous
 famvir
 fan
@@ -13485,6 +13621,7 @@ febiger
 febrile
 febrile neutropenia
 febris
+febuxostat
 fecal
 fecalis
 fecally
@@ -13524,6 +13661,7 @@ fellea
 felleae
 fellis
 fellow
+felodipine
 felon
 felt
 felton
@@ -13560,6 +13698,7 @@ fenesin
 fenicol
 fennel
 fenobam
+fentanyl
 fentora
 fenwick
 feof
@@ -13711,12 +13850,14 @@ finalis
 finally
 finals
 finance
+finasteride
 find
 finder
 finding
 findlaw
 finds
 fine
+fine needle aspiration
 finest
 finevin
 finger
@@ -13806,6 +13947,7 @@ flavor
 flavum
 flavus
 fleam
+flecainide
 fleck
 flecked
 flecks
@@ -13876,6 +14018,7 @@ floxin
 floyd
 flu
 fluax
+fluconazole
 flucort
 fludara
 fludase
@@ -13896,12 +14039,17 @@ fluorex
 fluori
 fluoric
 fluoro
+fluoroscopy
 fluorosis
+fluorouracil
 fluosol
+fluoxetine
+fluphenazine
 flura
 fluress
 flush
 flutex
+fluticasone
 flutter
 fluvius
 flux
@@ -13947,6 +14095,7 @@ folia
 folian
 foliate
 folic
+folic acid
 folicet
 folie
 folin
@@ -14048,6 +14197,7 @@ forward
 fosamax
 fosamil
 foscan
+foscarnet
 fosfree
 foshay
 fossa
@@ -14245,6 +14395,7 @@ funded
 fundi
 fundic
 funding
+fundoscopy
 funds
 fundus
 funeral
@@ -14282,6 +14433,7 @@ furniss
 furoate
 furoic
 furor
+furosemide
 furred
 furrier
 furrow
@@ -14310,6 +14462,7 @@ fuzeon
 fuzzy
 fwd
 g-actin
+gabapentin
 gabel
 gabinia
 gabon
@@ -14340,6 +14493,7 @@ galactosemia
 galago
 galanin
 galant
+galantamine
 galassi
 galaxy
 galba
@@ -14398,6 +14552,7 @@ gamonas
 gamone
 gamont
 gamulin
+ganciclovir
 gandy
 gang
 gangi
@@ -14454,6 +14609,7 @@ gastaut
 gaster
 gastr
 gastral
+gastrectomy
 gastri
 gastric
 gastric cancer
@@ -14468,6 +14624,7 @@ gastroesophageal reflux disease
 gastrointestinal
 gastroparesis
 gastroschisis
+gastroscopy
 gatch
 gate
 gated
@@ -14536,6 +14693,7 @@ geltabs
 geltex
 gelusil
 gem
+gemcitabine
 gemella
 gemelli
 gemini
@@ -14604,6 +14762,7 @@ gensia
 gensini
 genta
 gentak
+gentamicin
 gentell
 gentian
 gentle
@@ -14754,6 +14913,7 @@ glandis
 glands
 glans
 glare
+glargine
 glasgow
 glass
 glasser
@@ -14781,6 +14941,7 @@ glial
 glican
 glide
 gliding
+glimepiride
 glioblastoma
 glioma
 gliomas
@@ -14788,6 +14949,7 @@ gliopil
 glioses
 gliosis
 gliotic
+glipizide
 glisson
 glitter
 glivec
@@ -14826,6 +14988,7 @@ glottis
 glover
 gloves
 glow
+glucagon
 glucal
 glucan
 glucans
@@ -14844,6 +15007,7 @@ glutei
 gluten
 gluteus
 glutin
+glyburide
 glycal
 glycan
 glycem
@@ -14897,6 +15061,7 @@ golf
 golfer
 golfer elbow
 golgi
+golimumab
 goltz
 gomco
 gomori
@@ -15298,6 +15463,7 @@ haloes
 halog
 halogen
 haloid
+haloperidol
 halos
 halotex
 haloxon
@@ -15600,6 +15766,7 @@ hemming
 hemochromatosis
 hemocor
 hemocue
+hemodialysis
 hemofil
 hemoid
 hemolysis
@@ -15612,6 +15779,7 @@ hemophilia b
 hemoptysis
 hemorrhage
 hemorrhagic stroke
+hemorrhoidectomy
 hemorrhoids
 hemosiderosis
 hemosil
@@ -15647,6 +15815,7 @@ heparan
 heparin
 heparin therapy
 hepat
+hepatectomy
 hepatic
 hepatis
 hepatitis
@@ -15819,6 +15988,7 @@ hiola
 hiones
 hip
 hip fracture
+hip replacement
 hipbone
 hiphong
 hipped
@@ -15936,6 +16106,7 @@ hology
 holoprosencephaly
 holrp
 holter
+holter monitor
 holth
 holtz
 holub
@@ -16166,6 +16337,7 @@ hycor
 hycore
 hycure
 hydatid
+hydralazine
 hydrap
 hydrase
 hydrate
@@ -16181,11 +16353,15 @@ hydroa
 hydrocele
 hydrocephalus
 hydrocephaly
+hydrochlorothiazide
+hydrocodone
 hydroma
+hydromorphone
 hydronephrosis
 hydrops
 hydrous
 hydroxy
+hydroxychloroquine
 hyergus
 hygeia
 hygiene
@@ -16338,6 +16514,7 @@ hyssop
 hyster
 hysterectomy
 hysteria
+hysteroscopy
 hystrix
 hytic
 hytinic
@@ -16372,8 +16549,10 @@ ibm
 ibrin
 ibs
 ibuprin
+ibuprofen
 icamore
 icaps
+icd
 ice
 iceland
 iceous
@@ -16519,6 +16698,7 @@ imagn
 imago
 imagoes
 imagyn
+imatinib
 imatron
 imazine
 imbed
@@ -16534,6 +16714,7 @@ imide
 imido
 imine
 imino
+imipenem
 imitrex
 imlach
 immite
@@ -16600,6 +16781,7 @@ inchus
 incisal
 incise
 incised
+incision and drainage
 incisor
 incl
 incline
@@ -16641,6 +16823,7 @@ indium
 indocin
 indol
 indole
+indomethacin
 indoor
 indorus
 indoxyl
@@ -16681,6 +16864,7 @@ inflammatory bowel disease
 inflammatory breast cancer
 inflate
 inflexa
+infliximab
 inflow
 influenza
 influx
@@ -16848,6 +17032,7 @@ intraventricular
 intro
 intron
 introns
+intubation
 intuit
 intussusception
 inugasa
@@ -16942,6 +17127,7 @@ ipoly
 ipomea
 ipomoea
 ipral
+ipratropium
 iprical
 ips
 iptera
@@ -16951,6 +17137,7 @@ ira
 iran
 iraq
 iraqi
+irbesartan
 irc
 ircette
 ircon
@@ -16970,6 +17157,7 @@ iridica
 iridin
 iridis
 iridium
+irinotecan
 irises
 irish
 irisin
@@ -17046,6 +17234,7 @@ isomed
 isomer
 isomers
 isomil
+isoniazid
 isoodon
 isophil
 isopia
@@ -17053,6 +17242,7 @@ isopter
 isoptin
 isopto
 isordil
+isosorbide
 isotone
 isotope
 isotopy
@@ -17097,6 +17287,7 @@ itine
 itory
 itp
 itracin
+itraconazole
 itrine
 itrumil
 its
@@ -17528,18 +17719,21 @@ kesling
 keslop
 ketal
 ketalar
+ketamine
 ketaset
 ketasyn
 ketek
 ketene
 ketmia
 ketoacidosis
+ketoconazole
 ketol
 ketone
 ketones
 ketonex
 ketonic
 ketonuria
+ketorolac
 ketose
 ketoses
 ketosis
@@ -17563,6 +17757,7 @@ kid
 kiddie
 kidner
 kidney
+kidney biopsy
 kidney stones
 kidneys
 kids
@@ -17670,6 +17865,7 @@ knaus
 knautia
 knavess
 knee
+knee replacement
 kneecap
 kneepan
 knees
@@ -17826,6 +18022,7 @@ labcorp
 label
 labeled
 labels
+labetalol
 labia
 labial
 labid
@@ -17939,10 +18136,13 @@ lamina
 laminae
 laminar
 laminas
+laminectomy
 laminin
+laminotomy
 lamins
 lamisil
 lamium
+lamotrigine
 lamp
 lampas
 lampit
@@ -17983,6 +18183,7 @@ lanops
 lanosum
 lanoxin
 lansing
+lansoprazole
 lantern
 lanthes
 lantin
@@ -17991,6 +18192,8 @@ lanugo
 laos
 lap
 lapar
+laparoscopy
+laparotomy
 lapdap
 laphus
 lapidus
@@ -18206,6 +18409,7 @@ leespec
 leeuwen
 leeway
 leffvre
+leflunomide
 lefort
 left
 left heart failure
@@ -18244,6 +18448,7 @@ lemon
 lempert
 lemur
 len
+lenalidomide
 lender
 lenders
 lending
@@ -18322,6 +18527,7 @@ lessons
 lester
 lestes
 let
+letermovir
 lethal
 letheon
 letor
@@ -18359,6 +18565,7 @@ level
 levels
 levemir
 levesel
+levetiracetam
 levii
 levin
 levine
@@ -18367,9 +18574,12 @@ levitan
 levitra
 levlen
 levlite
+levodopa
+levofloxacin
 levoid
 levora
 levosin
+levothyroxine
 levoxyl
 levret
 levsin
@@ -18448,6 +18658,7 @@ lidakol
 liddell
 liddle
 lidex
+lidocaine
 lidota
 lidurus
 lie
@@ -18537,6 +18748,7 @@ lineola
 liner
 lines
 linett
+linezolid
 lingu
 lingua
 linguae
@@ -18570,6 +18782,7 @@ linux
 liomys
 lion
 lions
+liothyronine
 liotrix
 lip
 liparis
@@ -18619,9 +18832,11 @@ liqui
 liquid
 liquor
 liquous
+liraglutide
 liriope
 lisa
 lisch
+lisinopril
 lisping
 lispro
 lissive
@@ -18644,6 +18859,7 @@ lithia
 lithiasis
 lithic
 lithium
+lithotripsy
 lithous
 lithy
 litis
@@ -18665,6 +18881,7 @@ lived
 livedo
 lively
 liver
+liver biopsy
 liver failure
 livered
 lives
@@ -18707,6 +18924,7 @@ lobate
 lobated
 lobatum
 lobby
+lobectomy
 lobed
 lobelet
 lobelia
@@ -18847,6 +19065,7 @@ loops
 loose
 looser
 lop
+loperamide
 lopez
 lophila
 lophine
@@ -18864,6 +19083,7 @@ loramyc
 lorand
 lorate
 loraz
+lorazepam
 lorcet
 lord
 lordan
@@ -18881,6 +19101,7 @@ lorrain
 lortab
 lorus
 los
+losartan
 lose
 losec
 losing
@@ -18972,6 +19193,7 @@ lumbago
 lumbal
 lumbale
 lumbar
+lumbar puncture
 lumbar radiculopathy
 lumbare
 lumbric
@@ -18999,6 +19221,7 @@ lundh
 lunelle
 lunesta
 lung
+lung biopsy
 lung cancer
 lunger
 lungs
@@ -19169,6 +19392,7 @@ magnae
 magnan
 magnes
 magnet
+magnetic resonance imaging
 magni
 magnify
 magnum
@@ -19275,6 +19499,8 @@ mamma
 mammae
 mammal
 mammary
+mammogram
+mammography
 mammose
 man
 manage
@@ -19534,6 +19760,7 @@ mecbl
 mecca
 meccnu
 mechan
+mechanical ventilation
 mecism
 mecke
 meckel
@@ -19627,9 +19854,11 @@ meller
 melon
 melotia
 melotte
+meloxicam
 melting
 meltzer
 mem
+memantine
 member
 members
 membra
@@ -19690,6 +19919,7 @@ menu
 menus
 menzel
 mepitel
+mepolizumab
 mepore
 meprane
 mepron
@@ -19709,6 +19939,7 @@ merkel
 merogel
 meromelia
 meront
+meropenem
 meropia
 merrem
 merrf
@@ -19718,6 +19949,8 @@ meruvax
 mesa
 mesad
 mesal
+mesalamine
+mesalazine
 mesalt
 mesaxon
 mescal
@@ -19755,21 +19988,29 @@ metazoa
 metel
 meter
 meters
+metformin
 metformin therapy
+methadone
 methane
 methanol
 methb
 metheme
 methemoglobinemia
 methene
+methimazole
 methine
 methium
 method
 methods
+methotrexate
 methyl
+methylphenidate
+metoclopramide
+metolazone
 metop
 metopic
 metopon
+metoprolol
 metra
 metre
 metres
@@ -19778,6 +20019,7 @@ metrial
 metric
 metrix
 metro
+metronidazole
 metrorrhagia
 metry
 metula
@@ -19802,6 +20044,7 @@ mianeh
 miasma
 mibelli
 mic
+micafungin
 micanol
 micans
 micatin
@@ -19826,6 +20069,7 @@ miction
 mid
 midamor
 midarm
+midazolam
 midbody
 middle
 midface
@@ -19888,6 +20132,7 @@ million
 millon
 mills
 milpath
+milrinone
 milroy
 milton
 miltown
@@ -19921,6 +20166,7 @@ minimum
 minimus
 mining
 minocin
+minocycline
 minolta
 minor
 minora
@@ -19928,6 +20174,7 @@ minores
 minoris
 minorum
 minot
+minoxidil
 mins
 minsky
 mint
@@ -19947,6 +20194,7 @@ mircera
 mirena
 mirror
 mirrors
+mirtazapine
 misc
 miscarriage
 misce
@@ -20006,6 +20254,7 @@ mobilis
 mobin
 mobitz
 mod
+modafinil
 mode
 model
 models
@@ -20061,6 +20310,7 @@ molypen
 mom
 moment
 moments
+mometasone
 moms
 mon
 monacid
@@ -20109,6 +20359,7 @@ monstra
 montage
 montana
 monte
+montelukast
 montes
 month
 monthly
@@ -20151,6 +20402,7 @@ morocco
 moron
 morphea
 morphia
+morphine
 morphon
 morpio
 morpion
@@ -20206,6 +20458,7 @@ mould
 moulin
 moult
 mounier
+mounjaro
 mount
 mountain
 mounted
@@ -20224,6 +20477,7 @@ movies
 moving
 mower
 moxcon
+moxifloxacin
 moyer
 mozart
 mozer
@@ -20382,6 +20636,7 @@ mycobacteriosis
 mycogen
 mycolic
 mycolog
+mycophenolate
 mycoplasma
 mycoplasmosis
 mycopus
@@ -20424,6 +20679,7 @@ myology
 myoma
 myomas
 myomata
+myomectomy
 myomere
 myoneme
 myonymy
@@ -20452,6 +20708,7 @@ myricyl
 myring
 myringa
 myringitis
+myringotomy
 myrinx
 myrrh
 myrtle
@@ -20482,6 +20739,7 @@ nadph
 naegeli
 naevus
 nafate
+nafcillin
 nafld
 naftin
 nagana
@@ -20501,6 +20759,8 @@ naled
 nalfon
 nalline
 nallpen
+naloxone
+naltrexone
 nam
 name
 named
@@ -20521,6 +20781,7 @@ naphtha
 napkin
 naples
 napnes
+naproxen
 naqua
 naranol
 narasin
@@ -20692,6 +20953,7 @@ nernst
 nerol
 neroli
 nerve
+nerve conduction study
 nervea
 nerves
 nervi
@@ -20815,6 +21077,7 @@ niels
 nielsen
 niemann
 niemann-pick
+nifedipine
 niger
 nigeria
 night
@@ -20837,6 +21100,7 @@ nimotop
 nincds
 nine
 ninevah
+nintedanib
 ninth
 niobium
 nionate
@@ -20848,6 +21112,7 @@ nippe
 nipple
 nipples
 nipride
+nirmatrelvir
 nirvana
 nisin
 nissan
@@ -20866,8 +21131,11 @@ nitride
 nitrile
 nitrite
 nitro
+nitrofurantoin
+nitroglycerin
 nitrol
 nitron
+nitroprusside
 nitrose
 nitroso
 nitrous
@@ -20875,6 +21143,7 @@ nitryl
 nivazol
 niveau
 niveus
+nivolumab
 nizoral
 nlite
 nnrti
@@ -20954,6 +21223,7 @@ nopalin
 nophn
 nor
 nordach
+norepinephrine
 norflex
 norfolk
 norm
@@ -20971,6 +21241,7 @@ norrie
 norris
 north
 norton
+nortriptyline
 norum
 norvasc
 norvir
@@ -21090,6 +21361,7 @@ nyong
 nyssen
 nystagmoid
 nystagmus
+nystatin
 nysten
 nystex
 nyxis
@@ -21222,6 +21494,7 @@ oils
 okadaic
 okay
 olamine
+olanzapine
 old
 older
 oldest
@@ -21258,6 +21531,7 @@ oliver
 olives
 ollier
 olmeca
+olmesartan
 olympic
 olympus
 om
@@ -21274,6 +21548,7 @@ omenta
 omental
 omenti
 omentum
+omeprazole
 omicron
 omiderm
 omigard
@@ -21296,6 +21571,7 @@ oncosis
 oncotic
 oncovax
 oncovin
+ondansetron
 ondine
 ondiri
 one
@@ -21364,6 +21640,7 @@ opaque
 opaxio
 open
 open angle glaucoma
+open reduction internal fixation
 opened
 opening
 opens
@@ -21523,6 +21800,7 @@ oscheal
 oscillo
 oscinis
 osculum
+oseltamivir
 osgood
 osiris
 osler
@@ -21695,14 +21973,17 @@ owners
 owns
 owren
 oxacid
+oxacillin
 oxalate
 oxalic
 oxalid
+oxaliplatin
 oxalism
 oxalyl
 oxamic
 oxamide
 oxantel
+oxcarbazepine
 oxford
 oxgall
 oxidant
@@ -21718,7 +21999,9 @@ oxonic
 oxonium
 oxyacid
 oxybate
+oxybutynin
 oxycel
+oxycodone
 oxycyte
 oxydex
 oxygen
@@ -21740,6 +22023,7 @@ oxyuris
 oyster
 ozaenae
 ozelle
+ozempic
 ozena
 ozenous
 ozone
@@ -21767,6 +22051,7 @@ packet
 packets
 packing
 packs
+paclitaxel
 paco2
 pad
 padcab
@@ -21894,10 +22179,12 @@ panties
 panting
 pantoic
 panton
+pantoprazole
 pants
 panum
 panus
 panzem
+pap smear
 papain
 papains
 papaver
@@ -21924,6 +22211,7 @@ paquin
 par
 para
 paraben
+paracentesis
 paracusia
 parade
 paradox
@@ -21995,6 +22283,7 @@ parotid
 parotin
 parotitis
 parous
+paroxetine
 paroxysmal
 paroxysmal nocturnal hemoglobinuria
 parrot
@@ -22106,6 +22395,7 @@ paxene
 paxgene
 paxil
 paxipam
+paxlovid
 pay
 payable
 payday
@@ -22200,6 +22490,7 @@ pelvis
 pelvx
 pelyc
 pembina
+pembrolizumab
 pemerid
 pemphigoid
 pemphigus
@@ -22216,6 +22507,7 @@ pendred
 penfill
 penguin
 penial
+penicillin
 penile
 penis
 penitis
@@ -22286,6 +22578,8 @@ periapt
 periarteritis
 pericardial
 pericardial effusion
+pericardiectomy
+pericardiocentesis
 pericarditis
 peridex
 peridia
@@ -22311,6 +22605,7 @@ peripheral neuropathy
 peripheral vascular disease
 perire
 peritoneal
+peritoneal dialysis
 peritonitis
 peritonsillar abscess
 perl
@@ -22368,6 +22663,7 @@ peste
 pestis
 pestle
 pet
+pet scan
 pete
 petechiae
 peter
@@ -22443,12 +22739,14 @@ phenes
 phenex
 phenic
 pheno
+phenobarbital
 phenol
 phenom
 phenon
 phenoxy
 phenyl
 phenylketonuria
+phenytoin
 pheochromocytoma
 pheres
 phi
@@ -22547,6 +22845,7 @@ piano
 piazza
 pic
 pica
+picc
 picea
 pichia
 picipes
@@ -22661,11 +22960,13 @@ pinta
 pintid
 pinus
 pinworm
+pioglitazone
 pioneer
 pipanol
 pipe
 pipelle
 piper
+piperacillin
 pipes
 pipet
 pipette
@@ -22676,6 +22977,7 @@ pipizan
 pippi
 piqvre
 pirates
+pirfenidone
 piria
 pirie
 piromen
@@ -22756,6 +23058,7 @@ planum
 planus
 plaque
 plaque psoriasis
+plaquenil
 plaques
 plasia
 plasm
@@ -22878,6 +23181,7 @@ pneumoconiosis
 pneumocystis
 pneumocystis pneumonia
 pneumon
+pneumonectomy
 pneumonia
 pneumonitis
 pneumopericardium
@@ -22957,6 +23261,7 @@ polydek
 polydipsia
 polyembryoma
 polyene
+polyethylene glycol
 polygam
 polyhydramnios
 polykol
@@ -23052,6 +23357,7 @@ portion
 ports
 porus
 pos
+posaconazole
 posadas
 pose
 posicor
@@ -23136,10 +23442,12 @@ pramine
 prana
 prandin
 prantal
+pravastatin
 praxis
 pray
 prayer
 prayers
+prazosin
 pre
 prebase
 precare
@@ -23155,6 +23463,8 @@ predair
 predate
 prediabetes
 predict
+prednisolone
+prednisone
 preeclampsia
 preen
 preexisting
@@ -23165,6 +23475,7 @@ prefgel
 prefix
 preflex
 prefrin
+pregabalin
 pregnancy
 pregnyl
 pregorexia
@@ -23300,11 +23611,13 @@ probit
 problem
 probnp
 proc
+procainamide
 procan
 proceed
 procera
 process
 procet
+prochlorperazine
 procrit
 proct
 proctitis
@@ -23344,6 +23657,7 @@ prolyl
 promega
 prometa
 prometh
+promethazine
 promil
 promine
 promis
@@ -23370,10 +23684,13 @@ propine
 propion
 propionic
 proplex
+propofol
 propose
+propranolol
 propria
 proprii
 propyl
+propylthiouracil
 propyne
 proquin
 prorsad
@@ -23387,6 +23704,7 @@ prosop
 prostar
 prostate
 prostate cancer
+prostatectomy
 prostatic
 prostatitis
 prostep
@@ -23536,6 +23854,7 @@ pulmonary
 pulmonary capillary wedge pressure
 pulmonary edema
 pulmonary embolism
+pulmonary function test
 pulmonary hypertension
 pulmonary infarction
 pulmonary vascular resistance
@@ -23563,6 +23882,7 @@ pump
 pumper
 pumps
 punch
+punch biopsy
 punchdrunk
 punched
 puncta
@@ -23662,6 +23982,7 @@ pyramid
 pyramis
 pyran
 pyranyl
+pyrazinamide
 pyrene
 pyrenes
 pyret
@@ -23729,6 +24050,7 @@ queries
 query
 quest
 questus
+quetiapine
 queue
 queyrat
 qui
@@ -23855,12 +24177,14 @@ rales
 ralfe
 ralgro
 rally
+raloxifene
 ralph
 ram
 ramal
 raman
 ramex
 ramify
+ramipril
 ramitis
 ramon
 ramond
@@ -23892,6 +24216,7 @@ ranges
 ranging
 ranidae
 ranine
+ranitidine
 rank
 ranke
 ranked
@@ -23899,6 +24224,7 @@ rankin
 rankine
 ranking
 ranks
+ranolazine
 ransomi
 ranson
 ranula
@@ -23921,6 +24247,7 @@ raptiva
 raptus
 rare
 rarely
+rasagiline
 rasceta
 rash
 rasin
@@ -24149,6 +24476,7 @@ remains
 remak
 remark
 remarks
+remdesivir
 remedy
 remeron
 remijia
@@ -24263,6 +24591,7 @@ result
 results
 resume
 resumes
+resuscitation
 retail
 retain
 retained
@@ -24368,6 +24697,7 @@ rhinal
 rhinion
 rhinism
 rhinitis
+rhinoplasty
 rhinorrhea
 rhitid
 rhizo
@@ -24391,6 +24721,7 @@ rhythm
 rhythm control
 rhytid
 ribas
+ribavirin
 ribbed
 ribbert
 ribbon
@@ -24447,7 +24778,9 @@ riehl
 riesman
 rieux
 rifadin
+rifampin
 rifater
+rifaximin
 riggs
 right
 right heart failure
@@ -24492,6 +24825,7 @@ rising
 risk
 risks
 risley
+risperidone
 risser
 rissler
 risus
@@ -24502,8 +24836,11 @@ ritgen
 ritter
 ritual
 rituxan
+rituximab
 rivalry
 rivalta
+rivaroxaban
+rivastigmine
 river
 rivero
 rivers
@@ -24555,6 +24892,7 @@ rod
 rodent
 roesler
 roferon
+roflumilast
 rogaine
 roger
 rogers
@@ -24602,6 +24940,7 @@ room
 rooming
 rooms
 root
+root canal
 rooting
 rootlet
 roots
@@ -24636,6 +24975,7 @@ roster
 rostrad
 rostral
 rostrum
+rosuvastatin
 rotacs
 rotarix
 rotary
@@ -24785,6 +25125,7 @@ ruysch
 rw-cath
 rwanda
 ryan
+rybelsus
 rydelle
 rynatan
 rystan
@@ -24820,6 +25161,7 @@ sacred
 sacri
 sacro
 sacrum
+sacubitril
 sad
 saddam
 saddle
@@ -24875,6 +25217,7 @@ salivary
 salla
 salle
 sally
+salmeterol
 salmiac
 salmin
 salmine
@@ -24884,6 +25227,7 @@ salmonellosis
 salol
 salon
 salping
+salpingectomy
 salpingitis
 salpinx
 salpix
@@ -25297,6 +25641,7 @@ selsun
 selter
 selute
 selye
+semaglutide
 semed
 semel
 semen
@@ -25335,6 +25680,7 @@ senitol
 senium
 senna
 senning
+sennosides
 senokot
 senopia
 sensar
@@ -25371,6 +25717,7 @@ septica
 septicemia
 septile
 septo
+septoplasty
 septra
 septula
 septum
@@ -25421,6 +25768,7 @@ serrati
 serre
 serres
 sertoli
+sertraline
 serum
 serumal
 servat
@@ -25504,6 +25852,7 @@ sharp
 sharpey
 sharpx
 shave
+shave biopsy
 shaved
 shaver
 shaw
@@ -25637,6 +25986,7 @@ sighing
 sight
 sigma
 sigmoid
+sigmoidoscopy
 sigmund
 sign
 signa
@@ -25662,6 +26012,7 @@ silanes
 silber
 silcone
 sildec
+sildenafil
 silence
 silent
 silex
@@ -25709,6 +26060,7 @@ sims
 simul
 simulus
 simus
+simvastatin
 sin
 sinal
 sinaxar
@@ -25736,6 +26088,7 @@ sinulin
 sinuous
 sinus
 sinus bradycardia
+sinus surgery
 sinus tachycardia
 sinusal
 sinuses
@@ -25755,6 +26108,7 @@ sister
 sisters
 sisto
 sit
+sitagliptin
 site
 sitemap
 sites
@@ -25786,6 +26140,7 @@ skill
 skilled
 skills
 skin
+skin biopsy
 skin cancer
 skin rash
 skinner
@@ -25825,6 +26180,7 @@ slime
 sling
 slip
 slipped
+slit lamp
 slits
 slope
 slosson
@@ -26170,6 +26526,7 @@ spinach
 spinae
 spinal
 spinal cord injury
+spinal fusion
 spinale
 spinant
 spinate
@@ -26193,6 +26550,8 @@ spiriva
 spiro
 spiroid
 spiroma
+spirometry
+spironolactone
 spiros
 spitz
 spitzer
@@ -26206,6 +26565,7 @@ splenomegaly
 splice
 spline
 splint
+splinting
 splints
 split
 spoke
@@ -26449,6 +26809,7 @@ sternen
 sterni
 sterno
 sternoclavicular
+sternotomy
 sternum
 steroid
 sterol
@@ -26580,6 +26941,7 @@ strepto
 streptococcal
 stress
 stress fracture
+stress test
 stretch
 stretta
 stria
@@ -26685,6 +27047,7 @@ subutex
 succeed
 success
 succi
+succinylcholine
 succus
 succuss
 such
@@ -26695,6 +27058,7 @@ suckle
 sucks
 sucquet
 sucraid
+sucralfate
 sucrase
 sucrate
 sucrose
@@ -26712,6 +27076,7 @@ sudoris
 sue
 suerte
 sufenta
+sufentanil
 suffer
 suffocation
 sugar
@@ -26737,6 +27102,8 @@ sulci
 sulcus
 sulfa
 sulfair
+sulfamethoxazole
+sulfasalazine
 sulfate
 sulfide
 sulfite
@@ -26846,6 +27213,7 @@ suturae
 sutural
 suture
 sutures
+suturing
 suzanne
 suzuki
 svante
@@ -27011,6 +27379,7 @@ tachypnea
 tachypneic
 tackle
 tacrine
+tacrolimus
 tactic
 tactics
 tactile
@@ -27019,6 +27388,7 @@ tactoid
 tactor
 tactual
 tactus
+tadalafil
 tadpole
 taenia
 taeniae
@@ -27085,11 +27455,13 @@ tamiami
 tamiflu
 tamil
 tamine
+tamoxifen
 tampa
 tampan
 tampanade
 tampon
 tamponade
+tamsulosin
 tamus
 tan
 tanac
@@ -27173,6 +27545,7 @@ tauber
 taught
 taurine
 taussig
+tavi
 tavist
 tavr
 tawara
@@ -27258,15 +27631,18 @@ telinde
 tell
 telling
 tells
+telmisartan
 telogen
 telson
 temaril
+temazepam
 tembids
 temefos
 temin
 temodal
 temodar
 temodox
+temozolomide
 temp
 tempeh
 tempera
@@ -27404,6 +27780,7 @@ tetanic
 tetanus
 tetany
 tetra
+tetracycline
 tetrad
 tetralogy
 tetralogy of fallot
@@ -27479,6 +27856,7 @@ theobid
 theodur
 theofed
 theolin
+theophylline
 theorem
 theory
 theque
@@ -27542,9 +27920,11 @@ thong
 thongs
 thora
 thorac
+thoracentesis
 thoracic
 thoracic aortic aneurysm
 thoraco
+thoracotomy
 thorax
 thorel
 thorium
@@ -27635,6 +28015,7 @@ tibial
 tibiale
 tibric
 tic
+ticagrelor
 ticar
 ticche
 tick
@@ -27702,6 +28083,7 @@ tinver
 tiny
 tion
 tions
+tiotropium
 tip
 tipped
 tipping
@@ -27713,6 +28095,7 @@ tiredness
 tires
 tiring
 tiron
+tirzepatide
 tisseel
 tissot
 tissue
@@ -27742,8 +28125,10 @@ tobago
 tobey
 tobia
 tobold
+tobramycin
 tobrex
 tobruk
+tocilizumab
 toclase
 tocol
 todaro
@@ -27756,6 +28141,7 @@ toennis
 toepfer
 toes
 tof
+tofacitinib
 togoi
 toilet
 toison
@@ -27797,6 +28183,7 @@ tonic
 tonight
 tonite
 tonka
+tonometry
 tons
 tonsil
 tonsill
@@ -27813,6 +28200,7 @@ toolbox
 toolkit
 tools
 tooth
+tooth extraction
 top
 topamax
 tophi
@@ -27821,6 +28209,7 @@ tophus
 topic
 topical
 topics
+topiramate
 topless
 toponym
 toposar
@@ -27850,6 +28239,7 @@ torres
 torreya
 torrs
 torsade
+torsemide
 torsion
 torsive
 torso
@@ -27929,6 +28319,7 @@ tracheo
 tracheobronchitis
 tracheomalacia
 tracheostenosis
+tracheostomy
 trachoma
 tracing
 track
@@ -27963,6 +28354,7 @@ trainer
 trains
 trait
 tralles
+tramadol
 trance
 tranche
 tranmep
@@ -27979,11 +28371,13 @@ transitional
 transitional cell carcinoma
 transposition
 transposition of the great arteries
+transurethral resection
 trantas
 trap
 trapeze
 trapp
 trash
+trastuzumab
 traube
 traum
 trauma
@@ -28000,6 +28394,7 @@ travert
 travis
 traxis
 tray
+trazodone
 treace
 tread
 treanda
@@ -28108,6 +28503,7 @@ trima
 trimer
 trimeta
 trimeth
+trimethoprim
 trimox
 trimpex
 trinam
@@ -28227,6 +28623,7 @@ tubadil
 tubae
 tubage
 tubal
+tubal ligation
 tubales
 tubalis
 tubam
@@ -28294,6 +28691,7 @@ tunics
 tuning
 tunisia
 tunnel
+tunneled catheter
 tunnels
 tuohy
 tupaia
@@ -28566,6 +28964,7 @@ unto
 unusual
 unwrap
 upacgm
+upadacitinib
 upbeat
 upc
 update
@@ -28630,6 +29029,7 @@ ureteral
 ureteric
 uretero
 ureterolithiasis
+ureteroscopy
 ureters
 urethan
 urethr
@@ -28700,6 +29100,7 @@ urovist
 uroxin
 urozide
 ursinus
+ursodiol
 urtica
 urticaria
 uruguay
@@ -28730,6 +29131,7 @@ uspto
 usr
 ussing
 usssi
+ustekinumab
 ustion
 usual
 usually
@@ -28807,6 +29209,7 @@ vagrant
 vagus
 vairox
 val
+valacyclovir
 valcyte
 valence
 valency
@@ -28817,6 +29220,7 @@ valeria
 valeric
 valex
 valga
+valganciclovir
 valgum
 valgus
 valid
@@ -28832,6 +29236,8 @@ vallum
 valmid
 valnac
 valpin
+valproate
+valsartan
 valstar
 valtrex
 value
@@ -28853,6 +29259,7 @@ vampire
 van
 van't
 vanadic
+vancomycin
 vancor
 vanex
 vanilla
@@ -28903,6 +29310,7 @@ vascular dementia
 vasculi
 vasculitis
 vasculo
+vasectomy
 vashe
 vasitis
 vasocon
@@ -28974,6 +29382,7 @@ venereal
 veneris
 venery
 venice
+venlafaxine
 venofer
 venom
 venomil
@@ -29018,6 +29427,7 @@ vepesid
 ver
 verae
 veralba
+verapamil
 verbal
 vercyte
 verde
@@ -29174,6 +29584,7 @@ vimrxyn
 vinca
 vincent
 vincrex
+vincristine
 vincula
 vinegar
 vinic
@@ -29288,6 +29699,7 @@ vitrase
 vitrax
 vitrea
 vitreal
+vitrectomy
 vitrein
 vitreous
 vitreum
@@ -29358,6 +29770,7 @@ von willebrand disease
 vontrol
 voodoo
 voranil
+voriconazole
 vortex
 vosol
 vossius
@@ -29453,6 +29866,7 @@ warburg
 ward
 wardrop
 ware
+warfarin
 warfarin therapy
 waring
 warm
@@ -29541,6 +29955,7 @@ weevil
 wegener
 wegeners
 wegner
+wegovy
 wehgen
 weibel
 weidel
@@ -29821,6 +30236,7 @@ wygesic
 wymox
 wyoming
 x ray
+x-ray
 xalatan
 xalcom
 xalieve
@@ -29969,6 +30385,7 @@ zaleski
 zambia
 zambon
 zamyl
+zanamivir
 zander
 zanosar
 zantac
@@ -30051,9 +30468,11 @@ zoalene
 zocor
 zofran
 zoladex
+zoledronate
 zolicef
 zolinza
 zoloft
+zolpidem
 zolyse
 zomaril
 zomax
