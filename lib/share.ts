@@ -1,6 +1,6 @@
 import type { GameState } from './types';
 
-const SITE_URL = 'https://clinicle.app';
+const SITE_URL = 'https://www.cliniclegame.app/';
 const SITE_DISPLAY = 'clinicle.app';
 
 function scoreEmoji(rank: number | null): string {
@@ -49,13 +49,10 @@ export function buildShareString(
   const stars = starLine(difficulty);
   const time = formatTime(state.timeMs);
 
-  // Build the "in TIME using N guesses and M hints" clause. Time and
-  // hints are optional; guesses is always present.
   const parts: string[] = [];
   if (state.won && time) parts.push(`in ${time}`);
   parts.push(
-    `using ${formatGuesses(state.guesses.length)}` +
-      (state.hintsUsed > 0 ? ` and ${formatHints(state.hintsUsed)}` : ''),
+    `using ${formatGuesses(state.guesses.length)} and ${formatHints(state.hintsUsed)}`,
   );
 
   const headline = state.won
@@ -63,7 +60,7 @@ export function buildShareString(
     : `Today's Clinicle #${num}${stars} beat me ${parts.join(' ')}.`;
 
   const cta = `Can you beat me? Play today at ${SITE_DISPLAY}`;
-  const tags = '@ClinicleGame @PraneetMylavarapu #Clinicle #MedTwitter';
+  const tags = '@ClinicleGame #Clinicle #MedTwitter';
 
   return [headline, '', ...grid, '', cta, '', tags].join('\n');
 }

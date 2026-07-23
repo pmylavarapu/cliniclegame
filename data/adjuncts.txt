@@ -509,3 +509,1327 @@ breathless
 racing heart
 heart pounding
 throw up
+
+# ================================================================
+# PHYSIOLOGY / HEMATOLOGY / CHEMISTRY / IMMUNOLOGY / ENDOCRINE SWEEP
+# Added 2026-07-23 — plug ~800 core basic-science + lab terms that
+# the glutanimate wordlist source didn't ship.
+# ================================================================
+
+# --- Hematology: cells + fractions ---
+hemoglobin
+haemoglobin
+hemoglobin a
+hemoglobin a1c
+hemoglobin s
+hemoglobin c
+hemoglobin f
+hemoglobin electrophoresis
+methemoglobin
+carboxyhemoglobin
+oxyhemoglobin
+myoglobin
+hematocrit
+haematocrit
+mcv
+mch
+mchc
+rdw
+reticulocyte
+reticulocytes
+reticulocytosis
+reticulocytopenia
+erythrocyte
+erythrocytes
+erythrocytosis
+erythropoiesis
+erythropoietin
+epo
+red blood cell
+red blood cells
+rbc
+white blood cell
+white blood cells
+wbc
+leukocyte
+leukocytes
+leukocytosis
+leukopenia
+leukocyte esterase
+neutrophil
+neutrophils
+neutrophilia
+neutropenia
+banded neutrophil
+band cell
+segmented neutrophil
+lymphocyte
+lymphocytes
+lymphocytosis
+lymphopenia
+monocyte
+monocytes
+monocytosis
+eosinophil
+eosinophils
+eosinophilia
+basophil
+basophils
+basophilia
+platelet
+platelets
+thrombocyte
+thrombocytosis
+thrombocytopenia
+megakaryocyte
+plasma
+serum
+whole blood
+buffy coat
+hematology
+haematology
+haem
+heme
+
+# --- Hematology: coagulation ---
+fibrin
+fibrinogen
+fibrinolysis
+thrombin
+prothrombin
+prothrombin time
+pt
+ptt
+aptt
+inr
+d-dimer
+d dimer
+ddimer
+factor v
+factor vii
+factor viii
+factor ix
+factor x
+factor xi
+factor xiii
+von willebrand factor
+vwf
+antithrombin
+antithrombin iii
+protein c
+protein s
+tissue factor
+plasminogen
+tpa
+alteplase
+heparin cofactor
+anti-xa
+anti xa
+bleeding time
+clotting time
+clot
+thrombus
+embolus
+embolism
+thromboembolism
+coagulopathy
+
+# --- Chemistry / basic metabolic panel + ---
+sodium
+na+
+potassium
+k+
+chloride
+cl-
+bicarbonate
+hco3
+bun
+blood urea nitrogen
+urea
+creatinine
+egfr
+gfr
+anion gap
+osmolality
+osmolarity
+lactate
+lactic acid
+ammonia
+ph
+pao2
+paco2
+sao2
+spo2
+base excess
+base deficit
+glucose
+fasting glucose
+random glucose
+hba1c
+hemoglobin a1c
+insulin
+c peptide
+c-peptide
+fructosamine
+ketones
+ketone bodies
+beta hydroxybutyrate
+acetoacetate
+acetone
+
+# --- Chemistry / LFTs ---
+alt
+ast
+alp
+alkaline phosphatase
+ggt
+gamma glutamyl transferase
+bilirubin
+total bilirubin
+direct bilirubin
+indirect bilirubin
+conjugated bilirubin
+unconjugated bilirubin
+albumin
+globulin
+total protein
+prealbumin
+transthyretin
+
+# --- Chemistry / lipids + cardiac ---
+cholesterol
+total cholesterol
+ldl
+ldl cholesterol
+hdl
+hdl cholesterol
+vldl
+triglycerides
+apolipoprotein
+apoa1
+apob
+lipoprotein a
+lp(a)
+troponin
+troponin i
+troponin t
+high sensitivity troponin
+hs troponin
+hs-troponin
+ck
+creatine kinase
+ck-mb
+myoglobin
+bnp
+b-type natriuretic peptide
+brain natriuretic peptide
+nt-probnp
+nt probnp
+ntprobnp
+n-terminal pro-bnp
+probnp
+pro bnp
+pro-bnp
+anp
+atrial natriuretic peptide
+copeptin
+
+# --- Chemistry / inflammatory + endocrine ---
+crp
+c-reactive protein
+c reactive protein
+hs crp
+esr
+sed rate
+sedimentation rate
+procalcitonin
+ferritin
+transferrin
+transferrin saturation
+tibc
+iron
+serum iron
+soluble transferrin receptor
+haptoglobin
+ceruloplasmin
+copper
+zinc
+vitamin b12
+b12
+folate
+folic acid
+methylmalonic acid
+homocysteine
+vitamin d
+25 hydroxyvitamin d
+25-oh vitamin d
+1,25 dihydroxyvitamin d
+vitamin k
+vitamin a
+vitamin e
+vitamin c
+ascorbic acid
+thiamine
+riboflavin
+niacin
+pyridoxine
+biotin
+
+# --- Endocrine hormones + axes ---
+tsh
+free t4
+free t3
+total t4
+total t3
+thyroxine
+triiodothyronine
+thyroglobulin
+thyroid peroxidase
+tpo antibody
+tsi
+trab
+reverse t3
+cortisol
+morning cortisol
+salivary cortisol
+acth
+adrenocorticotropic hormone
+crh
+corticotropin releasing hormone
+aldosterone
+renin
+plasma renin activity
+aldosterone renin ratio
+metanephrines
+plasma metanephrines
+urine metanephrines
+catecholamines
+epinephrine
+adrenaline
+norepinephrine
+noradrenaline
+dopamine
+serotonin
+5 hiaa
+5-hiaa
+vma
+vanillylmandelic acid
+homovanillic acid
+insulin like growth factor
+igf 1
+igf-1
+growth hormone
+gh
+prolactin
+oxytocin
+adh
+vasopressin
+antidiuretic hormone
+pth
+parathyroid hormone
+calcitonin
+25 hydroxyvitamin d
+1 25 dihydroxyvitamin d
+fsh
+follicle stimulating hormone
+lh
+luteinizing hormone
+estradiol
+estrone
+estriol
+progesterone
+testosterone
+free testosterone
+dhea
+dhea s
+dhea-s
+shbg
+sex hormone binding globulin
+hcg
+beta hcg
+inhibin
+amh
+anti mullerian hormone
+melatonin
+leptin
+ghrelin
+adiponectin
+glucagon
+somatostatin
+gastrin
+secretin
+cck
+cholecystokinin
+gip
+glp 1
+glp-1
+
+# --- Immunology / inflammation ---
+antibody
+antibodies
+antigen
+epitope
+immunoglobulin
+igg
+igm
+iga
+igd
+ige
+subclass igg1
+subclass igg4
+complement
+c3
+c4
+ch50
+cd4
+cd8
+cd19
+cd20
+cd3
+t cell
+t cells
+b cell
+b cells
+plasma cell
+plasma cells
+macrophage
+macrophages
+dendritic cell
+natural killer cell
+nk cell
+mast cell
+histamine
+tryptase
+cytokine
+cytokines
+interleukin
+il 1
+il 2
+il 4
+il 5
+il 6
+il 8
+il 10
+il 17
+il 23
+tnf
+tnf alpha
+tumor necrosis factor
+interferon
+interferon alpha
+interferon beta
+interferon gamma
+tgf beta
+transforming growth factor
+chemokine
+chemokines
+mhc
+hla
+hla b27
+hla dr
+autoantibody
+autoantibodies
+ana
+antinuclear antibody
+anti dsdna
+anti smith
+anti ssa
+anti ssb
+anti ro
+anti la
+anti ccp
+rheumatoid factor
+rf
+anca
+c anca
+p anca
+anti mpo
+anti pr3
+anti gbm
+anti tpo
+anti ttg
+anti endomysial
+anti mitochondrial
+ama
+anti smooth muscle
+asma
+anti scl 70
+anti centromere
+anti jo 1
+anti histone
+cryoglobulin
+paraprotein
+monoclonal gammopathy
+serum protein electrophoresis
+spep
+upep
+immunofixation
+free light chains
+kappa
+lambda
+kappa lambda ratio
+
+# --- Cell / tissue anatomy ---
+endothelium
+endothelial
+epithelium
+epithelial
+squamous epithelium
+columnar epithelium
+cuboidal epithelium
+mucosa
+submucosa
+serosa
+muscularis
+muscularis mucosae
+lamina propria
+basement membrane
+extracellular matrix
+myocardium
+epicardium
+endocardium
+pericardium
+pericardial sac
+alveolus
+alveoli
+bronchiole
+bronchioles
+bronchus
+bronchi
+trachea
+larynx
+pharynx
+pleura
+visceral pleura
+parietal pleura
+nephron
+glomerulus
+glomeruli
+bowman capsule
+proximal tubule
+distal tubule
+loop of henle
+collecting duct
+juxtaglomerular apparatus
+podocyte
+podocytes
+mesangium
+mesangial cell
+hepatocyte
+hepatocytes
+kupffer cell
+stellate cell
+sinusoid
+canaliculus
+osteoblast
+osteoclast
+osteocyte
+chondrocyte
+chondrocytes
+synovium
+synovial fluid
+synoviocyte
+enthesis
+sarcomere
+myofibril
+myocyte
+cardiomyocyte
+myosin
+actin
+troponin complex
+tropomyosin
+z disc
+sarcolemma
+sarcoplasm
+sarcoplasmic reticulum
+motor neuron
+sensory neuron
+interneuron
+axon
+axons
+dendrite
+dendrites
+synapse
+synapses
+neurotransmitter
+myelin
+myelin sheath
+oligodendrocyte
+schwann cell
+astrocyte
+astrocytes
+microglia
+ependyma
+ependymal cell
+choroid plexus
+neuroglia
+glia
+glial cell
+ganglion
+ganglia
+purkinje cell
+purkinje fiber
+node of ranvier
+axon hillock
+dendritic spine
+presynaptic
+postsynaptic
+neuromuscular junction
+motor endplate
+end plate
+end-plate
+sarcomere
+sarcoplasm
+enterocyte
+goblet cell
+paneth cell
+parietal cell
+chief cell
+g cell
+d cell
+enterochromaffin cell
+melanocyte
+keratinocyte
+langerhans cell
+merkel cell
+sebaceous gland
+sweat gland
+apocrine gland
+eccrine gland
+
+# --- Physiology / mechanisms ---
+depolarization
+repolarization
+action potential
+resting membrane potential
+threshold potential
+refractory period
+absolute refractory
+relative refractory
+sodium potassium pump
+na k atpase
+calcium channel
+sodium channel
+potassium channel
+chloride channel
+voltage gated
+ligand gated
+g protein
+gpcr
+g protein coupled receptor
+second messenger
+cyclic amp
+camp
+cyclic gmp
+cgmp
+inositol triphosphate
+ip3
+diacylglycerol
+dag
+adenylate cyclase
+guanylate cyclase
+phospholipase c
+protein kinase a
+pka
+protein kinase c
+pkc
+mitochondria
+mitochondrion
+electron transport chain
+etc
+oxidative phosphorylation
+atp
+adenosine triphosphate
+adp
+amp
+nadh
+nadph
+fadh2
+krebs cycle
+citric acid cycle
+tca cycle
+glycolysis
+gluconeogenesis
+glycogenolysis
+glycogenesis
+lipolysis
+lipogenesis
+beta oxidation
+ketogenesis
+urea cycle
+pentose phosphate pathway
+cori cycle
+alanine cycle
+cholesterol synthesis
+hmg coa reductase
+statin target
+sodium potassium exchange
+countercurrent multiplier
+gas exchange
+diffusion
+osmosis
+active transport
+passive transport
+facilitated diffusion
+endocytosis
+exocytosis
+phagocytosis
+pinocytosis
+apoptosis
+necrosis
+autophagy
+ferroptosis
+pyroptosis
+mitosis
+meiosis
+cell cycle
+g1 phase
+s phase
+g2 phase
+m phase
+transcription
+translation
+splicing
+mrna
+trna
+rrna
+mirna
+ribosome
+proteasome
+ubiquitin
+enzyme
+substrate
+cofactor
+coenzyme
+allosteric
+
+# --- Microbiology / pathogens ---
+gram positive
+gram negative
+gram stain
+acid fast
+acid-fast
+mycobacterium
+mycobacterium tuberculosis
+mycobacterium avium
+staphylococcus
+staphylococcus aureus
+mrsa
+mssa
+staphylococcus epidermidis
+streptococcus
+streptococcus pyogenes
+group a strep
+group b strep
+gbs
+streptococcus pneumoniae
+pneumococcus
+streptococcus agalactiae
+enterococcus
+enterococcus faecalis
+enterococcus faecium
+vre
+escherichia coli
+e coli
+klebsiella
+klebsiella pneumoniae
+pseudomonas
+pseudomonas aeruginosa
+serratia
+serratia marcescens
+enterobacter
+proteus
+proteus mirabilis
+salmonella
+shigella
+campylobacter
+helicobacter pylori
+h pylori
+clostridium difficile
+c diff
+c. diff
+clostridium tetani
+clostridium botulinum
+clostridium perfringens
+bacillus
+bacillus anthracis
+listeria
+listeria monocytogenes
+neisseria gonorrhoeae
+neisseria meningitidis
+haemophilus influenzae
+h flu
+bordetella pertussis
+mycoplasma
+mycoplasma pneumoniae
+chlamydia
+chlamydia trachomatis
+chlamydophila pneumoniae
+legionella
+legionella pneumophila
+treponema pallidum
+borrelia
+borrelia burgdorferi
+leptospira
+rickettsia
+ehrlichia
+anaplasma
+bartonella
+brucella
+francisella
+tularensis
+yersinia
+yersinia pestis
+vibrio cholerae
+vibrio vulnificus
+candida
+candida albicans
+aspergillus
+aspergillus fumigatus
+cryptococcus
+cryptococcus neoformans
+pneumocystis
+pneumocystis jirovecii
+pjp
+histoplasma
+coccidioides
+blastomyces
+mucor
+plasmodium
+plasmodium falciparum
+plasmodium vivax
+plasmodium ovale
+plasmodium malariae
+toxoplasma
+toxoplasma gondii
+giardia
+giardia lamblia
+entamoeba
+entamoeba histolytica
+cryptosporidium
+trypanosoma
+leishmania
+schistosoma
+influenza a
+influenza b
+influenza virus
+rsv
+respiratory syncytial virus
+sars cov 2
+sars-cov-2
+covid
+covid 19
+covid-19
+adenovirus
+rhinovirus
+coronavirus
+parainfluenza
+metapneumovirus
+hmpv
+hpv
+human papillomavirus
+hepatitis a
+hepatitis b
+hepatitis c
+hepatitis d
+hepatitis e
+hav
+hbv
+hcv
+hdv
+hev
+herpes simplex
+hsv 1
+hsv 2
+varicella zoster
+vzv
+epstein barr
+ebv
+cytomegalovirus
+cmv
+human herpesvirus 6
+hhv 6
+hhv 8
+kaposi sarcoma virus
+kshv
+hiv
+htlv
+rotavirus
+norovirus
+measles
+mumps
+rubella
+parvovirus
+parvovirus b19
+zika
+dengue
+west nile
+yellow fever
+chikungunya
+ebola
+marburg
+hantavirus
+prion
+prions
+
+# --- Imaging / techniques ---
+ct scan
+ct
+computed tomography
+mri
+magnetic resonance imaging
+mra
+mrv
+ultrasound
+duplex ultrasound
+doppler
+echocardiogram
+echo
+transthoracic echo
+tte
+transesophageal echo
+tee
+pet scan
+pet
+pet-ct
+spect
+xray
+x ray
+x-ray
+chest x ray
+chest xray
+cxr
+kub
+mammogram
+mammography
+dexa
+dexa scan
+bone density scan
+fluoroscopy
+angiography
+angiogram
+coronary angiography
+ct angiography
+cta
+cardiac mri
+cardiac ct
+brain mri
+brain ct
+head ct
+abdominal ct
+pelvic ct
+lumbar puncture
+lp
+csf
+cerebrospinal fluid
+endoscopy
+egd
+esophagogastroduodenoscopy
+colonoscopy
+sigmoidoscopy
+bronchoscopy
+cystoscopy
+laparoscopy
+biopsy
+core biopsy
+fine needle aspiration
+fna
+excisional biopsy
+incisional biopsy
+holter monitor
+event monitor
+loop recorder
+implantable loop recorder
+ecg
+ekg
+electrocardiogram
+electroencephalogram
+eeg
+electromyogram
+emg
+nerve conduction study
+ncs
+pulmonary function test
+pft
+spirometry
+peak flow
+polysomnography
+sleep study
+
+# --- Pharmacology / classes + mechanisms ---
+beta blocker
+beta blockers
+ace inhibitor
+ace inhibitors
+arb
+angiotensin receptor blocker
+calcium channel blocker
+ccb
+diuretic
+loop diuretic
+thiazide
+potassium sparing
+spironolactone
+eplerenone
+statin
+statins
+pcsk9 inhibitor
+ezetimibe
+fibrate
+niacin therapy
+anticoagulant
+anticoagulants
+warfarin
+doac
+noac
+direct oral anticoagulant
+apixaban
+rivaroxaban
+dabigatran
+edoxaban
+low molecular weight heparin
+lmwh
+unfractionated heparin
+enoxaparin
+fondaparinux
+antiplatelet
+aspirin
+clopidogrel
+prasugrel
+ticagrelor
+p2y12 inhibitor
+nsaid
+nsaids
+non steroidal anti inflammatory
+cox 2 inhibitor
+celecoxib
+opioid
+opioids
+morphine
+oxycodone
+hydrocodone
+fentanyl
+methadone
+buprenorphine
+naloxone
+naltrexone
+benzodiazepine
+benzodiazepines
+lorazepam
+diazepam
+midazolam
+alprazolam
+ssri
+snri
+tricyclic antidepressant
+tca
+maoi
+antipsychotic
+antipsychotics
+typical antipsychotic
+atypical antipsychotic
+haloperidol
+risperidone
+olanzapine
+quetiapine
+aripiprazole
+clozapine
+antiepileptic
+antiepileptics
+levetiracetam
+phenytoin
+valproate
+carbamazepine
+lamotrigine
+antibiotic
+antibiotics
+penicillin
+amoxicillin
+amoxicillin clavulanate
+cephalosporin
+cefazolin
+ceftriaxone
+cefepime
+carbapenem
+meropenem
+imipenem
+ertapenem
+macrolide
+azithromycin
+clarithromycin
+erythromycin
+fluoroquinolone
+ciprofloxacin
+levofloxacin
+moxifloxacin
+tetracycline
+doxycycline
+minocycline
+aminoglycoside
+gentamicin
+tobramycin
+amikacin
+vancomycin
+linezolid
+daptomycin
+metronidazole
+clindamycin
+sulfonamide
+trimethoprim sulfamethoxazole
+bactrim
+antifungal
+fluconazole
+itraconazole
+voriconazole
+posaconazole
+amphotericin b
+caspofungin
+antiviral
+oseltamivir
+tamiflu
+acyclovir
+valacyclovir
+ganciclovir
+valganciclovir
+remdesivir
+paxlovid
+nirmatrelvir
+antiretroviral
+haart
+art
+tenofovir
+emtricitabine
+dolutegravir
+biologic
+biologics
+tnf inhibitor
+adalimumab
+infliximab
+etanercept
+il 6 inhibitor
+tocilizumab
+il 17 inhibitor
+secukinumab
+il 23 inhibitor
+ustekinumab
+rituximab
+belimumab
+b cell depletion
+jak inhibitor
+tofacitinib
+baricitinib
+upadacitinib
+chemotherapy
+chemo
+cytotoxic
+alkylating agent
+platinum agent
+cisplatin
+carboplatin
+oxaliplatin
+taxane
+paclitaxel
+docetaxel
+anthracycline
+doxorubicin
+daunorubicin
+antimetabolite
+methotrexate
+5 fluorouracil
+5-fu
+gemcitabine
+capecitabine
+immunotherapy
+checkpoint inhibitor
+pd 1 inhibitor
+pembrolizumab
+nivolumab
+pd l1 inhibitor
+atezolizumab
+ctla 4 inhibitor
+ipilimumab
+targeted therapy
+tyrosine kinase inhibitor
+tki
+imatinib
+erlotinib
+gefitinib
+osimertinib
+
+# --- Clinical / exam findings ---
+tachycardia
+bradycardia
+tachypnea
+bradypnea
+hypertension
+hypotension
+hypoxia
+hypoxemia
+hypercapnia
+hypocapnia
+hyperkalemia
+hypokalemia
+hypernatremia
+hyponatremia
+hypercalcemia
+hypocalcemia
+hyperphosphatemia
+hypophosphatemia
+hypermagnesemia
+hypomagnesemia
+hyperglycemia
+hypoglycemia
+hyperlipidemia
+hypertriglyceridemia
+hyperuricemia
+hyperammonemia
+acidosis
+alkalosis
+metabolic acidosis
+metabolic alkalosis
+respiratory acidosis
+respiratory alkalosis
+lactic acidosis
+ketoacidosis
+diabetic ketoacidosis
+dka
+hyperosmolar hyperglycemic state
+hhs
+anion gap acidosis
+non anion gap acidosis
+mixed acid base
+fever
+low grade fever
+rigors
+chills
+diaphoresis
+sweats
+night sweats
+weight loss
+weight gain
+fatigue
+malaise
+myalgia
+myalgias
+arthralgia
+arthralgias
+lymphadenopathy
+splenomegaly
+hepatomegaly
+hepatosplenomegaly
+ascites
+edema
+pitting edema
+anasarca
+jvd
+jugular venous distension
+elevated jvp
+kussmaul sign
+pulsus paradoxus
+pulsus alternans
+water hammer pulse
+bounding pulse
+thready pulse
+capillary refill
+cyanosis
+peripheral cyanosis
+central cyanosis
+clubbing
+digital clubbing
+jaundice
+icterus
+scleral icterus
+petechiae
+purpura
+ecchymosis
+ecchymoses
+telangiectasia
+spider angioma
+palmar erythema
+xanthoma
+xanthelasma
+kayser fleischer ring
+osler node
+janeway lesion
+roth spot
+splinter hemorrhage
+finger clubbing
+gynecomastia
+goiter
+thyromegaly
+exophthalmos
+proptosis
+lid lag
+lagophthalmos
+ptosis
+miosis
+mydriasis
+anisocoria
+nystagmus
+horner syndrome
+babinski sign
+babinski
+hoffmann sign
+clonus
+hyperreflexia
+hyporeflexia
+areflexia
+rigidity
+cogwheel rigidity
+lead pipe rigidity
+tremor
+resting tremor
+intention tremor
+essential tremor
+chorea
+athetosis
+dystonia
+dyskinesia
+bradykinesia
+akinesia
+myoclonus
+fasciculation
+fasciculations
+tetany
+trousseau sign
+chvostek sign
+
+# --- Antibiotics resistance / lab reporting ---
+mrsa
+mssa
+vre
+esbl
+crE
+carbapenem resistant enterobacteriaceae
+cre
+minimum inhibitory concentration
+mic
+susceptibility
+resistant
+intermediate
+susceptible
+sensitive
+
+# --- Common tumor markers ---
+psa
+prostate specific antigen
+cea
+carcinoembryonic antigen
+ca 125
+ca125
+ca 19 9
+ca19-9
+afp
+alpha fetoprotein
+beta hcg
+lactate dehydrogenase
+ldh
+neuron specific enolase
+nse
+chromogranin
+chromogranin a
+5 hiaa
+calcitonin
+thyroglobulin
+tumor marker
+tumor markers

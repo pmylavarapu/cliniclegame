@@ -1,3 +1,11 @@
+1 25 dihydroxyvitamin d
+1,25 dihydroxyvitamin d
+25 hydroxyvitamin d
+25-oh vitamin d
+5 fluorouracil
+5 hiaa
+5-fu
+5-hiaa
 a-helix
 a-zasa
 aaa
@@ -35,6 +43,7 @@ abciss
 abcock
 abdomen
 abdominal aortic aneurysm
+abdominal ct
 abdominal pain
 abducens
 abducent
@@ -157,6 +166,7 @@ absent
 absidia
 absinthe
 absolute
+absolute refractory
 absorb
 absorbed
 absorber
@@ -271,6 +281,7 @@ accutech
 accuzyme
 ace
 ace inhibitor
+ace inhibitors
 aceae
 acean
 aceana
@@ -314,6 +325,7 @@ acetic
 acetify
 acetin
 aceto
+acetoacetate
 acetoin
 acetol
 acetone
@@ -382,6 +394,8 @@ achymous
 acicular
 aciculum
 acid
+acid fast
+acid-fast
 acidemia
 acidic
 acidific
@@ -539,6 +553,7 @@ actelion
 actemra
 acter
 acterium
+acth
 acthar
 acthib
 acthrel
@@ -567,6 +582,7 @@ actino
 actinon
 actinula
 action
+action potential
 actiones
 actions
 actiprep
@@ -576,6 +592,7 @@ actisite
 activa
 activase
 active
+active transport
 active tuberculosis
 actively
 activent
@@ -737,11 +754,14 @@ adenomas
 adenomyosis
 adenoses
 adenosine
+adenosine triphosphate
 adenosis
 adenosyl
 adenous
+adenovirus
 adentri
 adenyl
+adenylate cyclase
 adenylic
 adenylyl
 adeps
@@ -754,6 +774,7 @@ adermine
 adesmia
 adesmy
 adfected
+adh
 adhatoda
 adhd
 adhere
@@ -783,6 +804,7 @@ adipes
 adipex
 adipic
 adipoid
+adiponectin
 adiposa
 adipose
 adiposes
@@ -833,15 +855,18 @@ adoption
 adoptive
 adoral
 adoxa
+adp
 adphen
 adrastis
 adren
 adrenal
 adrenal insufficiency
+adrenaline
 adrenals
 adrenic
 adrenin
 adrenine
+adrenocorticotropic hormone
 adrenone
 adreview
 adria
@@ -1006,6 +1031,7 @@ aflexa
 aflutter
 afnia
 afocus
+afp
 afraid
 afresa
 africa
@@ -1272,6 +1298,7 @@ alangeal
 alangian
 alangium
 alanine
+alanine cycle
 alanson
 alantin
 alanyl
@@ -1377,6 +1404,8 @@ aldor
 aldoril
 aldose
 aldoside
+aldosterone
+aldosterone renin ratio
 aldoxime
 aldrich
 aldrin
@@ -1507,6 +1536,7 @@ alkali
 alkalies
 alkalify
 alkaline
+alkaline phosphatase
 alkalis
 alkalize
 alkaloid
@@ -1530,6 +1560,7 @@ alkoxy
 alkphase
 alkyl
 alkylate
+alkylating agent
 alkyne
 all
 allah
@@ -1593,6 +1624,7 @@ allopora
 allopurinol
 allose
 allosome
+allosteric
 allotope
 allotype
 allotypy
@@ -1662,9 +1694,11 @@ alouette
 alous
 aloxi
 aloysia
+alp
 alper
 alpers
 alpha
+alpha fetoprotein
 alpha1
 alpha2
 alphabet
@@ -1711,6 +1745,7 @@ altarex
 altarium
 altenon
 alteon
+alteplase
 alter
 alterant
 altered
@@ -1778,6 +1813,7 @@ alzheimer's disease
 alzheimers
 alzhemed
 alznner
+ama
 amaas
 amacrine
 amadavat
@@ -1897,6 +1933,7 @@ ametrope
 amevive
 amfenac
 amgenal
+amh
 amharic
 amica
 amicar
@@ -1931,6 +1968,7 @@ aminess
 amini
 amino
 aminofen
+aminoglycoside
 aminorex
 aminosis
 aminosol
@@ -2016,6 +2054,7 @@ amount
 amounts
 amous
 amoxicillin
+amoxicillin clavulanate
 amoxil
 amp
 ampalex
@@ -2036,6 +2075,7 @@ amphojel
 amphoric
 amphotec
 amphotericin
+amphotericin b
 ampicillin
 ampland
 amplatz
@@ -2166,6 +2206,7 @@ anaphia
 anaphtic
 anaphylactic shock
 anaphylaxis
+anaplasma
 anaplasmosis
 anaplastic thyroid carcinoma
 anapnoic
@@ -2194,6 +2235,7 @@ anatrast
 anaudia
 anavenin
 anbesol
+anca
 ancef
 anceps
 ancer
@@ -2398,6 +2440,8 @@ animo
 animus
 aninae
 anion
+anion gap
+anion gap acidosis
 anionic
 aniridia
 anisakis
@@ -2533,6 +2577,7 @@ anoxia
 anoxiate
 anoxic
 anoxomer
+anp
 anredera
 anrep
 ansae
@@ -2593,6 +2638,7 @@ anthonyi
 anthops
 anthozoa
 anthra
+anthracycline
 anthrax
 anthrone
 anthropi
@@ -2600,8 +2646,30 @@ anthropo
 anthurus
 anthus
 anti
+anti ccp
+anti centromere
+anti dsdna
+anti endomysial
+anti gbm
 anti gbm disease
+anti histone
 anti inflammatory
+anti jo 1
+anti la
+anti mitochondrial
+anti mpo
+anti mullerian hormone
+anti pr3
+anti ro
+anti scl 70
+anti smith
+anti smooth muscle
+anti ssa
+anti ssb
+anti tpo
+anti ttg
+anti xa
+anti-xa
 antiacid
 antiae
 antiar
@@ -2609,13 +2677,20 @@ antiarin
 antiaris
 antibiotic
 antibiotic therapy
+antibiotics
+antibodies
 antibody
 antic
+anticoagulant
+anticoagulants
 anticor
 anticort
 anticous
 anticus
+antidiuretic hormone
 antidote
+antiepileptic
+antiepileptics
 antiflux
 antifol
 antifungal
@@ -2624,25 +2699,33 @@ antigua
 antihistamine
 antilope
 antimere
+antimetabolite
 antimony
 antiniad
 antinial
 antinion
+antinuclear antibody
 antiphospholipid antibody syndrome
 antiphospholipid syndrome
+antiplatelet
 antiplatelet therapy
 antipode
 antiport
+antipsychotic
+antipsychotics
 antipyic
 antiqua
 antique
 antiques
+antiretroviral
 antirobe
 antisocial
 antisocial personality disorder
 antisoma
 antispas
+antithrombin
 antithrombin deficiency
+antithrombin iii
 antiuric
 antivert
 antiviral
@@ -2828,9 +2911,12 @@ apneuses
 apneusis
 apnic
 apnoea
+apoa1
+apob
 apocii
 apocope
 apocrine
+apocrine gland
 apocynin
 apocynum
 apocyrum
@@ -2857,6 +2943,7 @@ apograph
 apohyal
 apokyn
 apolar
+apolipoprotein
 apollo
 apomate
 apomict
@@ -2866,6 +2953,7 @@ apomys
 aponomma
 apoplast
 apoplexy
+apoptosis
 aporic
 aporosa
 aporose
@@ -2957,6 +3045,7 @@ aptitude
 aptivus
 aptor
 aptosyn
+aptt
 aptyalia
 aptychus
 apudoma
@@ -3052,6 +3141,7 @@ aratii
 aratus
 araujia
 arava
+arb
 arbados
 arbalist
 arber
@@ -3372,6 +3462,7 @@ arthopod
 arthra
 arthral
 arthralgia
+arthralgias
 arthrex
 arthritis
 arthro
@@ -3447,6 +3538,7 @@ asclera
 asclt
 ascocarp
 ascorbic
+ascorbic acid
 ascorbyl
 ascus
 ascvd
@@ -3494,6 +3586,7 @@ asking
 asks
 asleep
 aslera
+asma
 asmanex
 asmatic
 asmus
@@ -3524,6 +3617,8 @@ aspergel
 asperger
 asperges
 aspergillosis
+aspergillus
+aspergillus fumigatus
 aspergum
 aspermia
 aspermic
@@ -3572,6 +3667,7 @@ assumes
 assuming
 assure
 assured
+ast
 astacins
 astacus
 astarte
@@ -3621,6 +3717,8 @@ astral
 astrea
 astringe
 astro
+astrocyte
+astrocytes
 astroid
 astroite
 astrum
@@ -3677,6 +3775,7 @@ atenolol
 ateomys
 ateri
 ateromys
+atezolizumab
 atgam
 athana
 athanor
@@ -3777,6 +3876,7 @@ atosiban
 atotypes
 atous
 atoxic
+atp
 atpase
 atragen
 atragene
@@ -3796,6 +3896,7 @@ atria
 atrial
 atrial fibrillation
 atrial flutter
+atrial natriuretic peptide
 atrial septal defect
 atriales
 atrialis
@@ -3868,6 +3969,7 @@ atype
 atypes
 atypia
 atypical
+atypical antipsychotic
 atypical pneumonia
 atypism
 aub
@@ -3975,6 +4077,8 @@ autism
 autism spectrum disorder
 autistic
 auto
+autoantibodies
+autoantibody
 autobody
 autocat
 autocide
@@ -3992,6 +4096,7 @@ autolyze
 automath
 autonomy
 autopap
+autophagy
 autoplex
 autopsy
 autos
@@ -4156,6 +4261,8 @@ axolemma
 axolotl
 axolysis
 axometer
+axon
+axon hillock
 axona
 axonal
 axone
@@ -4241,6 +4348,11 @@ azurine
 azygoi
 azygos
 azygous
+b cell
+b cell depletion
+b cells
+b-type natriuretic peptide
+b12
 baastrup
 babaulti
 babbitt
@@ -4253,6 +4365,7 @@ babesiosis
 babiana
 babies
 babinski
+babinski sign
 babkin
 bablah
 baby
@@ -4275,6 +4388,7 @@ bacille
 bacilli
 bacillin
 bacillus
+bacillus anthracis
 back
 back pain
 backache
@@ -4405,6 +4519,7 @@ bancanus
 bancap
 bancroft
 band
+band cell
 bandage
 bandaged
 bandager
@@ -4413,6 +4528,7 @@ bandala
 bandana
 bandbox
 banded
+banded neutrophil
 bandemia
 bandha
 banding
@@ -4508,6 +4624,7 @@ bargemen
 barger
 baria
 baric
+baricitinib
 baricon
 baridium
 barii
@@ -4550,6 +4667,7 @@ bartholinitis
 bartia
 bartlett
 barton
+bartonella
 bartonellosis
 bartos
 bartram
@@ -4575,12 +4693,15 @@ basbleu
 bascan
 bascule
 base
+base deficit
+base excess
 baseball
 based
 basedoid
 basedow
 baseline
 basement
+basement membrane
 basename
 baseos
 bases
@@ -4614,6 +4735,8 @@ baskets
 basle
 basocyte
 basophil
+basophilia
+basophils
 basos
 bass
 bassen
@@ -4953,6 +5076,7 @@ benzine
 benzo
 benzoate
 benzodiazepine
+benzodiazepines
 benzoic
 benzoin
 benzoini
@@ -5024,6 +5148,10 @@ besylate
 bet
 beta
 beta blocker
+beta blockers
+beta hcg
+beta hydroxybutyrate
+beta oxidation
 beta-bsm
 beta2
 betabloc
@@ -5099,6 +5227,7 @@ bible
 biblical
 bibulous
 bicarb
+bicarbonate
 bicaudal
 biceps
 bicha
@@ -5198,6 +5327,7 @@ biliment
 bilin
 bilious
 biliousness
+bilirubin
 bilis
 bilitest
 bility
@@ -5298,6 +5428,7 @@ biolase
 biolex
 biolite
 biologic
+biologics
 biology
 biolon
 biolox
@@ -5502,6 +5633,7 @@ blastide
 blastin
 blasto
 blastoma
+blastomyces
 blastomycosis
 blastula
 blastule
@@ -5520,6 +5652,7 @@ bleed
 bleeder
 bleeders
 bleeding
+bleeding time
 blegate
 blemish
 blend
@@ -5585,6 +5718,7 @@ blood draw
 blood in stool
 blood in urine
 blood test
+blood urea nitrogen
 bloodier
 bloodily
 bloodlet
@@ -5633,6 +5767,7 @@ blyrhiza
 blythii
 bmw
 bnepos
+bnp
 board
 boards
 boarfish
@@ -5812,6 +5947,7 @@ borderline personality disorder
 borders
 bordet
 bordetella
+bordetella pertussis
 bordier
 bordlode
 borecole
@@ -5842,6 +5978,7 @@ boropak
 borough
 borrel
 borrelia
+borrelia burgdorferi
 borrmann
 borsch
 borsieri
@@ -5913,6 +6050,7 @@ boulton
 bound
 boundary
 bounding
+bounding pulse
 bouquet
 bourg
 bourgery
@@ -5953,6 +6091,7 @@ bowlegs
 bowler
 bowling
 bowman
+bowman capsule
 bowwow
 box
 boxberry
@@ -6029,6 +6168,9 @@ brail
 braille
 brain
 brain abscess
+brain ct
+brain mri
+brain natriuretic peptide
 brain tumor
 brainpan
 brait
@@ -6237,6 +6379,8 @@ bronchi
 bronchia
 bronchic
 bronchiectasis
+bronchiole
+bronchioles
 bronchiolitis
 bronchitis
 broncho
@@ -6417,6 +6561,7 @@ buffered
 bufferin
 buffex
 buffy
+buffy coat
 bufilcon
 bufin
 bufing
@@ -6486,6 +6631,7 @@ bumke
 bump
 bumper
 bumps
+bun
 bunch
 bundle
 bundles
@@ -6631,13 +6777,26 @@ byte
 bytes
 bythnia
 bzyme
+c anca
+c diff
+c peptide
+c reactive protein
+c-peptide
 c-port
 c-qur
+c-reactive protein
 c-section
+c. diff
+c3
 c3paase
+c4
 c5b67
 c5b678
 c5b6789
+ca 125
+ca 19 9
+ca125
+ca19-9
 cab
 caballi
 cabbage
@@ -6743,6 +6902,7 @@ calcite
 calcitic
 calcitonin
 calcium
+calcium channel
 calcium channel blocker
 calculi
 calculus
@@ -6863,6 +7023,7 @@ campral
 camps
 campsis
 campus
+campylobacter
 campylobacter infection
 campylobacteriosis
 campyvax
@@ -6874,6 +7035,7 @@ canadian
 canagliflozin
 canal
 canales
+canaliculus
 canaline
 canalis
 canalith
@@ -6897,6 +7059,7 @@ candella
 canderm
 candex
 candida
+candida albicans
 candidal
 candidiasis
 candidid
@@ -6955,6 +7118,7 @@ capable
 capacity
 capastat
 cape
+capecitabine
 capelet
 capeline
 capensis
@@ -6963,6 +7127,7 @@ capgras
 capillaries
 capillary
 capillary blood sampling
+capillary refill
 capilli
 capillus
 capio
@@ -7051,6 +7216,8 @@ carbaglu
 carbamazepine
 carbamic
 carbamyl
+carbapenem
+carbapenem resistant enterobacteriaceae
 carbaril
 carbaryl
 carbate
@@ -7073,10 +7240,12 @@ carboplatin
 carbowax
 carboxin
 carboxy
+carboxyhemoglobin
 carboxyl
 carbuncle
 carcass
 carceag
+carcinoembryonic antigen
 carcinoid
 carcinoma
 card
@@ -7091,6 +7260,8 @@ cardia
 cardiac
 cardiac arrest
 cardiac catheterization
+cardiac ct
+cardiac mri
 cardiac output
 cardiac resynchronization therapy
 cardiac tamponade
@@ -7109,6 +7280,7 @@ cardiogenic
 cardiogenic shock
 cardioid
 cardiomegaly
+cardiomyocyte
 cardiomyopathy
 cardiovascular
 cardioversion
@@ -7324,6 +7496,7 @@ catbite
 catch
 catechin
 catechol
+catecholamines
 catechu
 category
 catenata
@@ -7427,15 +7600,23 @@ cayman
 cayor
 caytine
 cbs
+ccb
 ccd
+cck
 ccsas
 cd-rom
+cd19
+cd20
+cd3
+cd4
+cd8
 cdi
 cdna
 cdrpan
 cds
 cdt
 cdtox
+cea
 ceasmic
 ceavac
 cebidae
@@ -7499,6 +7680,7 @@ celioma
 celite
 celitis
 cell
+cell cycle
 cella
 cellae
 cellase
@@ -7558,6 +7740,7 @@ centra
 centrad
 centrage
 central
+central cyanosis
 central line
 central sleep apnea
 central venous pressure
@@ -7586,6 +7769,7 @@ cephalic
 cephalin
 cephalo
 cephalon
+cephalosporin
 cephalus
 cephulac
 ceplene
@@ -7624,6 +7808,7 @@ cerebri
 cerebris
 cerebritis
 cerebro
+cerebrospinal fluid
 cerebrum
 cerebyx
 cered
@@ -7663,6 +7848,7 @@ cerulean
 cerulei
 cerulein
 ceruleus
+ceruloplasmin
 cerumen
 cerus
 ceruse
@@ -7717,7 +7903,9 @@ cezin
 cf
 cfr
 cgi
+cgmp
 ch'ang
+ch50
 chabaud
 chabaudi
 chad
@@ -7833,6 +8021,7 @@ checked
 checker
 checking
 checkout
+checkpoint inhibitor
 checks
 checkup
 chediak
@@ -7869,6 +8058,8 @@ chemio
 chemism
 chemist
 chemo
+chemokine
+chemokines
 chemoses
 chemosis
 chemotherapy
@@ -7891,7 +8082,9 @@ chess
 chest
 chest pain
 chest tube
+chest x ray
 chest x-ray
+chest xray
 chester
 chestnut
 chevron
@@ -7917,10 +8110,12 @@ chicle
 chiclero
 chidae
 chief
+chief cell
 chievitz
 chigger
 chigo
 chigoe
+chikungunya
 chilcott
 child
 childbed
@@ -7968,6 +8163,8 @@ chium
 chius
 chlamydia
 chlamydia infection
+chlamydia trachomatis
+chlamydophila pneumoniae
 chloasma
 chloe
 chlor
@@ -7978,6 +8175,7 @@ chlordan
 chlori
 chloric
 chloride
+chloride channel
 chlorine
 chloris
 chlorite
@@ -8013,6 +8211,7 @@ chole
 cholecalciferol
 cholecystectomy
 cholecystitis
+cholecystokinin
 choledochal
 choledocholithiasis
 choledyl
@@ -8027,6 +8226,8 @@ choleria
 choleric
 cholestasis
 cholesteatoma
+cholesterol
+cholesterol synthesis
 choletec
 cholewa
 cholic
@@ -8043,6 +8244,8 @@ chondric
 chondrin
 chondritis
 chondrocalcinosis
+chondrocyte
+chondrocytes
 chondromalacia
 chondrosarcoma
 chondrus
@@ -8077,6 +8280,7 @@ chorion
 chorioretinitis
 chorista
 choroid
+choroid plexus
 choroiditis
 chorus
 chose
@@ -8096,6 +8300,8 @@ chromic
 chromis
 chromium
 chromo
+chromogranin
+chromogranin a
 chromone
 chronaxy
 chronic
@@ -8128,6 +8334,7 @@ chusa
 chusan
 chusquea
 chvostek
+chvostek sign
 chylagus
 chyle
 chylemia
@@ -8280,6 +8487,7 @@ citrange
 citrate
 citrated
 citric
+citric acid cycle
 citrin
 citrinin
 citrinum
@@ -8296,12 +8504,14 @@ civic
 civil
 civilian
 civinini
+ck
 ck-mb
 ckd
 cklebill
 cklewort
 cknell
 ckwood
+cl-
 cladium
 clado
 claforan
@@ -8484,6 +8694,10 @@ closes
 closest
 closing
 closs
+clostridium botulinum
+clostridium difficile
+clostridium perfringens
+clostridium tetani
 closure
 clot
 clotest
@@ -8492,6 +8706,7 @@ clothes
 clothing
 clotted
 clotting
+clotting time
 cloud
 clouding
 cloudman
@@ -8556,6 +8771,7 @@ coadvil
 coagula
 coaguli
 coagulin
+coagulopathy
 coagulum
 coakley
 coal
@@ -8593,6 +8809,7 @@ coccal
 coccerin
 cocci
 coccidia
+coccidioides
 coccidioidomycosis
 coccinia
 cocco
@@ -8678,6 +8895,7 @@ cognathi
 cognex
 cognitive
 cogwheel
+cogwheel rigidity
 cohen
 coherent
 cohesion
@@ -8746,6 +8964,7 @@ collapsed
 collar
 collat
 collect
+collecting duct
 college
 colleges
 colles
@@ -8810,6 +9029,7 @@ column
 columna
 columnae
 columnar
+columnar epithelium
 columnas
 columns
 coluria
@@ -8890,6 +9110,7 @@ compiled
 compiler
 complain
 compleat
+complement
 completa
 complete
 complete heart block
@@ -9010,6 +9231,7 @@ coniosis
 conium
 conjoined
 conjugal
+conjugated bilirubin
 conjunctivitis
 conklin
 conmed
@@ -9124,6 +9346,7 @@ coped
 copegus
 copepod
 copepoda
+copeptin
 copia
 copic
 copied
@@ -9176,6 +9399,7 @@ corema
 corethra
 coretomy
 corgard
+cori cycle
 coria
 coriaria
 corid
@@ -9225,9 +9449,11 @@ coronal
 coronale
 coronare
 coronary
+coronary angiography
 coronary artery bypass graft
 coronary artery disease
 coronata
+coronavirus
 coronavirus disease
 corone
 coroner
@@ -9273,6 +9499,7 @@ cortical
 cortices
 cortico
 corticosteroid
+corticotropin releasing hormone
 cortin
 cortisol
 cortone
@@ -9358,6 +9585,7 @@ counsel
 count
 counted
 counter
+countercurrent multiplier
 counters
 counties
 counting
@@ -9396,6 +9624,7 @@ covers
 covertip
 covid
 covid 19
+covid-19
 cow
 cowage
 cowania
@@ -9412,6 +9641,7 @@ cowling
 cowper
 cowpox
 cox
+cox 2 inhibitor
 coxae
 coxal
 coxalgia
@@ -9427,6 +9657,7 @@ cpr
 cprglove
 cpsii
 cpu
+crE
 crabtree
 crack
 cracked
@@ -9478,6 +9709,7 @@ crawley
 crazing
 crazy
 crc
+cre
 cream
 crease
 creased
@@ -9487,7 +9719,9 @@ create
 created
 creates
 creatine
+creatine kinase
 creating
+creatinine
 creation
 creative
 creator
@@ -9532,6 +9766,7 @@ cretiva
 creveld
 crevice
 crew
+crh
 cribalis
 cribbing
 cribl
@@ -9634,6 +9869,7 @@ crowing
 crown
 crowning
 crozat
+crp
 crps
 cruces
 crucial
@@ -9672,6 +9908,7 @@ cryocrit
 cryocuff
 cryocyte
 cryogen
+cryoglobulin
 cryoglobulinemia
 cryolife
 cryonics
@@ -9687,19 +9924,26 @@ cryptae
 cryptaz
 cryptic
 cryptococcosis
+cryptococcus
+cryptococcus neoformans
 cryptorchidism
 cryptosporidiosis
+cryptosporidium
 crypts
 cryst
 crystal
 crystals
 crysti
 csection
+csf
 csgbi
 css
 csssi
 cst
+ct
+ct angiography
 ct scan
+cta
 ctaginae
 ctenitis
 cteno
@@ -9712,6 +9956,7 @@ ctesias
 ctinozoa
 ctite
 ctitis
+ctla 4 inhibitor
 ctomy
 ctosic
 ctostomy
@@ -9736,6 +9981,7 @@ cubiti
 cubitus
 cuboid
 cuboidal
+cuboidal epithelium
 cucoline
 cucumber
 cucumis
@@ -9902,6 +10148,7 @@ cuvposa
 cva
 cvads
 cvs
+cxr
 cyanate
 cyanates
 cyanella
@@ -9942,6 +10189,8 @@ cyclen
 cycles
 cyclessa
 cyclic
+cyclic amp
+cyclic gmp
 cyclical
 cyclin
 cyclinex
@@ -10059,6 +10308,7 @@ cytogeny
 cytogony
 cytoid
 cytokine
+cytokines
 cytolex
 cytolin
 cytology
@@ -10079,6 +10329,7 @@ cytosome
 cytost
 cytotec
 cytotech
+cytotoxic
 cytovene
 cytoxan
 cytozoic
@@ -10090,6 +10341,8 @@ czech
 czermak
 czerny
 d c
+d cell
+d dimer
 d&c
 d'acosta
 d'airain
@@ -10100,6 +10353,8 @@ d'errico
 d'espine
 d'orange
 d'unitts
+d-dimer
+dabigatran
 daboia
 daceae
 daceous
@@ -10129,6 +10384,7 @@ dadds
 daddy
 dadeland
 dafilon
+dag
 dagenan
 dagrofil
 dahedi
@@ -10259,6 +10515,7 @@ datura
 daturine
 daturism
 daughter
+daunorubicin
 dausset
 davainea
 dave
@@ -10293,6 +10550,7 @@ dazzle
 dclhb
 dcvax
 ddavp
+ddimer
 ddr
 dead
 deadlier
@@ -10562,6 +10820,9 @@ dendreon
 dendric
 dendrid
 dendrite
+dendrites
+dendritic cell
+dendritic spine
 dendro
 dendroid
 dendron
@@ -10650,6 +10911,7 @@ depocyte
 depodur
 depofoam
 depogen
+depolarization
 deponed
 deponit
 depopred
@@ -10809,6 +11071,7 @@ dewclaw
 deweerd
 dewlap
 deworm
+dexa
 dexa scan
 dexacen
 dexacort
@@ -10839,6 +11102,9 @@ dextrous
 dextrum
 dezocine
 dhat
+dhea
+dhea s
+dhea-s
 dhobie
 dhurrin
 di
@@ -10861,6 +11127,7 @@ diacin
 diaclast
 diacol
 diacyl
+diacylglycerol
 diadol
 diaemus
 diagnose
@@ -10909,6 +11176,7 @@ diapered
 diaphane
 diaphen
 diaphene
+diaphoresis
 diaphragmatic
 diapid
 diapnoic
@@ -11022,6 +11290,7 @@ diffusa
 diffuse
 diffuse large b cell lymphoma
 diffused
+diffusion
 diffusum
 diflucan
 diftitox
@@ -11043,6 +11312,7 @@ digibind
 digifab
 digit
 digital
+digital clubbing
 digitata
 digitate
 digitek
@@ -11218,6 +11488,8 @@ dirame
 dirca
 dirck
 direct
+direct bilirubin
+direct oral anticoagulant
 directae
 directed
 directly
@@ -11313,6 +11585,7 @@ dissolve
 dist
 distad
 distal
+distal tubule
 distalis
 distally
 distance
@@ -11416,6 +11689,7 @@ dna
 dnaase
 dnase
 dns
+doac
 dobbert
 dobbhoff
 dobie
@@ -11478,6 +11752,7 @@ dolorosa
 dolorous
 dolsed
 dolum
+dolutegravir
 dom
 domagk
 domain
@@ -11870,6 +12145,7 @@ duphalac
 dupla
 duplay
 duplex
+duplex ultrasound
 dupuy
 dupuytrens
 durable
@@ -12032,6 +12308,7 @@ dystopy
 dystrophy
 dysuria
 dysuric
+e coli
 e-mycin
 eaceae
 eaceous
@@ -12105,9 +12382,11 @@ ecarin
 ecaudate
 ecbolic
 eccentro
+ecchymoses
 ecchymosis
 eccles
 eccrine
+eccrine gland
 eccrisis
 eccritic
 eccyesis
@@ -12295,10 +12574,12 @@ efudex
 egabase
 egaderma
 egawa
+egd
 egest
 egesta
 egestion
 egestive
+egfr
 egg
 eggers
 egglin
@@ -12323,6 +12604,7 @@ ehlers
 ehlers-danlos
 ehlis
 ehrlich
+ehrlichia
 ehrlichiosis
 eicken
 eicosane
@@ -12412,6 +12694,7 @@ electroencephalogram
 electrolyte
 electromyogram
 electron
+electron transport chain
 eleek
 elegans
 elegant
@@ -12426,6 +12709,7 @@ elephantiasis
 elestat
 elestrin
 elevated
+elevated jvp
 elevator
 elevatum
 elevatus
@@ -12607,6 +12891,7 @@ empyemic
 empyesis
 emsam
 emsher
+emtricitabine
 emtriva
 emulgent
 emulsify
@@ -12656,7 +12941,9 @@ encyesis
 encyst
 encysted
 end
+end plate
 end stage renal disease
+end-plate
 endafed
 endal
 endameba
@@ -12683,6 +12970,7 @@ endius
 endless
 endocardial
 endocarditis
+endocardium
 endocare
 endocet
 endoclip
@@ -12690,6 +12978,7 @@ endocpb
 endocrine
 endocyst
 endocyte
+endocytosis
 endodan
 endoderm
 endogamy
@@ -12717,6 +13006,8 @@ endostea
 endotag
 endotak
 endotec
+endothelial
+endothelium
 endotip
 endotrac
 endou
@@ -12801,6 +13092,7 @@ enough
 enous
 enovid
 enoxacin
+enoxaparin
 enoyl
 enquiry
 enriched
@@ -12820,6 +13112,8 @@ entacron
 entad
 ental
 entameba
+entamoeba
+entamoeba histolytica
 entasia
 entasis
 entatic
@@ -12835,9 +13129,15 @@ enterica
 entering
 enteritis
 entero
+enterobacter
 enterobiasis
+enterochromaffin cell
 enterococcal
+enterococcus
+enterococcus faecalis
+enterococcus faecium
 enterocolitis
+enterocyte
 enteron
 enteroscopy
 enterovirus
@@ -12845,6 +13145,7 @@ enterra
 enters
 enteryx
 enthal
+enthesis
 enthesitis
 entids
 entil
@@ -12887,9 +13188,11 @@ eonism
 eos
 eosin
 eosine
+eosinophil
 eosinophilia
 eosinophilic
 eosinophilic esophagitis
+eosinophils
 eospore
 eotomy
 eovist
@@ -12901,6 +13204,8 @@ epastic
 epaxial
 epedium
 epena
+ependyma
+ependymal cell
 ependymitis
 ependymoma
 eperino
@@ -12915,6 +13220,7 @@ epibole
 epiboly
 epic
 epicar
+epicardium
 epicel
 epicondylitis
 epicort
@@ -12951,6 +13257,8 @@ epistar
 epistaxis
 epitaxy
 epitela
+epithelial
+epithelium
 epithem
 epithet
 epitol
@@ -12962,6 +13270,7 @@ epizoic
 epizoon
 eplerenone
 epley
+epo
 epoetin
 epogen
 epontic
@@ -12973,6 +13282,7 @@ epsilon
 epsom
 epson
 epstein
+epstein barr
 epstein barr virus
 eptfe
 epulis
@@ -13041,6 +13351,7 @@ eridae
 erik
 erite
 erium
+erlotinib
 ermata
 ermes
 ernancy
@@ -13073,6 +13384,7 @@ erset
 erspot
 erstans
 ertaczo
+ertapenem
 erter
 ertron
 erucic
@@ -13095,18 +13407,24 @@ erythema nodosum
 erythr
 erythro
 erythroblastosis
+erythrocyte
+erythrocytes
 erythrocytosis
 erythroderma
 erythromelalgia
 erythromycin
+erythropoiesis
+erythropoietin
 eryzole
 esaote
 esban
+esbl
 esbriet
 escape
 escaped
 eschar
 eschars
+escherichia coli
 escin
 escitalopram
 esclim
@@ -13133,12 +13451,14 @@ esophageal cancer
 esophageal candidiasis
 esophageal varices
 esophagitis
+esophagogastroduodenoscopy
 esophagoscopy
 esophagus
 esophyx
 esotropia
 espn
 esponja
+esr
 esrd
 essay
 essays
@@ -13172,6 +13492,7 @@ estorra
 estover
 estra
 estrace
+estradiol
 estral
 estrane
 estrin
@@ -13284,6 +13605,7 @@ eve
 even
 evening
 event
+event monitor
 events
 ever
 evert
@@ -13330,6 +13652,7 @@ exciple
 excise
 excised
 excision
+excisional biopsy
 excite
 excited
 exciter
@@ -13372,6 +13695,7 @@ exlex
 exner
 exocarp
 exocele
+exocytosis
 exodic
 exogamy
 exogen
@@ -13424,6 +13748,7 @@ extile
 extima
 extina
 extinct
+extracellular matrix
 extracorporeal membrane oxygenation
 extract
 extradural
@@ -13460,6 +13785,7 @@ eyesys
 eyewash
 eyewink
 eysenck
+ezetimibe
 ezrin
 f-actin
 fabella
@@ -13481,6 +13807,7 @@ facial
 faciale
 faciei
 facies
+facilitated diffusion
 facing
 facog
 facscan
@@ -13490,7 +13817,14 @@ facti
 factitious
 factive
 factor
+factor ix
+factor v
 factor v leiden
+factor vii
+factor viii
+factor x
+factor xi
+factor xiii
 factors
 factory
 factrel
@@ -13583,6 +13917,8 @@ fascia
 fasciae
 fascial
 fascias
+fasciculation
+fasciculations
 fasciitis
 fascioliasis
 fascioplasty
@@ -13595,6 +13931,7 @@ faster
 fastest
 fastin
 fasting
+fasting glucose
 fastrac
 fastraq
 fat
@@ -13750,6 +14087,8 @@ ferrein
 ferri
 ferric
 ferring
+ferritin
+ferroptosis
 ferrous
 ferrum
 ferry
@@ -13792,6 +14131,8 @@ fibril
 fibrillation
 fibrils
 fibrin
+fibrinogen
+fibrinolysis
 fibro
 fibroid
 fibroids
@@ -13886,6 +14227,7 @@ fine needle aspiration
 finest
 finevin
 finger
+finger clubbing
 finger stick
 fingers
 finil
@@ -14065,6 +14407,7 @@ fluorex
 fluori
 fluoric
 fluoro
+fluoroquinolone
 fluoroscopy
 fluorosis
 fluorouracil
@@ -14088,6 +14431,7 @@ flyer
 flying
 flynn
 fmnh2
+fna
 foam
 foamy
 focal
@@ -14130,6 +14474,7 @@ folium
 folius
 folk
 folks
+follicle stimulating hormone
 follicular lymphoma
 follicular thyroid carcinoma
 folliculitis
@@ -14144,6 +14489,7 @@ foment
 fomes
 fomite
 fomites
+fondaparinux
 fonio
 font
 fontan
@@ -14274,6 +14620,7 @@ framing
 france
 francia
 francis
+francisella
 franco
 frange
 frank
@@ -14295,6 +14642,10 @@ freckles
 fred
 fredet
 free
+free light chains
+free t3
+free t4
+free testosterone
 freebsd
 freeda
 freedom
@@ -14370,12 +14721,14 @@ frozen
 frozen shoulder
 frsnkel
 fructan
+fructosamine
 fruit
 fruits
 frust
 fruste
 frustes
 frykman
+fsh
 ftp
 fuadin
 fuchs
@@ -14487,7 +14840,12 @@ futuro
 fuzeon
 fuzzy
 fwd
+g cell
+g protein
+g protein coupled receptor
 g-actin
+g1 phase
+g2 phase
 gabapentin
 gabel
 gabinia
@@ -14570,6 +14928,7 @@ gamgee
 gamic
 gaming
 gamma
+gamma glutamyl transferase
 gammar
 gammex
 gamna
@@ -14626,6 +14985,7 @@ garrote
 gartner
 gary
 gas
+gas exchange
 gasbgon
 gaseous
 gasfree
@@ -14692,6 +15052,7 @@ gdp
 gear
 gebauer
 geek
+gefitinib
 gehrig
 geigel
 geiger
@@ -14854,18 +15215,23 @@ getoid
 gets
 getting
 gevral
+gfr
 ggadina
+ggt
+gh
 ghalese
 ghana
 ghatti
 ghinda
 ghost
+ghrelin
 ghz
 giaceae
 giant
 giant cell arteritis
 giants
 giardia
+giardia lamblia
 giardiasis
 gib
 gibbon
@@ -14908,6 +15274,7 @@ gingivitis
 gingivo
 ginsana
 ginseng
+gip
 giraud
 girdle
 girl
@@ -14963,9 +15330,11 @@ gleevec
 glen
 glenn
 glenoid
+glia
 gliadel
 gliadin
 glial
+glial cell
 glican
 glide
 gliding
@@ -14992,13 +15361,16 @@ globosa
 globose
 globule
 globuli
+globulin
 globus
 glochid
 glomal
 glome
 glomera
+glomeruli
 glomerulonephritis
 glomerulopathy
+glomerulus
 glomi
 glomic
 glomoid
@@ -15016,6 +15388,8 @@ glottis
 glover
 gloves
 glow
+glp 1
+glp-1
 glucagon
 glucal
 glucan
@@ -15024,6 +15398,7 @@ glucide
 gluck
 gluco
 glucola
+gluconeogenesis
 glucono
 glucose
 gluge
@@ -15043,7 +15418,10 @@ glycine
 glyco
 glycogen
 glycogen storage disease type v
+glycogenesis
+glycogenolysis
 glycol
+glycolysis
 glycone
 glycosuria
 glycyl
@@ -15070,6 +15448,7 @@ goat
 goatpox
 gobbler
 goblet
+goblet cell
 godet
 godina
 gods
@@ -15149,6 +15528,7 @@ gower
 gowers
 goyrand
 gpa
+gpcr
 gpiib
 gpl
 gps
@@ -15170,6 +15550,9 @@ graft
 grafts
 graham
 grain
+gram negative
+gram positive
+gram stain
 gramcko
 gramine
 grammar
@@ -15284,6 +15667,8 @@ gross
 ground
 grounds
 group
+group a strep
+group b strep
 grouped
 groups
 grove
@@ -15292,6 +15677,7 @@ growing
 grown
 grows
 growth
+growth hormone
 gruber
 grume
 grumose
@@ -15314,6 +15700,7 @@ guanase
 guanido
 guanine
 guanyl
+guanylate cyclase
 guarana
 guard
 guards
@@ -15417,6 +15804,8 @@ gyrose
 gyrous
 gyrus
 gzip
+h flu
+h pylori
 h2 blocker
 haack
 haarlem
@@ -15436,9 +15825,14 @@ hacker
 hacking
 had
 haeckel
+haem
 haemate
+haematocrit
+haematology
 haemin
 haemochromatosis
+haemoglobin
+haemophilus influenzae
 haenel
 haeser
 hafnia
@@ -15570,6 +15964,7 @@ haptens
 haptic
 haptics
 hapto
+haptoglobin
 harada
 harara
 harbor
@@ -15649,15 +16044,22 @@ hayes
 haymann
 hazard
 hazards
+hba1c
 hbcag
 hbeag
 hbsag
 hbv
 hcc
+hcg
+hco3
 hcpcs
 hcv
+hdl
+hdl cholesterol
 hdtv
+hdv
 head
+head ct
 headache
 headcap
 headed
@@ -15749,6 +16151,7 @@ helical
 helices
 helicin
 helicis
+helicobacter pylori
 helidac
 helium
 helix
@@ -15781,9 +16184,12 @@ hematemesis
 hematic
 hematin
 hematochezia
+hematocrit
 hematologic
+hematology
 hematoma
 hematuria
+heme
 hemelab
 hemianopia
 hemianopsia
@@ -15802,6 +16208,13 @@ hemocor
 hemocue
 hemodialysis
 hemofil
+hemoglobin
+hemoglobin a
+hemoglobin a1c
+hemoglobin c
+hemoglobin electrophoresis
+hemoglobin f
+hemoglobin s
 hemoid
 hemolysis
 hemolytic anemia
@@ -15847,6 +16260,7 @@ hepagam
 hepar
 heparan
 heparin
+heparin cofactor
 heparin therapy
 hepatectomy
 hepatic
@@ -15860,6 +16274,8 @@ hepatitis e
 hepato
 hepatoblastoma
 hepatocellular carcinoma
+hepatocyte
+hepatocytes
 hepatoma
 hepatomegaly
 hepatorenal
@@ -15931,6 +16347,7 @@ hetes
 hetic
 heubner
 heuser
+hev
 hewitt
 hewlett
 hexad
@@ -15959,6 +16376,8 @@ hgprt
 hhaide
 hhaides
 hhs
+hhv 6
+hhv 8
 hiatal
 hiate
 hiation
@@ -15986,6 +16405,7 @@ hieric
 hifocus
 higashi
 high
+high sensitivity troponin
 higher
 highest
 highly
@@ -16053,6 +16473,7 @@ hisonic
 hispril
 hist
 hista
+histamine
 histic
 histine
 histio
@@ -16061,6 +16482,7 @@ histo
 histoid
 histoma
 histone
+histoplasma
 histoplasmosis
 histor
 history
@@ -16077,9 +16499,14 @@ hives
 hivid
 hkafo
 hl
+hla
+hla b27
+hla dr
 hld
+hmg coa reductase
 hmg-coa
 hmpao
+hmpv
 hmscs
 hnidium
 hnitis
@@ -16109,6 +16536,7 @@ hoeve
 hoffa
 hoffer
 hoffman
+hoffmann sign
 hofia
 hofmann
 hofstee
@@ -16160,10 +16588,12 @@ hominid
 hominis
 homme
 hommed
+homocysteine
 homocystinuria
 homoe
 homolog
 homos
+homovanillic acid
 homys
 hon
 honda
@@ -16210,6 +16640,7 @@ hormonal
 hormone
 horn
 horner
+horner syndrome
 horns
 horny
 horror
@@ -16270,15 +16701,22 @@ howto
 hoyer
 hoyne
 hpete
+hpv
 hraderm
 hraxis
 href
 hrs
+hs crp
+hs troponin
+hs-troponin
 hscrp
 hsv
+hsv 1
+hsv 2
 htacs
 hthene
 hthyes
+htlv
 html
 htn
 http
@@ -16307,6 +16745,8 @@ hull
 humain
 humalog
 human
+human herpesvirus 6
+human papillomavirus
 humans
 humanus
 humate
@@ -16659,10 +17099,17 @@ ified
 iform
 ifrage
 ifting
+iga
 iga nephropathy
 igale
 igase
+igd
+ige
 igerous
+igf 1
+igf-1
+igg
+igm
 ignatia
 igneous
 ignis
@@ -16677,6 +17124,18 @@ iih
 iii
 ikatea
 iketail
+il 1
+il 10
+il 17
+il 17 inhibitor
+il 2
+il 23
+il 23 inhibitor
+il 4
+il 5
+il 6
+il 6 inhibitor
+il 8
 ilaris
 ilase
 ild
@@ -16766,6 +17225,8 @@ immune thrombocytopenic purpura
 immunex
 immuno
 immunodeficiency
+immunofixation
+immunoglobulin
 immunol
 immunotherapy
 immuran
@@ -16782,6 +17243,7 @@ impella
 impetigo
 implant
 implantable cardioverter defibrillator
+implantable loop recorder
 implied
 implies
 import
@@ -16820,6 +17282,7 @@ incisal
 incise
 incised
 incision and drainage
+incisional biopsy
 incisor
 incl
 incline
@@ -16857,6 +17320,7 @@ indie
 indigestion
 indigo
 indigos
+indirect bilirubin
 indium
 indocin
 indol
@@ -16905,6 +17369,9 @@ inflexa
 infliximab
 inflow
 influenza
+influenza a
+influenza b
+influenza virus
 influx
 info
 infold
@@ -16981,6 +17448,7 @@ inosae
 inose
 inosine
 inosite
+inositol triphosphate
 inosome
 inpath
 inplex
@@ -16989,6 +17457,7 @@ inputs
 inquest
 inquire
 inquiry
+inr
 inrange
 ins
 insall
@@ -17017,6 +17486,7 @@ insula
 insulae
 insular
 insulin
+insulin like growth factor
 insulin therapy
 insult
 insured
@@ -17033,14 +17503,22 @@ intellectual
 intend
 intense
 intent
+intention tremor
+interferon
+interferon alpha
+interferon beta
+interferon gamma
 interim
 interix
+interleukin
 interm
+intermediate
 intermittent
 intern
 interna
 internal
 interne
+interneuron
 interni
 interstitial
 interstitial lung disease
@@ -17150,12 +17628,14 @@ iowa
 ioxide
 ioxilan
 iozoa
+ip3
 ipalp
 ipaq
 ipartum
 ipecac
 ipf
 iphylla
+ipilimumab
 iplex
 ipod
 ipodate
@@ -17366,6 +17846,7 @@ jaguar
 jahnke
 jahss
 jail
+jak inhibitor
 jake
 jakob
 jaksch
@@ -17384,6 +17865,7 @@ jan
 jane
 janet
 janeway
+janeway lesion
 janipha
 janosfk
 jansen
@@ -17537,6 +18019,7 @@ jugate
 juglans
 juglone
 jugular
+jugular venous distension
 jugulo
 jugulum
 jugum
@@ -17579,8 +18062,11 @@ juvara
 juven
 juvenile
 juxta
+juxtaglomerular apparatus
 jvc
+jvd
 jyutsu
+k+
 kabolin
 kabuki
 kabure
@@ -17624,7 +18110,9 @@ kapidex
 kaplan
 kaposi
 kaposi sarcoma
+kaposi sarcoma virus
 kappa
+kappa lambda ratio
 karaoke
 karaya
 karell
@@ -17664,6 +18152,7 @@ kawasaki disease
 kawasakis
 kay
 kayser
+kayser fleischer ring
 kazal
 kball
 kcase
@@ -17729,6 +18218,7 @@ keratan
 keratic
 keratin
 keratinization
+keratinocyte
 keratitis
 kerato
 keratoacanthoma
@@ -17763,8 +18253,10 @@ ketene
 ketmia
 ketoacidosis
 ketoconazole
+ketogenesis
 ketol
 ketone
+ketone bodies
 ketones
 ketonex
 ketonic
@@ -17876,6 +18368,8 @@ klapp
 klaron
 klebcil
 klebs
+klebsiella
+klebsiella pneumoniae
 kleiger
 kleijn
 klein
@@ -17996,6 +18490,7 @@ kratz
 krause
 kreatin
 krebs
+krebs cycle
 kremer
 kresol
 kretz
@@ -18008,7 +18503,9 @@ kruger
 kruskal
 krypt
 krypton
+kshv
 kstonia
+kub
 kuchen
 kuder
 kugel
@@ -18020,11 +18517,13 @@ kummell
 kunkel
 kunsia
 kupffer
+kupffer cell
 kurloff
 kurt
 kurthia
 kurzrok
 kussmaul
+kussmaul sign
 kuster
 kustner
 kutauss
@@ -18101,12 +18600,15 @@ lactams
 lactary
 lactase
 lactate
+lactate dehydrogenase
 lactation
 lactea
 lacteae
 lacteal
 lacteus
 lactic
+lactic acid
+lactic acidosis
 lactide
 lactim
 lactims
@@ -18144,6 +18646,7 @@ lafora
 lagan
 lagena
 lagenae
+lagophthalmos
 lagua
 lagurus
 lagus
@@ -18170,6 +18673,7 @@ lamel
 lamella
 lamin
 lamina
+lamina propria
 laminae
 laminar
 laminas
@@ -18210,6 +18714,7 @@ lanes
 lang
 lange
 langer
+langerhans cell
 langley
 languas
 laniary
@@ -18384,10 +18889,14 @@ lcd
 lcx
 ldane
 ldehyde
+ldh
+ldl
+ldl cholesterol
 leach
 leachi
 leachii
 lead
+lead pipe rigidity
 lead1
 lead2
 leader
@@ -18458,7 +18967,9 @@ legal
 legally
 legend
 legends
+legionella
 legionella pneumonia
+legionella pneumophila
 legionellosis
 legionnaires
 legs
@@ -18470,6 +18981,7 @@ leigh
 leiner
 leiomyoma
 leiomyosarcoma
+leishmania
 leishmaniasis
 leisure
 leiter
@@ -18536,6 +19048,7 @@ lepsia
 lepti
 leptin
 lepto
+leptospira
 leptospirosis
 leptus
 lepus
@@ -18580,6 +19093,9 @@ leudet
 leukemia
 leukin
 leukine
+leukocyte
+leukocyte esterase
+leukocytes
 leukocytopenia
 leukocytosis
 leukoderma
@@ -18644,6 +19160,7 @@ lfism
 lfist
 lgib
 lgoose
+lh
 lhasa
 lhead
 liable
@@ -18688,6 +19205,7 @@ licon
 licox
 licytus
 lid
+lid lag
 lidae
 lidak
 lidakol
@@ -18712,6 +19230,7 @@ lifugae
 ligament
 ligaments
 ligand
+ligand gated
 ligands
 ligase
 ligases
@@ -18841,13 +19360,16 @@ lipmann
 lipoate
 lipofen
 lipogen
+lipogenesis
 lipoic
 lipoid
+lipolysis
 lipoma
 lipomas
 lipomatosis
 lipomul
 liponol
+lipoprotein a
 liposis
 liposyn
 lipotes
@@ -18882,6 +19404,7 @@ listed
 listen
 lister
 listeria
+listeria monocytogenes
 listeriosis
 listing
 liston
@@ -18948,6 +19471,7 @@ llp
 llroth
 lmary
 lmitone
+lmwh
 load
 loaded
 loading
@@ -19096,6 +19620,8 @@ looks
 lookup
 loop
 loop diuretic
+loop of henle
+loop recorder
 looper
 loopful
 loops
@@ -19182,6 +19708,8 @@ loves
 loving
 low
 low back pain
+low grade fever
+low molecular weight heparin
 lower
 lower back
 lowest
@@ -19194,6 +19722,7 @@ loxia
 lozenge
 lozol
 lp
+lp(a)
 lrti
 lstat
 ltd
@@ -19289,6 +19818,7 @@ lutea
 luteal
 luteic
 lutein
+luteinizing hormone
 luteo
 luteoid
 luteola
@@ -19336,10 +19866,13 @@ lymphangioleiomyomatosis
 lymphangitis
 lymphatic
 lymphedema
+lymphocyte
+lymphocytes
 lymphocytic
 lymphocytosis
 lymphogranuloma
 lymphoma
+lymphopenia
 lymphoproliferative
 lymphs
 lyncean
@@ -19376,6 +19909,7 @@ lythe
 lytic
 lytta
 lyxose
+m phase
 maalox
 mac
 macaca
@@ -19393,6 +19927,9 @@ macroamylasemia
 macrocephaly
 macrocytosis
 macroglossia
+macrolide
+macrophage
+macrophages
 mactans
 macugen
 macula
@@ -19593,6 +20130,7 @@ manum
 manus
 many
 manzo
+maoi
 maois
 maolate
 map
@@ -19683,6 +20221,7 @@ masset
 masseur
 massive
 masson
+mast cell
 mastalgia
 mastectomy
 master
@@ -19772,11 +20311,14 @@ mccune
 mcewen
 mcgill
 mcginn
+mch
+mchc
 mcindoe
 mckee
 mclean
 mcneer
 mcneil
+mcv
 mdd
 mds
 meadow
@@ -19860,6 +20402,7 @@ meetup
 mefoxin
 mega
 megace
+megakaryocyte
 megal
 megaloblastic
 megista
@@ -19878,10 +20421,12 @@ melagra
 melanex
 melania
 melanin
+melanocyte
 melanoma
 melas
 melasma
 melasyn
+melatonin
 meleda
 melena
 meleney
@@ -19976,6 +20521,7 @@ merisis
 merism
 merit
 merkel
+merkel cell
 merogel
 meromelia
 meront
@@ -19992,6 +20538,8 @@ mesal
 mesalamine
 mesalazine
 mesalt
+mesangial cell
+mesangium
 mesaxon
 mescal
 mesenteric
@@ -20015,12 +20563,16 @@ message
 mester
 met
 metabolic
+metabolic acidosis
+metabolic alkalosis
 metabolic syndrome
 metal
 metallo
 metals
 metamer
+metanephrines
 metanil
+metapneumovirus
 metastatic
 metatarsalgia
 metazoa
@@ -20034,6 +20586,7 @@ methane
 methanol
 methb
 metheme
+methemoglobin
 methemoglobinemia
 methene
 methimazole
@@ -20043,6 +20596,7 @@ method
 methods
 methotrexate
 methyl
+methylmalonic acid
 methylphenidate
 metoclopramide
 metolazone
@@ -20074,6 +20628,7 @@ meynert
 meynet
 mezlin
 mg
+mhc
 mhz
 mi
 mia
@@ -20099,6 +20654,7 @@ microbe
 microcephaly
 microcytosis
 microdontia
+microglia
 micron
 micros
 microscopic polyangiitis
@@ -20203,6 +20759,7 @@ minimal
 minimal change disease
 minimi
 minimum
+minimum inhibitory concentration
 minimus
 mining
 minocin
@@ -20232,6 +20789,7 @@ miralax
 mirapex
 mircera
 mirena
+mirna
 mirror
 mirrors
 mirtazapine
@@ -20251,6 +20809,8 @@ mit
 mitella
 mitior
 mitis
+mitochondria
+mitochondrion
 mitogen
 mitome
 mitoq
@@ -20266,6 +20826,7 @@ mitsuda
 mitten
 mix
 mixed
+mixed acid base
 mixed connective tissue disease
 mixed shock
 mixer
@@ -20374,7 +20935,11 @@ monkeypox
 mono
 monoamine oxidase inhibitor
 monocid
+monoclonal gammopathy
 monoclonal gammopathy of undetermined significance
+monocyte
+monocytes
+monocytosis
 monod
 monodal
 monodox
@@ -20438,6 +21003,7 @@ morita
 moritz
 morley
 morning
+morning cortisol
 morocco
 moron
 morphea
@@ -20489,6 +21055,8 @@ motion
 motive
 motofen
 motor
+motor endplate
+motor neuron
 motoria
 motors
 motrice
@@ -20532,6 +21100,7 @@ mph
 mprag
 mprage
 mr
+mra
 mracp
 mrcpe
 mrcpi
@@ -20543,12 +21112,14 @@ mri
 mrna
 mrs
 mrsa
+mrv
 ms
 msg
 msgid
 msgstr
 msie
 msn
+mssa
 mtdna
 mtv
 mucate
@@ -20630,6 +21201,8 @@ muscina
 muscle
 muscles
 muscular
+muscularis
+muscularis mucosae
 musculi
 musculoskeletal
 museum
@@ -20661,6 +21234,7 @@ muzzled
 mvp
 mvr
 myalgia
+myalgias
 myalgic
 myanmar
 myasis
@@ -20675,19 +21249,25 @@ mycid
 mycin
 mycitin
 mycobacteriosis
+mycobacterium
+mycobacterium avium
+mycobacterium tuberculosis
 mycogen
 mycolic
 mycolog
 mycophenolate
 mycoplasma
+mycoplasma pneumoniae
 mycoplasmosis
 mycopus
 mycose
 mycosis
 mycotic
 mydfrin
+mydriasis
 myelica
 myelin
+myelin sheath
 myelitis
 myelodysplasia
 myelofibrosis
@@ -20708,11 +21288,14 @@ myobloc
 myocardial
 myocardial infarction
 myocarditis
+myocardium
 myocele
 myoclonus
 myocyte
+myofibril
 myogen
 myoglia
+myoglobin
 myogram
 myoid
 myoidem
@@ -20770,10 +21353,14 @@ myxoma
 myxomas
 myxozoa
 n-bca
+n-terminal pro-bnp
+na k atpase
+na+
 naboth
 nabothi
 nacton
 nadbath
+nadh
 nadide
 nadolol
 nadph
@@ -20878,6 +21465,7 @@ natrix
 natroba
 natron
 natural
+natural killer cell
 nature
 natus
 naughty
@@ -20898,6 +21486,7 @@ navy
 nba
 nbc
 ncaa
+ncs
 nd-yag
 nealogy
 near
@@ -20943,6 +21532,8 @@ neife
 neil
 neill
 neisser
+neisseria gonorrhoeae
+neisseria meningitidis
 neisserial
 neither
 nekton
@@ -21035,23 +21626,29 @@ neurofibroma
 neurofibromatosis
 neurogenic
 neurogenic shock
+neuroglia
 neuroid
 neurological
 neuroma
+neuromuscular junction
 neuromyelitis
 neuron
+neuron specific enolase
 neurone
 neurons
 neuropathy
 neurosarcoidosis
 neurosis
+neurotransmitter
 neurula
 neusser
 neutra
 neutral
 neutron
 neutropenia
+neutrophil
 neutrophilia
+neutrophils
 nevada
 never
 nevin
@@ -21088,6 +21685,7 @@ nhmrc
 nhs
 niaaa
 niacin
+niacin therapy
 niacor
 niagara
 niaid
@@ -21185,8 +21783,10 @@ niveau
 niveus
 nivolumab
 nizoral
+nk cell
 nlite
 nnrti
+noac
 noack
 nobel
 noble
@@ -21204,6 +21804,7 @@ nodal
 nodding
 noddy
 node
+node of ranvier
 nodes
 nodosa
 nodose
@@ -21232,10 +21833,12 @@ nomos
 non
 non alcoholic fatty liver disease
 non alcoholic steatohepatitis
+non anion gap acidosis
 non hodgkin lymphoma
 non small cell lung cancer
 non st elevation acs
 non st elevation myocardial infarction
+non steroidal anti inflammatory
 non tender
 nonalcoholic
 nonan
@@ -21262,6 +21865,7 @@ nopal
 nopalin
 nophn
 nor
+noradrenaline
 nordach
 norepinephrine
 norflex
@@ -21275,6 +21879,7 @@ normo
 normocephalic
 normocytic
 normothermia
+norovirus
 noroxin
 norpace
 norrie
@@ -21342,8 +21947,12 @@ nsaia
 nsaid
 nsaids
 nsclc
+nse
 nstemi
 nsw
+nt probnp
+nt-probnp
+ntprobnp
 ntsc
 nubain
 nucha
@@ -21553,6 +22162,7 @@ oleyl
 olfact
 olfacty
 oligo
+oligodendrocyte
 oligodendroglioma
 oligohydramnios
 oligomenorrhea
@@ -21840,8 +22450,10 @@ oscinis
 osculum
 oseltamivir
 osgood
+osimertinib
 osiris
 osler
+osler node
 osmate
 osmatic
 osmesis
@@ -21850,7 +22462,9 @@ osmics
 osmium
 osmol
 osmolal
+osmolality
 osmolar
+osmolarity
 osmole
 osmoles
 osmose
@@ -21879,10 +22493,13 @@ ostein
 osteite
 ostene
 osteoarthritis
+osteoblast
 osteoblastoma
 osteochondritis
 osteochondroma
 osteochondrosis
+osteoclast
+osteocyte
 osteogenesis
 osteoid
 osteoma
@@ -22026,6 +22643,7 @@ oxgall
 oxidant
 oxidase
 oxidate
+oxidative phosphorylation
 oxide
 oxidize
 oxime
@@ -22043,6 +22661,7 @@ oxycyte
 oxydex
 oxygen
 oxyheme
+oxyhemoglobin
 oxyir
 oxymel
 oxyntic
@@ -22052,6 +22671,7 @@ oxyosis
 oxyphil
 oxysalt
 oxytoca
+oxytocin
 oxytrex
 oxyuria
 oxyuric
@@ -22067,7 +22687,9 @@ ozone
 ozonide
 ozonize
 ozzardi
+p anca
 p15095
+p2y12 inhibitor
 p450scc
 pabanol
 pac
@@ -22150,6 +22772,7 @@ palm
 palma
 palmae
 palmar
+palmar erythema
 palmare
 palmate
 palmaz
@@ -22194,6 +22817,7 @@ pander
 panel
 panels
 paneth
+paneth cell
 panex
 panfish
 panhypopituitarism
@@ -22221,6 +22845,7 @@ pants
 panum
 panus
 panzem
+pao2
 pap smear
 papain
 papains
@@ -22267,11 +22892,13 @@ paraphimosis
 paraplegia
 paraplegic
 parapneumonic
+paraprotein
 parasal
 parasitemia
 parasitic
 parasitosis
 parasol
+parathyroid hormone
 paratyphoid
 paraxon
 parca
@@ -22293,6 +22920,8 @@ paria
 parica
 paries
 pariet
+parietal cell
+parietal pleura
 parieto
 paris
 parish
@@ -22346,6 +22975,8 @@ paruria
 parva
 parvae
 parvo
+parvovirus
+parvovirus b19
 parvule
 parvum
 parvus
@@ -22366,6 +22997,7 @@ passey
 passing
 passion
 passive
+passive transport
 passu
 past
 pasta
@@ -22441,7 +23073,10 @@ pays
 pci
 pcos
 pcs
+pcsk9 inhibitor
 pct
+pd 1 inhibitor
+pd l1 inhibitor
 pda
 pdas
 pdf
@@ -22452,6 +23087,7 @@ peace
 peach
 peacock
 peak
+peak flow
 peaklog
 peanut
 pearl
@@ -22516,6 +23152,7 @@ pelta
 peltate
 pelves
 pelvic
+pelvic ct
 pelvic inflammatory disease
 pelvica
 pelvina
@@ -22568,6 +23205,7 @@ pentol
 penton
 pentone
 pentose
+pentose phosphate pathway
 pentyl
 people
 peoples
@@ -22612,9 +23250,11 @@ periapt
 periarteritis
 pericardial
 pericardial effusion
+pericardial sac
 pericardiectomy
 pericardiocentesis
 pericarditis
+pericardium
 peridex
 peridia
 peridol
@@ -22635,6 +23275,7 @@ peripartum cardiomyopathy
 periph
 peripheral
 peripheral artery disease
+peripheral cyanosis
 peripheral iv
 peripheral neuropathy
 peripheral vascular disease
@@ -22699,6 +23340,7 @@ pestis
 pestle
 pet
 pet scan
+pet-ct
 pete
 petechiae
 peter
@@ -22733,11 +23375,13 @@ pfizer
 pft
 pfuhl
 pgp
+ph
 phaco
 phacoid
 phacoma
 phade
 phage
+phagocytosis
 phakic
 phakoma
 phalang
@@ -22824,6 +23468,7 @@ phosis
 phoslo
 phosmet
 phospho
+phospholipase c
 phossy
 photic
 photism
@@ -22990,6 +23635,7 @@ pinna
 pinnace
 pinnae
 pinnal
+pinocytosis
 pinopod
 pins
 pinta
@@ -23035,6 +23681,7 @@ pitrex
 pitta
 pitted
 pitting
+pitting edema
 pituita
 pituitary
 pituitary adenoma
@@ -23049,6 +23696,9 @@ pixel
 pixels
 pizza
 pizzle
+pjp
+pka
+pkc
 plaato
 place
 placebo
@@ -23098,10 +23748,20 @@ plaques
 plasia
 plasm
 plasma
+plasma cell
+plasma cells
+plasma metanephrines
+plasma renin activity
 plasmal
 plasmic
 plasmid
 plasmin
+plasminogen
+plasmodium
+plasmodium falciparum
+plasmodium malariae
+plasmodium ovale
+plasmodium vivax
 plasmon
 plasson
 plast
@@ -23114,9 +23774,11 @@ plate
 plateau
 plated
 platelet
+platelets
 plates
 platina
 plating
+platinum agent
 platy
 plaut
 plauti
@@ -23211,8 +23873,10 @@ pneumatosis
 pneumic
 pneumo
 pneumococcal
+pneumococcus
 pneumoconiosis
 pneumocystis
+pneumocystis jirovecii
 pneumocystis pneumonia
 pneumon
 pneumonectomy
@@ -23234,6 +23898,8 @@ podalic
 podcast
 poditis
 podocon
+podocyte
+podocytes
 podofin
 podus
 poem
@@ -23319,6 +23985,7 @@ polyps
 polypus
 polyrox
 polys
+polysomnography
 polytef
 polytrauma
 polyuria
@@ -23421,6 +24088,7 @@ postpartum
 postpartum depression
 postpartum hemorrhage
 posts
+postsynaptic
 postural
 posture
 pot
@@ -23429,6 +24097,9 @@ potable
 potain
 potamon
 potash
+potassium
+potassium channel
+potassium sparing
 potassium sparing diuretic
 potato
 potency
@@ -23476,6 +24147,7 @@ pramine
 prana
 prandin
 prantal
+prasugrel
 pravastatin
 praxis
 pray
@@ -23483,6 +24155,7 @@ prayer
 prayers
 prazosin
 pre
+prealbumin
 prebase
 precare
 precava
@@ -23556,6 +24229,7 @@ pressure
 prestab
 preston
 presun
+presynaptic
 preterm
 preterm labor
 pretts
@@ -23614,6 +24288,7 @@ printer
 prints
 prinzmetal angina
 prion
+prions
 prior
 priorly
 prisel
@@ -23632,6 +24307,8 @@ prize
 prizes
 prizm
 pro
+pro bnp
+pro-bnp
 proal
 proaqua
 proband
@@ -23646,6 +24323,7 @@ problem
 probnp
 proc
 procainamide
+procalcitonin
 procan
 proceed
 procera
@@ -23673,12 +24351,14 @@ progel
 progeny
 progeria
 progest
+progesterone
 prognosis
 prograf
 program
 project
 prokine
 proklar
+prolactin
 prolan
 prolaps
 prolapse
@@ -23723,6 +24403,7 @@ propose
 propranolol
 propria
 proprii
+proptosis
 propyl
 propylthiouracil
 propyne
@@ -23738,6 +24419,7 @@ prosop
 prostar
 prostate
 prostate cancer
+prostate specific antigen
 prostatectomy
 prostatic
 prostatitis
@@ -23751,16 +24433,24 @@ protan
 protar
 protea
 protean
+proteasome
 protect
 proteid
 protein
+protein c
 protein c deficiency
+protein kinase a
+protein kinase c
+protein s
 protein s deficiency
 proteinemia
 proteinuria
 proter
 protest
 proteus
+proteus mirabilis
+prothrombin
+prothrombin time
 protime
 protist
 protium
@@ -23783,6 +24473,7 @@ provisc
 provu
 prower
 proximal
+proximal tubule
 proximi
 proxy
 prozac
@@ -23796,6 +24487,7 @@ prurigo
 pruritus
 prussak
 prussic
+psa
 psamm
 pseud
 pseudo
@@ -23807,6 +24499,7 @@ pseudohyponatremia
 pseudohypoparathyroidism
 pseudomembranous
 pseudomonas
+pseudomonas aeruginosa
 pseudotumor
 pseudotumor cerebri
 pseudotumor cerebrii
@@ -23829,6 +24522,7 @@ psychomotor
 psychosis
 psychotic
 psychr
+pt
 ptarmic
 ptarmus
 ptbrine
@@ -23838,6 +24532,7 @@ pterion
 pteroic
 pteroyl
 pterygium
+pth
 pthirus
 ptosed
 ptoses
@@ -23845,6 +24540,7 @@ ptosis
 ptotic
 pts
 ptsd
+ptt
 pty
 ptyal
 pub
@@ -23911,6 +24607,8 @@ pulseless
 pulsion
 pulstar
 pulsus
+pulsus alternans
+pulsus paradoxus
 pulvis
 pumex
 pumice
@@ -23953,6 +24651,8 @@ purines
 purinol
 puris
 purite
+purkinje cell
+purkinje fiber
 purple
 purpose
 purpura
@@ -24027,6 +24727,7 @@ pyret
 pyretic
 pyrexia
 pyrexic
+pyridoxine
 pyridyl
 pyriform
 pyrin
@@ -24035,6 +24736,7 @@ pyromania
 pyrone
 pyronil
 pyronin
+pyroptosis
 pyrosis
 pyrotic
 pyrrole
@@ -24246,6 +24948,7 @@ rancid
 rand
 randall
 random
+random glucose
 randy
 ranexa
 range
@@ -24327,9 +25030,11 @@ raynaud
 raynauds
 rays
 rbbb
+rbc
 rca
 rcc
 rds
+rdw
 reach
 reached
 reaches
@@ -24401,6 +25106,8 @@ rectum
 rectus
 recurrent
 red
+red blood cell
+red blood cells
 reddick
 redeem
 redfoot
@@ -24443,6 +25150,7 @@ reform
 reforms
 refract
 refractory
+refractory period
 refresh
 refsum
 refund
@@ -24496,6 +25204,7 @@ relapsing
 relate
 related
 relates
+relative refractory
 relax
 relaxed
 relaxin
@@ -24583,6 +25292,7 @@ replied
 replies
 reply
 repoise
+repolarization
 report
 reports
 reprint
@@ -24607,6 +25317,7 @@ resinat
 resinol
 resins
 resist
+resistant
 resite
 resol
 resole
@@ -24617,11 +25328,16 @@ resort
 resorts
 respect
 respiratory
+respiratory acidosis
+respiratory alkalosis
 respiratory failure
+respiratory syncytial virus
 respond
 rest
 resten
 resting
+resting membrane potential
+resting tremor
 restis
 restless
 restor
@@ -24643,6 +25359,9 @@ retial
 retic
 reticle
 reticul
+reticulocyte
+reticulocytes
+reticulocytopenia
 reticulocytosis
 retin
 retina
@@ -24682,6 +25401,7 @@ reveals
 revenge
 revenue
 reverse
+reverse t3
 revery
 revex
 revia
@@ -24704,6 +25424,7 @@ rezipas
 rezonic
 rezulin
 rezyme
+rf
 rfc
 rhabd
 rhabdo
@@ -24732,6 +25453,7 @@ rheumatic heart disease
 rheumatism
 rheumatoid
 rheumatoid arthritis
+rheumatoid factor
 rheumic
 rhexis
 rhinal
@@ -24740,6 +25462,7 @@ rhinism
 rhinitis
 rhinoplasty
 rhinorrhea
+rhinovirus
 rhitid
 rhizo
 rhizoid
@@ -24768,7 +25491,9 @@ ribbert
 ribbon
 ribes
 ribitol
+riboflavin
 ribose
+ribosome
 ribosyl
 ribot
 rica
@@ -24786,6 +25511,7 @@ ricine
 ricinus
 rick
 rickets
+rickettsia
 rickettsial
 rickettsiosis
 ricky
@@ -24829,9 +25555,11 @@ right sided
 right ventricular failure
 rights
 rigid
+rigidity
 rigidus
 rigler
 rigor
+rigors
 riker
 riley
 rilutek
@@ -25024,8 +25752,10 @@ rotate
 rotateq
 rotator
 rotator cuff tear
+rotavirus
 rotch
 rotexed
+roth spot
 rothera
 rothia
 rotlauf
@@ -25072,10 +25802,12 @@ rozerem
 rpg
 rpm
 rrhage
+rrna
 rrp
 rsd
 rss
 rstmh
+rsv
 rta
 rubarth
 rubber
@@ -25173,6 +25905,7 @@ rynatan
 rystan
 rythmol
 ryzolt
+s phase
 saand
 saands
 saber
@@ -25256,6 +25989,7 @@ saline
 saliv
 saliva
 salivary
+salivary cortisol
 salla
 salle
 sally
@@ -25264,6 +25998,7 @@ salmiac
 salmin
 salmine
 salmon
+salmonella
 salmonella infection
 salmonellosis
 salol
@@ -25331,6 +26066,7 @@ santyl
 sanvar
 sanyo
 sao
+sao2
 sap
 saphena
 sapheni
@@ -25350,13 +26086,19 @@ sarcina
 sarcode
 sarcoid
 sarcoidosis
+sarcolemma
 sarcoma
+sarcomere
 sarcopenia
+sarcoplasm
+sarcoplasmic reticulum
 sarcous
 sarenin
 sarin
 sarisol
 sarna
+sars cov 2
+sars-cov-2
 sarsa
 sas
 sastid
@@ -25470,6 +26212,7 @@ schick
 schiff
 schimke
 schiotz
+schistosoma
 schistosomiasis
 schiz
 schizo
@@ -25499,6 +26242,7 @@ schumm
 schutz
 schwabe
 schwann
+schwann cell
 schwarz
 sci
 sciage
@@ -25516,6 +26260,7 @@ scler
 sclera
 sclerae
 scleral
+scleral icterus
 scleritis
 scleroderma
 sclerosis
@@ -25586,6 +26331,7 @@ seating
 seats
 seattle
 seaweed
+sebaceous gland
 sebacic
 sebizon
 seborrhea
@@ -25601,6 +26347,7 @@ seckel
 seconal
 second
 second degree heart block
+second messenger
 secondary
 secondary hypertension
 seconds
@@ -25608,6 +26355,7 @@ secran
 secret
 secreta
 secrete
+secretin
 secrets
 sectile
 sectio
@@ -25615,6 +26363,7 @@ section
 sector
 sectors
 sectral
+secukinumab
 secunda
 secundi
 secur
@@ -25622,9 +26371,11 @@ secure
 secured
 securo
 securus
+sed rate
 sedalia
 sedapap
 sedentary
+sedimentation rate
 sedis
 see
 seeberi
@@ -25647,6 +26398,7 @@ seessel
 seffin
 sega
 segment
+segmented neutrophil
 segnis
 segond
 segui
@@ -25729,10 +26481,12 @@ senses
 sensi
 sensia
 sensing
+sensitive
 sensor
 sensorineural hearing loss
 sensors
 sensory
+sensory neuron
 sensuum
 sent
 senter
@@ -25806,11 +26560,15 @@ serpin
 serpins
 serrata
 serrati
+serratia
+serratia marcescens
 serre
 serres
 sertoli
 sertraline
 serum
+serum iron
+serum protein electrophoresis
 serumal
 servat
 serve
@@ -25853,6 +26611,7 @@ sewage
 sewer
 sewing
 sex
+sex hormone binding globulin
 sexcam
 sexo
 sexsomnia
@@ -25898,6 +26657,7 @@ shaved
 shaver
 shaw
 shban
+shbg
 she
 shear
 sheath
@@ -25925,6 +26685,7 @@ shield
 shift
 shiga
 shigae
+shigella
 shigellosis
 shiley
 shin
@@ -26134,6 +26895,7 @@ sinus tachycardia
 sinusal
 sinuses
 sinusitis
+sinusoid
 sinuum
 sip
 siphon
@@ -26207,6 +26969,7 @@ slave
 sle
 sleep
 sleep apnea
+sleep study
 sleeps
 sleepwalking
 sleepy
@@ -26295,6 +27058,7 @@ snoring
 snorter
 snot
 snow
+snri
 snrna
 snrnp
 snuff
@@ -26317,6 +27081,9 @@ sockets
 socks
 socon
 sodium
+sodium channel
+sodium potassium exchange
+sodium potassium pump
 sodoku
 sodomy
 sofa
@@ -26365,6 +27132,7 @@ soltab
 soltara
 soltex
 soluble
+soluble transferrin receptor
 solum
 solurex
 solus
@@ -26391,6 +27159,7 @@ somatization
 somato
 somatoform
 somatom
+somatostatin
 some
 somehow
 someone
@@ -26533,6 +27302,7 @@ spencer
 spend
 spens
 spent
+spep
 sperm
 sperma
 spermat
@@ -26557,6 +27327,7 @@ spice
 spicula
 spicule
 spider
+spider angioma
 spies
 spignet
 spike
@@ -26607,11 +27378,14 @@ splenic
 splenis
 splenomegaly
 splice
+splicing
 spline
 splint
+splinter hemorrhage
 splinting
 splints
 split
+spo2
 spoke
 spoken
 spondee
@@ -26681,6 +27455,7 @@ squames
 squamo
 squamous
 squamous cell carcinoma
+squamous epithelium
 squard
 square
 squash
@@ -26699,6 +27474,7 @@ sscd
 ssdna
 ssl
 ssnger
+ssri
 ssris
 ssrna
 st elevation acs
@@ -26748,6 +27524,9 @@ staph
 staphsr
 staphyl
 staphylococcal
+staphylococcus
+staphylococcus aureus
+staphylococcus epidermidis
 star
 starbar
 starch
@@ -26775,6 +27554,7 @@ statica
 statics
 statim
 statin
+statin target
 stating
 statins
 station
@@ -26821,6 +27601,7 @@ stelid
 stelix
 stella
 stellar
+stellate cell
 stem
 stemex
 stemgen
@@ -26989,6 +27770,10 @@ strep throat
 streph
 strepto
 streptococcal
+streptococcus
+streptococcus agalactiae
+streptococcus pneumoniae
+streptococcus pyogenes
 stress
 stress fracture
 stress test
@@ -27067,6 +27852,8 @@ subanal
 subarachnoid
 subarachnoid hemorrhage
 subaru
+subclass igg1
+subclass igg4
 subclavian
 subcoma
 subcortical
@@ -27084,12 +27871,14 @@ sublux
 subluxated
 subluxation
 submit
+submucosa
 subpar
 subpial
 subsp
 substance
 substance use disorder
 substc
+substrate
 subtile
 subtle
 subunit
@@ -27158,6 +27947,7 @@ sulfate
 sulfide
 sulfite
 sulfo
+sulfonamide
 sulfone
 sulfose
 sulfur
@@ -27248,6 +28038,8 @@ survey
 surveys
 survive
 susan
+susceptibility
+susceptible
 suse
 suslik
 suspect
@@ -27279,6 +28071,7 @@ swap
 swarm
 swaying
 sweat
+sweat gland
 sweating
 sweats
 sweden
@@ -27328,6 +28121,7 @@ sympus
 synagis
 synalar
 synapse
+synapses
 synarel
 sync
 synchro
@@ -27350,8 +28144,11 @@ synotia
 synotus
 synovi
 synovia
+synovial fluid
 synovin
+synoviocyte
 synovitis
+synovium
 synox
 synsorb
 syntax
@@ -27392,6 +28189,8 @@ syzygy
 szabo
 szent
 szulgai
+t cell
+t cells
 t-pred
 t1dm
 t2dm
@@ -27560,6 +28359,7 @@ tardus
 tardy
 tared
 target
+targeted therapy
 targets
 targis
 tariff
@@ -27621,6 +28421,8 @@ tazorac
 tb
 tba
 tbi
+tca
+tca cycle
 tcd50
 tchida
 tcid50
@@ -27669,6 +28471,7 @@ tekamlo
 teknika
 tel
 telae
+telangiectasia
 telar
 telcyta
 teldrin
@@ -27734,6 +28537,7 @@ teniola
 tenne
 tennis
 tennis elbow
+tenofovir
 tenon
 tenont
 tenosynovitis
@@ -27823,6 +28627,7 @@ testing
 testis
 testium
 testoid
+testosterone
 testred
 testryl
 tests
@@ -27855,6 +28660,7 @@ texture
 textus
 tfas-c
 tft
+tgf beta
 tgp
 thai
 thalami
@@ -27935,7 +28741,9 @@ thesis
 theta
 they
 thiamin
+thiamine
 thiara
+thiazide
 thiazide diuretic
 thick
 thiele
@@ -27992,11 +28800,13 @@ thought
 thread
 threads
 thready
+thready pulse
 threat
 threatened abortion
 threats
 three
 threose
+threshold potential
 thrill
 thrix
 throat
@@ -28004,8 +28814,10 @@ throb
 throbbing
 throe
 thrombi
+thrombin
 thrombo
 thromboangiitis obliterans
+thrombocyte
 thrombocytopenia
 thrombocytosis
 thromboembolism
@@ -28053,16 +28865,21 @@ thyrar
 thyre
 thyrel
 thyro
+thyroglobulin
 thyroid
 thyroid cancer
+thyroid peroxidase
 thyroid storm
 thyroiditis
+thyromegaly
 thyrotoxicosis
+thyroxine
 thyrse
 tia
 tiamate
 tiazac
 tiazole
+tibc
 tibia
 tibiad
 tibiae
@@ -28154,6 +28971,7 @@ tirzepatide
 tisseel
 tissot
 tissue
+tissue factor
 tissues
 tit
 titans
@@ -28172,7 +28990,11 @@ titten
 tityus
 tixanox
 tizzoni
+tki
 tmp
+tnf
+tnf alpha
+tnf inhibitor
 tnkase
 tobacco
 tobago
@@ -28312,6 +29134,11 @@ tosifen
 tostrex
 tosyl
 total
+total bilirubin
+total cholesterol
+total protein
+total t3
+total t4
 totalen
 totalis
 totally
@@ -28355,6 +29182,8 @@ toxins
 toxogen
 toxoid
 toxoids
+toxoplasma
+toxoplasma gondii
 toxoplasmic
 toxoplasmosis
 toxuria
@@ -28363,7 +29192,10 @@ toynbee
 toyota
 toys
 tozeuri
+tpa
+tpo antibody
 tr
+trab
 trace
 tracer
 trache
@@ -28415,6 +29247,11 @@ tranche
 tranmep
 tranny
 transam
+transcription
+transesophageal echo
+transferrin
+transferrin saturation
+transforming growth factor
 transfusion
 transfx
 transient
@@ -28423,8 +29260,11 @@ transil
 transit
 transitional
 transitional cell carcinoma
+translation
 transposition
 transposition of the great arteries
+transthoracic echo
+transthyretin
 transurethral resection
 trantas
 trap
@@ -28474,6 +29314,7 @@ trental
 treo
 trepan
 trepo
+treponema pallidum
 treppe
 tresis
 trest
@@ -28544,8 +29385,10 @@ trigeminal neuralgia
 trigeminy
 trigen
 trigger
+triglycerides
 trigona
 trigone
+triiodothyronine
 trilabe
 trilene
 trillat
@@ -28558,6 +29401,7 @@ trimer
 trimeta
 trimeth
 trimethoprim
+trimethoprim sulfamethoxazole
 trimox
 trimpex
 trinam
@@ -28601,6 +29445,7 @@ trivase
 trivia
 trivial
 trivora
+trna
 trocar
 trocars
 troch
@@ -28623,8 +29468,14 @@ tropica
 tropin
 tropine
 tropism
+tropomyosin
+troponin
+troponin complex
+troponin i
+troponin t
 trouble
 trough
+trousseau sign
 trout
 trovan
 trovax
@@ -28660,16 +29511,21 @@ trying
 trylon
 trymex
 trypan
+trypanosoma
 trypanosomiasis
 trypsin
 tryptar
+tryptase
 tryptic
 trysul
 tsetse
+tsh
+tsi
 tsrpc
 tsuga
 tsunami
 tswett
+tte
 ttp
 ttr amyloidosis
 tuamine
@@ -28715,6 +29571,7 @@ tugging
 tuinal
 tuition
 tularemia
+tularensis
 tulear
 tulip
 tulle
@@ -28730,6 +29587,9 @@ tumide
 tumidus
 tumor
 tumor lysis syndrome
+tumor marker
+tumor markers
+tumor necrosis factor
 tumoral
 tumors
 tunable
@@ -28849,6 +29709,7 @@ typhosa
 typhous
 typhus
 typical
+typical antipsychotic
 typing
 typus
 tyresin
@@ -28856,6 +29717,7 @@ tyrode
 tyroid
 tyroma
 tyromex
+tyrosine kinase inhibitor
 tyrosinemia
 tyrosis
 tyrosyl
@@ -28874,6 +29736,7 @@ uberis
 uberous
 uberty
 ubiqgel
+ubiquitin
 uc
 ucephan
 ucoheal
@@ -28945,6 +29808,7 @@ uncia
 uncinal
 uncle
 unconjugated
+unconjugated bilirubin
 uncor
 unction
 uncture
@@ -28960,6 +29824,7 @@ undula
 undyed
 une
 unequal
+unfractionated heparin
 ungual
 unguent
 ungues
@@ -29025,6 +29890,7 @@ upc
 update
 updated
 updates
+upep
 upgaze
 upgoing
 upgrade
@@ -29068,6 +29934,8 @@ urazine
 urbach
 urban
 urchin
+urea
+urea cycle
 ureacin
 ureae
 ureal
@@ -29112,6 +29980,7 @@ urinary tract infection
 urinary urgency
 urinate
 urine
+urine metanephrines
 urinoma
 urinous
 urised
@@ -29318,6 +30187,7 @@ vancomycin
 vancor
 vanex
 vanilla
+vanillylmandelic acid
 vaniqa
 vanlev
 vannas
@@ -29337,6 +30207,7 @@ var
 variant
 variate
 varicella
+varicella zoster
 varices
 varicocele
 varicose
@@ -29371,6 +30242,7 @@ vasitis
 vasocon
 vasofem
 vasomax
+vasopressin
 vasorum
 vasotec
 vasovagal
@@ -29580,6 +30452,8 @@ vibices
 vibra
 vibrans
 vibrio
+vibrio cholerae
+vibrio vulnificus
 vibrion
 vibrios
 vic
@@ -29704,6 +30578,7 @@ visa
 viscer
 viscera
 visceral
+visceral pleura
 visci
 viscid
 viscoat
@@ -29744,7 +30619,13 @@ vitalis
 vitam
 vitamer
 vitamin
+vitamin a
+vitamin b12
 vitamin b12 deficiency anemia
+vitamin c
+vitamin d
+vitamin e
+vitamin k
 vitarex
 vitaxin
 vites
@@ -29779,6 +30660,8 @@ vivonex
 vivotif
 vivus
 vizsla
+vldl
+vma
 vocal
 vocale
 vocalis
@@ -29807,6 +30690,7 @@ volley
 volmax
 volt
 voltage
+voltage gated
 voltaic
 volume
 volumes
@@ -29828,6 +30712,7 @@ von
 von hippel lindau
 von hippel lindau disease
 von willebrand disease
+von willebrand factor
 vontrol
 voodoo
 voranil
@@ -29869,6 +30754,7 @@ vulvodynia
 vulvovaginitis
 vumon
 vusion
+vwf
 vysis
 vytex
 vytone
@@ -29957,6 +30843,7 @@ watch
 watched
 watches
 water
+water hammer pulse
 watered
 waters
 watery
@@ -29977,6 +30864,7 @@ way
 wayne
 ways
 wayson
+wbc
 weak
 weakness
 wealth
@@ -30064,6 +30952,7 @@ werther
 wescott
 wesley
 west
+west nile
 westaim
 western
 weston
@@ -30099,12 +30988,15 @@ whipple
 whisper
 whistle
 white
+white blood cell
+white blood cells
 whitlow
 whitman
 whitney
 whitten
 who
 whole
+whole blood
 wholey
 whom
 whoop
@@ -30413,6 +31305,8 @@ yemen
 yen
 yerba
 yerkes
+yersinia
+yersinia pestis
 yersiniosis
 yes
 yet
@@ -30440,6 +31334,7 @@ yttrium
 yulex
 yutopar
 yuzpe
+z disc
 zactane
 zadaxin
 zaditen
@@ -30513,6 +31408,7 @@ ziehen
 ziehl
 zielke
 zieve
+zika
 zika virus
 zilver
 zimany
