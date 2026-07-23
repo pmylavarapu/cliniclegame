@@ -202,13 +202,33 @@ export default function PuzzleGame({ puzzle, vocab }: Props) {
 
   const useHint = () => {
     if (gameOver) return;
+    // Prefer the curated hint pool (excludes obscure Latin fragments like
+    // 'valgus', 'venular') and fall back to the full top-1000 if a puzzle
+    // doesn't ship one.
+    const pool: [string, number, number][] =
+      puzzle.hints && puzzle.hints.length
+        ? puzzle.hints
+        : puzzle.top1000.map(([w, s], i) => [w, s, i + 1]);
     const bestRank = guesses.reduce(
       (min, g) => (g.rank && g.rank < min ? g.rank : min),
       Infinity,
     );
-    const target = Math.max(1, bestRank === Infinity ? 300 : Math.floor(bestRank / 2));
-    for (let r = target; r >= 1; r--) {
-      const [w] = puzzle.top1000[r - 1];
+    const targetRank = Math.max(
+      1,
+      bestRank === Infinity ? 300 : Math.floor(bestRank / 2),
+    );
+    // Walk the pool from the entry closest to (and no greater than)
+    // targetRank downward toward rank 1 until we find something ungessed.
+    let startIdx = pool.length - 1;
+    for (let i = 0; i < pool.length; i++) {
+      if (pool[i][2] > targetRank) {
+        startIdx = i - 1;
+        break;
+      }
+    }
+    if (startIdx < 0) startIdx = 0;
+    for (let i = startIdx; i >= 0; i--) {
+      const w = pool[i][0];
       if (!guesses.some((g) => g.word === w)) {
         setHintsUsed((h) => h + 1);
         submitGuess(w, true);

@@ -17,6 +17,13 @@ export type Puzzle = {
    * one. Words with no near-synonyms are absent from the map.
    */
   synonyms?: Record<string, string[]>;
+  /**
+   * Hint-eligible subset of the top-1000 (curated vocab only). Each entry
+   * is [word, score, rank_in_top1000]. Keeps obscure Latin morphemes like
+   * 'valgus'/'venular' out of the hint stream while still allowing them
+   * as guesses.
+   */
+  hints?: [word: string, score: number, rank: number][];
 };
 
 export type PuzzleIndex = {

@@ -16,11 +16,18 @@ Puzzle JSON schema:
     "num": <int>,
     "prompt": "...",
     "secret": "diagnosis",
-    "difficulty": <int 1-5>,
+    "difficulty": <int 1-3>,
     "top1000": [["word", 87.34], ...],
     "scores": "<base64 Uint16 array>",
-    "synonyms": {"word": ["neighbor1", "neighbor2"], ...}
+    "synonyms": {"word": ["neighbor1", "neighbor2"], ...},
+    "hints": [["word", 87.34, rank_in_top1000], ...]
   }
+
+Hints: the subset of top1000 that is safe to suggest as a hint — words
+that appear in one of the hand-curated files (diagnoses, adjuncts,
+multiword medical, abbreviations, procedures, drugs). Filters out obscure
+Latin morphemes and eponym fragments like 'valgus', 'venular', 'cirsoid'
+that make sense as guesses but shouldn't be volunteered to a novice.
 
 Synonyms: symmetric adjacency map among top-1000 words with pairwise cosine
 ≥ SYNONYM_SIM. Direct pairs only — no transitive merging — so "colitis"
@@ -150,9 +157,49 @@ def synonym_map(
     return out
 
 
+def load_hint_pool() -> set[str]:
+    """Union of the hand-curated vocab files. Words in this set are
+    considered safe to suggest as a hint. Words outside — obscure Latin
+    morphemes, eponym fragments — stay guessable but won't be volunteered.
+    """
+    import re
+    files = [
+        "diagnoses.txt",
+        "diagnoses_top.txt",
+        "adjuncts.txt",
+        "multiword_medical.txt",
+        "procedures.txt",
+        "drugs.txt",
+    ]
+    out: set[str] = set()
+    for fname in files:
+        p = DATA / fname
+        if not p.exists():
+            continue
+        for line in p.read_text().splitlines():
+            s = line.strip()
+            if not s or s.startswith("#"):
+                continue
+            w = re.sub(r"\s+", " ", s.lower()).strip()
+            if w:
+                out.add(w)
+    # Abbreviations: file is 'abbr|expansion'; only the abbr is a vocab entry.
+    p = DATA / "abbreviations.txt"
+    if p.exists():
+        for line in p.read_text().splitlines():
+            s = line.strip()
+            if not s or s.startswith("#") or "|" not in s:
+                continue
+            abbr = s.split("|", 1)[0].strip().lower()
+            if abbr:
+                out.add(abbr)
+    return out
+
+
 def main() -> None:
     schedule = json.loads((DATA / "schedule.json").read_text())
     prompts = json.loads((DATA / "prompts.json").read_text()) if (DATA / "prompts.json").exists() else {}
+    hint_pool_vocab = load_hint_pool()
 
     vocab = (EMB / "vocab.words").read_text().splitlines()
     vecs = np.load(EMB / "vocab.npy")
@@ -228,6 +275,14 @@ def main() -> None:
         top_vecs = vecs[top_idx]
         synonyms = synonym_map(top_words, top_vecs, SYNONYM_SIM)
 
+        # Hint pool: subset of top1000 restricted to curated vocab so hints
+        # never surface obscure Latin fragments. Rank 1 is the secret itself
+        # and is always eligible (that's how "give up" reveals the answer).
+        hints: list[list[object]] = []
+        for i, (w, s) in enumerate(top1000):
+            if w in hint_pool_vocab or i == 0:
+                hints.append([w, s, i + 1])
+
         # Difficulty: 1 = easy, 2 = medium, 3 = hard. A target with a very
         # close nearest neighbor (near-synonym) is easy; an isolated target
         # is hard. Rank-2 similarity is the signal since rank-1 is the word
@@ -251,6 +306,7 @@ def main() -> None:
             "top1000": top1000,
             "scores": encode_scores(sims_pct.astype(np.float32)),
             "synonyms": synonyms,
+            "hints": hints,
         }
         (PUZZLES / f"{iso}.json").write_text(json.dumps(payload, separators=(",", ":")))
         n += 1
