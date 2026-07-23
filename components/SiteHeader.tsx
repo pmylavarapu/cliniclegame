@@ -36,7 +36,7 @@ export default function SiteHeader() {
   return (
     <>
       <header className="sticky top-0 z-30 bg-bg/85 backdrop-blur-xl border-b border-border/60">
-        <div className="mx-auto max-w-2xl px-4 sm:px-5 h-20 sm:h-20 flex items-center justify-between gap-4">
+        <div className="mx-auto max-w-2xl px-4 sm:px-5 h-20 flex items-stretch justify-between gap-4">
           <Link
             href="/"
             className="flex items-center hover:opacity-80 transition-opacity shrink-0"
@@ -53,7 +53,7 @@ export default function SiteHeader() {
           </Link>
 
           <nav
-            className="hidden sm:flex items-stretch gap-1.5 self-end mb-3 ml-auto"
+            className="hidden sm:flex items-stretch ml-auto"
             aria-label="Site navigation"
           >
             {DESKTOP_NAV.map((item) => (
@@ -61,7 +61,7 @@ export default function SiteHeader() {
                 key={item.href}
                 href={item.href}
                 className={[
-                  'inline-flex items-center h-9 px-4 rounded-md text-ui font-semibold transition-colors',
+                  'inline-flex items-center px-4 text-ui font-semibold transition-colors',
                   isActive(item.href)
                     ? 'bg-fg text-bg'
                     : 'bg-surface-2 text-fg hover:bg-surface-2/70',
@@ -77,7 +77,7 @@ export default function SiteHeader() {
             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={menuOpen}
             onClick={() => setMenuOpen((v) => !v)}
-            className="sm:hidden inline-flex items-center justify-center h-11 w-11 -mr-2 rounded-full text-fg hover:bg-surface-2 active:scale-95 transition-all"
+            className="sm:hidden self-center inline-flex items-center justify-center h-11 w-11 -mr-2 rounded-full text-fg hover:bg-surface-2 active:scale-95 transition-all"
           >
             {menuOpen ? <CloseIcon /> : <MenuIcon />}
           </button>

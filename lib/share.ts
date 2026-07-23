@@ -48,22 +48,24 @@ export function buildShareString(
 
   const stars = starLine(difficulty);
   const time = formatTime(state.timeMs);
-  const bits: string[] = [];
-  if (state.won) {
-    bits.push(formatGuesses(state.guesses.length));
-    if (time) bits.push(time);
-    bits.push(formatHints(state.hintsUsed));
-  }
+
+  // Build the "in TIME using N guesses and M hints" clause. Time and
+  // hints are optional; guesses is always present.
+  const parts: string[] = [];
+  if (state.won && time) parts.push(`in ${time}`);
+  parts.push(
+    `using ${formatGuesses(state.guesses.length)}` +
+      (state.hintsUsed > 0 ? ` and ${formatHints(state.hintsUsed)}` : ''),
+  );
 
   const headline = state.won
-    ? `I solved today's Clinicle #${num}${stars} in ${bits.join(', ')}.`
-    : `Clinicle #${num}${stars} beat me today.`;
+    ? `I solved today's Clinicle #${num}${stars} ${parts.join(' ')}.`
+    : `Today's Clinicle #${num}${stars} beat me ${parts.join(' ')}.`;
 
-  return [
-    headline,
-    ...grid,
-    `Play today at ${SITE_DISPLAY}`,
-  ].join('\n');
+  const cta = `Can you beat me? Play today at ${SITE_DISPLAY}`;
+  const tags = '@ClinicleGame @PraneetMylavarapu #Clinicle #MedTwitter';
+
+  return [headline, '', ...grid, '', cta, '', tags].join('\n');
 }
 
 /** Full https:// form of the site URL, for use as the twitter intent `url` param. */
