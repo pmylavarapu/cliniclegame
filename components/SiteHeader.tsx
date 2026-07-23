@@ -3,13 +3,18 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import StreakBadge from './StreakBadge';
 
 const MENU_NAV = [
   { href: '/', label: 'Today' },
-  { href: '/how-to-play/', label: 'How to play' },
-  { href: '/how-it-works/', label: 'How it works' },
+  { href: '/how-to-play/', label: 'How To' },
+  { href: '/how-it-works/', label: 'About' },
   { href: '/feedback/', label: 'Feedback' },
 ];
+
+// Desktop nav sits inline next to the logo — Today is implied by the logo
+// link, so we only need the three secondary links.
+const DESKTOP_NAV = MENU_NAV.filter((n) => n.href !== '/');
 
 export default function SiteHeader() {
   const pathname = usePathname() || '/';
@@ -32,15 +37,10 @@ export default function SiteHeader() {
   return (
     <>
       <header className="sticky top-0 z-30 bg-bg/85 backdrop-blur-xl border-b border-border/60">
-        <div className="mx-auto max-w-2xl px-4 sm:px-5 h-20 sm:h-20 flex items-center justify-between">
+        <div className="mx-auto max-w-2xl px-4 sm:px-5 h-20 sm:h-20 flex items-center justify-between gap-4">
           <Link
             href="/"
-            onClick={() => {
-              if (pathname === '/' || pathname === '') {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-              }
-            }}
-            className="flex items-center hover:opacity-80 transition-opacity"
+            className="flex items-center hover:opacity-80 transition-opacity shrink-0"
             aria-label="Clinicle home"
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -52,27 +52,48 @@ export default function SiteHeader() {
               className="h-14 sm:h-14 w-auto"
             />
           </Link>
-          <button
-            type="button"
-            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
-            aria-expanded={menuOpen}
-            onClick={() => setMenuOpen((v) => !v)}
-            className="inline-flex items-center justify-center h-11 w-11 -mr-2 rounded-full text-fg hover:bg-surface-2 active:scale-95 transition-all"
-          >
-            {menuOpen ? <CloseIcon /> : <MenuIcon />}
-          </button>
+
+          <nav className="hidden sm:flex items-center gap-1" aria-label="Site navigation">
+            {DESKTOP_NAV.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={[
+                  'inline-flex items-center h-9 px-3 rounded-full text-ui font-semibold transition-colors',
+                  isActive(item.href)
+                    ? 'bg-primary/10 text-primary'
+                    : 'text-fg-soft hover:text-fg hover:bg-surface-2',
+                ].join(' ')}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+
+          <div className="flex items-center gap-2">
+            <StreakBadge />
+            <button
+              type="button"
+              aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={menuOpen}
+              onClick={() => setMenuOpen((v) => !v)}
+              className="sm:hidden inline-flex items-center justify-center h-11 w-11 -mr-2 rounded-full text-fg hover:bg-surface-2 active:scale-95 transition-all"
+            >
+              {menuOpen ? <CloseIcon /> : <MenuIcon />}
+            </button>
+          </div>
         </div>
       </header>
 
       {menuOpen && (
         <>
           <div
-            className="fixed inset-0 z-30 bg-fg/20 backdrop-blur-sm animate-in"
+            className="fixed inset-0 z-30 bg-fg/20 backdrop-blur-sm animate-in sm:hidden"
             onClick={() => setMenuOpen(false)}
             aria-hidden="true"
           />
           <nav
-            className="fixed top-16 right-3 left-3 sm:left-auto sm:w-72 z-40 rounded-2xl bg-bg border border-border shadow-2xl animate-in"
+            className="fixed top-16 right-3 left-3 sm:left-auto sm:w-72 z-40 rounded-2xl bg-bg border border-border shadow-2xl animate-in sm:hidden"
             aria-label="Site navigation"
           >
             <ul className="p-2">

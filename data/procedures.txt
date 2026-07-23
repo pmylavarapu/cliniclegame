@@ -179,3 +179,23 @@ intubation
 mechanical ventilation
 ecmo
 transfusion
+
+# ─── Vascular access & phlebotomy ──────────────────────────────────────────
+phlebotomy
+venipuncture
+venesection
+bloodletting
+blood draw
+arterial line
+peripheral iv
+picc line
+port a cath
+port
+hickman
+groshong
+midline catheter
+arterial puncture
+finger stick
+heel stick
+capillary blood sampling
+therapeutic phlebotomy

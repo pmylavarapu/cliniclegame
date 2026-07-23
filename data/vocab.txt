@@ -3345,6 +3345,7 @@ arteria
 arteriae
 arterial
 arterial line
+arterial puncture
 arteries
 arterio
 arteriol
@@ -5565,12 +5566,14 @@ blond
 blonde
 blonyx
 blood
+blood draw
 blood in stool
 blood in urine
 blood test
 bloodier
 bloodily
 bloodlet
+bloodletting
 bloodulf
 bloodwit
 bloody
@@ -6944,6 +6947,7 @@ caperea
 capgras
 capillaries
 capillary
+capillary blood sampling
 capilli
 capillus
 capio
@@ -10070,6 +10074,7 @@ czech
 czermak
 czerny
 d c
+d&c
 d'acosta
 d'airain
 d'amato
@@ -13861,6 +13866,7 @@ fine needle aspiration
 finest
 finevin
 finger
+finger stick
 fingers
 finil
 finish
@@ -15248,6 +15254,7 @@ groin
 groove
 grooved
 grooves
+groshong
 gross
 ground
 grounds
@@ -15680,6 +15687,7 @@ hedonic
 hedspa
 hedulin
 heel
+heel stick
 heelift
 heels
 heent
@@ -15937,6 +15945,7 @@ hiccup
 hiccups
 hickam
 hickey
+hickman
 hickory
 hicks
 hidae
@@ -19156,6 +19165,7 @@ lowsley
 loxia
 lozenge
 lozol
+lp
 lrti
 lstat
 ltd
@@ -20080,6 +20090,7 @@ midgut
 midi
 midicel
 midline
+midline catheter
 midpain
 midrange ejection fraction
 midriff
@@ -22601,6 +22612,7 @@ peripartum cardiomyopathy
 periph
 peripheral
 peripheral artery disease
+peripheral iv
 peripheral neuropathy
 peripheral vascular disease
 perire
@@ -22757,6 +22769,7 @@ philips
 phimosis
 phleb
 phlebitis
+phlebotomy
 phlegm
 phlegmasia
 phlei
@@ -22846,6 +22859,7 @@ piazza
 pic
 pica
 picc
+picc line
 picea
 pichia
 picipes
@@ -23346,6 +23360,7 @@ porret
 porro
 porsche
 port
+port a cath
 porta
 portae
 portal
@@ -27861,6 +27876,7 @@ theorem
 theory
 theque
 thera
+therapeutic phlebotomy
 therapy
 there
 thereby
@@ -29381,7 +29397,9 @@ venerea
 venereal
 veneris
 venery
+venesection
 venice
+venipuncture
 venlafaxine
 venofer
 venom

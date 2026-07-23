@@ -11,9 +11,14 @@ import {
   fastestSolveMs,
 } from '@/lib/storage';
 import { buildShareString } from '@/lib/share';
+import { currentRank } from '@/lib/ranks';
+import { checkNewlyUnlocked, type Achievement } from '@/lib/achievements';
+import { buildChallengeUrl } from '@/lib/challenge';
 import ShareMenu from './ShareMenu';
 import GuessDistribution from './GuessDistribution';
 import NextPuzzleCountdown from './NextPuzzleCountdown';
+import AchievementToast from './AchievementToast';
+import ShareImageButton from './ShareImageButton';
 
 type Props = {
   puzzle: Puzzle;
@@ -72,6 +77,7 @@ export default function PuzzleGame({ puzzle, vocab }: Props) {
   const [lastAdded, setLastAdded] = useState<string | null>(null);
   const [startedAt, setStartedAt] = useState<number | null>(null);
   const [finalTimeMs, setFinalTimeMs] = useState<number | undefined>(undefined);
+  const [freshAchievements, setFreshAchievements] = useState<Achievement[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
   const savedRef = useRef(false);
 
@@ -111,9 +117,30 @@ export default function PuzzleGame({ puzzle, vocab }: Props) {
         ? Date.now() - startedAt
         : finalTimeMs;
       if (t !== undefined && finalTimeMs == null) setFinalTimeMs(t);
-      recordCompletion(puzzle.date, guesses.length, hintsUsed, won, gaveUp, t);
+      const rankBefore = currentRank(loadStats());
+      const nextStats = recordCompletion(
+        puzzle.date,
+        guesses.length,
+        hintsUsed,
+        won,
+        gaveUp,
+        t,
+      );
+      // Only surface achievement toasts for real wins, not give-ups.
+      if (won) {
+        const gs = {
+          date: puzzle.date,
+          guesses,
+          hintsUsed,
+          gaveUp,
+          won,
+          timeMs: t,
+        };
+        const fresh = checkNewlyUnlocked(gs, nextStats, rankBefore);
+        if (fresh.length) setFreshAchievements(fresh);
+      }
     }
-  }, [gameOver, puzzle.date, guesses.length, hintsUsed, won, gaveUp, startedAt, finalTimeMs]);
+  }, [gameOver, puzzle.date, guesses, hintsUsed, won, gaveUp, startedAt, finalTimeMs]);
 
   const submitGuess = (raw: string, isHint = false) => {
     setError(null);
@@ -263,40 +290,40 @@ export default function PuzzleGame({ puzzle, vocab }: Props) {
 
       {!gameOver && (
         <form onSubmit={onSubmit} className="mb-4">
-          <div className="flex items-stretch gap-2">
+          <div className="flex items-stretch flex-wrap gap-2">
             <input
               ref={inputRef}
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Enter a word or phrase"
-              className="flex-1 min-w-0 h-12 sm:h-14 px-4 sm:px-5 text-base sm:text-lede rounded-full bg-surface-2 border border-transparent outline-none focus:border-primary focus:bg-white focus:ring-4 focus:ring-primary/15 transition-all placeholder:text-muted font-medium"
+              className="basis-full sm:basis-0 flex-1 min-w-0 h-12 sm:h-14 px-4 sm:px-5 text-base sm:text-lede rounded-full bg-surface-2 border border-transparent outline-none focus:border-primary focus:bg-white focus:ring-4 focus:ring-primary/15 transition-all placeholder:text-muted font-medium"
               autoComplete="off"
               autoCapitalize="off"
               spellCheck={false}
             />
             <button
               type="submit"
-              className="h-12 sm:h-14 px-5 sm:px-7 rounded-full bg-primary text-white text-ui font-bold hover:brightness-110 active:scale-[0.98] transition-[transform,filter]"
+              className="h-12 sm:h-14 px-5 sm:px-6 rounded-full bg-primary text-white text-ui font-bold hover:brightness-110 active:scale-[0.98] transition-[transform,filter]"
             >
               Guess
             </button>
-          </div>
-          <div className="mt-3 flex flex-wrap items-center gap-2">
             <button
               type="button"
               onClick={useHint}
-              className="inline-flex items-center h-9 px-4 rounded-full bg-surface-2 text-ui font-semibold text-fg hover:bg-hint/10 hover:text-hint transition-colors"
+              className="h-12 sm:h-14 px-4 sm:px-5 rounded-full bg-surface-2 text-ui font-semibold text-fg hover:bg-hint/10 hover:text-hint transition-colors"
             >
               Hint
             </button>
             <button
               type="button"
               onClick={giveUp}
-              className="inline-flex items-center h-9 px-4 rounded-full bg-surface-2 text-ui font-semibold text-fg hover:bg-danger/10 hover:text-danger transition-colors"
+              className="h-12 sm:h-14 px-4 sm:px-5 rounded-full bg-surface-2 text-ui font-semibold text-fg hover:bg-danger/10 hover:text-danger transition-colors"
             >
               Give up
             </button>
-            <span className="ml-auto text-caption text-muted tabular">
+          </div>
+          <div className="mt-2 text-right">
+            <span className="text-caption text-muted tabular">
               {guesses.length} guess{guesses.length === 1 ? '' : 'es'}
               {hintsUsed > 0 &&
                 ` · ${hintsUsed} hint${hintsUsed === 1 ? '' : 's'}`}
@@ -346,6 +373,13 @@ export default function PuzzleGame({ puzzle, vocab }: Props) {
           hintsUsed={hintsUsed}
           gaveUp={gaveUp}
           timeMs={finalTimeMs}
+        />
+      )}
+
+      {freshAchievements.length > 0 && (
+        <AchievementToast
+          achievements={freshAchievements}
+          onDismiss={() => setFreshAchievements([])}
         />
       )}
 
@@ -648,11 +682,28 @@ function WinBanner({
 }) {
   const stats = loadStats();
   const bestMs = fastestSolveMs(stats);
+  const rank = currentRank(stats);
   const shareText = buildShareString(
     { date: puzzle.date, guesses, hintsUsed, gaveUp, won, timeMs },
     puzzle.num,
     puzzle.difficulty,
   );
+  const challengeUrl =
+    typeof window !== 'undefined'
+      ? buildChallengeUrl(
+          {
+            date: puzzle.date,
+            guesses: guesses.length,
+            timeS: timeMs != null ? Math.round(timeMs / 1000) : undefined,
+            hints: hintsUsed,
+            won,
+          },
+          window.location.origin,
+        )
+      : '';
+  const challengeTweet = `Beat me at today's Clinicle #${puzzle.num}${
+    won ? ` — I got it in ${guesses.length}` : ''
+  }.`;
 
   return (
     <div
@@ -663,11 +714,28 @@ function WinBanner({
     >
       <div
         className={[
-          'text-eyebrow uppercase font-bold mb-3',
-          won ? 'text-white/80' : 'text-muted',
+          'flex items-center justify-between mb-3',
         ].join(' ')}
       >
-        {won ? 'Solved' : 'Revealed'}
+        <div
+          className={[
+            'text-eyebrow uppercase font-bold',
+            won ? 'text-white/80' : 'text-muted',
+          ].join(' ')}
+        >
+          {won ? 'Solved' : 'Revealed'}
+        </div>
+        {won && (
+          <div
+            className={[
+              'text-eyebrow uppercase font-bold',
+              won ? 'text-white/80' : 'text-muted',
+            ].join(' ')}
+            title={`Your rank: ${rank.label}`}
+          >
+            {rank.label}
+          </div>
+        )}
       </div>
       <div className="text-title-xl font-bold tracking-tight mb-2">
         {won
@@ -774,6 +842,32 @@ function WinBanner({
             variant={won ? 'oncolor' : 'default'}
           />
         </div>
+      </div>
+      <div className="mt-2 flex flex-col sm:flex-row gap-2">
+        <div className="flex-1">
+          <ShareImageButton
+            puzzle={puzzle}
+            guesses={guesses}
+            won={won}
+            timeMs={timeMs}
+            streak={stats.currentStreak}
+            rank={rank}
+            variant={won ? 'oncolor' : 'default'}
+          />
+        </div>
+        <a
+          href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
+            challengeTweet + '\n\n@ClinicleGame',
+          )}&url=${encodeURIComponent(challengeUrl)}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={[
+            'flex-1 w-full inline-flex items-center justify-center gap-2 h-12 rounded-full text-ui font-bold hover:brightness-110 active:scale-[0.98] transition-[transform,filter]',
+            won ? 'bg-white/20 text-white' : 'bg-primary text-white',
+          ].join(' ')}
+        >
+          Challenge a friend
+        </a>
       </div>
     </div>
   );
