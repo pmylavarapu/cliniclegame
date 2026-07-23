@@ -63,19 +63,18 @@ export default function RootLayout({
           {children}
         </main>
         <footer className="border-t border-border">
-          <div className="mx-auto max-w-2xl px-4 sm:px-5 py-5 flex flex-col sm:flex-row items-center justify-between gap-1.5 text-caption text-muted">
-            <div>
-              Developed by{' '}
-              <a
-                href="https://twitter.com/PMylavarapuMD"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-link font-medium hover:underline"
-              >
-                @PMylavarapuMD
-              </a>
-            </div>
-            <div className="tabular">Updated {new Date().getFullYear()}</div>
+          <div className="mx-auto max-w-2xl px-4 sm:px-5 py-5 text-center text-caption text-muted">
+            © 2026{' '}
+            <a
+              href="https://twitter.com/PMylavarapuMD"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-link font-medium hover:underline"
+            >
+              Praneet Mylavarapu
+            </a>{' '}
+            <span className="text-border-strong">|</span> Designed using
+            Claude by Anthropic
           </div>
         </footer>
       </body>
