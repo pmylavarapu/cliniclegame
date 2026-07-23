@@ -316,17 +316,18 @@ export default function PuzzleGame({
   };
 
   const dateLabel = formatDate(puzzle.date);
+  const displayPuzzleNum = puzzleNumberFromDate(puzzle.date);
 
   return (
     <div>
-      <p className="mb-2 text-body text-fg">
-        Today is puzzle #{puzzle.num}.
+      <p className="mb-2 text-lede sm:text-title-sm text-fg font-bold">
+        Today is puzzle #{String(displayPuzzleNum).padStart(3, '0')}.
       </p>
       <p className="mb-6 text-body text-muted leading-relaxed">
         Guess medical terms. The closer you get to the secret diagnosis,
         the higher your score will be. Guess the secret word to win.
       </p>
-      <div className="mb-6 rounded-md border border-border-strong p-5 sm:p-7">
+      <div className="mb-6  border border-border-strong p-5 sm:p-7">
         <div className="text-eyebrow uppercase text-muted font-semibold tracking-[0.1em] mb-4">
           Prompt
         </div>
@@ -344,7 +345,7 @@ export default function PuzzleGame({
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Enter a guess"
-                className="w-full h-12 px-4 text-base rounded-md bg-white border border-border-strong outline-none focus:border-fg focus:ring-2 focus:ring-fg/10 transition-all placeholder:text-muted"
+                className="w-full h-12 px-4 text-base  bg-white border border-border-strong outline-none focus:border-fg focus:ring-2 focus:ring-fg/10 transition-all placeholder:text-muted"
                 autoComplete="off"
                 autoCapitalize="off"
                 spellCheck={false}
@@ -354,21 +355,21 @@ export default function PuzzleGame({
             </div>
             <button
               type="submit"
-              className="flex-1 sm:flex-none sm:min-w-[7rem] h-12 px-6 rounded-md bg-fg text-white text-ui font-semibold hover:bg-fg/90 active:scale-[0.98] transition-[transform,background]"
+              className="flex-[2] sm:flex-none sm:min-w-[12rem] h-12 px-10 bg-fg text-white text-ui font-semibold uppercase tracking-wider hover:bg-fg/90 active:scale-[0.98] transition-[transform,background]"
             >
               Guess
             </button>
             <button
               type="button"
               onClick={useHint}
-              className="flex-1 sm:flex-none sm:min-w-[7rem] h-12 px-6 rounded-md bg-white text-fg text-ui font-semibold border border-border-strong hover:bg-surface-2 active:scale-[0.98] transition-[transform,background]"
+              className="flex-1 sm:flex-none sm:min-w-[6rem] h-12 px-4 bg-white text-fg text-ui font-semibold uppercase tracking-wider border border-border-strong hover:bg-surface-2 active:scale-[0.98] transition-[transform,background]"
             >
               Hint
             </button>
             <button
               type="button"
               onClick={giveUp}
-              className="flex-1 sm:flex-none sm:min-w-[7rem] h-12 px-6 rounded-md bg-white text-fg text-ui font-semibold border border-border-strong hover:bg-surface-2 active:scale-[0.98] transition-[transform,background]"
+              className="flex-1 sm:flex-none sm:min-w-[6rem] h-12 px-4 bg-white text-fg text-ui font-semibold uppercase tracking-wider border border-border-strong hover:bg-surface-2 active:scale-[0.98] transition-[transform,background]"
             >
               Give Up
             </button>
@@ -425,7 +426,7 @@ export default function PuzzleGame({
       {sorted.length > 0 && (
         <section className="mt-8 sm:mt-10">
           {currentGuess && !gameOver && (
-            <div className="mb-4">
+            <div className="mb-10 sm:mb-12">
               <div className="text-eyebrow uppercase text-muted font-bold mb-2">
                 Your last guess
               </div>
@@ -454,7 +455,7 @@ export default function PuzzleGame({
       )}
 
       {guesses.length === 0 && !gameOver && (
-        <div className="mt-6 py-5 px-4 sm:px-6 rounded-md bg-surface-2 flex items-start gap-4">
+        <div className="mt-6 py-5 px-4 sm:px-6  bg-surface-2 flex items-start gap-4">
           <div className="shrink-0 h-10 w-10 rounded-full bg-white flex items-center justify-center text-muted">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c1 .8 1.5 1.6 2 3.3h4c.5-1.7 1-2.5 2-3.3A7 7 0 0 0 12 2Z" />
@@ -577,6 +578,16 @@ function formatDuration(ms: number): string {
   return `${m}m ${String(s).padStart(2, '0')}s`;
 }
 
+// Puzzle #1 = 2026-07-23 (day the new schedule launched)
+function puzzleNumberFromDate(iso: string): number {
+  const [y, m, d] = iso.split('-').map(Number);
+  if (!y || !m || !d) return 1;
+  const puzzleDate = Date.UTC(y, m - 1, d);
+  const epoch = Date.UTC(2026, 6, 23);
+  const days = Math.round((puzzleDate - epoch) / 86_400_000);
+  return Math.max(1, days + 1);
+}
+
 function formatDate(iso: string) {
   const [y, m, d] = iso.split('-').map(Number);
   if (!y || !m || !d) return iso;
@@ -671,7 +682,7 @@ function GuessRow({
       style={bgStyle}
       className={[
         ROW_GRID,
-        'px-3 sm:px-4 py-1.5 sm:py-2 rounded-md mb-1 transition-transform leading-tight',
+        'px-3 sm:px-4 py-1 mb-0.5 transition-transform leading-tight',
         isCurrent ? 'ring-2 ring-fg/80 ring-offset-2 ring-offset-bg' : '',
         recent ? 'animate-in' : '',
       ].join(' ')}
@@ -763,7 +774,7 @@ function WinBanner({
   return (
     <div
       className={[
-        'mt-4 mb-8 rounded-md p-6 sm:p-8 animate-in',
+        'mt-4 mb-8  p-6 sm:p-8 animate-in',
         won ? 'bg-hot text-white' : 'bg-surface-2 text-fg',
       ].join(' ')}
     >
@@ -839,7 +850,7 @@ function WinBanner({
 
       <div
         className={[
-          'mb-6 py-4 rounded-md',
+          'mb-6 py-4 ',
           won ? 'bg-white/15' : 'bg-white',
         ].join(' ')}
       >
@@ -847,7 +858,7 @@ function WinBanner({
       </div>
       <div
         className={[
-          'grid grid-cols-4 gap-2 mb-6 rounded-md overflow-hidden',
+          'grid grid-cols-4 gap-2 mb-6  overflow-hidden',
           won ? 'bg-white/15' : 'bg-white',
         ].join(' ')}
       >
@@ -872,7 +883,7 @@ function WinBanner({
           target="_blank"
           rel="noopener noreferrer"
           className={[
-            'flex-1 w-full flex items-center justify-center gap-2 h-12 rounded-md text-ui font-bold hover:brightness-110 active:scale-[0.98] transition-[transform,filter]',
+            'flex-1 w-full flex items-center justify-center gap-2 h-12  text-ui font-bold hover:brightness-110 active:scale-[0.98] transition-[transform,filter]',
             won ? 'bg-white text-fg' : 'bg-fg text-white',
           ].join(' ')}
         >
@@ -936,7 +947,7 @@ function GlobalPercentile({
   return (
     <div
       className={[
-        'mb-6 rounded-md px-4 py-3 flex items-center justify-between gap-3',
+        'mb-6  px-4 py-3 flex items-center justify-between gap-3',
         onColor ? 'bg-white/15 text-white' : 'bg-white text-fg',
       ].join(' ')}
     >
@@ -997,7 +1008,7 @@ function AiScoreLine({
   return (
     <div
       className={[
-        'mb-6 rounded-md px-4 py-3 flex items-center justify-between gap-3',
+        'mb-6  px-4 py-3 flex items-center justify-between gap-3',
         won ? 'bg-white/15 text-white' : 'bg-white text-fg',
       ].join(' ')}
     >
