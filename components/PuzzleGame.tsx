@@ -361,16 +361,31 @@ export default function PuzzleGame({
       {!gameOver && (
         <form onSubmit={onSubmit} className="mb-4">
           <div className="flex items-stretch flex-wrap gap-2">
-            <input
-              ref={inputRef}
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              placeholder="Enter a word or phrase"
-              className="basis-full sm:basis-0 flex-1 min-w-0 h-10 sm:h-11 px-4 text-base sm:text-body rounded-lg bg-surface-2 border border-transparent outline-none focus:border-primary focus:bg-white focus:ring-4 focus:ring-primary/15 transition-all placeholder:text-muted font-medium"
-              autoComplete="off"
-              autoCapitalize="off"
-              spellCheck={false}
-            />
+            <div className="basis-full sm:basis-0 flex-1 min-w-0 relative">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                aria-hidden="true"
+                className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-muted"
+              >
+                <path
+                  fillRule="evenodd"
+                  clipRule="evenodd"
+                  d="M9 3.5a5.5 5.5 0 1 0 3.393 9.822l3.393 3.393a.75.75 0 1 0 1.06-1.06l-3.393-3.393A5.5 5.5 0 0 0 9 3.5ZM5 9a4 4 0 1 1 8 0 4 4 0 0 1-8 0Z"
+                />
+              </svg>
+              <input
+                ref={inputRef}
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                placeholder="Enter a word or phrase"
+                className="w-full h-10 sm:h-11 pl-10 pr-4 text-base sm:text-body rounded-lg bg-surface-2 border border-transparent outline-none focus:border-primary focus:bg-white focus:ring-4 focus:ring-primary/15 transition-all placeholder:text-muted font-medium"
+                autoComplete="off"
+                autoCapitalize="off"
+                spellCheck={false}
+              />
+            </div>
             <button
               type="submit"
               className="h-10 sm:h-11 px-8 sm:px-10 rounded-lg bg-primary text-white text-caption font-bold hover:brightness-110 active:scale-[0.98] transition-[transform,filter]"
@@ -714,15 +729,29 @@ function GuessRow({
           </span>
         )}
       </div>
-      <div
-        className={`tabular text-ui font-bold text-right ${fgClass}`}
-      >
-        {guess.score.toFixed(1)}
+      <div className={`text-right ${fgClass}`}>
+        {isCurrent && (
+          <div
+            className={`text-[9px] uppercase font-bold tracking-[0.06em] leading-none mb-0.5 ${fgClass} opacity-60`}
+          >
+            Sim Score
+          </div>
+        )}
+        <div className="tabular text-ui font-bold">
+          {guess.score.toFixed(1)}
+        </div>
       </div>
-      <div
-        className={`tabular text-caption font-semibold text-right ${fgClass} ${dimClass}`}
-      >
-        {formatPercentile(percentile)}
+      <div className={`text-right ${fgClass} ${dimClass}`}>
+        {isCurrent && (
+          <div
+            className={`text-[9px] uppercase font-bold tracking-[0.06em] leading-none mb-0.5 ${fgClass} opacity-60`}
+          >
+            %tile
+          </div>
+        )}
+        <div className="tabular text-caption font-semibold">
+          {formatPercentile(percentile)}
+        </div>
       </div>
     </div>
   );
