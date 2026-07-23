@@ -36,7 +36,7 @@ export default function SiteHeader() {
   return (
     <>
       <header className="sticky top-0 z-30 bg-bg/85 backdrop-blur-xl border-b border-border/60">
-        <div className="mx-auto max-w-2xl px-4 sm:px-5 h-20 flex items-stretch justify-between gap-4">
+        <div className="mx-auto max-w-2xl px-4 sm:px-5 h-24 flex items-stretch justify-between gap-4">
           <Link
             href="/"
             className="flex items-center hover:opacity-80 transition-opacity shrink-0"
@@ -48,7 +48,7 @@ export default function SiteHeader() {
               alt="Clinicle"
               width={690}
               height={252}
-              className="h-14 sm:h-14 w-auto"
+              className="h-16 sm:h-20 w-auto"
             />
           </Link>
 
