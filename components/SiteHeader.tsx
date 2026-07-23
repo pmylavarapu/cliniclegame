@@ -58,15 +58,13 @@ export default function SiteHeader() {
                 <Link
                   href={item.href}
                   className={[
-                    'inline-flex items-center gap-1.5 py-1 text-caption font-bold uppercase tracking-wider transition-colors',
+                    'inline-flex items-center gap-1.5 py-1 text-[11px] font-bold uppercase tracking-[0.08em] transition-colors',
                     isActive(item.href)
                       ? 'text-primary border-b-2 border-primary'
-                      : 'text-fg-soft hover:text-fg',
+                      : 'text-fg-soft hover:text-primary',
                   ].join(' ')}
                 >
-                  <item.icon
-                    className={isActive(item.href) ? 'text-primary' : 'text-fg-soft'}
-                  />
+                  <item.icon />
                   {item.label}
                 </Link>
               </div>
