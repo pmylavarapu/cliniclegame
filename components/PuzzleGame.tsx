@@ -320,10 +320,10 @@ export default function PuzzleGame({
 
   return (
     <div>
-      <p className="mb-2 text-lede sm:text-title-sm text-fg font-bold">
+      <p className="mb-2 text-body sm:text-title-sm text-fg font-bold">
         Today is puzzle #{String(displayPuzzleNum).padStart(3, '0')}.
       </p>
-      <p className="mb-6 text-body text-muted leading-relaxed">
+      <p className="mb-5 sm:mb-6 text-caption sm:text-body text-muted leading-relaxed">
         Guess medical terms. The closer you get to the secret diagnosis,
         the higher your score will be. Guess the secret word to win.
       </p>
@@ -331,7 +331,7 @@ export default function PuzzleGame({
         <div className="text-eyebrow uppercase text-muted font-semibold tracking-[0.1em] mb-4">
           Prompt
         </div>
-        <p className="text-title-sm sm:text-title-md text-fg leading-[1.55]">
+        <p className="text-lede sm:text-title-md text-fg leading-[1.55]">
           {puzzle.prompt}
         </p>
       </div>
@@ -426,7 +426,7 @@ export default function PuzzleGame({
       {sorted.length > 0 && (
         <section className="mt-8 sm:mt-10">
           {currentGuess && !gameOver && (
-            <div className="mb-10 sm:mb-12">
+            <div className="mb-6 sm:mb-12">
               <div className="text-eyebrow uppercase text-muted font-bold mb-2">
                 Your last guess
               </div>
