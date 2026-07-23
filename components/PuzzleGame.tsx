@@ -319,18 +319,18 @@ export default function PuzzleGame({
 
   return (
     <div>
-      <p className="mb-2 text-body text-fg font-medium">
+      <p className="mb-2 text-body text-fg">
         Today is puzzle #{puzzle.num}.
       </p>
       <p className="mb-6 text-body text-muted leading-relaxed">
         Guess medical terms. The closer you get to the secret diagnosis,
         the higher your score will be. Guess the secret word to win.
       </p>
-      <div className="mb-6 rounded-xl border border-border-strong p-5 sm:p-7">
-        <div className="text-eyebrow uppercase text-muted font-bold tracking-[0.08em] mb-3">
+      <div className="mb-6 rounded-md border border-border-strong p-5 sm:p-7">
+        <div className="text-eyebrow uppercase text-muted tracking-[0.08em] mb-3">
           Prompt
         </div>
-        <p className="text-title-sm sm:text-title-md font-medium text-fg leading-[1.55] tracking-[-0.005em]">
+        <p className="text-title-sm sm:text-title-md text-fg leading-[1.55]">
           {puzzle.prompt}
         </p>
       </div>
@@ -344,7 +344,7 @@ export default function PuzzleGame({
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Enter a guess"
-                className="w-full h-12 px-4 text-base rounded-lg bg-white border border-border-strong outline-none focus:border-fg focus:ring-2 focus:ring-fg/10 transition-all placeholder:text-muted font-medium"
+                className="w-full h-12 px-4 text-base rounded-md bg-white border border-border-strong outline-none focus:border-fg focus:ring-2 focus:ring-fg/10 transition-all placeholder:text-muted font-medium"
                 autoComplete="off"
                 autoCapitalize="off"
                 spellCheck={false}
@@ -354,21 +354,21 @@ export default function PuzzleGame({
             </div>
             <button
               type="submit"
-              className="flex-1 sm:flex-none h-12 sm:h-12 px-4 sm:px-10 rounded-lg bg-fg text-white text-ui font-semibold hover:bg-fg/90 active:scale-[0.98] transition-[transform,background]"
+              className="flex-1 sm:flex-none h-12 sm:h-12 px-4 sm:px-10 rounded-md bg-fg text-white text-ui font-semibold hover:bg-fg/90 active:scale-[0.98] transition-[transform,background]"
             >
               Guess
             </button>
             <button
               type="button"
               onClick={useHint}
-              className="flex-1 sm:flex-none h-12 sm:h-12 px-4 sm:px-6 rounded-lg bg-white text-fg text-ui font-semibold border border-border-strong hover:bg-surface-2 active:scale-[0.98] transition-[transform,background]"
+              className="flex-1 sm:flex-none h-12 sm:h-12 px-4 sm:px-6 rounded-md bg-white text-fg text-ui font-semibold border border-border-strong hover:bg-surface-2 active:scale-[0.98] transition-[transform,background]"
             >
               Hint
             </button>
             <button
               type="button"
               onClick={giveUp}
-              className="flex-1 sm:flex-none h-12 sm:h-12 px-4 sm:px-6 rounded-lg bg-white text-fg text-ui font-semibold border border-border-strong hover:bg-surface-2 active:scale-[0.98] transition-[transform,background]"
+              className="flex-1 sm:flex-none h-12 sm:h-12 px-4 sm:px-6 rounded-md bg-white text-fg text-ui font-semibold border border-border-strong hover:bg-surface-2 active:scale-[0.98] transition-[transform,background]"
             >
               Give Up
             </button>
@@ -454,7 +454,7 @@ export default function PuzzleGame({
       )}
 
       {guesses.length === 0 && !gameOver && (
-        <div className="mt-6 py-5 px-4 sm:px-6 rounded-lg bg-surface-2 flex items-start gap-4">
+        <div className="mt-6 py-5 px-4 sm:px-6 rounded-md bg-surface-2 flex items-start gap-4">
           <div className="shrink-0 h-10 w-10 rounded-full bg-white flex items-center justify-center text-muted">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c1 .8 1.5 1.6 2 3.3h4c.5-1.7 1-2.5 2-3.3A7 7 0 0 0 12 2Z" />
@@ -763,7 +763,7 @@ function WinBanner({
   return (
     <div
       className={[
-        'mt-4 mb-8 rounded-lg p-6 sm:p-8 animate-in',
+        'mt-4 mb-8 rounded-md p-6 sm:p-8 animate-in',
         won ? 'bg-hot text-white' : 'bg-surface-2 text-fg',
       ].join(' ')}
     >
@@ -839,7 +839,7 @@ function WinBanner({
 
       <div
         className={[
-          'mb-6 py-4 rounded-lg',
+          'mb-6 py-4 rounded-md',
           won ? 'bg-white/15' : 'bg-white',
         ].join(' ')}
       >
@@ -847,7 +847,7 @@ function WinBanner({
       </div>
       <div
         className={[
-          'grid grid-cols-4 gap-2 mb-6 rounded-lg overflow-hidden',
+          'grid grid-cols-4 gap-2 mb-6 rounded-md overflow-hidden',
           won ? 'bg-white/15' : 'bg-white',
         ].join(' ')}
       >
@@ -872,7 +872,7 @@ function WinBanner({
           target="_blank"
           rel="noopener noreferrer"
           className={[
-            'flex-1 w-full flex items-center justify-center gap-2 h-12 rounded-lg text-ui font-bold hover:brightness-110 active:scale-[0.98] transition-[transform,filter]',
+            'flex-1 w-full flex items-center justify-center gap-2 h-12 rounded-md text-ui font-bold hover:brightness-110 active:scale-[0.98] transition-[transform,filter]',
             won ? 'bg-white text-fg' : 'bg-fg text-white',
           ].join(' ')}
         >
@@ -936,7 +936,7 @@ function GlobalPercentile({
   return (
     <div
       className={[
-        'mb-6 rounded-lg px-4 py-3 flex items-center justify-between gap-3',
+        'mb-6 rounded-md px-4 py-3 flex items-center justify-between gap-3',
         onColor ? 'bg-white/15 text-white' : 'bg-white text-fg',
       ].join(' ')}
     >
@@ -997,7 +997,7 @@ function AiScoreLine({
   return (
     <div
       className={[
-        'mb-6 rounded-lg px-4 py-3 flex items-center justify-between gap-3',
+        'mb-6 rounded-md px-4 py-3 flex items-center justify-between gap-3',
         won ? 'bg-white/15 text-white' : 'bg-white text-fg',
       ].join(' ')}
     >
