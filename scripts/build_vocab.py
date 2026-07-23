@@ -49,7 +49,7 @@ MEDICAL_SEED_URL = (
     "master/wordlist.txt"
 )
 
-MESH_YEAR = os.environ.get("MESH_YEAR", "2025")
+MESH_YEAR = os.environ.get("MESH_YEAR", "2026")
 MESH_URL = os.environ.get(
     "MESH_URL",
     f"https://nlmpubs.nlm.nih.gov/projects/mesh/MESH_FILES/xmlmesh/desc{MESH_YEAR}.xml",
