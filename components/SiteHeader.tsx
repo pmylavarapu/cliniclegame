@@ -31,7 +31,7 @@ export default function SiteHeader() {
   return (
     <>
       <header className="sticky top-0 z-30 bg-bg/95 backdrop-blur-xl border-b border-border/60">
-        <div className="mx-auto max-w-4xl px-4 sm:px-5 h-16 sm:h-20 flex items-center justify-between gap-4">
+        <div className="mx-auto max-w-4xl px-4 sm:px-5 h-20 sm:h-24 flex items-center justify-between gap-4">
           <Link
             href="/"
             className="flex items-center hover:opacity-90 transition-opacity shrink-0"
@@ -43,7 +43,7 @@ export default function SiteHeader() {
               alt="Clinicle — the game"
               width={2172}
               height={724}
-              className="h-14 sm:h-16 w-auto"
+              className="h-16 sm:h-20 w-auto"
             />
           </Link>
 
