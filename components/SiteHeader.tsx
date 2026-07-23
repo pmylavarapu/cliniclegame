@@ -31,7 +31,7 @@ export default function SiteHeader() {
   return (
     <>
       <header className="sticky top-0 z-30 bg-bg/95 backdrop-blur-xl border-b border-border/60">
-        <div className="mx-auto max-w-4xl px-4 sm:px-5 h-14 sm:h-16 flex items-center justify-between gap-4">
+        <div className="mx-auto max-w-4xl px-4 sm:px-5 h-16 sm:h-20 flex items-center justify-between gap-4">
           <Link
             href="/"
             className="flex items-center hover:opacity-90 transition-opacity shrink-0"
@@ -43,21 +43,21 @@ export default function SiteHeader() {
               alt="Clinicle — the game"
               width={1536}
               height={1024}
-              className="h-11 sm:h-14 w-auto"
+              className="h-14 sm:h-[72px] w-auto"
             />
           </Link>
 
           <nav
-            className="hidden md:flex items-center gap-5"
+            className="hidden md:flex items-center gap-4"
             aria-label="Site navigation"
           >
             {NAV.map((item, i) => (
-              <div key={item.href} className="flex items-center gap-5">
-                {i > 0 && <span aria-hidden="true" className="h-5 w-px bg-border-strong" />}
+              <div key={item.href} className="flex items-center gap-4">
+                {i > 0 && <span aria-hidden="true" className="h-4 w-px bg-border-strong" />}
                 <Link
                   href={item.href}
                   className={[
-                    'inline-flex items-center gap-2 py-1 text-ui font-semibold transition-colors',
+                    'inline-flex items-center gap-1.5 py-1 text-caption font-semibold transition-colors',
                     isActive(item.href)
                       ? 'text-primary border-b-2 border-primary'
                       : 'text-fg-soft hover:text-fg',
@@ -123,8 +123,8 @@ export default function SiteHeader() {
 function GamepadIcon({ className }: { className?: string }) {
   return (
     <svg
-      width="20"
-      height="20"
+      width="16"
+      height="16"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -146,8 +146,8 @@ function GamepadIcon({ className }: { className?: string }) {
 function BookIcon({ className }: { className?: string }) {
   return (
     <svg
-      width="20"
-      height="20"
+      width="16"
+      height="16"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -166,8 +166,8 @@ function BookIcon({ className }: { className?: string }) {
 function ChatIcon({ className }: { className?: string }) {
   return (
     <svg
-      width="20"
-      height="20"
+      width="16"
+      height="16"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
