@@ -327,7 +327,7 @@ export default function PuzzleGame({
         Guess medical terms. The closer you get to the secret diagnosis,
         the higher your score will be. Guess the secret word to win.
       </p>
-      <div className="mb-6  border border-border-strong p-5 sm:p-7">
+      <div className="mb-6 border border-border-strong p-4 sm:p-7">
         <div className="text-eyebrow uppercase text-muted font-semibold tracking-[0.1em] mb-4">
           Prompt
         </div>
