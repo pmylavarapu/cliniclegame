@@ -37,11 +37,19 @@ jobs:
           path: ~/.cache/huggingface
           key: hf-sapbert-v1
 
+      - name: Cache MeSH descriptor XML
+        uses: actions/cache@v4
+        with:
+          path: data/mesh_desc.xml
+          key: mesh-desc-2025-v1
+
       - name: Cache embeddings
         uses: actions/cache@v4
         with:
           path: data/embeddings
           key: emb-${{ hashFiles('data/vocab.txt') }}
+          restore-keys: |
+            emb-
 
       - name: Ensure vocab exists
         run: '[ -s data/vocab.txt ] || python3 scripts/build_vocab.py'
@@ -93,7 +101,7 @@ jobs:
         run: |
           git config user.name  'clinicle-bot'
           git config user.email 'clinicle-bot@users.noreply.github.com'
-          git add public/puzzles/ public/vocab.json public/index.json data/prompts.json
+          git add data/vocab.txt public/puzzles/ public/vocab.json public/index.json data/prompts.json
           if git diff --cached --quiet; then
             echo "no changes"; exit 0
           fi
