@@ -2,25 +2,23 @@ import type { Metadata } from 'next';
 import PageShell from '@/components/PageShell';
 
 export const metadata: Metadata = {
-  title: 'How it works – Clinicle',
+  title: 'About — Clinicle',
   description:
     'Clinicle in two eras: the 2023 build on Weissman-lab word2vec case-report embeddings, and the 2026 rebuild on Google Gemini semantic embeddings.',
 };
 
 export default function HowItWorksPage() {
   return (
-    <PageShell eyebrow="Under the hood" title="How it works">
+    <PageShell eyebrow="Under the hood" title="About">
       <p>
         Clinicle has had two lives. The original launched in January 2023
-        as a Python web service with a semantic scoring engine built on
-        classical word embeddings. The current version is a fully
-        rebuilt 2026 release on modern LLM embeddings, a curated medical
-        vocabulary, and a static Next.js frontend.
+        on classical word embeddings; the current version is a 2026
+        rebuild on Google Gemini semantic embeddings.
       </p>
 
-      <h2>2023 – the original</h2>
+      <h2>2023 — the original</h2>
       <p>
-        The 2023 backbone was a{' '}
+        The backbone was a{' '}
         <a
           href="https://code.google.com/archive/p/word2vec/"
           target="_blank"
@@ -28,20 +26,18 @@ export default function HowItWorksPage() {
         >
           word2vec
         </a>{' '}
-        model published by{' '}
+        model from{' '}
         <a
           href="https://ldi.upenn.edu/our-work/research-updates/clinical-concept-embeddings-learned-from-massive-sources-of-multimodal-medical-data-to-predict-in-hospital-mortality/"
           target="_blank"
           rel="noopener noreferrer"
         >
           Gary Weissman&apos;s group at Penn LDI
-        </a>
-        . A 600-dimensional model trained on open-access medical case
-        reports gave the best coverage of clinical language. Its raw
-        vocabulary was 333,359 tokens, but most of them were natural-language
-        fragments like &ldquo;the day before&rdquo; or &ldquo;a family history of&rdquo; that
-        didn&apos;t belong in a guess list. To clean it, the pipeline ran every
-        token through{' '}
+        </a>{' '}
+        — 600 dimensions trained on open-access medical case reports.
+        Its raw 333k-token vocab was full of natural-language fragments
+        (&ldquo;the day before&rdquo;, &ldquo;family history of&rdquo;) so
+        every entry was run through{' '}
         <a
           href="https://allenai.github.io/scispacy/"
           target="_blank"
@@ -49,96 +45,51 @@ export default function HowItWorksPage() {
         >
           ScispaCy&apos;s
         </a>{' '}
-        UMLS entity linker (the Unified Medical Language System covers
-        roughly 3 million medical concepts) and kept only the ones that
-        matched a real UMLS term.
-      </p>
-      <p>
-        On the frontend it was a Python web API on Heroku, Firebase for
-        auth and guess-log storage, Figma-designed UI, React + JavaScript
-        + CSS. Alternative embedding sources considered included{' '}
-        <a
-          href="https://github.com/gmichalo/UmlsBERT"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          UmlsBERT
-        </a>{' '}
-        from the University of Waterloo and{' '}
-        <a
-          href="https://arxiv.org/abs/2010.11784"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          SapBERT
-        </a>{' '}
-        from Cambridge LTL – both fine-tuned on medical concept synonymy -
-        but they lost to the case-report word2vec model on the intuitive
-        gameplay it produced.
+        UMLS entity linker and only real medical concepts survived.
+        Frontend was React + Python on Heroku with Firebase for storage.
       </p>
 
-      <h2>2026 – the rebuild</h2>
+      <h2>2026 — the rebuild</h2>
       <p>
-        The 2026 version swaps out the entire scoring stack for Google&apos;s{' '}
-        <code>gemini-embedding-001</code>. Every word in the game&apos;s vocab
-        is passed to the Gemini embeddings API with{' '}
-        <code>task_type=SEMANTIC_SIMILARITY</code>, producing a
-        768-dimensional vector. Guesses are ranked by cosine similarity
-        against the day&apos;s secret. The Weissman word2vec vectors were
-        strong for classical medical terminology; Gemini is dramatically
-        better at handling multi-word phrases, common English adjacent to
-        medicine (<em>heart</em>, <em>lung</em>, <em>chest pain</em>),
-        and eponymous coinages that don&apos;t appear in structured
-        ontologies at all.
+        The 2026 version swaps in Google&apos;s{' '}
+        <code>gemini-embedding-001</code> (768-d, task type{' '}
+        <code>SEMANTIC_SIMILARITY</code>). Gemini handles multi-word
+        phrases, everyday adjacent-to-medicine terms
+        (<em>heart</em>, <em>chest pain</em>), and eponyms that classical
+        ontologies miss.
       </p>
       <p>
-        Because Gemini&apos;s baseline cosine between arbitrary English
-        strings sits around 0.75–0.85, raw scores would squash into the
-        top of the range and lose all discriminating power. Each puzzle
-        instead anchors its own median-vocab similarity to 0 and the exact
-        match to 100, so random guesses land near 0 and true near-synonyms
-        stay near 100.
+        Since Gemini&apos;s baseline cosine between arbitrary English
+        strings sits at 0.75–0.85, every puzzle anchors its own
+        median-vocab similarity to 0 and the exact match to 100 — random
+        guesses land near 0, true synonyms near 100.
       </p>
       <p>
-        The vocabulary is a curated union: a hand-organized
-        1,000-diagnosis puzzle-eligible list, a curated multi-word medical
-        phrase list (712 entries), an anatomy / symptom / qualifier
-        adjuncts file, the top 15,000 common English words for cold
-        guesses, and – new for 2026 – an explicit medical-abbreviations
-        file (MI, CAD, LAD, ITP, COPD, ...). Abbreviations are embedded
-        with their expansion text so <em>MI</em> ends up near{' '}
-        <em>myocardial infarction</em> instead of near the two-letter
+        Vocab is a curated union: a 1,000-diagnosis puzzle-eligible list,
+        712 multi-word medical phrases, an anatomy/symptom/qualifier
+        adjuncts file, the top 15k common English words, and a medical
+        abbreviations file (MI, CAD, LAD, ITP, COPD, …). Abbreviations
+        are embedded with their expansion text so <em>MI</em> sits next
+        to <em>myocardial infarction</em> rather than the two-letter
         surface form.
       </p>
       <p>
-        Beyond scoring, each puzzle also ships a per-word near-synonym
-        adjacency map so a second guess that means the same as an earlier
-        one is rejected, and a small autocorrect suggests the nearest
-        vocab word (Levenshtein) when a guess isn&apos;t recognized.
+        Each puzzle also ships a per-word near-synonym adjacency map so a
+        second guess meaning the same as an earlier one is rejected, and
+        a Levenshtein autocorrect suggests the nearest vocab word on a
+        typo.
       </p>
 
-      <h2>The schedule and prompts</h2>
+      <h2>Stack</h2>
       <p>
-        Dates are assigned diagnoses via a seeded deterministic shuffle
-        over the puzzle-eligible list; no diagnosis repeats within a full
-        cycle. Prompts are hand-authored (2026) with a historical or
-        etymological angle rather than a textbook-style definition – the
-        goal is to force ten to fifteen guesses rather than a one-shot
-        solve from a giveaway clinical vignette.
-      </p>
-
-      <h2>The stack</h2>
-      <p>
-        The current site is Next.js 15 (App Router) statically exported and
-        hosted on Vercel, styled with Tailwind. There is no backend, no
-        login, no tracking – every puzzle is a plain precomputed JSON
-        file. The data pipeline is small Python scripts wrapping the
-        Gemini embeddings API, NumPy for the score table, and stem-gated
-        cosine clustering for synonym detection.
+        Next.js 15 (App Router), statically exported to Vercel, styled
+        with Tailwind. No backend, no login, no tracking — every puzzle
+        is a precomputed JSON file. Pipeline is small Python scripts
+        wrapping the Gemini API.
       </p>
 
       <p>
-        Source is on{' '}
+        Source on{' '}
         <a
           href="https://github.com/pmylavarapu/cliniclegame"
           target="_blank"
