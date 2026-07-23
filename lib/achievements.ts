@@ -1,5 +1,4 @@
 import type { GameState, Stats } from './types';
-import { currentRank, RANKS, type Rank } from './ranks';
 
 /**
  * A unlockable badge with a shareable one-liner. Achievements are stored
@@ -23,11 +22,9 @@ export type Achievement = {
 export function checkNewlyUnlocked(
   game: GameState,
   stats: Stats,
-  rankBefore: Rank,
 ): Achievement[] {
   const unlocked = loadUnlocked();
   const newly: Achievement[] = [];
-  const rankAfter = currentRank(stats);
   const isFirstWin = stats.wins === 1;
   const noHints = game.hintsUsed === 0;
   const timeMs = game.timeMs ?? Infinity;
@@ -94,17 +91,6 @@ export function checkNewlyUnlocked(
           emoji: '🔥',
           description: '30 straight solves.',
           share: '30-day Clinicle streak 🔥🔥🔥',
-        }
-      : null,
-    rankAfter.key !== rankBefore.key &&
-    RANKS.findIndex((r) => r.key === rankAfter.key) >
-      RANKS.findIndex((r) => r.key === rankBefore.key)
-      ? {
-          key: `rank_${rankAfter.key}`,
-          label: `${rankAfter.label} promotion`,
-          emoji: '🩺',
-          description: `Promoted to ${rankAfter.label}.`,
-          share: `Just made ${rankAfter.label} in Clinicle 🩺`,
         }
       : null,
   ];

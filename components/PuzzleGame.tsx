@@ -17,7 +17,6 @@ import {
 } from '@/lib/storage';
 import { buildShareString } from '@/lib/share';
 
-import { currentRank } from '@/lib/ranks';
 import { checkNewlyUnlocked, type Achievement } from '@/lib/achievements';
 import {
   computePercentile,
@@ -144,7 +143,6 @@ export default function PuzzleGame({
         ? Date.now() - startedAt
         : finalTimeMs;
       if (t !== undefined && finalTimeMs == null) setFinalTimeMs(t);
-      const rankBefore = currentRank(loadStats());
       const nextStats = recordCompletion(
         puzzle.date,
         guesses.length,
@@ -163,7 +161,7 @@ export default function PuzzleGame({
           won,
           timeMs: t,
         };
-        const fresh = checkNewlyUnlocked(gs, nextStats, rankBefore);
+        const fresh = checkNewlyUnlocked(gs, nextStats);
         if (fresh.length) setFreshAchievements(fresh);
       }
     }
@@ -779,7 +777,6 @@ function WinBanner({
 }) {
   const stats = loadStats();
   const bestMs = fastestSolveMs(stats);
-  const rank = currentRank(stats);
   const shareText = buildShareString(
     { date: puzzle.date, guesses, hintsUsed, gaveUp, won, timeMs },
     puzzle.num,
@@ -806,17 +803,6 @@ function WinBanner({
         >
           {won ? 'Solved' : 'Revealed'}
         </div>
-        {won && (
-          <div
-            className={[
-              'text-eyebrow uppercase font-bold',
-              won ? 'text-white/80' : 'text-muted',
-            ].join(' ')}
-            title={`Your rank: ${rank.label}`}
-          >
-            {rank.label}
-          </div>
-        )}
       </div>
       <div className="text-title-xl font-bold tracking-tight mb-2">
         {won
@@ -900,12 +886,11 @@ function WinBanner({
       <div className="flex flex-col sm:flex-row gap-2">
         <a
           href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
-            shareText.replace(/https?:\/\/[^\s]+/g, '').trim() +
-              '\n\n@ClinicleGame @PraneetMylavarapu',
+            shareText.replace(/https?:\/\/[^\s]+/g, '').trim(),
           )}&url=${encodeURIComponent(
             typeof window !== 'undefined'
               ? window.location.origin + '/'
-              : 'https://clinicle.app',
+              : 'https://www.cliniclegame.app/',
           )}`}
           target="_blank"
           rel="noopener noreferrer"
