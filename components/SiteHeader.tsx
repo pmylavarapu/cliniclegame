@@ -43,7 +43,7 @@ export default function SiteHeader() {
               alt="Clinicle — the game"
               width={2172}
               height={724}
-              className="h-14 sm:h-24 w-auto block"
+              className="h-12 sm:h-20 w-auto block"
             />
           </Link>
 
