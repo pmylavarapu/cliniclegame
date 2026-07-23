@@ -528,6 +528,7 @@ acrylate
 acrylic
 acrymed
 acrysof
+acs
 act
 actaea
 actagan
@@ -644,6 +645,7 @@ acylated
 acystia
 acystic
 aczone
+ad
 ad-lib
 ada
 adaceae
@@ -987,9 +989,11 @@ afflux
 afforce
 afford
 affusion
+afib
 afinity
 afipia
 aflexa
+aflutter
 afnia
 afocus
 afraid
@@ -1141,6 +1145,7 @@ agurus
 agynous
 agyria
 agyric
+aha
 ahcpr
 ahead
 ahent
@@ -1170,6 +1175,7 @@ ailurus
 aim
 aimed
 aims
+ain
 ainhum
 ainia
 aiptasia
@@ -1213,6 +1219,7 @@ akene
 akerlund
 akewood
 akhead
+aki
 akido
 akile
 akineses
@@ -1658,6 +1665,7 @@ alport
 alprox
 already
 alrex
+als
 alsamita
 alsberg
 alsidium
@@ -1924,6 +1932,7 @@ amitotic
 amitraz
 amitril
 amitrole
+aml
 ammacism
 ammeter
 ammite
@@ -2662,6 +2671,7 @@ anywhere
 anzemet
 ao-pau
 aol
+aom
 aonema
 aonite
 aonyx
@@ -2765,6 +2775,7 @@ apiol
 apios
 apitoxin
 apium
+apla
 aplasia
 aplastic
 aplastic anemia
@@ -2777,6 +2788,7 @@ aplisol
 aplitest
 aploppas
 aplotomy
+apls
 aplustre
 apnea
 apneic
@@ -3074,6 +3086,7 @@ ardha
 ardisia
 ardops
 ardor
+ards
 arduan
 arduus
 ardwolf
@@ -3194,6 +3207,7 @@ armanni
 armarium
 armata
 armature
+armd
 armed
 armenia
 armenica
@@ -3688,6 +3702,7 @@ atm
 atmology
 atmolyze
 atmos
+atn
 atnaa
 atnativ
 atoblast
@@ -3818,6 +3833,7 @@ atypia
 atypical
 atypical pneumonia
 atypism
+aub
 auberger
 aubert
 aubretia
@@ -4051,6 +4067,8 @@ avosure
 avowant
 avowee
 avowry
+avr
+avs
 avularia
 avulse
 avulsed
@@ -4643,6 +4661,7 @@ bbw
 bcell
 bciss
 bcock
+bd
 bdella
 bdellium
 bdeogale
@@ -5905,6 +5924,8 @@ boys
 bozeman
 bozemann
 bozzolo
+bpd
+bph
 bra
 braakii
 braasch
@@ -6560,6 +6581,7 @@ c5b6789
 cab
 caballi
 cabbage
+cabg
 cabin
 cabinet
 cabinets
@@ -7334,6 +7356,7 @@ cbs
 ccd
 ccsas
 cd-rom
+cdi
 cdna
 cdrpan
 cds
@@ -7610,6 +7633,7 @@ cevadine
 cewen
 ceylon
 cezin
+cf
 cfr
 cgi
 ch'ang
@@ -7792,6 +7816,7 @@ chevy
 chewing
 chews
 cheyne
+chf
 chi
 chiari
 chiasm
@@ -8186,6 +8211,7 @@ civil
 civilian
 civinini
 ck-mb
+ckd
 cklebill
 cklewort
 cknell
@@ -8328,6 +8354,7 @@ clitoris
 clival
 clivi
 clivus
+cll
 cloaca
 cloacae
 cloacal
@@ -8413,7 +8440,9 @@ clysis
 clysma
 clysmata
 clyster
+cml
 cms
+cmv
 cnemial
 cnemides
 cnemis
@@ -9350,6 +9379,7 @@ crawford
 crawley
 crazing
 crazy
+crc
 cream
 crease
 creased
@@ -9767,6 +9797,7 @@ cuvette
 cuvier
 cuvieri
 cuvposa
+cva
 cvads
 cvs
 cyanate
@@ -10695,6 +10726,7 @@ dezocine
 dhat
 dhobie
 dhurrin
+di
 diabeta
 diabetes
 diabetes insipidus
@@ -10808,6 +10840,7 @@ dibent
 dibuline
 dibunate
 dibutyl
+dic
 dical
 dicalcic
 dicamba
@@ -11252,10 +11285,12 @@ dizziest
 dizzily
 dizziness
 dizzy
+dka
 dlewood
 dleya
 dlins
 dlitz
+dm
 dmapn
 dmards
 dmerc
@@ -11613,6 +11648,7 @@ dualism
 dualist
 dualmesh
 duane
+dub
 dubai
 dubecq
 dubin
@@ -11770,6 +11806,7 @@ duvoid
 duvries
 dvd
 dvds
+dvt
 dwale
 dwarf
 dwarfed
@@ -11934,6 +11971,7 @@ ebstein
 ebullism
 eburnea
 eburneum
+ebv
 ecabet
 ecamsule
 ecarin
@@ -12059,6 +12097,7 @@ edgar
 edge
 edges
 edgewise
+edh
 ediatric
 edinger
 edipism
@@ -12950,6 +12989,7 @@ esophyx
 esotropia
 espn
 esponja
+esrd
 essay
 essays
 essence
@@ -14275,6 +14315,7 @@ gabinia
 gabon
 gaboon
 gabriel
+gad
 gadder
 gadfly
 gadgets
@@ -14458,7 +14499,10 @@ gazette
 gba
 gbgase
 gbp
+gbs
+gca
 gcc
+gdm
 gdp
 gear
 gebauer
@@ -14636,6 +14680,7 @@ giant cell arteritis
 giants
 giardia
 giardiasis
+gib
 gibbon
 gibbous
 gibbs
@@ -15146,6 +15191,7 @@ guy
 guyana
 guyon
 guys
+gvhd
 gym
 gymnema
 gymno
@@ -15307,6 +15353,7 @@ hans
 hansen
 hantaan
 hantavirus
+hap
 hapad
 haphy
 hapii
@@ -15385,6 +15432,7 @@ haunch
 hauser
 haust
 haustra
+hav
 have
 haven
 havers
@@ -15404,7 +15452,10 @@ hazards
 hbcag
 hbeag
 hbsag
+hbv
+hcc
 hcpcs
+hcv
 hdtv
 head
 headache
@@ -15699,9 +15750,12 @@ hexyl
 hey
 heymann
 heymans
+hfpef
+hfref
 hgprt
 hhaide
 hhaides
+hhs
 hiatal
 hiate
 hiation
@@ -15817,6 +15871,8 @@ hiv infection
 hives
 hivid
 hkafo
+hl
+hld
 hmg-coa
 hmpao
 hmscs
@@ -16012,10 +16068,12 @@ hraxis
 href
 hrs
 hscrp
+hsv
 htacs
 hthene
 hthyes
 html
+htn
 http
 huang
 huanuco
@@ -16081,6 +16139,7 @@ hurst
 hurt
 hurthle
 hurtley
+hus
 husband
 huschke
 hutes
@@ -16305,17 +16364,20 @@ iatrics
 iatris
 iatrogenic
 iatry
+ibd
 iberet
 iberis
 ibeus
 ibm
 ibrin
+ibs
 ibuprin
 icamore
 icaps
 ice
 iceland
 iceous
+ich
 ichant
 ichelia
 ichor
@@ -16341,6 +16403,7 @@ ictus
 icular
 iculus
 icytial
+ida
 idaeus
 idaho
 idamor
@@ -16399,6 +16462,7 @@ ikatea
 iketail
 ilaris
 ilase
+ild
 ileac
 ileae
 ileal
@@ -16869,6 +16933,7 @@ ipalp
 ipaq
 ipartum
 ipecac
+ipf
 iphylla
 iplex
 ipod
@@ -17030,6 +17095,7 @@ iteral
 ithecus
 itine
 itory
+itp
 itracin
 itrine
 itrumil
@@ -17824,6 +17890,7 @@ lacunar
 lacune
 lacunes
 lacus
+lad
 ladder
 laden
 ladies
@@ -18069,9 +18136,12 @@ lazaret
 lazaro
 lazy
 lbark
+lbbb
 lberry
+lbp
 lbs
 lcd
+lcx
 ldane
 ldehyde
 leach
@@ -18326,6 +18396,7 @@ leydigi
 leyla
 lfism
 lfist
+lgib
 lgoose
 lhasa
 lhead
@@ -18775,6 +18846,7 @@ loopful
 loops
 loose
 looser
+lop
 lopez
 lophila
 lophine
@@ -18863,6 +18935,7 @@ lowsley
 loxia
 lozenge
 lozol
+lrti
 lstat
 ltd
 lubrol
@@ -19437,6 +19510,8 @@ mckee
 mclean
 mcneer
 mcneil
+mdd
+mds
 meadow
 meal
 meals
@@ -19717,7 +19792,9 @@ meyer
 meynert
 meynet
 mezlin
+mg
 mhz
+mi
 mia
 miami
 miana
@@ -19912,8 +19989,10 @@ mixtus
 mladick
 mlb
 mls
+mm
 mmait
 mmihs
+mnd
 mnemic
 mnller
 moapar
@@ -20167,6 +20246,8 @@ mrgfus
 mri
 mrna
 mrs
+mrsa
+ms
 msg
 msgid
 msgstr
@@ -20281,6 +20362,8 @@ mutism
 mutual
 muze
 muzzled
+mvp
+mvr
 myalgia
 myalgic
 myanmar
@@ -20399,6 +20482,7 @@ nadph
 naegeli
 naevus
 nafate
+nafld
 naftin
 nagana
 nagel
@@ -20467,6 +20551,7 @@ nascar
 nascent
 nascet
 nasdaq
+nash
 nasion
 nasitis
 nasmyth
@@ -20939,11 +21024,13 @@ noxafil
 noxious
 noxzema
 nozinan
+nph
 nplate
 nsaia
 nsaid
 nsaids
 nsclc
+nstemi
 nsw
 ntsc
 nubain
@@ -21009,6 +21096,7 @@ nyxis
 o'brien
 o'dwyer
 o'nyong
+oa
 oak
 oakland
 oakley
@@ -21172,12 +21260,14 @@ ollier
 olmeca
 olympic
 olympus
+om
 omagra
 omaha
 omalgia
 oman
 omasal
 omasum
+ome
 omega
 omenn
 omenta
@@ -21420,6 +21510,7 @@ oryza
 oryzae
 oryzias
 oryzoid
+osa
 osazone
 osbil
 osborne
@@ -21689,6 +21780,7 @@ paget
 paget disease of bone
 pagetic
 pagus
+pah
 pahangi
 pahvant
 paid
@@ -22023,12 +22115,14 @@ paypal
 payroll
 pays
 pci
+pcos
 pcs
 pct
 pda
 pdas
 pdf
 pdt
+pe
 peabody
 peace
 peach
@@ -22305,6 +22399,7 @@ pezzer
 pfaffia
 pfaffii
 pfizer
+pft
 pfuhl
 pgp
 phaco
@@ -22471,6 +22566,7 @@ picryl
 pics
 pictou
 picture
+pid
 pie
 piebald
 piece
@@ -22762,7 +22858,12 @@ plural
 pluri
 plus
 pmc
+pmdd
 pmid
+pmr
+pms
+pna
+pnd
 pneugel
 pneum
 pneuma
@@ -23407,6 +23508,7 @@ publish
 pubmed
 pubs
 puccoon
+pud
 puddle
 puddu
 pudenda
@@ -23678,6 +23780,7 @@ qutenza
 qutnu
 r1wave
 r2wave
+ra
 raabe
 rabbit
 rabic
@@ -23856,7 +23959,10 @@ raymond
 raynaud
 raynauds
 rays
+rbbb
 rca
+rcc
+rds
 reach
 reached
 reaches
@@ -24499,6 +24605,7 @@ root
 rooting
 rootlet
 roots
+rop
 rope
 ropoxy
 rorer
@@ -24587,6 +24694,7 @@ rrhage
 rrp
 rss
 rstmh
+rta
 rubarth
 rubber
 rubedo
@@ -24732,6 +24840,7 @@ sagem
 sagitta
 sagnac
 sagrada
+sah
 sahli
 said
 sail
@@ -24903,6 +25012,8 @@ saying
 sayre
 says
 sbjct
+sbo
+sbp
 scab
 scabeii
 scabene
@@ -25071,6 +25182,7 @@ scutum
 scybala
 sd-port
 sd-sorb
+sdh
 sea
 seafood
 seagull
@@ -25509,6 +25621,7 @@ side
 sider
 sides
 sidhi
+sids
 sie
 siebold
 siegert
@@ -25695,6 +25808,7 @@ slant
 slater
 slaty
 slave
+sle
 sleep
 sleep apnea
 sleeps
@@ -25788,6 +25902,7 @@ snugged
 soa
 soap
 soave
+sob
 sobia
 sobrini
 sobrino
@@ -26173,6 +26288,8 @@ squirt
 src
 sri
 sroufe
+ss
+sscd
 ssdna
 ssl
 ssnger
@@ -26301,6 +26418,7 @@ stellar
 stem
 stemex
 stemgen
+stemi
 stender
 stenger
 stenion
@@ -26349,6 +26467,7 @@ stewart
 sthen
 sthenia
 sthenic
+sti
 stibine
 stibium
 stick
@@ -26731,6 +26850,7 @@ suzanne
 suzuki
 svante
 svesc
+svt
 swabcap
 swage
 swaged
@@ -26853,6 +26973,8 @@ szabo
 szent
 szulgai
 t-pred
+t1dm
+t2dm
 tab
 tabac
 tabacum
@@ -27052,6 +27174,7 @@ taught
 taurine
 taussig
 tavist
+tavr
 tawara
 tax
 taxane
@@ -27070,7 +27193,9 @@ taylor
 tazicef
 tazolol
 tazorac
+tb
 tba
+tbi
 tcd50
 tchida
 tcid50
@@ -27630,6 +27755,7 @@ toenail
 toennis
 toepfer
 toes
+tof
 togoi
 toilet
 toison
@@ -28094,6 +28220,7 @@ tsrpc
 tsuga
 tsunami
 tswett
+ttp
 tuamine
 tub
 tubadil
@@ -28294,6 +28421,7 @@ uberis
 uberous
 uberty
 ubiqgel
+uc
 ucephan
 ucoheal
 udder
@@ -28301,6 +28429,7 @@ uddin
 udpgal
 udpglc
 uganda
+ugib
 ugly
 uhthoff
 ukraine
@@ -28616,6 +28745,7 @@ uterine leiomyoma
 uterini
 utero
 uterus
+uti
 utibid
 uticale
 uticort
@@ -28735,6 +28865,7 @@ vansil
 vantex
 vantin
 vanuatu
+vap
 vapocet
 vapor
 vapors
@@ -28963,6 +29094,7 @@ vetuss
 vexans
 vexol
 vfend
+vfib
 vhs
 via
 viable
@@ -29241,10 +29373,14 @@ voyeur
 voyuer
 vozzle
 vpn
+vre
 vrixp
 vrolik
 vscore
+vsd
 vsnet
+vtach
+vte
 vueport
 vulgare
 vulni
@@ -29264,6 +29400,7 @@ vytex
 vytone
 vytorin
 vyvanse
+vzv
 waage
 waaler
 wachter

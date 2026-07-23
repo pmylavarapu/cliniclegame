@@ -1,0 +1,206 @@
+# Common medical abbreviations. Format: abbr|full expansion
+# The expansion is what actually gets sent to the embedding model, so the
+# abbreviation clusters near its true meaning. The user still types the
+# short form (which becomes the stored vocab entry).
+#
+# Curated for unambiguous, widely-recognized short forms. Where an
+# abbreviation has multiple common expansions, we pick the diagnosis-flavored
+# one (e.g. `pd` = parkinson disease, not peritoneal dialysis; `as` =
+# ankylosing spondylitis, not aortic stenosis).
+
+# ─── Cardiovascular ────────────────────────────────────────────────────────
+mi|myocardial infarction (heart attack)
+cad|coronary artery disease
+lad|left anterior descending coronary artery
+lcx|left circumflex coronary artery
+rca|right coronary artery
+chf|congestive heart failure
+hfref|heart failure with reduced ejection fraction
+hfpef|heart failure with preserved ejection fraction
+afib|atrial fibrillation
+aflutter|atrial flutter
+vtach|ventricular tachycardia
+vfib|ventricular fibrillation
+svt|supraventricular tachycardia
+pvc|premature ventricular contraction
+pac|premature atrial contraction
+lbbb|left bundle branch block
+rbbb|right bundle branch block
+htn|hypertension
+hld|hyperlipidemia
+cva|cerebrovascular accident (stroke)
+tia|transient ischemic attack
+dvt|deep vein thrombosis
+pe|pulmonary embolism
+pad|peripheral artery disease
+aaa|abdominal aortic aneurysm
+avr|aortic valve replacement
+mvr|mitral valve replacement
+mvp|mitral valve prolapse
+avs|aortic valve stenosis
+ich|intracerebral hemorrhage
+sah|subarachnoid hemorrhage
+sdh|subdural hematoma
+edh|epidural hematoma
+acs|acute coronary syndrome
+stemi|st elevation myocardial infarction
+nstemi|non st elevation myocardial infarction
+ekg|electrocardiogram
+ecg|electrocardiogram
+echo|echocardiogram
+tavr|transcatheter aortic valve replacement
+cabg|coronary artery bypass grafting
+pci|percutaneous coronary intervention
+
+# ─── Pulmonary ─────────────────────────────────────────────────────────────
+copd|chronic obstructive pulmonary disease
+pna|pneumonia
+ards|acute respiratory distress syndrome
+osa|obstructive sleep apnea
+uri|upper respiratory infection
+lrti|lower respiratory tract infection
+cap|community acquired pneumonia
+hap|hospital acquired pneumonia
+vap|ventilator associated pneumonia
+pah|pulmonary arterial hypertension
+ild|interstitial lung disease
+ipf|idiopathic pulmonary fibrosis
+tb|tuberculosis
+sob|shortness of breath
+doe|dyspnea on exertion
+pnd|paroxysmal nocturnal dyspnea
+rds|respiratory distress syndrome
+pft|pulmonary function test
+cf|cystic fibrosis
+
+# ─── Renal / Urology ───────────────────────────────────────────────────────
+aki|acute kidney injury
+ckd|chronic kidney disease
+esrd|end stage renal disease
+uti|urinary tract infection
+bph|benign prostatic hyperplasia
+rta|renal tubular acidosis
+atn|acute tubular necrosis
+ain|acute interstitial nephritis
+rcc|renal cell carcinoma
+
+# ─── GI / Hepatology ───────────────────────────────────────────────────────
+gerd|gastroesophageal reflux disease
+ibs|irritable bowel syndrome
+ibd|inflammatory bowel disease
+uc|ulcerative colitis
+pud|peptic ulcer disease
+nafld|nonalcoholic fatty liver disease
+nash|nonalcoholic steatohepatitis
+sbo|small bowel obstruction
+sbp|spontaneous bacterial peritonitis
+hcc|hepatocellular carcinoma
+gib|gastrointestinal bleed
+ugib|upper gastrointestinal bleed
+lgib|lower gastrointestinal bleed
+crc|colorectal cancer
+
+# ─── Endocrine ─────────────────────────────────────────────────────────────
+dm|diabetes mellitus
+t1dm|type 1 diabetes mellitus
+t2dm|type 2 diabetes mellitus
+dka|diabetic ketoacidosis
+hhs|hyperosmolar hyperglycemic state
+pcos|polycystic ovary syndrome
+siadh|syndrome of inappropriate antidiuretic hormone
+di|diabetes insipidus
+
+# ─── Hematology / Oncology ─────────────────────────────────────────────────
+itp|immune thrombocytopenic purpura
+ttp|thrombotic thrombocytopenic purpura
+hus|hemolytic uremic syndrome
+dic|disseminated intravascular coagulation
+all|acute lymphoblastic leukemia
+aml|acute myeloid leukemia
+cll|chronic lymphocytic leukemia
+cml|chronic myeloid leukemia
+mds|myelodysplastic syndrome
+mm|multiple myeloma
+hl|hodgkin lymphoma
+nhl|non hodgkin lymphoma
+vte|venous thromboembolism
+ida|iron deficiency anemia
+aha|autoimmune hemolytic anemia
+gvhd|graft versus host disease
+
+# ─── Rheumatology ──────────────────────────────────────────────────────────
+ra|rheumatoid arthritis
+sle|systemic lupus erythematosus
+oa|osteoarthritis
+pmr|polymyalgia rheumatica
+gca|giant cell arteritis
+ss|sjogrens syndrome
+apla|antiphospholipid antibody syndrome
+apls|antiphospholipid syndrome
+
+# ─── Neurology ─────────────────────────────────────────────────────────────
+ms|multiple sclerosis
+als|amyotrophic lateral sclerosis
+tbi|traumatic brain injury
+gbs|guillain barre syndrome
+mg|myasthenia gravis
+ad|alzheimer disease
+mnd|motor neuron disease
+nph|normal pressure hydrocephalus
+
+# ─── Psychiatry ────────────────────────────────────────────────────────────
+mdd|major depressive disorder
+gad|generalized anxiety disorder
+ptsd|post traumatic stress disorder
+ocd|obsessive compulsive disorder
+adhd|attention deficit hyperactivity disorder
+bd|bipolar disorder
+bpd|borderline personality disorder
+
+# ─── Infectious ────────────────────────────────────────────────────────────
+hiv|human immunodeficiency virus
+aids|acquired immunodeficiency syndrome
+sti|sexually transmitted infection
+std|sexually transmitted disease
+mrsa|methicillin resistant staphylococcus aureus
+vre|vancomycin resistant enterococcus
+cdi|clostridioides difficile infection
+hcv|hepatitis c virus
+hbv|hepatitis b virus
+hav|hepatitis a virus
+cmv|cytomegalovirus
+ebv|epstein barr virus
+hsv|herpes simplex virus
+vzv|varicella zoster virus
+
+# ─── OB/GYN ────────────────────────────────────────────────────────────────
+pid|pelvic inflammatory disease
+aub|abnormal uterine bleeding
+dub|dysfunctional uterine bleeding
+pms|premenstrual syndrome
+pmdd|premenstrual dysphoric disorder
+hellp|hemolysis elevated liver enzymes low platelets syndrome
+gdm|gestational diabetes mellitus
+
+# ─── Pediatric ─────────────────────────────────────────────────────────────
+nec|necrotizing enterocolitis
+pda|patent ductus arteriosus
+vsd|ventricular septal defect
+tof|tetralogy of fallot
+sids|sudden infant death syndrome
+rop|retinopathy of prematurity
+
+# ─── Ophthalmology ─────────────────────────────────────────────────────────
+armd|age related macular degeneration
+amd|age related macular degeneration
+
+# ─── Common symptoms / exam terms ──────────────────────────────────────────
+loc|loss of consciousness
+lbp|low back pain
+lop|loss of pregnancy
+
+# ─── ENT / Head & neck ─────────────────────────────────────────────────────
+om|otitis media
+aom|acute otitis media
+ome|otitis media with effusion
+sscd|superior semicircular canal dehiscence

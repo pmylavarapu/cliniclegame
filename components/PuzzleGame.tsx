@@ -237,7 +237,9 @@ export default function PuzzleGame({ puzzle, vocab }: Props) {
               <span className="text-border-strong">·</span>
               <span className="inline-flex items-center gap-1.5">
                 <DifficultyStars value={puzzle.difficulty} />
-                <span className="text-caption font-semibold text-fg">
+                <span
+                  className={`text-caption font-semibold ${difficultyColor(puzzle.difficulty)}`}
+                >
                   {difficultyLabel(puzzle.difficulty)}
                 </span>
               </span>
@@ -436,20 +438,30 @@ function levenshtein(a: string, b: string, cap: number): number {
 }
 
 function difficultyLabel(value: number): string {
-  const clamped = Math.max(1, Math.min(5, value));
-  return ['Easy', 'Light', 'Medium', 'Hard', 'Brutal'][clamped - 1];
+  const clamped = Math.max(1, Math.min(3, value));
+  return ['Easy', 'Medium', 'Hard'][clamped - 1];
+}
+
+function difficultyColor(value: number): string {
+  const clamped = Math.max(1, Math.min(3, value));
+  // Green for easy, orange for medium, red for hard.
+  return ['text-hot', 'text-warm', 'text-red-500'][clamped - 1];
 }
 
 function DifficultyStars({ value }: { value: number }) {
-  const clamped = Math.max(1, Math.min(5, value));
+  const clamped = Math.max(1, Math.min(3, value));
+  const color = difficultyColor(clamped);
   return (
-    <span className="inline-flex items-center gap-0.5" aria-label={`Difficulty ${clamped} out of 5`}>
-      {[1, 2, 3, 4, 5].map((n) => (
+    <span
+      className="inline-flex items-center gap-0.5"
+      aria-label={`Difficulty ${clamped} out of 3`}
+    >
+      {[1, 2, 3].map((n) => (
         <span
           key={n}
           className={
             n <= clamped
-              ? 'text-fg text-[13px] leading-none'
+              ? `${color} text-[13px] leading-none`
               : 'text-border-strong text-[13px] leading-none'
           }
           aria-hidden="true"

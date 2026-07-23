@@ -33,6 +33,30 @@ ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
 EMB = DATA / "embeddings"
 VOCAB = DATA / "vocab.txt"
+ABBREVIATIONS = DATA / "abbreviations.txt"
+
+
+def load_abbreviation_map() -> dict[str, str]:
+    """Return {abbreviation: 'abbreviation (full expansion)'}.
+
+    The value is the string sent to the embedding model — putting both
+    the short form and the expansion in the same input steers the vector
+    toward the true meaning while keeping the abbreviation's own token
+    influence in play. The stored vocab word remains the abbreviation.
+    """
+    out: dict[str, str] = {}
+    if not ABBREVIATIONS.exists():
+        return out
+    for line in ABBREVIATIONS.read_text().splitlines():
+        s = line.strip()
+        if not s or s.startswith("#") or "|" not in s:
+            continue
+        abbr, expansion = s.split("|", 1)
+        abbr = abbr.strip().lower()
+        expansion = expansion.strip()
+        if abbr and expansion:
+            out[abbr] = f"{abbr.upper()} ({expansion})"
+    return out
 
 EMB.mkdir(parents=True, exist_ok=True)
 
@@ -121,10 +145,25 @@ def main() -> None:
     vocab = load_vocab()
     print(f"Vocab size: {len(vocab)}")
 
+    abbr_map = load_abbreviation_map()
+    print(f"Abbreviations: {len(abbr_map)} (always re-embedded)")
+
     cached_words, cached_vecs = load_cache()
     cached_set = set(cached_words)
-    to_embed = [w for w in vocab if w not in cached_set]
+    # Abbreviations always re-embed so we don't ship a cached English
+    # embedding for something like "lad" instead of the medical meaning.
+    to_embed = [w for w in vocab if w not in cached_set or w in abbr_map]
     print(f"Cached: {len(cached_words)}   To embed: {len(to_embed)}")
+
+    # Drop any stale cached rows we're about to re-embed so they don't
+    # collide during the reindex step at the end.
+    if abbr_map:
+        keep = [i for i, w in enumerate(cached_words) if w not in abbr_map]
+        if len(keep) != len(cached_words):
+            cached_words = [cached_words[i] for i in keep]
+            if cached_vecs is not None:
+                cached_vecs = cached_vecs[keep]
+            print(f"Dropped {len(cached_set) - len(keep)} stale abbrev rows from cache")
 
     if to_embed:
         print(f"Model: {MODEL}   dim: {DIM}   batch: {BATCH}   pacing: {RPM} RPM")
@@ -138,7 +177,11 @@ def main() -> None:
                 if elapsed < MIN_INTERVAL:
                     time.sleep(MIN_INTERVAL - elapsed)
                 batch = to_embed[i : i + BATCH]
-                vecs_batch = embed_batch(client, batch)
+                # Substitute expansion text for known abbreviations so
+                # cosine reflects the medical meaning, not the bare
+                # 2-3 letter surface form.
+                batch_send = [abbr_map.get(w, w) for w in batch]
+                vecs_batch = embed_batch(client, batch_send)
                 last_call = time.time()
                 new_vecs.append(vecs_batch)
                 # Incrementally checkpoint every ~50 batches so we don't lose

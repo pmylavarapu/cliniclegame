@@ -228,23 +228,18 @@ def main() -> None:
         top_vecs = vecs[top_idx]
         synonyms = synonym_map(top_words, top_vecs, SYNONYM_SIM)
 
-        # Difficulty stars (1 = easy … 5 = hard). A target with a very close
-        # nearest neighbor (near-synonym) is easier to find; an isolated
-        # target (top neighbor far away in cosine space) is harder.
-        # Rank-2 similarity is the signal since rank-1 is the word itself.
-        # Thresholds are calibrated to the observed distribution across the
-        # current schedule (p20 ≈ 0.918, p50 ≈ 0.949, p80 ≈ 0.972).
+        # Difficulty: 1 = easy, 2 = medium, 3 = hard. A target with a very
+        # close nearest neighbor (near-synonym) is easy; an isolated target
+        # is hard. Rank-2 similarity is the signal since rank-1 is the word
+        # itself. Thresholds calibrated to the observed schedule
+        # distribution (p20 ≈ 0.918, p50 ≈ 0.949, p80 ≈ 0.972).
         nearest = float(sims[order[1]]) if len(order) > 1 else 0.0
-        if nearest >= 0.97:
+        if nearest >= 0.95:
             difficulty = 1
-        elif nearest >= 0.95:
+        elif nearest >= 0.92:
             difficulty = 2
-        elif nearest >= 0.93:
-            difficulty = 3
-        elif nearest >= 0.91:
-            difficulty = 4
         else:
-            difficulty = 5
+            difficulty = 3
 
         num = _puzzle_num(iso)
         payload = {

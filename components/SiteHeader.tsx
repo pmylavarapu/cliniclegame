@@ -8,7 +8,6 @@ const MENU_NAV = [
   { href: '/', label: 'Today' },
   { href: '/how-to-play/', label: 'How to play' },
   { href: '/how-it-works/', label: 'How it works' },
-  { href: '/sources/', label: 'Sources' },
   { href: '/feedback/', label: 'Feedback' },
 ];
 
@@ -32,7 +31,7 @@ export default function SiteHeader() {
 
   return (
     <>
-      <header className="sticky top-0 z-30 bg-bg/85 backdrop-blur-xl">
+      <header className="sticky top-0 z-30 bg-bg/85 backdrop-blur-xl border-b border-border/60">
         <div className="mx-auto max-w-2xl px-4 sm:px-5 h-20 sm:h-20 flex items-center justify-between">
           <Link
             href="/"

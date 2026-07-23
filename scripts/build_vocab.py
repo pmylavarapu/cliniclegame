@@ -38,6 +38,7 @@ DATA = ROOT / "data"
 DIAGNOSES = DATA / "diagnoses.txt"
 ADJUNCTS = DATA / "adjuncts.txt"
 MULTIWORD = DATA / "multiword_medical.txt"
+ABBREVIATIONS = DATA / "abbreviations.txt"
 MESH_CACHE = DATA / "mesh_desc.xml"
 OUT = DATA / "vocab.txt"
 
@@ -198,6 +199,28 @@ def _load_curated(path: Path) -> set[str]:
     return words
 
 
+def load_abbreviations() -> set[str]:
+    """Load just the abbreviation keys from data/abbreviations.txt.
+
+    Line format: `abbr|full expansion`. Only the abbreviation is added to
+    the vocab here — the expansion is used by embed.py to steer the
+    embedding vector without changing the stored word.
+    """
+    words: set[str] = set()
+    if not ABBREVIATIONS.exists():
+        return words
+    for line in ABBREVIATIONS.read_text().splitlines():
+        line = line.strip()
+        if not line or line.startswith("#"):
+            continue
+        if "|" not in line:
+            continue
+        abbr = normalize(line.split("|", 1)[0])
+        if abbr:
+            words.add(abbr)
+    return words
+
+
 def load_common_english() -> set[str]:
     print(f"  fetching {ENGLISH_URL}")
     r = requests.get(ENGLISH_URL, timeout=60)
@@ -239,6 +262,10 @@ def main() -> None:
     print("Loading multi-word medical phrases...")
     mw = _load_curated(MULTIWORD)
     print(f"  {len(mw)} multi-word phrases")
+
+    print("Loading medical abbreviations...")
+    abbrev = load_abbreviations()
+    print(f"  {len(abbrev)} abbreviations")
 
     seed: set[str] = set()
     if not mesh:
