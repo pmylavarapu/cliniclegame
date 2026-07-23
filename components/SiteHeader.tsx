@@ -5,9 +5,9 @@ import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 const NAV = [
-  { href: '/', label: 'Play', icon: GamepadIcon },
-  { href: '/how-to-play/', label: 'How To', icon: BookIcon },
-  { href: '/how-it-works/', label: 'About', icon: InfoIcon },
+  { href: '/', label: 'Play' },
+  { href: '/how-to-play/', label: 'How to Play' },
+  { href: '/how-it-works/', label: 'About' },
 ];
 
 export default function SiteHeader() {
@@ -51,22 +51,19 @@ export default function SiteHeader() {
             className="hidden md:flex items-center gap-4"
             aria-label="Site navigation"
           >
-            {NAV.map((item, i) => (
-              <div key={item.href} className="flex items-center gap-4">
-                {i > 0 && <span aria-hidden="true" className="h-4 w-px bg-border-strong" />}
-                <Link
-                  href={item.href}
-                  className={[
-                    'inline-flex items-center gap-1.5 py-1 text-[11px] font-bold uppercase tracking-[0.08em] transition-colors',
-                    isActive(item.href)
-                      ? 'text-primary border-b-2 border-primary'
-                      : 'text-fg-soft hover:text-primary',
-                  ].join(' ')}
-                >
-                  <item.icon />
-                  {item.label}
-                </Link>
-              </div>
+            {NAV.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={[
+                  'py-1 text-[12px] font-bold uppercase tracking-[0.12em] transition-colors',
+                  isActive(item.href)
+                    ? 'text-fg border-b-2 border-fg'
+                    : 'text-muted hover:text-fg',
+                ].join(' ')}
+              >
+                {item.label}
+              </Link>
             ))}
           </nav>
 
@@ -105,7 +102,6 @@ export default function SiteHeader() {
                         : 'text-fg hover:bg-surface-2',
                     ].join(' ')}
                   >
-                    <item.icon />
                     <span>{item.label}</span>
                   </Link>
                 </li>

@@ -319,91 +319,32 @@ export default function PuzzleGame({
 
   return (
     <div>
-      <div className="mb-4">
-        <div className="text-eyebrow uppercase text-muted font-bold tracking-[0.08em] mb-1">
-          Today&apos;s puzzle
-        </div>
-        <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-          <h1 className="text-title-sm sm:text-title-md font-bold tracking-tight text-fg">
-            Puzzle #{puzzle.num}
-          </h1>
-          <span className="inline-flex items-baseline gap-2 text-caption">
-            <span className="text-border-strong">·</span>
-            <span className="tabular text-muted">{dateLabel}</span>
-            {puzzle.difficulty ? (
-              <>
-                <span className="text-border-strong">·</span>
-                <span
-                  className={`font-semibold ${difficultyColor(puzzle.difficulty)}`}
-                >
-                  {difficultyLabel(puzzle.difficulty)}
-                </span>
-              </>
-            ) : null}
-          </span>
-        </div>
-      </div>
-      <p className="mb-5 text-caption sm:text-body text-muted leading-relaxed">
+      <p className="mb-2 text-body text-fg font-medium">
+        Today is puzzle #{puzzle.num}.
+      </p>
+      <p className="mb-6 text-body text-muted leading-relaxed">
         Guess medical terms. The closer you get to the secret diagnosis,
         the higher your score will be. Guess the secret word to win.
       </p>
-      <div className="border-t border-border mb-6" />
-      <div className="mb-6 grid grid-cols-1 lg:grid-cols-[1fr_18rem] gap-5 lg:gap-6 items-start">
-        <div>
-          <div className="text-eyebrow uppercase text-muted font-bold tracking-[0.08em] mb-3">
-            Prompt
-          </div>
-          <p className="text-title-sm sm:text-title-md font-semibold text-fg leading-[1.55] tracking-[-0.01em]">
-            {puzzle.prompt}
-          </p>
+      <div className="mb-6 rounded-xl border border-border-strong p-5 sm:p-7">
+        <div className="text-eyebrow uppercase text-muted font-bold tracking-[0.08em] mb-3">
+          Prompt
         </div>
-        <div className="rounded-lg bg-surface-2 p-4 sm:p-5">
-          <div className="flex items-start gap-3">
-            <div className="shrink-0 h-9 w-9 rounded-full bg-white flex items-center justify-center text-muted">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <line x1="12" y1="20" x2="12" y2="10" />
-                <line x1="18" y1="20" x2="18" y2="4" />
-                <line x1="6" y1="20" x2="6" y2="16" />
-              </svg>
-            </div>
-            <div className="text-caption leading-relaxed">
-              <div className="font-semibold text-fg mb-1">For reference:</div>
-              <div className="text-muted">
-                The <span className="font-semibold text-fg">10th closest</span> word has a similarity score of{' '}
-                <span className="tabular font-bold text-fg">{rank10Score.toFixed(1)}</span>
-              </div>
-              <div className="text-muted mt-1">
-                The <span className="font-semibold text-fg">1000th closest</span> word has a similarity score of{' '}
-                <span className="tabular font-bold text-fg">{rank1000Score.toFixed(1)}</span>
-              </div>
-            </div>
-          </div>
-        </div>
+        <p className="text-title-sm sm:text-title-md font-medium text-fg leading-[1.55] tracking-[-0.005em]">
+          {puzzle.prompt}
+        </p>
       </div>
 
       {!gameOver && (
         <form onSubmit={onSubmit} className="mb-4">
           <div className="flex items-stretch flex-wrap gap-2">
             <div className="basis-full sm:basis-0 flex-1 min-w-0 relative">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-                aria-hidden="true"
-                className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-muted"
-              >
-                <path
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                  d="M9 3.5a5.5 5.5 0 1 0 3.393 9.822l3.393 3.393a.75.75 0 1 0 1.06-1.06l-3.393-3.393A5.5 5.5 0 0 0 9 3.5ZM5 9a4 4 0 1 1 8 0 4 4 0 0 1-8 0Z"
-                />
-              </svg>
               <input
                 ref={inputRef}
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                placeholder="Enter a word or phrase"
-                className="w-full h-12 pl-10 pr-4 text-base rounded-lg bg-white border border-border-strong outline-none focus:border-fg focus:ring-2 focus:ring-fg/10 transition-all placeholder:text-muted font-medium"
+                placeholder="Enter a guess"
+                className="w-full h-12 px-4 text-base rounded-lg bg-white border border-border-strong outline-none focus:border-fg focus:ring-2 focus:ring-fg/10 transition-all placeholder:text-muted font-medium"
                 autoComplete="off"
                 autoCapitalize="off"
                 spellCheck={false}
@@ -432,13 +373,15 @@ export default function PuzzleGame({
               Give Up
             </button>
           </div>
-          <div className="mt-2 text-right">
-            <span className="text-caption text-muted tabular">
-              {guesses.length} guess{guesses.length === 1 ? '' : 'es'}
-              {hintsUsed > 0 &&
-                ` · ${hintsUsed} hint${hintsUsed === 1 ? '' : 's'}`}
-            </span>
-          </div>
+          {guesses.length > 0 && (
+            <div className="mt-2 text-right">
+              <span className="text-caption text-muted tabular">
+                {guesses.length} guess{guesses.length === 1 ? '' : 'es'}
+                {hintsUsed > 0 &&
+                  ` · ${hintsUsed} hint${hintsUsed === 1 ? '' : 's'}`}
+              </span>
+            </div>
+          )}
           {error && (
             <div className="mt-3 text-caption text-red-600 font-medium animate-in">
               {error}
