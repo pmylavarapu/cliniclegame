@@ -465,20 +465,18 @@ export default function PuzzleGame({
       )}
 
       {guesses.length === 0 && !gameOver && (
-        <div className="mt-10 py-10 px-5 sm:px-8 rounded-2xl bg-surface-2 text-center">
-          <p className="text-title-sm text-fg font-bold">
-            Make your first guess
-          </p>
-          <p className="text-body text-muted mt-1.5">
+        <div className="mt-6 py-5 px-4 sm:px-6 rounded-xl bg-surface-2 text-center">
+          <p className="text-body text-fg font-bold">Make your first guess</p>
+          <p className="text-caption text-muted mt-1">
             Try something broad — an organ, a symptom, a body system.
           </p>
-          <p className="text-caption text-muted mt-3 leading-relaxed max-w-xl mx-auto">
+          <p className="text-caption text-muted mt-1.5 whitespace-nowrap overflow-x-auto">
             Closer meanings score higher —{' '}
             <span className="font-semibold text-fg">heart attack</span>{' '}
             scores near{' '}
-            <span className="font-semibold text-fg">cardiomyopathy</span>,
-            but far from{' '}
-            <span className="font-semibold text-fg">arthritis</span>. Rank 1 wins.
+            <span className="font-semibold text-fg">cardiomyopathy</span>, but
+            far from <span className="font-semibold text-fg">arthritis</span>.
+            Rank 1 wins.
           </p>
         </div>
       )}

@@ -750,3 +750,21 @@ nonsteroidal anti inflammatory drug
 chemotherapy
 radiation therapy
 immunotherapy
+
+# ─── Added for hard schedule ───
+alport syndrome
+goodpasture syndrome
+danon disease
+idiopathic intracranial hypertension
+eosinophilic esophagitis
+castleman disease
+guillain barre
+wegener granulomatosis
+adult onset stills disease
+acute intermittent porphyria
+cushings disease
+von hippel lindau
+complex regional pain syndrome
+buerger disease
+stiff person syndrome
+mcardle disease

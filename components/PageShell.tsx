@@ -9,7 +9,7 @@ export default function PageShell({
 }) {
   return (
     <article className="animate-in">
-      <h1 className="text-title-2xl font-extrabold text-fg tracking-tight leading-[1.05] mb-6">
+      <h1 className="text-title-lg font-bold text-fg tracking-tight leading-tight mb-5">
         {title}
       </h1>
       <div className="prose-clinicle">{children}</div>

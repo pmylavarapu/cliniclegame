@@ -208,3 +208,79 @@ om|otitis media
 aom|acute otitis media
 ome|otitis media with effusion
 sscd|superior semicircular canal dehiscence
+
+# ─── Aliases for hard schedule ───
+alport|alport syndrome
+alports|alport syndrome
+goodpasture|goodpasture syndrome
+goodpastures|goodpasture syndrome
+anti gbm disease|goodpasture syndrome
+danon|danon disease
+amyloid|amyloidosis
+al amyloidosis|amyloidosis
+attr amyloidosis|amyloidosis
+ttr amyloidosis|amyloidosis
+systemic amyloidosis|amyloidosis
+iih|idiopathic intracranial hypertension
+pseudotumor cerebri|idiopathic intracranial hypertension
+pseudotumor cerebrii|idiopathic intracranial hypertension
+benign intracranial hypertension|idiopathic intracranial hypertension
+eoe|eosinophilic esophagitis
+ee|eosinophilic esophagitis
+castleman|castleman disease
+castlemans|castleman disease
+systemic sclerosis|scleroderma
+guillain barre syndrome|guillain barre
+acute inflammatory demyelinating polyneuropathy|guillain barre
+aidp|guillain barre
+antiphospholipid antibody syndrome|antiphospholipid syndrome
+hughes syndrome|antiphospholipid syndrome
+moschcowitz syndrome|thrombotic thrombocytopenic purpura
+idiopathic thrombocytopenic purpura|immune thrombocytopenic purpura
+werlhof disease|immune thrombocytopenic purpura
+besnier boeck disease|sarcoidosis
+giant cell arteritis|temporal arteritis
+horton disease|temporal arteritis
+pemphigus|pemphigus vulgaris
+pv|pemphigus vulgaris
+essential thrombocytosis|essential thrombocythemia
+et|essential thrombocythemia
+spondyloarthritis|spondyloarthropathy
+seronegative spondyloarthropathy|spondyloarthropathy
+wegener|wegener granulomatosis
+wegeners|wegener granulomatosis
+granulomatosis with polyangiitis|wegener granulomatosis
+gpa|wegener granulomatosis
+stills disease|adult onset stills disease
+aosd|adult onset stills disease
+adult stills|adult onset stills disease
+aip|acute intermittent porphyria
+pan|polyarteritis nodosa
+gigantism|acromegaly
+cushings|cushings disease
+cushing disease|cushings disease
+cushing syndrome|cushings disease
+vhl|von hippel lindau
+vhl disease|von hippel lindau
+von hippel lindau disease|von hippel lindau
+crps|complex regional pain syndrome
+reflex sympathetic dystrophy|complex regional pain syndrome
+rsd|complex regional pain syndrome
+causalgia|complex regional pain syndrome
+buergers disease|buerger disease
+buerger|buerger disease
+thromboangiitis obliterans|buerger disease
+behcet|behcet disease
+behcets|behcet disease
+behcets disease|behcet disease
+adamantiades behcet|behcet disease
+sps|stiff person syndrome
+stiff man syndrome|stiff person syndrome
+haemochromatosis|hemochromatosis
+hemochromatosis type 1|hemochromatosis
+hereditary hemochromatosis|hemochromatosis
+lam|lymphangioleiomyomatosis
+mcardles disease|mcardle disease
+mcardle|mcardle disease
+glycogen storage disease type v|mcardle disease
+gsd v|mcardle disease
