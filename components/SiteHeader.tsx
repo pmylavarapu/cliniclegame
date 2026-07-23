@@ -61,7 +61,7 @@ export default function SiteHeader() {
                 key={item.href}
                 href={item.href}
                 className={[
-                  'inline-flex items-center px-4 text-ui font-semibold transition-colors',
+                  'inline-flex items-center justify-center w-24 text-ui font-semibold transition-colors',
                   isActive(item.href)
                     ? 'bg-fg text-bg'
                     : 'bg-surface-2 text-fg hover:bg-surface-2/70',
