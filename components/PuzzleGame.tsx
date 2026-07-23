@@ -225,6 +225,10 @@ export default function PuzzleGame({ puzzle, vocab }: Props) {
 
   return (
     <div>
+      <p className="mb-5 text-body text-muted leading-relaxed">
+        Guess medical terms. The closer you get to the secret diagnosis,
+        the higher your score will be. Guess the secret word to win.
+      </p>
       <div className="mb-6">
         <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1.5 text-caption mb-3">
           <span className="font-semibold text-fg tabular">
