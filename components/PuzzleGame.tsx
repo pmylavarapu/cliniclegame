@@ -519,25 +519,28 @@ function levenshtein(a: string, b: string, cap: number): number {
 }
 
 function difficultyLabel(value: number): string {
-  const clamped = Math.max(1, Math.min(3, value));
-  return ['Easy', 'Medium', 'Hard'][clamped - 1];
+  const clamped = Math.max(1, Math.min(5, value));
+  // 1-2 = Easy, 3 = Medium, 4-5 = Hard.
+  return clamped <= 2 ? 'Easy' : clamped === 3 ? 'Medium' : 'Hard';
 }
 
 function difficultyColor(value: number): string {
-  const clamped = Math.max(1, Math.min(3, value));
+  const clamped = Math.max(1, Math.min(5, value));
   // Green for easy, orange for medium, red for hard.
-  return ['text-hot', 'text-warm', 'text-red-500'][clamped - 1];
+  if (clamped <= 2) return 'text-hot';
+  if (clamped === 3) return 'text-warm';
+  return 'text-red-500';
 }
 
 function DifficultyStars({ value }: { value: number }) {
-  const clamped = Math.max(1, Math.min(3, value));
+  const clamped = Math.max(1, Math.min(5, value));
   const color = difficultyColor(clamped);
   return (
     <span
       className="inline-flex items-center gap-0.5"
-      aria-label={`Difficulty ${clamped} out of 3`}
+      aria-label={`Difficulty ${clamped} out of 5`}
     >
-      {[1, 2, 3].map((n) => (
+      {[1, 2, 3, 4, 5].map((n) => (
         <span
           key={n}
           className={

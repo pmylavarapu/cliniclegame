@@ -283,18 +283,22 @@ def main() -> None:
             if w in hint_pool_vocab or i == 0:
                 hints.append([w, s, i + 1])
 
-        # Difficulty: 1 = easy, 2 = medium, 3 = hard. A target with a very
-        # close nearest neighbor (near-synonym) is easy; an isolated target
-        # is hard. Rank-2 similarity is the signal since rank-1 is the word
-        # itself. Thresholds calibrated to the observed schedule
-        # distribution (p20 ≈ 0.918, p50 ≈ 0.949, p80 ≈ 0.972).
+        # Difficulty stars (1-5). Buckets by rank-2 cosine similarity
+        # (rank-1 is the word itself). Frontend collapses to 3 labels for
+        # color: 1-2 = Easy (green), 3 = Medium (orange), 4-5 = Hard (red).
+        # Thresholds calibrated to the observed schedule distribution
+        # (p20 ≈ 0.918, p50 ≈ 0.949, p80 ≈ 0.972).
         nearest = float(sims[order[1]]) if len(order) > 1 else 0.0
-        if nearest >= 0.95:
+        if nearest >= 0.97:
             difficulty = 1
-        elif nearest >= 0.92:
+        elif nearest >= 0.95:
             difficulty = 2
-        else:
+        elif nearest >= 0.92:
             difficulty = 3
+        elif nearest >= 0.89:
+            difficulty = 4
+        else:
+            difficulty = 5
 
         num = _puzzle_num(iso)
         payload = {
