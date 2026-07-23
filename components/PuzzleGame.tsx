@@ -327,7 +327,7 @@ export default function PuzzleGame({
         the higher your score will be. Guess the secret word to win.
       </p>
       <div className="mb-6 rounded-md border border-border-strong p-5 sm:p-7">
-        <div className="text-eyebrow uppercase text-muted tracking-[0.08em] mb-3">
+        <div className="text-eyebrow uppercase text-muted font-semibold tracking-[0.1em] mb-4">
           Prompt
         </div>
         <p className="text-title-sm sm:text-title-md text-fg leading-[1.55]">
@@ -337,14 +337,14 @@ export default function PuzzleGame({
 
       {!gameOver && (
         <form onSubmit={onSubmit} className="mb-4">
-          <div className="flex items-stretch flex-wrap gap-2">
+          <div className="flex items-stretch flex-wrap gap-3">
             <div className="basis-full sm:basis-0 flex-1 min-w-0 relative">
               <input
                 ref={inputRef}
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Enter a guess"
-                className="w-full h-12 px-4 text-base rounded-md bg-white border border-border-strong outline-none focus:border-fg focus:ring-2 focus:ring-fg/10 transition-all placeholder:text-muted font-medium"
+                className="w-full h-12 px-4 text-base rounded-md bg-white border border-border-strong outline-none focus:border-fg focus:ring-2 focus:ring-fg/10 transition-all placeholder:text-muted"
                 autoComplete="off"
                 autoCapitalize="off"
                 spellCheck={false}
@@ -354,21 +354,21 @@ export default function PuzzleGame({
             </div>
             <button
               type="submit"
-              className="flex-1 sm:flex-none h-12 sm:h-12 px-4 sm:px-10 rounded-md bg-fg text-white text-ui font-semibold hover:bg-fg/90 active:scale-[0.98] transition-[transform,background]"
+              className="flex-1 sm:flex-none sm:min-w-[7rem] h-12 px-6 rounded-md bg-fg text-white text-ui font-semibold hover:bg-fg/90 active:scale-[0.98] transition-[transform,background]"
             >
               Guess
             </button>
             <button
               type="button"
               onClick={useHint}
-              className="flex-1 sm:flex-none h-12 sm:h-12 px-4 sm:px-6 rounded-md bg-white text-fg text-ui font-semibold border border-border-strong hover:bg-surface-2 active:scale-[0.98] transition-[transform,background]"
+              className="flex-1 sm:flex-none sm:min-w-[7rem] h-12 px-6 rounded-md bg-white text-fg text-ui font-semibold border border-border-strong hover:bg-surface-2 active:scale-[0.98] transition-[transform,background]"
             >
               Hint
             </button>
             <button
               type="button"
               onClick={giveUp}
-              className="flex-1 sm:flex-none h-12 sm:h-12 px-4 sm:px-6 rounded-md bg-white text-fg text-ui font-semibold border border-border-strong hover:bg-surface-2 active:scale-[0.98] transition-[transform,background]"
+              className="flex-1 sm:flex-none sm:min-w-[7rem] h-12 px-6 rounded-md bg-white text-fg text-ui font-semibold border border-border-strong hover:bg-surface-2 active:scale-[0.98] transition-[transform,background]"
             >
               Give Up
             </button>
