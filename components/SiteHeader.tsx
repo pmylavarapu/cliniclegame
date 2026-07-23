@@ -3,7 +3,6 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import StreakBadge from './StreakBadge';
 
 const MENU_NAV = [
   { href: '/', label: 'Today' },
@@ -53,16 +52,19 @@ export default function SiteHeader() {
             />
           </Link>
 
-          <nav className="hidden sm:flex items-center gap-1" aria-label="Site navigation">
+          <nav
+            className="hidden sm:flex items-stretch gap-1.5 self-end mb-3 ml-auto"
+            aria-label="Site navigation"
+          >
             {DESKTOP_NAV.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 className={[
-                  'inline-flex items-center h-9 px-3 rounded-full text-ui font-semibold transition-colors',
+                  'inline-flex items-center h-9 px-4 rounded-md text-ui font-semibold transition-colors',
                   isActive(item.href)
-                    ? 'bg-primary/10 text-primary'
-                    : 'text-fg-soft hover:text-fg hover:bg-surface-2',
+                    ? 'bg-fg text-bg'
+                    : 'bg-surface-2 text-fg hover:bg-surface-2/70',
                 ].join(' ')}
               >
                 {item.label}
@@ -70,18 +72,15 @@ export default function SiteHeader() {
             ))}
           </nav>
 
-          <div className="flex items-center gap-2">
-            <StreakBadge />
-            <button
-              type="button"
-              aria-label={menuOpen ? 'Close menu' : 'Open menu'}
-              aria-expanded={menuOpen}
-              onClick={() => setMenuOpen((v) => !v)}
-              className="sm:hidden inline-flex items-center justify-center h-11 w-11 -mr-2 rounded-full text-fg hover:bg-surface-2 active:scale-95 transition-all"
-            >
-              {menuOpen ? <CloseIcon /> : <MenuIcon />}
-            </button>
-          </div>
+          <button
+            type="button"
+            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={menuOpen}
+            onClick={() => setMenuOpen((v) => !v)}
+            className="sm:hidden inline-flex items-center justify-center h-11 w-11 -mr-2 rounded-full text-fg hover:bg-surface-2 active:scale-95 transition-all"
+          >
+            {menuOpen ? <CloseIcon /> : <MenuIcon />}
+          </button>
         </div>
       </header>
 
