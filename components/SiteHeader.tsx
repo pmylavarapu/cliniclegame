@@ -30,8 +30,8 @@ export default function SiteHeader() {
 
   return (
     <>
-      <header className="sticky top-0 z-30 bg-[#091235] text-white">
-        <div className="mx-auto max-w-6xl px-4 sm:px-8 h-20 sm:h-24 flex items-center justify-between gap-4">
+      <header className="sticky top-0 z-30 bg-bg/95 backdrop-blur-xl border-b border-border/60">
+        <div className="mx-auto max-w-6xl px-4 sm:px-8 h-14 sm:h-16 flex items-center justify-between gap-4">
           <Link
             href="/"
             className="flex items-center hover:opacity-90 transition-opacity shrink-0"
@@ -43,40 +43,33 @@ export default function SiteHeader() {
               alt="Clinicle — the game"
               width={1536}
               height={1024}
-              className="h-14 sm:h-20 w-auto"
+              className="h-11 sm:h-14 w-auto"
             />
           </Link>
 
           <nav
-            className="hidden md:flex items-center gap-6"
+            className="hidden md:flex items-center gap-5"
             aria-label="Site navigation"
           >
             {NAV.map((item, i) => (
-              <div key={item.href} className="flex items-center gap-6">
-                {i > 0 && <span aria-hidden="true" className="h-6 w-px bg-white/25" />}
+              <div key={item.href} className="flex items-center gap-5">
+                {i > 0 && <span aria-hidden="true" className="h-5 w-px bg-border-strong" />}
                 <Link
                   href={item.href}
                   className={[
                     'inline-flex items-center gap-2 py-1 text-ui font-semibold transition-colors',
                     isActive(item.href)
                       ? 'text-primary border-b-2 border-primary'
-                      : 'text-white/85 hover:text-white',
+                      : 'text-fg-soft hover:text-fg',
                   ].join(' ')}
                 >
                   <item.icon
-                    className={isActive(item.href) ? 'text-primary' : 'text-white/85'}
+                    className={isActive(item.href) ? 'text-primary' : 'text-fg-soft'}
                   />
                   {item.label}
                 </Link>
               </div>
             ))}
-            <Link
-              href="/"
-              className="ml-2 inline-flex items-center gap-2 h-11 px-5 rounded-full bg-primary text-white text-ui font-bold hover:brightness-110 active:scale-[0.98] transition-[transform,filter]"
-            >
-              Play Now
-              <ArrowRightIcon />
-            </Link>
           </nav>
 
           <button
@@ -84,7 +77,7 @@ export default function SiteHeader() {
             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={menuOpen}
             onClick={() => setMenuOpen((v) => !v)}
-            className="md:hidden inline-flex items-center justify-center h-11 w-11 -mr-2 rounded-full text-white hover:bg-white/10 active:scale-95 transition-all"
+            className="md:hidden inline-flex items-center justify-center h-10 w-10 -mr-2 rounded-full text-fg hover:bg-surface-2 active:scale-95 transition-all"
           >
             {menuOpen ? <CloseIcon /> : <MenuIcon />}
           </button>
@@ -94,12 +87,12 @@ export default function SiteHeader() {
       {menuOpen && (
         <>
           <div
-            className="fixed inset-0 z-30 bg-black/40 backdrop-blur-sm animate-in md:hidden"
+            className="fixed inset-0 z-30 bg-fg/20 backdrop-blur-sm animate-in md:hidden"
             onClick={() => setMenuOpen(false)}
             aria-hidden="true"
           />
           <nav
-            className="fixed top-20 right-3 left-3 z-40 rounded-2xl bg-[#091235] text-white border border-white/10 shadow-2xl animate-in md:hidden"
+            className="fixed top-14 right-3 left-3 z-40 rounded-2xl bg-bg border border-border shadow-2xl animate-in md:hidden"
             aria-label="Site navigation"
           >
             <ul className="p-2">
@@ -110,8 +103,8 @@ export default function SiteHeader() {
                     className={[
                       'flex items-center gap-3 px-3 py-3 rounded-xl text-body font-semibold transition-colors',
                       isActive(item.href)
-                        ? 'text-primary bg-white/5'
-                        : 'text-white hover:bg-white/10',
+                        ? 'text-primary bg-primary/10'
+                        : 'text-fg hover:bg-surface-2',
                     ].join(' ')}
                   >
                     <item.icon />
@@ -119,15 +112,6 @@ export default function SiteHeader() {
                   </Link>
                 </li>
               ))}
-              <li className="pt-1">
-                <Link
-                  href="/"
-                  className="flex items-center justify-center gap-2 mx-1 mt-1 mb-1 h-11 rounded-full bg-primary text-white text-ui font-bold"
-                >
-                  Play Now
-                  <ArrowRightIcon />
-                </Link>
-              </li>
             </ul>
           </nav>
         </>
