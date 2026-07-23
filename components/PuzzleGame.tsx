@@ -28,9 +28,15 @@ import ShareImageButton from './ShareImageButton';
 type Props = {
   puzzle: Puzzle;
   vocab: string[];
+  /**
+   * Optional abbreviation → canonical full-form map. When a user's guess
+   * matches a key here (case-normalized), the guess is silently rewritten
+   * to the full form before scoring so PE = pulmonary embolism, etc.
+   */
+  aliases?: Record<string, string>;
 };
 
-export default function PuzzleGame({ puzzle, vocab }: Props) {
+export default function PuzzleGame({ puzzle, vocab, aliases = {} }: Props) {
   const vocabIndex = useMemo(() => {
     const m = new Map<string, number>();
     for (let i = 0; i < vocab.length; i++) m.set(vocab[i], i);
@@ -152,6 +158,10 @@ export default function PuzzleGame({ puzzle, vocab }: Props) {
     setSuggestion(null);
     let w = normalizeGuess(raw);
     if (!w) return;
+    // Transparent abbreviation expansion: user types 'pe', 'lad', 'itp'
+    // and it becomes the full-form vocab entry silently.
+    const expansion = aliases[w];
+    if (expansion) w = expansion;
     if (guesses.some((g) => g.word === w)) {
       setError(`Already guessed "${w}"`);
       flashInput();

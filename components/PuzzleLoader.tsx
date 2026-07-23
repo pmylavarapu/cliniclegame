@@ -10,6 +10,7 @@ type Props = { requestedDate?: string };
 export default function PuzzleLoader({ requestedDate }: Props) {
   const [puzzle, setPuzzle] = useState<Puzzle | null>(null);
   const [vocab, setVocab] = useState<string[] | null>(null);
+  const [aliases, setAliases] = useState<Record<string, string>>({});
   const [error, setError] = useState<string | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
 
@@ -31,12 +32,18 @@ export default function PuzzleLoader({ requestedDate }: Props) {
           }
           date = fallback;
         }
-        const [p, v] = await Promise.all([
+        const [p, v, a] = await Promise.all([
           fetch(`/puzzles/${date}.json`).then((r) => r.json() as Promise<Puzzle>),
           fetch('/vocab.json').then((r) => r.json() as Promise<string[]>),
+          // Aliases are best-effort — an older build without the file
+          // just means no auto-expansion. Fall back to empty object.
+          fetch('/abbreviations.json')
+            .then((r) => (r.ok ? (r.json() as Promise<Record<string, string>>) : {}))
+            .catch(() => ({})),
         ]);
         setPuzzle(p);
         setVocab(v);
+        setAliases(a);
       } catch (e: unknown) {
         const msg = e instanceof Error ? e.message : String(e);
         setError(msg);
@@ -60,7 +67,7 @@ export default function PuzzleLoader({ requestedDate }: Props) {
           {notice}
         </div>
       )}
-      <PuzzleGame puzzle={puzzle} vocab={vocab} />
+      <PuzzleGame puzzle={puzzle} vocab={vocab} aliases={aliases} />
     </>
   );
 }

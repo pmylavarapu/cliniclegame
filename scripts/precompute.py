@@ -196,6 +196,99 @@ def load_hint_pool() -> set[str]:
     return out
 
 
+def build_abbreviation_aliases(vocab_set: set[str]) -> None:
+    """Emit public/abbreviations.json: {abbr: canonical_full_form}.
+
+    The client reads this and transparently expands any abbreviation the
+    user types into its full form before scoring. Only abbreviations whose
+    canonical target is actually in the vocab are shipped; the rest are
+    silently dropped.
+
+    Canonical target = the parenthetical-stripped expansion from
+    abbreviations.txt, falling back to the ABBREV_OVERRIDES map below
+    when the raw expansion isn't a vocab entry.
+    """
+    import re
+
+    src = DATA / "abbreviations.txt"
+    if not src.exists():
+        return
+
+    # Overrides for abbreviations whose raw expansion isn't a single vocab
+    # entry (e.g. 'left anterior descending coronary artery' doesn't exist
+    # as one phrase; fall back to the broader clinical concept).
+    overrides = {
+        "lad": "coronary artery disease",
+        "lcx": "coronary artery disease",
+        "rca": "coronary artery disease",
+        "acs": "myocardial infarction",
+        "stemi": "myocardial infarction",
+        "nstemi": "myocardial infarction",
+        "cabg": "coronary artery disease",
+        "pci": "coronary artery disease",
+        "tavr": "aortic stenosis",
+        "avr": "aortic stenosis",
+        "mvr": "mitral regurgitation",
+        "hfref": "heart failure",
+        "hfpef": "heart failure",
+        "sob": "dyspnea",
+        "doe": "dyspnea",
+        "pnd": "orthopnea",
+        "ekg": "arrhythmia",
+        "ecg": "arrhythmia",
+        "echo": "cardiomyopathy",
+        "rds": "acute respiratory distress syndrome",
+        "cap": "pneumonia",
+        "hap": "pneumonia",
+        "vap": "pneumonia",
+        "vre": "bacteremia",
+        "cdi": "colitis",
+        "hcv": "hepatitis c virus",
+        "hbv": "hepatitis b virus",
+        "hav": "hepatitis a virus",
+        "hsv": "herpes simplex",
+        "vzv": "chickenpox",
+        "ebv": "mononucleosis",
+        "cmv": "cytomegalovirus",
+        "aub": "menorrhagia",
+        "dub": "menorrhagia",
+        "gdm": "gestational diabetes",
+        "hellp": "preeclampsia",
+        "amd": "macular degeneration",
+        "armd": "macular degeneration",
+        "ad": "alzheimers",
+        "pd": "parkinsons",
+        "mnd": "als",
+        "gbs": "guillain barre",
+        "mg": "myasthenia gravis",
+        "bd": "bipolar disorder",
+        "aha": "hemolytic anemia",
+        "ida": "iron deficiency anemia",
+        "gvhd": "graft versus host disease",
+    }
+
+    out: dict[str, str] = {}
+    for line in src.read_text().splitlines():
+        s = line.strip()
+        if not s or s.startswith("#") or "|" not in s:
+            continue
+        abbr, expansion = s.split("|", 1)
+        abbr = abbr.strip().lower()
+        expansion = expansion.strip()
+        # Strip any parenthesized aside.
+        canonical = re.sub(r"\s*\([^)]*\)\s*", " ", expansion)
+        canonical = re.sub(r"\s+", " ", canonical).strip().lower()
+
+        if abbr in overrides:
+            canonical = overrides[abbr]
+        if canonical in vocab_set and abbr != canonical:
+            out[abbr] = canonical
+
+    dst = PUB / "abbreviations.json"
+    dst.write_text(json.dumps(out, sort_keys=True, indent=2) + "\n")
+    print(f"Wrote {len(out)} abbreviation aliases → {dst.relative_to(ROOT)}")
+
+
 def main() -> None:
     schedule = json.loads((DATA / "schedule.json").read_text())
     prompts = json.loads((DATA / "prompts.json").read_text()) if (DATA / "prompts.json").exists() else {}
@@ -217,6 +310,9 @@ def main() -> None:
     PUZZLES.mkdir(parents=True, exist_ok=True)
     # Ship vocab.json once (frontend caches it)
     (PUB / "vocab.json").write_text(json.dumps(vocab))
+    # Ship abbreviation aliases (frontend uses them to expand PE →
+    # pulmonary embolism at guess time).
+    build_abbreviation_aliases(set(vocab))
 
     all_dates: list[str] = []
     if (PUB / "index.json").exists():
