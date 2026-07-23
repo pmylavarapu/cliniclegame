@@ -33,9 +33,9 @@ export default function HowItWorksPage() {
           rel="noopener noreferrer"
         >
           Gary Weissman&apos;s group at Penn LDI
-        </a>{' '}
-        — 600 dimensions trained on open-access medical case reports.
-        Its raw 333k-token vocab was full of natural-language fragments
+        </a>
+        , 600 dimensions trained on open-access medical case reports. Its
+        raw 333k token vocab was full of natural language fragments
         (&ldquo;the day before&rdquo;, &ldquo;family history of&rdquo;) so
         every entry was run through{' '}
         <a
@@ -43,7 +43,7 @@ export default function HowItWorksPage() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          ScispaCy&apos;s
+          Scispacy&apos;s
         </a>{' '}
         UMLS entity linker and only real medical concepts survived.
         Frontend was React + Python on Heroku with Firebase for storage.
