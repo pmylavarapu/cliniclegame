@@ -374,14 +374,14 @@ export default function PuzzleGame({
             <button
               type="button"
               onClick={useHint}
-              className="h-10 sm:h-11 px-3.5 rounded-full bg-surface-2 text-caption font-semibold text-fg hover:bg-hint/10 hover:text-hint transition-colors"
+              className="h-10 sm:h-11 px-3.5 rounded-full bg-hot text-white text-caption font-bold hover:brightness-110 active:scale-[0.98] transition-[transform,filter]"
             >
               Hint
             </button>
             <button
               type="button"
               onClick={giveUp}
-              className="h-10 sm:h-11 px-3.5 rounded-full bg-surface-2 text-caption font-semibold text-fg hover:bg-danger/10 hover:text-danger transition-colors"
+              className="h-10 sm:h-11 px-3.5 rounded-full bg-red-500 text-white text-caption font-bold hover:brightness-110 active:scale-[0.98] transition-[transform,filter]"
             >
               Give up
             </button>
