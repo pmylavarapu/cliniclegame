@@ -17,8 +17,8 @@ export const metadata: Metadata = {
   description:
     'A new secret diagnosis every day. Guess medical words and phrases – the closer you get, the higher your score. Semantle for medicine.',
   icons: {
-    icon: '/favicon.png',
-    apple: '/favicon.png',
+    icon: '/cliniclelogo.png',
+    apple: '/cliniclelogo.png',
   },
   keywords: [
     'Clinicle',
