@@ -319,40 +319,66 @@ export default function PuzzleGame({
 
   return (
     <div>
-      <p className="mb-4 sm:mb-5 text-caption sm:text-body text-muted leading-relaxed">
-        Guess medical terms. The closer you get to the secret diagnosis,
-        the higher your score will be. Guess the secret word to win.
-      </p>
-      <div className="mb-6 rounded-lg bg-primary/5 ring-1 ring-primary/10 p-4 sm:p-6">
-        <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1.5 text-caption mb-3">
-          <span className="font-semibold text-fg tabular">
-            Puzzle {puzzle.num}
-          </span>
-          <span className="text-border-strong">·</span>
-          <span className="tabular text-muted">{dateLabel}</span>
-          {puzzle.difficulty ? (
-            <>
-              <span className="text-border-strong">·</span>
-              <span className="inline-flex items-center gap-1.5">
-                <DifficultyStars value={puzzle.difficulty} />
+      <div className="mb-4">
+        <div className="text-eyebrow uppercase text-muted font-bold tracking-[0.08em] mb-1">
+          Today&apos;s puzzle
+        </div>
+        <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+          <h1 className="text-title-lg sm:text-title-xl font-bold tracking-tight text-fg">
+            Puzzle #{puzzle.num}
+          </h1>
+          <span className="inline-flex items-baseline gap-2 text-caption">
+            <span className="text-border-strong">·</span>
+            <span className="tabular text-muted">{dateLabel}</span>
+            {puzzle.difficulty ? (
+              <>
+                <span className="text-border-strong">·</span>
                 <span
-                  className={`text-caption font-semibold ${difficultyColor(puzzle.difficulty)}`}
+                  className={`font-semibold ${difficultyColor(puzzle.difficulty)}`}
                 >
                   {difficultyLabel(puzzle.difficulty)}
                 </span>
-              </span>
-            </>
-          ) : null}
+              </>
+            ) : null}
+          </span>
         </div>
-        <figure className="border-l-[3px] border-primary pl-4 sm:pl-5">
-          <figcaption className="text-eyebrow uppercase text-muted font-bold tracking-[0.06em] mb-1.5">
-            Guess the diagnosis
-          </figcaption>
-          <blockquote className="text-lede sm:text-title-sm font-medium text-fg leading-relaxed">
+      </div>
+      <p className="mb-5 text-caption sm:text-body text-muted leading-relaxed">
+        Guess medical terms. The closer you get to the secret diagnosis,
+        the higher your score will be. Guess the secret word to win.
+      </p>
+      <div className="border-t border-border mb-6" />
+      <div className="mb-6 grid grid-cols-1 lg:grid-cols-[1fr_18rem] gap-5 lg:gap-6 items-start">
+        <div>
+          <div className="text-eyebrow uppercase text-muted font-bold tracking-[0.08em] mb-2">
+            Prompt
+          </div>
+          <p className="text-lede sm:text-title-sm font-medium text-fg leading-relaxed">
             {puzzle.prompt}
-          </blockquote>
-        </figure>
-        <ReferenceBar rank10={rank10Score} rank1000={rank1000Score} />
+          </p>
+        </div>
+        <div className="rounded-lg bg-surface-2 p-4 sm:p-5">
+          <div className="flex items-start gap-3">
+            <div className="shrink-0 h-9 w-9 rounded-full bg-white flex items-center justify-center text-muted">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <line x1="12" y1="20" x2="12" y2="10" />
+                <line x1="18" y1="20" x2="18" y2="4" />
+                <line x1="6" y1="20" x2="6" y2="16" />
+              </svg>
+            </div>
+            <div className="text-caption leading-relaxed">
+              <div className="font-semibold text-fg mb-1">For reference:</div>
+              <div className="text-muted">
+                The <span className="font-semibold text-fg">10th closest</span> word has a similarity score of{' '}
+                <span className="tabular font-bold text-fg">{rank10Score.toFixed(1)}</span>
+              </div>
+              <div className="text-muted mt-1">
+                The <span className="font-semibold text-fg">1000th closest</span> word has a similarity score of{' '}
+                <span className="tabular font-bold text-fg">{rank1000Score.toFixed(1)}</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       {!gameOver && (
@@ -377,7 +403,7 @@ export default function PuzzleGame({
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Enter a word or phrase"
-                className="w-full h-12 sm:h-11 pl-10 pr-4 text-base sm:text-body rounded-lg bg-surface-2 border border-transparent outline-none focus:border-primary focus:bg-white focus:ring-4 focus:ring-primary/15 transition-all placeholder:text-muted font-medium"
+                className="w-full h-12 pl-10 pr-4 text-base rounded-lg bg-white border border-border-strong outline-none focus:border-fg focus:ring-2 focus:ring-fg/10 transition-all placeholder:text-muted font-medium"
                 autoComplete="off"
                 autoCapitalize="off"
                 spellCheck={false}
@@ -387,23 +413,23 @@ export default function PuzzleGame({
             </div>
             <button
               type="submit"
-              className="flex-1 sm:flex-none h-12 sm:h-11 px-4 sm:px-10 rounded-lg bg-primary text-white text-caption font-bold hover:brightness-110 active:scale-[0.98] transition-[transform,filter]"
+              className="flex-1 sm:flex-none h-12 sm:h-12 px-4 sm:px-10 rounded-lg bg-fg text-white text-ui font-semibold hover:bg-fg/90 active:scale-[0.98] transition-[transform,background]"
             >
               Guess
             </button>
             <button
               type="button"
               onClick={useHint}
-              className="flex-1 sm:flex-none h-12 sm:h-11 px-4 sm:px-3.5 rounded-lg bg-hot text-white text-caption font-bold hover:brightness-110 active:scale-[0.98] transition-[transform,filter]"
+              className="flex-1 sm:flex-none h-12 sm:h-12 px-4 sm:px-6 rounded-lg bg-white text-fg text-ui font-semibold border border-border-strong hover:bg-surface-2 active:scale-[0.98] transition-[transform,background]"
             >
               Hint
             </button>
             <button
               type="button"
               onClick={giveUp}
-              className="flex-1 sm:flex-none h-12 sm:h-11 px-4 sm:px-3.5 rounded-lg bg-red-500 text-white text-caption font-bold hover:brightness-110 active:scale-[0.98] transition-[transform,filter]"
+              className="flex-1 sm:flex-none h-12 sm:h-12 px-4 sm:px-6 rounded-lg bg-white text-fg text-ui font-semibold border border-border-strong hover:bg-surface-2 active:scale-[0.98] transition-[transform,background]"
             >
-              Give up
+              Give Up
             </button>
           </div>
           <div className="mt-2 text-right">
@@ -485,19 +511,25 @@ export default function PuzzleGame({
       )}
 
       {guesses.length === 0 && !gameOver && (
-        <div className="mt-6 py-5 px-4 sm:px-6 rounded-lg bg-surface-2 text-center">
-          <p className="text-body text-fg font-bold">Make your first guess</p>
-          <p className="text-caption text-muted mt-1">
-            Try something broad — an organ, a symptom, a body system.
-          </p>
-          <p className="text-caption text-muted mt-1.5 sm:whitespace-nowrap sm:overflow-x-auto">
-            Closer meanings score higher —{' '}
-            <span className="font-semibold text-fg">heart attack</span>{' '}
-            scores near{' '}
-            <span className="font-semibold text-fg">cardiomyopathy</span>, but
-            far from <span className="font-semibold text-fg">arthritis</span>.
-            Rank 1 wins.
-          </p>
+        <div className="mt-6 py-5 px-4 sm:px-6 rounded-lg bg-surface-2 flex items-start gap-4">
+          <div className="shrink-0 h-10 w-10 rounded-full bg-white flex items-center justify-center text-muted">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c1 .8 1.5 1.6 2 3.3h4c.5-1.7 1-2.5 2-3.3A7 7 0 0 0 12 2Z" />
+            </svg>
+          </div>
+          <div className="min-w-0">
+            <p className="text-body text-fg font-bold">Make your first guess</p>
+            <p className="text-caption text-muted mt-1">
+              Try something broad — an organ, a symptom, a body system.
+            </p>
+            <p className="text-caption text-muted mt-1">
+              Closer meanings score higher —{' '}
+              <span className="font-semibold text-fg">heart attack</span>{' '}
+              scores near{' '}
+              <span className="font-semibold text-fg">cardiomyopathy</span>, but
+              far from <span className="font-semibold text-fg">arthritis</span>. Rank 1 wins.
+            </p>
+          </div>
         </div>
       )}
     </div>
