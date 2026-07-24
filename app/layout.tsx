@@ -33,11 +33,11 @@ export const metadata: Metadata = {
     title: 'Clinicle – the daily medical diagnosis game',
     description:
       'One secret diagnosis a day. Guess words and phrases; get closer, get warmer. Free, no login.',
-    url: 'https://clinicle.app',
+    url: 'https://www.cliniclegame.app',
     siteName: 'Clinicle',
     images: [
       {
-        url: '/logo.png',
+        url: '/oldlogo.png',
         width: 740,
         height: 312,
         alt: 'Clinicle',
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     title: 'Clinicle – daily medical diagnosis game',
     description:
       'One diagnosis a day. Guess words; get closer, get warmer. #Clinicle',
-    images: ['/logo.png'],
+    images: ['/oldlogo.png'],
     creator: '@PMylavarapuMD',
   },
 };
