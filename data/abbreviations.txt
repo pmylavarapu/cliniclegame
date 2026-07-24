@@ -288,3 +288,4 @@ hrs|hepatorenal syndrome
 
 afl|atrial flutter
 flutter|atrial flutter
+hgb|hemoglobin
