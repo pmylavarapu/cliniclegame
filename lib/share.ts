@@ -11,10 +11,8 @@ function scoreEmoji(rank: number | null): string {
   return '⬜';
 }
 
-function starLine(difficulty?: number): string {
-  if (!difficulty) return '';
-  const filled = Math.max(1, Math.min(5, difficulty));
-  return ' ' + '★'.repeat(filled) + '☆'.repeat(5 - filled);
+function starLine(_difficulty?: number): string {
+  return '';
 }
 
 function formatTime(ms?: number): string | null {
