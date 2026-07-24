@@ -64,15 +64,20 @@ jobs:
         env:
           GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
         run: |
-          if [ -s data/embeddings/vocab.npy ]; then
-            echo "Embeddings cache hit — skipping embed"
-            exit 0
-          fi
-          if [ -z "$GOOGLE_API_KEY" ]; then
+          # Always invoke embed.py — it's internally idempotent and only
+          # embeds terms not already present in vocab.words. The previous
+          # short-circuit on vocab.npy existence caused new MeSH/adjunct
+          # additions to never get embedded when the actions cache had an
+          # older, smaller vocab.npy restored.
+          if [ -z "$GOOGLE_API_KEY" ] && [ ! -s data/embeddings/vocab.npy ]; then
             echo "::error::GOOGLE_API_KEY secret is not set and there is no cached embedding."
             echo "::error::Add the secret in Repo → Settings → Secrets and variables → Actions,"
             echo "::error::then re-run this workflow."
             exit 1
+          fi
+          if [ -z "$GOOGLE_API_KEY" ]; then
+            echo "No GOOGLE_API_KEY but cached embeddings exist — skipping incremental embed"
+            exit 0
           fi
           python3 scripts/embed.py
 
