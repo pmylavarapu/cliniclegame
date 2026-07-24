@@ -6,7 +6,7 @@ type Props = {
   variant?: 'default' | 'oncolor';
 };
 
-/** Live countdown to the next puzzle (UTC midnight). */
+/** Live countdown to the next puzzle (midnight in America/Los_Angeles). */
 export default function NextPuzzleCountdown({ variant = 'default' }: Props) {
   const [remaining, setRemaining] = useState<number>(() => msUntilNextPuzzle());
 
@@ -35,15 +35,21 @@ export default function NextPuzzleCountdown({ variant = 'default' }: Props) {
 
 function msUntilNextPuzzle(): number {
   const now = new Date();
-  const next = new Date(
-    Date.UTC(
-      now.getUTCFullYear(),
-      now.getUTCMonth(),
-      now.getUTCDate() + 1,
-      0, 0, 0, 0,
-    ),
+  const fmt = new Intl.DateTimeFormat('en-US', {
+    timeZone: 'America/Los_Angeles',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: false,
+  });
+  const parts = Object.fromEntries(
+    fmt.formatToParts(now).map((p) => [p.type, p.value]),
   );
-  return Math.max(0, next.getTime() - now.getTime());
+  const h = Number(parts.hour === '24' ? 0 : parts.hour);
+  const m = Number(parts.minute);
+  const s = Number(parts.second);
+  const secondsToMidnight = 24 * 3600 - (h * 3600 + m * 60 + s);
+  return Math.max(0, secondsToMidnight * 1000);
 }
 
 function formatHms(ms: number): string {

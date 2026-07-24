@@ -289,3 +289,72 @@ hrs|hepatorenal syndrome
 afl|atrial flutter
 flutter|atrial flutter
 hgb|hemoglobin
+
+# --- 60-day CSV aliases ---
+heart attack|myocardial infarction
+acute myocardial infarction|myocardial infarction
+acute appendicitis|appendicitis
+migraine headache|migraine
+a-fib|atrial fibrillation
+af|atrial fibrillation
+facial nerve palsy|bell palsy
+kidney stone|nephrolithiasis
+kidney stones|nephrolithiasis
+renal colic|nephrolithiasis
+urolithiasis|nephrolithiasis
+pneumonia|community-acquired pneumonia
+gouty arthritis|gout
+meningitis|bacterial meningitis
+underactive thyroid|hypothyroidism
+cts|carpal tunnel syndrome
+median nerve entrapment|carpal tunnel syndrome
+pre-eclampsia|preeclampsia
+anaphylactic shock|anaphylaxis
+temporal arteritis|giant cell arteritis
+heart failure|congestive heart failure
+septicemia|sepsis
+septic shock|sepsis
+shingles|herpes zoster
+stroke|ischemic stroke
+cerebral infarction|ischemic stroke
+iron deficiency anaemia|iron deficiency anemia
+iron-deficiency anemia|iron deficiency anemia
+acute cholecystitis|cholecystitis
+mono|infectious mononucleosis
+mononucleosis|infectious mononucleosis
+glandular fever|infectious mononucleosis
+plaque psoriasis|psoriasis
+emphysema|chronic obstructive pulmonary disease
+subarachnoid haemorrhage|subarachnoid hemorrhage
+hyperkalaemia|hyperkalemia
+high potassium|hyperkalemia
+lyme borreliosis|lyme disease
+pancreatitis|acute pancreatitis
+parkinsonism|parkinson disease
+coeliac disease|celiac disease
+gluten enteropathy|celiac disease
+bacterial endocarditis|infective endocarditis
+endocarditis|infective endocarditis
+malignant melanoma|melanoma
+vaso-occlusive crisis|sickle cell crisis
+sickle cell pain crisis|sickle cell crisis
+kawasaki syndrome|kawasaki disease
+mucocutaneous lymph node syndrome|kawasaki disease
+co poisoning|carbon monoxide poisoning
+tubal pregnancy|ectopic pregnancy
+tuberculosis|pulmonary tuberculosis
+serotonin toxicity|serotonin syndrome
+bppv|benign paroxysmal positional vertigo
+lupus|systemic lupus erythematosus
+flesh-eating disease|necrotizing fasciitis
+necrotising fasciitis|necrotizing fasciitis
+thyrotoxic crisis|thyroid storm
+liver cirrhosis|cirrhosis
+cirrhosis of the liver|cirrhosis
+acute epiglottitis|epiglottitis
+hyponatraemia|hyponatremia
+low sodium|hyponatremia
+acute lymphocytic leukemia|acute lymphoblastic leukemia
+acute lymphoblastic leukaemia|acute lymphoblastic leukemia
+vitamin c deficiency|scurvy
+ascorbic acid deficiency|scurvy
