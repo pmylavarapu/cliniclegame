@@ -18,6 +18,9 @@ concurrency:
   group: clinicle-daily
   cancel-in-progress: false
 
+permissions:
+  contents: write
+
 jobs:
   extend:
     runs-on: ubuntu-latest
