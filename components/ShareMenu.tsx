@@ -135,7 +135,7 @@ export default function ShareMenu({
           else setOpen((v) => !v);
         }}
         className={[
-          'w-full h-12 rounded-lg text-ui font-bold hover:brightness-110 active:scale-[0.98] transition-[transform,filter] inline-flex items-center justify-center gap-2',
+          'w-full h-14 sm:h-12 rounded-lg text-ui font-bold hover:brightness-110 active:scale-[0.98] transition-[transform,filter] inline-flex items-center justify-center gap-2',
           onColor ? 'bg-white text-fg' : 'bg-primary text-white',
         ].join(' ')}
         aria-haspopup={canNativeShare ? undefined : 'menu'}

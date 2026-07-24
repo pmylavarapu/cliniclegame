@@ -578,12 +578,12 @@ function formatDuration(ms: number): string {
   return `${m}m ${String(s).padStart(2, '0')}s`;
 }
 
-// Puzzle #1 = 2026-07-23 (day the new schedule launched)
+// Puzzle #1 = 2026-07-24 (day the new schedule launched)
 function puzzleNumberFromDate(iso: string): number {
   const [y, m, d] = iso.split('-').map(Number);
   if (!y || !m || !d) return 1;
   const puzzleDate = Date.UTC(y, m - 1, d);
-  const epoch = Date.UTC(2026, 6, 23);
+  const epoch = Date.UTC(2026, 6, 24);
   const days = Math.round((puzzleDate - epoch) / 86_400_000);
   return Math.max(1, days + 1);
 }
@@ -883,7 +883,7 @@ function WinBanner({
           target="_blank"
           rel="noopener noreferrer"
           className={[
-            'flex-1 w-full flex items-center justify-center gap-2 h-12  text-ui font-bold hover:brightness-110 active:scale-[0.98] transition-[transform,filter]',
+            'flex-1 w-full inline-flex items-center justify-center gap-2 h-14 sm:h-12 text-ui font-bold hover:brightness-110 active:scale-[0.98] transition-[transform,filter]',
             won ? 'bg-white text-fg' : 'bg-fg text-white',
           ].join(' ')}
         >
