@@ -285,3 +285,6 @@ mcardle|mcardle disease
 glycogen storage disease type v|mcardle disease
 gsd v|mcardle disease
 hrs|hepatorenal syndrome
+
+afl|atrial flutter
+flutter|atrial flutter
