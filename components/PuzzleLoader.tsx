@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import PuzzleGame from './PuzzleGame';
 import type { Puzzle, PuzzleIndex } from '@/lib/types';
 import { today } from '@/lib/scores';
+import { recordPageview } from '@/lib/adminStats';
 
 type Props = { requestedDate?: string };
 
@@ -49,6 +50,7 @@ export default function PuzzleLoader({ requestedDate }: Props) {
         setVocab(v);
         setAliases(a);
         setCleanVocab(c);
+        recordPageview(date);
       } catch (e: unknown) {
         const msg = e instanceof Error ? e.message : String(e);
         setError(msg);

@@ -18,6 +18,7 @@ import {
 import { buildShareString } from '@/lib/share';
 
 import { checkNewlyUnlocked, type Achievement } from '@/lib/achievements';
+import { recordGuess, recordSolveStats } from '@/lib/adminStats';
 import {
   computePercentile,
   fetchDistribution,
@@ -163,6 +164,7 @@ export default function PuzzleGame({
         };
         const fresh = checkNewlyUnlocked(gs, nextStats);
         if (fresh.length) setFreshAchievements(fresh);
+        recordSolveStats(puzzle.date, guesses.length, t ?? 0);
       }
     }
   }, [gameOver, puzzle.date, guesses, hintsUsed, won, gaveUp, startedAt, finalTimeMs]);
@@ -230,6 +232,7 @@ export default function PuzzleGame({
     setGuesses(next);
     setLastAdded(w);
     setInput('');
+    if (!isHint) recordGuess(puzzle.date);
     if (rank === 1) setWon(true);
   };
 
