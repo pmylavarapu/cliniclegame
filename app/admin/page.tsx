@@ -65,25 +65,61 @@ export default function AdminPage() {
   return <Dashboard />;
 }
 
+type UpcomingRow = { date: string; secret: string; prompt: string; difficulty?: number };
+
+function nextNDates(n: number): string[] {
+  const out: string[] = [];
+  const now = new Date();
+  for (let i = 0; i < n; i++) {
+    const d = new Date(now.getFullYear(), now.getMonth(), now.getDate() + i);
+    const y = d.getFullYear();
+    const m = String(d.getMonth() + 1).padStart(2, '0');
+    const day = String(d.getDate()).padStart(2, '0');
+    out.push(`${y}-${m}-${day}`);
+  }
+  return out;
+}
+
 function Dashboard() {
   const [global, setGlobal] = useState<StatsDoc | null | 'loading'>('loading');
   const [perPuzzle, setPerPuzzle] = useState<
     Array<{ date: string; stats: StatsDoc }> | 'loading'
   >('loading');
+  const [upcoming, setUpcoming] = useState<UpcomingRow[] | 'loading'>('loading');
 
   useEffect(() => {
     (async () => {
       if (!statsEnabled()) {
         setGlobal(null);
         setPerPuzzle([]);
-        return;
+      } else {
+        const [g, all] = await Promise.all([
+          fetchStats(),
+          fetchAllPuzzleStats(),
+        ]);
+        setGlobal(g ?? { pageviews: 0, guesses: 0, solves: 0, totalGuessCount: 0, totalSolveTimeMs: 0 });
+        setPerPuzzle(all);
       }
-      const [g, all] = await Promise.all([
-        fetchStats(),
-        fetchAllPuzzleStats(),
-      ]);
-      setGlobal(g ?? { pageviews: 0, guesses: 0, solves: 0, totalGuessCount: 0, totalSolveTimeMs: 0 });
-      setPerPuzzle(all);
+
+      const dates = nextNDates(7);
+      const rows = await Promise.all(
+        dates.map(async (date) => {
+          try {
+            const r = await fetch(`/puzzles/${date}.json`, { cache: 'no-store' });
+            if (!r.ok) return { date, secret: '(missing)', prompt: '' };
+            const p = await r.json();
+            return {
+              date,
+              secret: String(p.secret ?? ''),
+              prompt: String(p.prompt ?? ''),
+              difficulty: typeof p.difficulty === 'number' ? p.difficulty : undefined,
+            };
+          } catch {
+            return { date, secret: '(error)', prompt: '' };
+          }
+        })
+      );
+      setUpcoming(rows);
     })();
   }, []);
 
@@ -92,20 +128,8 @@ function Dashboard() {
     location.reload();
   };
 
-  if (global === 'loading' || perPuzzle === 'loading') {
+  if (global === 'loading' || perPuzzle === 'loading' || upcoming === 'loading') {
     return <p className="text-muted">Loading…</p>;
-  }
-
-  if (!global) {
-    return (
-      <div>
-        <p className="text-muted">
-          Firebase not configured. Set{' '}
-          <code>NEXT_PUBLIC_FIREBASE_PROJECT_ID</code> and{' '}
-          <code>NEXT_PUBLIC_FIREBASE_API_KEY</code> in Vercel env vars.
-        </p>
-      </div>
-    );
   }
 
   return (
@@ -124,10 +148,55 @@ function Dashboard() {
 
       <section className="mb-8">
         <h2 className="text-eyebrow uppercase text-muted font-semibold tracking-[0.1em] mb-3">
-          Global (all time)
+          Next 7 days
         </h2>
-        <StatGrid s={global} />
+        <div className="border border-border-strong divide-y divide-border">
+          {upcoming.map((row, i) => (
+            <div key={row.date} className="p-3 sm:p-4">
+              <div className="flex items-baseline justify-between mb-1">
+                <div className="flex items-baseline gap-3">
+                  <span className="text-eyebrow uppercase text-muted font-semibold tracking-[0.06em] tabular">
+                    {row.date}
+                  </span>
+                  {i === 0 && (
+                    <span className="text-caption text-muted">today</span>
+                  )}
+                  {i === 1 && (
+                    <span className="text-caption text-muted">tomorrow</span>
+                  )}
+                </div>
+                {typeof row.difficulty === 'number' && (
+                  <span className="text-caption text-muted tabular">
+                    difficulty {row.difficulty}
+                  </span>
+                )}
+              </div>
+              <div className="text-base font-semibold mb-1">{row.secret || '—'}</div>
+              {row.prompt && (
+                <p className="text-caption text-muted leading-relaxed">{row.prompt}</p>
+              )}
+            </div>
+          ))}
+        </div>
       </section>
+
+      {!global ? (
+        <section className="mb-8">
+          <p className="text-caption text-muted">
+            Firebase not configured. Set{' '}
+            <code>NEXT_PUBLIC_FIREBASE_PROJECT_ID</code> and{' '}
+            <code>NEXT_PUBLIC_FIREBASE_API_KEY</code> in Vercel env vars to see
+            stats.
+          </p>
+        </section>
+      ) : (
+        <section className="mb-8">
+          <h2 className="text-eyebrow uppercase text-muted font-semibold tracking-[0.1em] mb-3">
+            Global (all time)
+          </h2>
+          <StatGrid s={global} />
+        </section>
+      )}
 
       <section>
         <div className="flex items-baseline justify-between mb-3">
