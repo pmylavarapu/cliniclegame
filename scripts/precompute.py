@@ -296,8 +296,39 @@ def main() -> None:
     word_to_idx = {w: i for i, w in enumerate(vocab)}
 
     today = date.today()
-    d0 = parse_date(os.environ.get("DATE_START"), today)
-    d1 = parse_date(os.environ.get("DATE_END"), today + timedelta(days=30))
+    # Start a day back so the puzzle players still see for the tail of
+    # yesterday (frontend uses client local time; PST users see
+    # yesterday's puzzle until midnight PST) is always regenerated
+    # against the current vocab. Widen forward window to 90 days so any
+    # far-future puzzle rendered against the old vocab dimension gets
+    # refreshed too.
+    d0 = parse_date(os.environ.get("DATE_START"), today - timedelta(days=1))
+    d1 = parse_date(os.environ.get("DATE_END"), today + timedelta(days=90))
+
+    # Also regenerate any existing puzzle JSON in the schedule whose stored
+    # scores array length no longer matches the current vocab — a hard
+    # signal that the puzzle was built against a previous vocab and would
+    # render out-of-range indices as -30 in the frontend.
+    stale_dates: list[date] = []
+    sched_all = json.loads((DATA / "schedule.json").read_text())
+    for iso in sched_all:
+        f = PUZZLES / f"{iso}.json"
+        if not f.exists():
+            continue
+        try:
+            p = json.loads(f.read_text())
+            n = len(base64.b64decode(p["scores"])) // 2
+        except Exception:
+            continue
+        if n != len(vocab):
+            try:
+                stale_dates.append(date.fromisoformat(iso))
+            except ValueError:
+                pass
+    if stale_dates:
+        d0 = min(d0, min(stale_dates))
+        d1 = max(d1, max(stale_dates))
+        print(f"Widened range to catch {len(stale_dates)} stale puzzles")
 
     print(f"Precomputing {(d1 - d0).days + 1} puzzles from {d0} to {d1}")
 
