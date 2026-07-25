@@ -19,7 +19,18 @@ export default function PuzzleLoader({ requestedDate }: Props) {
   useEffect(() => {
     (async () => {
       try {
-        const idx = await fetch('/index.json').then((r) => {
+        // Cache-bust every deploy — otherwise a CDN or browser can pair a
+        // fresh puzzle JSON with a stale vocab (or vice versa) and score
+        // out-of-range indices, which the frontend falls back to 0 →
+        // renders as "-30". VERCEL_GIT_COMMIT_SHA is injected at build.
+        const v =
+          process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_SHA ||
+          process.env.NEXT_PUBLIC_BUILD_ID ||
+          'dev';
+        const bust = `?v=${v}`;
+        const noCache: RequestInit = { cache: 'no-store' };
+
+        const idx = await fetch(`/index.json${bust}`, noCache).then((r) => {
           if (!r.ok) throw new Error('index.json missing');
           return r.json() as Promise<PuzzleIndex>;
         });
@@ -34,20 +45,18 @@ export default function PuzzleLoader({ requestedDate }: Props) {
           }
           date = fallback;
         }
-        const [p, v, a, c] = await Promise.all([
-          fetch(`/puzzles/${date}.json`).then((r) => r.json() as Promise<Puzzle>),
-          fetch('/vocab.json').then((r) => r.json() as Promise<string[]>),
-          // Aliases are best-effort — an older build without the file
-          // just means no auto-expansion. Fall back to empty object.
-          fetch('/abbreviations.json')
+        const [p, vocabList, a, c] = await Promise.all([
+          fetch(`/puzzles/${date}.json${bust}`, noCache).then((r) => r.json() as Promise<Puzzle>),
+          fetch(`/vocab.json${bust}`, noCache).then((r) => r.json() as Promise<string[]>),
+          fetch(`/abbreviations.json${bust}`, noCache)
             .then((r) => (r.ok ? (r.json() as Promise<Record<string, string>>) : {}))
             .catch(() => ({})),
-          fetch('/clean_vocab.json')
+          fetch(`/clean_vocab.json${bust}`, noCache)
             .then((r) => (r.ok ? (r.json() as Promise<string[]>) : null))
             .catch(() => null),
         ]);
         setPuzzle(p);
-        setVocab(v);
+        setVocab(vocabList);
         setAliases(a);
         setCleanVocab(c);
         recordPageview(date);
