@@ -47,8 +47,9 @@ sah|subarachnoid hemorrhage
 sdh|subdural hematoma
 edh|epidural hematoma
 acs|acute coronary syndrome
-stemi|st elevation myocardial infarction
-nstemi|non st elevation myocardial infarction
+stemi|myocardial infarction
+nstemi|myocardial infarction
+ami|myocardial infarction
 ekg|electrocardiogram
 ecg|electrocardiogram
 echo|echocardiogram
