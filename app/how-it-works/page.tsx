@@ -4,7 +4,7 @@ import PageShell from '@/components/PageShell';
 export const metadata: Metadata = {
   title: 'About — Clinicle',
   description:
-    'Clinicle in two eras: the 2023 build on Weissman-lab word2vec embeddings, and the 2026 rebuild on Google Gemini semantic embeddings.',
+    'Clinicle in two eras: the 2023 build on Weissman-lab word2vec embeddings, and the 2026 rebuild on SapBERT, a biomedical concept encoder trained on UMLS synonym pairs.',
 };
 
 export default function HowItWorksPage() {
@@ -39,14 +39,30 @@ export default function HowItWorksPage() {
 
       <h2>2026</h2>
       <p>
-        Scoring runs on Google&apos;s <code>gemini-embedding-001</code> —
-        768-dimensional semantic vectors, cosine similarity to the
-        day&apos;s secret, rescaled so a random guess lands near 0 and a
-        true synonym near 100. Vocab is a curated union of ~1,000 puzzle
-        diagnoses, a hand-picked list of common medical abbreviations
-        (MI, LAD, ITP, COPD…) each embedded with its expansion, and
-        common English for cold guesses. Static Next.js on Vercel; no
-        backend, no login.
+        Scoring runs on{' '}
+        <a
+          href="https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          SapBERT
+        </a>{' '}
+        — a PubMedBERT model contrastively fine-tuned on{' '}
+        <a
+          href="https://www.nlm.nih.gov/research/umls/index.html"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          UMLS
+        </a>{' '}
+        synonym pairs, so cosine similarity tracks clinical concept
+        identity rather than general text overlap. 768-dimensional
+        vectors, rescaled so a random guess lands near 0 and a true
+        synonym near 100. Vocab is a curated union of ~1,000 puzzle
+        diagnoses, ~265k MeSH concepts, a hand-picked list of common
+        medical abbreviations (MI, LAD, ITP, COPD…) each embedded with
+        its expansion, and common English for cold guesses. Static
+        Next.js on Vercel; no backend, no login.
       </p>
 
       <p>

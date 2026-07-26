@@ -1,34 +1,36 @@
-"""Embed the guess vocabulary with OpenAI text embeddings.
+"""Embed the guess vocabulary with SapBERT (biomedical concept encoder).
 
-Output: data/embeddings/vocab.npy   float32, L2-normalized, shape (N, D)
+Output: data/embeddings/vocab.npy   float32, L2-normalized, shape (N, 768)
         data/embeddings/vocab.words  aligned phrase list
 
-Cached — re-runs skip phrases already embedded. If the cached vectors have a
-different dimension than the current model, the cache is discarded upfront so
-we don't ship a mixed-dim file.
+SapBERT (Liu et al., 2021) is a PubMedBERT variant contrastively fine-tuned
+on UMLS synonym pairs, so it clusters clinical concepts by identity/
+relatedness far more tightly than a general-purpose text embedder. That
+is exactly the axis a game like Clinicle scores on — "MI ↔ heart attack"
+sits at cosine ~0.9, while "MI ↔ myopathy" (only textually similar) is
+far lower.
+
+Cached — re-runs skip phrases already present in vocab.words. If the
+cached vectors have a different dimension than the current model, the
+whole cache is discarded upfront so we don't ship a mixed-dim file.
 
 Env:
-  OPENAI_API_KEY (required)       https://platform.openai.com/api-keys
-  OPENAI_EMBED_MODEL              default "text-embedding-3-small"
-  OPENAI_EMBED_DIM                default 1536 (max for -3-small; can shrink)
-  EMBED_BATCH                     default 500 (OpenAI accepts up to 2048)
-  EMBED_RPM                       default 3000 (paid tier tier-1 default)
+  SAPBERT_MODEL   default 'cambridgeltl/SapBERT-from-PubMedBERT-fulltext'
+  EMBED_BATCH     default 64  (larger uses more RAM; smaller runs slower)
+  EMBED_MAX_LEN   default 64  (medical concept phrases are short)
 """
 from __future__ import annotations
 
 import os
 import sys
-import time
 from pathlib import Path
 
 import numpy as np
 from tqdm import tqdm
 
-MODEL = os.environ.get("OPENAI_EMBED_MODEL", "text-embedding-3-small")
-DIM = int(os.environ.get("OPENAI_EMBED_DIM", "1536"))
-BATCH = int(os.environ.get("EMBED_BATCH", "500"))
-RPM = int(os.environ.get("EMBED_RPM", "3000"))
-MIN_INTERVAL = 60.0 / RPM
+MODEL = os.environ.get("SAPBERT_MODEL", "cambridgeltl/SapBERT-from-PubMedBERT-fulltext")
+BATCH = int(os.environ.get("EMBED_BATCH", "64"))
+MAX_LEN = int(os.environ.get("EMBED_MAX_LEN", "64"))
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
@@ -36,14 +38,13 @@ EMB = DATA / "embeddings"
 VOCAB = DATA / "vocab.txt"
 ABBREVIATIONS = DATA / "abbreviations.txt"
 
+EMB.mkdir(parents=True, exist_ok=True)
+
 
 def load_abbreviation_map() -> dict[str, str]:
-    """Return {abbreviation: 'abbreviation (full expansion)'}.
-
-    The value is the string sent to the embedding model — putting both
-    the short form and the expansion in the same input steers the vector
-    toward the true meaning while keeping the abbreviation's own token
-    influence in play. The stored vocab word remains the abbreviation.
+    """Return {abbreviation: 'ABBR (full expansion)'} — the string we
+    actually embed for abbreviations, so cosine reflects the medical
+    meaning rather than the bare 2–3 letter surface form.
     """
     out: dict[str, str] = {}
     if not ABBREVIATIONS.exists():
@@ -59,14 +60,12 @@ def load_abbreviation_map() -> dict[str, str]:
             out[abbr] = f"{abbr.upper()} ({expansion})"
     return out
 
-EMB.mkdir(parents=True, exist_ok=True)
-
 
 def load_vocab() -> list[str]:
     return [l.strip() for l in VOCAB.read_text().splitlines() if l.strip()]
 
 
-def load_cache() -> tuple[list[str], np.ndarray] | tuple[list[str], None]:
+def load_cache(expected_dim: int | None) -> tuple[list[str], np.ndarray] | tuple[list[str], None]:
     words_file = EMB / "vocab.words"
     vecs_file = EMB / "vocab.npy"
     if not words_file.exists() or not vecs_file.exists():
@@ -75,70 +74,63 @@ def load_cache() -> tuple[list[str], np.ndarray] | tuple[list[str], None]:
     vecs = np.load(vecs_file)
     if vecs.shape[0] != len(words):
         print(
-            f"WARN: cache word/vec size mismatch ({len(words)} vs {vecs.shape[0]}); "
-            "discarding cache",
+            f"WARN: cache word/vec size mismatch ({len(words)} vs {vecs.shape[0]}); discarding",
             file=sys.stderr,
         )
         return [], None
-    if vecs.shape[1] != DIM:
+    if expected_dim is not None and vecs.shape[1] != expected_dim:
         print(
-            f"Cached embeddings are dim {vecs.shape[1]}, current model produces dim {DIM}; "
-            "discarding cache (will re-embed everything).",
+            f"Cached embeddings are dim {vecs.shape[1]}, current model produces dim "
+            f"{expected_dim}; discarding cache (will re-embed everything).",
             file=sys.stderr,
         )
         return [], None
     return words, vecs
 
 
-def embed_batch(client, phrases: list[str]) -> np.ndarray:
-    last_err: Exception | None = None
-    for attempt in range(8):
-        try:
-            resp = client.embeddings.create(
-                model=MODEL,
-                input=phrases,
-                dimensions=DIM,
-                encoding_format="float",
-            )
-            arr = np.asarray([d.embedding for d in resp.data], dtype=np.float32)
-            norms = np.linalg.norm(arr, axis=1, keepdims=True)
-            norms[norms == 0] = 1.0
-            return arr / norms
-        except Exception as e:  # noqa: BLE001
-            last_err = e
-            wait = min(60.0, 2 ** (attempt + 1))
-            print(
-                f"  batch failed (attempt {attempt + 1}/8): {type(e).__name__}: "
-                f"{str(e)[:200]}...; sleeping {wait:.1f}s",
-                file=sys.stderr,
-            )
-            time.sleep(wait)
-    raise RuntimeError(f"embedding batch failed after retries: {last_err}")
+def _encode_batch(model, tokenizer, phrases: list[str], device):
+    import torch
+
+    enc = tokenizer(
+        phrases,
+        padding=True,
+        truncation=True,
+        max_length=MAX_LEN,
+        return_tensors="pt",
+    ).to(device)
+    with torch.no_grad():
+        out = model(**enc)
+    # SapBERT convention: [CLS] token embedding, then L2-normalize.
+    cls = out.last_hidden_state[:, 0, :].cpu().numpy().astype(np.float32)
+    norms = np.linalg.norm(cls, axis=1, keepdims=True)
+    norms[norms == 0] = 1.0
+    return cls / norms
 
 
 def main() -> None:
-    api_key = os.environ.get("OPENAI_API_KEY")
-    if not api_key:
-        raise SystemExit(
-            "OPENAI_API_KEY is required. Get one at https://platform.openai.com/api-keys"
-        )
+    import torch
+    from transformers import AutoModel, AutoTokenizer
 
-    from openai import OpenAI
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    print(f"Device: {device}")
+    print(f"Model: {MODEL}")
 
-    client = OpenAI(api_key=api_key)
+    tokenizer = AutoTokenizer.from_pretrained(MODEL)
+    model = AutoModel.from_pretrained(MODEL).to(device).eval()
+    dim = model.config.hidden_size
 
     vocab = load_vocab()
-    print(f"Vocab size: {len(vocab)}")
+    print(f"Vocab size: {len(vocab)}   dim: {dim}   batch: {BATCH}   max_len: {MAX_LEN}")
 
     abbr_map = load_abbreviation_map()
     print(f"Abbreviations: {len(abbr_map)} (always re-embedded)")
 
-    cached_words, cached_vecs = load_cache()
+    cached_words, cached_vecs = load_cache(expected_dim=dim)
     cached_set = set(cached_words)
     to_embed = [w for w in vocab if w not in cached_set or w in abbr_map]
     print(f"Cached: {len(cached_words)}   To embed: {len(to_embed)}")
 
-    if abbr_map:
+    if abbr_map and cached_words:
         keep = [i for i, w in enumerate(cached_words) if w not in abbr_map]
         if len(keep) != len(cached_words):
             cached_words = [cached_words[i] for i in keep]
@@ -147,21 +139,20 @@ def main() -> None:
             print(f"Dropped {len(cached_set) - len(keep)} stale abbrev rows from cache")
 
     if to_embed:
-        print(f"Model: {MODEL}   dim: {DIM}   batch: {BATCH}   pacing: {RPM} RPM")
         new_vecs: list[np.ndarray] = []
-        last_call = 0.0
         cache_words = list(cached_words)
-        cache_vecs_stack: list[np.ndarray] = [cached_vecs] if cached_vecs is not None else []
+        cache_vecs_stack: list[np.ndarray] = (
+            [cached_vecs] if cached_vecs is not None else []
+        )
         try:
             for i in tqdm(range(0, len(to_embed), BATCH), desc="embed"):
-                elapsed = time.time() - last_call
-                if elapsed < MIN_INTERVAL:
-                    time.sleep(MIN_INTERVAL - elapsed)
                 batch = to_embed[i : i + BATCH]
+                # Substitute expansion text for known abbreviations so
+                # SapBERT sees the medical concept, not the 2-3 letter form.
                 batch_send = [abbr_map.get(w, w) for w in batch]
-                vecs_batch = embed_batch(client, batch_send)
-                last_call = time.time()
+                vecs_batch = _encode_batch(model, tokenizer, batch_send, device)
                 new_vecs.append(vecs_batch)
+                # Checkpoint every 20 batches so a mid-run kill keeps most work.
                 if (len(new_vecs) % 20) == 0:
                     cur_new = np.vstack(new_vecs)
                     stack = cache_vecs_stack + [cur_new]
@@ -182,7 +173,9 @@ def main() -> None:
                     file=sys.stderr,
                 )
             raise
-        new_arr = np.vstack(new_vecs) if new_vecs else np.zeros((0, DIM), dtype=np.float32)
+        new_arr = (
+            np.vstack(new_vecs) if new_vecs else np.zeros((0, dim), dtype=np.float32)
+        )
         all_words = list(cached_words) + to_embed
         all_vecs = (
             np.vstack([cached_vecs, new_arr]) if cached_vecs is not None else new_arr
@@ -190,6 +183,7 @@ def main() -> None:
     else:
         all_words, all_vecs = cached_words, cached_vecs
 
+    # Reindex to match vocab.txt order.
     word_to_row = {w: i for i, w in enumerate(all_words)}
     order = [word_to_row[w] for w in vocab if w in word_to_row]
     vecs = all_vecs[order]

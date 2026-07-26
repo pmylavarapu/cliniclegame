@@ -1,4 +1,6 @@
-openai>=1.50
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch>=2.2
+transformers>=4.44
 numpy>=1.26
 requests>=2.31
 anthropic>=0.34

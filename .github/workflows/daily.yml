@@ -51,9 +51,9 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: data/embeddings
-          key: emb-openai3-small-1536-${{ hashFiles('data/vocab.txt') }}
+          key: emb-sapbert-pubmedbert-fulltext-${{ hashFiles('data/vocab.txt') }}
           restore-keys: |
-            emb-openai3-small-1536-
+            emb-sapbert-pubmedbert-fulltext-
 
       - name: Ensure vocab exists
         run: '[ -s data/vocab.txt ] || python3 scripts/build_vocab.py'
@@ -61,28 +61,15 @@ jobs:
       - name: Ensure schedule exists
         run: '[ -s data/schedule.json ] || python3 scripts/schedule.py'
 
-      - name: Embed vocab (idempotent, cached)
-        env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-        run: |
-          if [ -z "$OPENAI_API_KEY" ] && [ ! -s data/embeddings/vocab.npy ]; then
-            echo "::error::OPENAI_API_KEY secret is not set and there is no cached embedding."
-            echo "::error::Add the secret in Repo → Settings → Secrets and variables → Actions,"
-            echo "::error::then re-run this workflow."
-            exit 1
-          fi
-          if [ -z "$OPENAI_API_KEY" ]; then
-            echo "No OPENAI_API_KEY but cached embeddings exist — skipping incremental embed"
-            exit 0
-          fi
-          python3 scripts/embed.py
+      - name: Embed vocab (SapBERT, idempotent, cached)
+        run: python3 scripts/embed.py
 
       - name: Save embeddings cache
         if: always() && hashFiles('data/embeddings/vocab.npy') != ''
         uses: actions/cache/save@v4
         with:
           path: data/embeddings
-          key: emb-openai3-small-1536-${{ hashFiles('data/vocab.txt') }}
+          key: emb-sapbert-pubmedbert-fulltext-${{ hashFiles('data/vocab.txt') }}
 
       - name: Generate prompts for upcoming diagnoses
         env:
