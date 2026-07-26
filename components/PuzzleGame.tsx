@@ -25,6 +25,12 @@ import {
   leaderboardEnabled,
   recordSolve,
 } from '@/lib/leaderboard';
+import {
+  getStoredName,
+  leaderboardEntriesEnabled,
+  submitLeaderboardEntry,
+} from '@/lib/leaderboardEntries';
+import NamePrompt from './NamePrompt';
 import ShareMenu from './ShareMenu';
 import GuessDistribution from './GuessDistribution';
 import NextPuzzleCountdown from './NextPuzzleCountdown';
@@ -143,6 +149,24 @@ export default function PuzzleGame({
 
   const gameOver = won || gaveUp;
 
+  // Leaderboard: on a real win, prompt for a handle if one isn't set;
+  // then submit. Both branches short-circuit if the backend isn't
+  // configured or the user has already submitted for this puzzle.
+  const [nameModalOpen, setNameModalOpen] = useState(false);
+  const submittedRef = useRef(false);
+
+  const submitToLeaderboard = (timeMs: number | undefined) => {
+    if (submittedRef.current) return;
+    if (!leaderboardEntriesEnabled()) return;
+    submittedRef.current = true;
+    submitLeaderboardEntry({
+      puzzleDate: puzzle.date,
+      guesses: guesses.length,
+      hints: hintsUsed,
+      timeMs: Math.max(0, Math.round(timeMs ?? 0)),
+    });
+  };
+
   useEffect(() => {
     if (gameOver && !savedRef.current) {
       savedRef.current = true;
@@ -171,8 +195,16 @@ export default function PuzzleGame({
         const fresh = checkNewlyUnlocked(gs, nextStats);
         if (fresh.length) setFreshAchievements(fresh);
         recordSolveStats(puzzle.date, guesses.length, t ?? 0);
+        if (leaderboardEntriesEnabled()) {
+          if (getStoredName()) {
+            submitToLeaderboard(t);
+          } else {
+            setNameModalOpen(true);
+          }
+        }
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [gameOver, puzzle.date, guesses, hintsUsed, won, gaveUp, startedAt, finalTimeMs]);
 
   const acceptedAliasSet = useMemo(
@@ -455,6 +487,17 @@ export default function PuzzleGame({
           onDismiss={() => setFreshAchievements([])}
         />
       )}
+
+      <NamePrompt
+        open={nameModalOpen}
+        initial={getStoredName() ?? ''}
+        onSubmit={() => {
+          setNameModalOpen(false);
+          submitToLeaderboard(finalTimeMs);
+        }}
+        onSkip={() => setNameModalOpen(false)}
+      />
+
 
       {sorted.length > 0 && (
         <section className="mt-8 sm:mt-10">
@@ -933,6 +976,19 @@ function WinBanner({
           />
         </div>
       </div>
+      {won && (
+        <a
+          href="/leaderboard/"
+          className={[
+            'mt-3 inline-flex items-center justify-center h-11 w-full text-ui font-semibold uppercase tracking-wider border transition-colors',
+            won
+              ? 'border-white/50 text-white hover:bg-white/10'
+              : 'border-border-strong text-fg hover:bg-surface-2',
+          ].join(' ')}
+        >
+          See leaderboard
+        </a>
+      )}
     </div>
   );
 }
