@@ -35,6 +35,14 @@ export type Puzzle = {
     timeS: number;
     final_guess: string;
   };
+  /**
+   * Hand-curated per-puzzle alt-answers from the source CSV — clinical
+   * synonyms and abbreviations that should count as a win even when the
+   * canonical secret is a different string. Normalized to lowercase.
+   * The frontend also folds these into the vocab lookup so their scores
+   * render as rank-1 (100), matching the win state.
+   */
+  accepted_aliases?: string[];
 };
 
 export type PuzzleIndex = {

@@ -62,6 +62,12 @@ export default function PuzzleGame({
   const topMap = useMemo(() => {
     const m = new Map<string, { rank: number; score: number }>();
     puzzle.top1000.forEach(([w, s], i) => m.set(w, { rank: i + 1, score: s }));
+    // Fold in per-puzzle accepted aliases as rank-1 wins so typing
+    // "heart attack" or "stemi" for the MI puzzle scores 100 and triggers
+    // the win path, even when the alias itself isn't the canonical secret.
+    for (const alias of puzzle.accepted_aliases ?? []) {
+      if (!m.has(alias)) m.set(alias, { rank: 1, score: 100 });
+    }
     return m;
   }, [puzzle]);
 
@@ -169,6 +175,11 @@ export default function PuzzleGame({
     }
   }, [gameOver, puzzle.date, guesses, hintsUsed, won, gaveUp, startedAt, finalTimeMs]);
 
+  const acceptedAliasSet = useMemo(
+    () => new Set(puzzle.accepted_aliases ?? []),
+    [puzzle]
+  );
+
   const submitGuess = (raw: string, isHint = false) => {
     setError(null);
     setSuggestion(null);
@@ -181,6 +192,25 @@ export default function PuzzleGame({
     if (guesses.some((g) => g.word === w)) {
       setError(`Already guessed "${w}"`);
       flashInput();
+      return;
+    }
+    // Per-puzzle accepted alias (curated from the source CSV) wins outright
+    // regardless of whether the alias itself is in the vocab. Redirect to
+    // the canonical secret so the guess renders as the winning entry.
+    if (acceptedAliasSet.has(w) || w === puzzle.secret) {
+      const g: Guess = {
+        word: puzzle.secret,
+        score: 100,
+        rank: 1,
+        isHint,
+        order: guesses.length + 1,
+      };
+      const next = [...guesses, g];
+      setGuesses(next);
+      setLastAdded(puzzle.secret);
+      setInput('');
+      if (!isHint) recordGuess(puzzle.date);
+      setWon(true);
       return;
     }
     let idx = vocabIndex.get(w);

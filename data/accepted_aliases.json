@@ -1,0 +1,390 @@
+{
+  "acute lymphoblastic leukemia": [
+    "acute lymphoblastic leukaemia",
+    "acute lymphoblastic leukaemias",
+    "acute lymphoblastic leukemias",
+    "acute lymphocytic leukemia",
+    "acute lymphocytic leukemias",
+    "all",
+    "alls"
+  ],
+  "acute pancreatitis": [
+    "acute pancreatiti",
+    "acute pancreatitiss",
+    "pancreatiti",
+    "pancreatitis"
+  ],
+  "anaphylaxis": [
+    "anaphylactic shock",
+    "anaphylactic shocks",
+    "anaphylaxi",
+    "anaphylaxiss"
+  ],
+  "aortic dissection": [
+    "aortic dissections"
+  ],
+  "appendicitis": [
+    "acute appendiciti",
+    "acute appendicitis",
+    "appendiciti",
+    "appendicitiss"
+  ],
+  "atrial fibrillation": [
+    "a-fib",
+    "a-fibs",
+    "af",
+    "afib",
+    "afibs",
+    "afs",
+    "atrial fibrillations"
+  ],
+  "bacterial meningitis": [
+    "bacterial meningiti",
+    "bacterial meningitiss",
+    "meningiti",
+    "meningitis"
+  ],
+  "bell palsy": [
+    "bell palsys",
+    "bell's palsies",
+    "bell's palsy",
+    "bell's palsys",
+    "facial nerve palsies",
+    "facial nerve palsy",
+    "facial nerve palsys"
+  ],
+  "benign paroxysmal positional vertigo": [
+    "benign paroxysmal positional vertigos",
+    "bppv",
+    "bppvs"
+  ],
+  "carbon monoxide poisoning": [
+    "carbon monoxide poisonings",
+    "co poisoning",
+    "co poisonings"
+  ],
+  "carpal tunnel syndrome": [
+    "carpal tunnel syndromes",
+    "cts",
+    "ctss",
+    "median nerve entrapment",
+    "median nerve entrapments"
+  ],
+  "celiac disease": [
+    "celiac diseases",
+    "coeliac disease",
+    "coeliac diseases",
+    "gluten enteropathies",
+    "gluten enteropathy",
+    "gluten enteropathys"
+  ],
+  "cellulitis": [
+    "celluliti",
+    "cellulitiss"
+  ],
+  "cholecystitis": [
+    "acute cholecystiti",
+    "acute cholecystitis",
+    "cholecystiti",
+    "cholecystitiss"
+  ],
+  "chronic obstructive pulmonary disease": [
+    "chronic obstructive pulmonary diseases",
+    "copd",
+    "copds",
+    "emphysema",
+    "emphysemas"
+  ],
+  "cirrhosis": [
+    "cirrhosi",
+    "cirrhosis of the liver",
+    "cirrhosis of the livers",
+    "cirrhosiss",
+    "liver cirrhosi",
+    "liver cirrhosis"
+  ],
+  "community-acquired pneumonia": [
+    "community-acquired pneumonias",
+    "pneumonia",
+    "pneumonias"
+  ],
+  "congestive heart failure": [
+    "chf",
+    "chfs",
+    "congestive heart failures",
+    "heart failure",
+    "heart failures"
+  ],
+  "diabetic ketoacidosis": [
+    "diabetic ketoacidosi",
+    "diabetic ketoacidosiss",
+    "dka",
+    "dkas"
+  ],
+  "ectopic pregnancy": [
+    "ectopic pregnancys",
+    "tubal pregnancies",
+    "tubal pregnancy",
+    "tubal pregnancys"
+  ],
+  "epiglottitis": [
+    "acute epiglottiti",
+    "acute epiglottitis",
+    "epiglottiti",
+    "epiglottitiss"
+  ],
+  "giant cell arteritis": [
+    "giant cell arteriti",
+    "giant cell arteritiss",
+    "temporal arteriti",
+    "temporal arteritis"
+  ],
+  "gout": [
+    "gouts",
+    "gouty arthriti",
+    "gouty arthritis"
+  ],
+  "guillain-barre syndrome": [
+    "acute inflammatory demyelinating polyneuropathies",
+    "acute inflammatory demyelinating polyneuropathy",
+    "acute inflammatory demyelinating polyneuropathys",
+    "gbs",
+    "gbss",
+    "guillain-barre syndromes"
+  ],
+  "herpes zoster": [
+    "herpes zosters",
+    "shingle",
+    "shingles"
+  ],
+  "hyperkalemia": [
+    "high potassium",
+    "high potassiums",
+    "hyperkalaemia",
+    "hyperkalaemias",
+    "hyperkalemias"
+  ],
+  "hyponatremia": [
+    "hyponatraemia",
+    "hyponatraemias",
+    "hyponatremias",
+    "low sodium",
+    "low sodiums"
+  ],
+  "hypothyroidism": [
+    "hypothyroidisms",
+    "underactive thyroid",
+    "underactive thyroids"
+  ],
+  "infectious mononucleosis": [
+    "glandular fever",
+    "glandular fevers",
+    "infectious mononucleosi",
+    "infectious mononucleosiss",
+    "mono",
+    "mononucleosi",
+    "mononucleosis",
+    "monos"
+  ],
+  "infective endocarditis": [
+    "bacterial endocarditi",
+    "bacterial endocarditis",
+    "endocarditi",
+    "endocarditis",
+    "infective endocarditi",
+    "infective endocarditiss"
+  ],
+  "intussusception": [
+    "intussusceptions"
+  ],
+  "iron deficiency anemia": [
+    "iron deficiency anaemia",
+    "iron deficiency anaemias",
+    "iron deficiency anemias",
+    "iron-deficiency anemia",
+    "iron-deficiency anemias"
+  ],
+  "ischemic stroke": [
+    "cerebral infarction",
+    "cerebral infarctions",
+    "cva",
+    "cvas",
+    "ischemic strokes",
+    "stroke",
+    "strokes"
+  ],
+  "kawasaki disease": [
+    "kawasaki diseases",
+    "kawasaki syndrome",
+    "kawasaki syndromes",
+    "mucocutaneous lymph node syndrome",
+    "mucocutaneous lymph node syndromes"
+  ],
+  "lyme disease": [
+    "lyme borreliosi",
+    "lyme borreliosis",
+    "lyme diseases"
+  ],
+  "melanoma": [
+    "malignant melanoma",
+    "malignant melanomas",
+    "melanomas"
+  ],
+  "migraine": [
+    "migraine headache",
+    "migraine headaches",
+    "migraines"
+  ],
+  "multiple sclerosis": [
+    "ms",
+    "mss",
+    "multiple sclerosi",
+    "multiple sclerosiss"
+  ],
+  "myasthenia gravis": [
+    "mg",
+    "mgs",
+    "myasthenia gravi",
+    "myasthenia graviss"
+  ],
+  "myocardial infarction": [
+    "acute myocardial infarction",
+    "acute myocardial infarctions",
+    "heart attack",
+    "heart attacks",
+    "mi",
+    "mis",
+    "myocardial infarctions",
+    "stemi",
+    "stemis"
+  ],
+  "necrotizing fasciitis": [
+    "flesh-eating disease",
+    "flesh-eating diseases",
+    "necrotising fasciiti",
+    "necrotising fasciitis",
+    "necrotizing fasciiti",
+    "necrotizing fasciitiss"
+  ],
+  "nephrolithiasis": [
+    "kidney stone",
+    "kidney stones",
+    "nephrolithiasi",
+    "nephrolithiasiss",
+    "renal colic",
+    "renal colics",
+    "urolithiasi",
+    "urolithiasis"
+  ],
+  "parkinson disease": [
+    "parkinson diseases",
+    "parkinson's disease",
+    "parkinson's diseases",
+    "parkinsonism",
+    "parkinsonisms"
+  ],
+  "polycystic ovary syndrome": [
+    "pco",
+    "pcos",
+    "polycystic ovary syndromes"
+  ],
+  "preeclampsia": [
+    "pre-eclampsia",
+    "pre-eclampsias",
+    "preeclampsias"
+  ],
+  "psoriasis": [
+    "plaque psoriasi",
+    "plaque psoriasis",
+    "psoriasi",
+    "psoriasiss"
+  ],
+  "pulmonary embolism": [
+    "pe",
+    "pes",
+    "pulmonary embolisms"
+  ],
+  "pulmonary tuberculosis": [
+    "pulmonary tuberculosi",
+    "pulmonary tuberculosiss",
+    "tb",
+    "tbs",
+    "tuberculosi",
+    "tuberculosis"
+  ],
+  "rheumatoid arthritis": [
+    "ra",
+    "ras",
+    "rheumatoid arthriti",
+    "rheumatoid arthritiss"
+  ],
+  "scurvy": [
+    "ascorbic acid deficiencies",
+    "ascorbic acid deficiency",
+    "ascorbic acid deficiencys",
+    "scurvys",
+    "vitamin c deficiencies",
+    "vitamin c deficiency",
+    "vitamin c deficiencys"
+  ],
+  "sepsis": [
+    "sepsi",
+    "sepsiss",
+    "septic shock",
+    "septic shocks",
+    "septicemia",
+    "septicemias"
+  ],
+  "serotonin syndrome": [
+    "serotonin syndromes",
+    "serotonin toxicities",
+    "serotonin toxicity",
+    "serotonin toxicitys"
+  ],
+  "sickle cell crisis": [
+    "sickle cell crisi",
+    "sickle cell crisiss",
+    "sickle cell pain crisi",
+    "sickle cell pain crisis",
+    "vaso-occlusive crisi",
+    "vaso-occlusive crisis"
+  ],
+  "subarachnoid hemorrhage": [
+    "sah",
+    "sahs",
+    "subarachnoid haemorrhage",
+    "subarachnoid haemorrhages",
+    "subarachnoid hemorrhages"
+  ],
+  "systemic lupus erythematosus": [
+    "lupu",
+    "lupus",
+    "sle",
+    "sles",
+    "systemic lupus erythematosu",
+    "systemic lupus erythematosuss"
+  ],
+  "tension pneumothorax": [
+    "tension pneumothoraxs"
+  ],
+  "testicular torsion": [
+    "testicular torsions"
+  ],
+  "thyroid storm": [
+    "thyroid storms",
+    "thyrotoxic crisi",
+    "thyrotoxic crisis"
+  ],
+  "ulcerative colitis": [
+    "uc",
+    "ucs",
+    "ulcerative coliti",
+    "ulcerative colitiss"
+  ],
+  "wernicke encephalopathy": [
+    "wernicke encephalopathys",
+    "wernicke's encephalopathies",
+    "wernicke's encephalopathy",
+    "wernicke's encephalopathys"
+  ]
+}

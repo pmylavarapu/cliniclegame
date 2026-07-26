@@ -286,6 +286,11 @@ def build_abbreviation_aliases(vocab_set: set[str]) -> None:
 def main() -> None:
     schedule = json.loads((DATA / "schedule.json").read_text())
     prompts = json.loads((DATA / "prompts.json").read_text()) if (DATA / "prompts.json").exists() else {}
+    accepted_aliases_by_dx: dict[str, list[str]] = (
+        json.loads((DATA / "accepted_aliases.json").read_text())
+        if (DATA / "accepted_aliases.json").exists()
+        else {}
+    )
     hint_pool_vocab = load_hint_pool()
 
     vocab = (EMB / "vocab.words").read_text().splitlines()
@@ -437,6 +442,7 @@ def main() -> None:
             "scores": encode_scores(sims_pct.astype(np.float32)),
             "synonyms": synonyms,
             "hints": hints,
+            "accepted_aliases": accepted_aliases_by_dx.get(dx, []),
         }
         (PUZZLES / f"{iso}.json").write_text(json.dumps(payload, separators=(",", ":")))
         n += 1
