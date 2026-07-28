@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from 'react';
 import PageShell from '@/components/PageShell';
+import NamePrompt from '@/components/NamePrompt';
 import {
   HINT_PENALTY,
   MIN_SOLVES,
@@ -12,6 +13,7 @@ import {
   leaderboardEntriesEnabled,
   sanitizeName,
   setStoredName,
+  submitLeaderboardEntry,
   topByAvgGuesses,
   topByAvgTime,
   topByFastestTime,
@@ -20,6 +22,7 @@ import {
   type LbUser,
 } from '@/lib/leaderboardEntries';
 import { today } from '@/lib/scores';
+import { loadGame } from '@/lib/storage';
 
 type Tab = 'today' | 'alltime';
 
@@ -32,23 +35,74 @@ export default function LeaderboardPage() {
   const [editingName, setEditingName] = useState(false);
   const [nameDraft, setNameDraft] = useState('');
   const [date, setDate] = useState<string>('');
+  const [pendingSolve, setPendingSolve] = useState<{
+    guesses: number;
+    hints: number;
+    timeMs: number;
+  } | null>(null);
+  const [pendingNameOpen, setPendingNameOpen] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<
+    'idle' | 'submitting' | 'submitted' | 'failed'
+  >('idle');
+
+  const refresh = async (d: string) => {
+    if (!leaderboardEntriesEnabled()) {
+      setEntries([]);
+      setUsers([]);
+      return;
+    }
+    const [e, u] = await Promise.all([fetchPuzzleEntries(d), fetchUsers()]);
+    setEntries(e);
+    setUsers(u);
+  };
 
   useEffect(() => {
     const d = today();
     setDate(d);
     setUid(getOrCreateUserId());
     setName(getStoredName() ?? '');
-    (async () => {
-      if (!leaderboardEntriesEnabled()) {
-        setEntries([]);
-        setUsers([]);
-        return;
+
+    // Detect a solved-but-not-submitted game for today.
+    if (typeof window !== 'undefined') {
+      const game = loadGame(d);
+      const submittedFlag = localStorage.getItem(`clinicle:lb:submitted:${d}`);
+      if (
+        game &&
+        game.won &&
+        !game.gaveUp &&
+        !submittedFlag &&
+        leaderboardEntriesEnabled()
+      ) {
+        setPendingSolve({
+          guesses: game.guesses.length,
+          hints: game.hintsUsed,
+          timeMs: game.timeMs ?? 0,
+        });
       }
-      const [e, u] = await Promise.all([fetchPuzzleEntries(d), fetchUsers()]);
-      setEntries(e);
-      setUsers(u);
-    })();
+    }
+
+    refresh(d);
   }, []);
+
+  const doSubmit = async () => {
+    if (!pendingSolve) return;
+    if (!getStoredName()) {
+      setPendingNameOpen(true);
+      return;
+    }
+    setSubmitStatus('submitting');
+    const r = await submitLeaderboardEntry({
+      puzzleDate: date,
+      guesses: pendingSolve.guesses,
+      hints: pendingSolve.hints,
+      timeMs: pendingSolve.timeMs,
+    });
+    setSubmitStatus(r === 'submitted' ? 'submitted' : 'failed');
+    if (r === 'submitted') {
+      setPendingSolve(null);
+      await refresh(date);
+    }
+  };
 
   const fewestGuesses = useMemo(
     () => (entries === 'loading' ? [] : topByFewestGuesses(entries)),
@@ -150,6 +204,51 @@ export default function LeaderboardPage() {
           )}
         </div>
       </div>
+
+      {pendingSolve && submitStatus !== 'submitted' && (
+        <div className="mb-4 p-3 border border-border-strong bg-surface-2 flex flex-wrap items-center justify-between gap-3">
+          <div className="text-caption">
+            <span className="font-semibold text-fg">
+              You solved today&apos;s puzzle
+            </span>{' '}
+            in {pendingSolve.guesses} guesses
+            {pendingSolve.hints > 0 && ` (+${pendingSolve.hints} hints)`}
+            {pendingSolve.timeMs > 0 && ` · ${fmtMs(pendingSolve.timeMs)}`}
+            {' '}but haven&apos;t submitted it to the leaderboard yet.
+          </div>
+          <button
+            type="button"
+            onClick={doSubmit}
+            disabled={submitStatus === 'submitting'}
+            className="h-9 px-4 bg-fg text-white text-ui font-semibold uppercase tracking-wider disabled:opacity-50"
+          >
+            {submitStatus === 'submitting' ? 'Submitting…' : 'Submit'}
+          </button>
+        </div>
+      )}
+      {submitStatus === 'failed' && (
+        <div className="mb-4 p-3 border border-red-300 bg-red-50 text-red-700 text-caption">
+          Submit failed. Firestore rules may be blocking writes to{' '}
+          <code>leaderboard_entries</code> / <code>leaderboard_users</code>.
+          Open DevTools → Network for the exact response.
+        </div>
+      )}
+      {submitStatus === 'submitted' && (
+        <div className="mb-4 p-3 border border-border-strong bg-surface-2 text-caption">
+          Submitted — you should see yourself highlighted below.
+        </div>
+      )}
+
+      <NamePrompt
+        open={pendingNameOpen}
+        initial={getStoredName() ?? ''}
+        onSubmit={async (n) => {
+          setPendingNameOpen(false);
+          setName(n);
+          await doSubmit();
+        }}
+        onSkip={() => setPendingNameOpen(false)}
+      />
 
       {loading ? (
         <p className="text-muted">Loading…</p>
