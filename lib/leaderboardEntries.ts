@@ -157,6 +157,11 @@ export async function submitLeaderboardEntry(
   const entryDoc = `projects/${cfg.projectId}/databases/(default)/documents/leaderboard_entries/${s.puzzleDate}/entries/${uid}`;
   const userDoc = `projects/${cfg.projectId}/databases/(default)/documents/leaderboard_users/${uid}`;
 
+  // Two atomic writes:
+  //   1. Per-puzzle entry (create-only via currentDocument.exists = false).
+  //   2. User doc — set name AND increment counters in a single write using
+  //      updateTransforms so we don't have to combine transform-only and
+  //      update writes on the same doc in one commit (which returns 400).
   const writes = [
     {
       update: {
@@ -174,24 +179,19 @@ export async function submitLeaderboardEntry(
       currentDocument: { exists: false },
     },
     {
-      transform: {
-        document: userDoc,
-        fieldTransforms: [
-          { fieldPath: 'solves', increment: { integerValue: '1' } },
-          { fieldPath: 'sumGuesses', increment: { integerValue: String(s.guesses) } },
-          { fieldPath: 'sumHints', increment: { integerValue: String(s.hints) } },
-          { fieldPath: 'sumTimeMs', increment: { integerValue: String(Math.round(s.timeMs)) } },
-          { fieldPath: 'sumAdjGuesses', increment: { integerValue: String(aG) } },
-          { fieldPath: 'sumAdjTimeMs', increment: { integerValue: String(aT) } },
-        ],
-      },
-    },
-    {
       update: {
         name: userDoc,
         fields: { name: { stringValue: name } },
       },
       updateMask: { fieldPaths: ['name'] },
+      updateTransforms: [
+        { fieldPath: 'solves', increment: { integerValue: '1' } },
+        { fieldPath: 'sumGuesses', increment: { integerValue: String(s.guesses) } },
+        { fieldPath: 'sumHints', increment: { integerValue: String(s.hints) } },
+        { fieldPath: 'sumTimeMs', increment: { integerValue: String(Math.round(s.timeMs)) } },
+        { fieldPath: 'sumAdjGuesses', increment: { integerValue: String(aG) } },
+        { fieldPath: 'sumAdjTimeMs', increment: { integerValue: String(aT) } },
+      ],
     },
   ];
 
@@ -202,8 +202,13 @@ export async function submitLeaderboardEntry(
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify({ writes }),
     });
-    localStorage.setItem(flagKey, '1');
-    return r.ok ? 'submitted' : 'skipped';
+    if (r.ok) {
+      localStorage.setItem(flagKey, '1');
+      return 'submitted';
+    }
+    // Don't set the local dedupe flag on failure so a fixed rule /
+    // schema can be retried without hand-editing localStorage.
+    return 'skipped';
   } catch {
     return 'skipped';
   }
