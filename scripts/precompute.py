@@ -310,30 +310,40 @@ def main() -> None:
     d0 = parse_date(os.environ.get("DATE_START"), today - timedelta(days=1))
     d1 = parse_date(os.environ.get("DATE_END"), today + timedelta(days=90))
 
-    # Also regenerate any existing puzzle JSON in the schedule whose stored
-    # scores array length no longer matches the current vocab — a hard
-    # signal that the puzzle was built against a previous vocab and would
-    # render out-of-range indices as -30 in the frontend.
+    # Also regenerate any scheduled date within [today-7, today+90] whose
+    # puzzle JSON either (a) is missing entirely — most often when a prior
+    # deploy deleted the file but the previous workflow's day was already
+    # past that date, so it never regenerated; or (b) has a stored scores
+    # array length that no longer matches the current vocab (a hard signal
+    # it was built against a previous vocab and would render out-of-range
+    # indices as -30 in the frontend).
+    lookback = today - timedelta(days=7)
+    lookahead = today + timedelta(days=90)
     stale_dates: list[date] = []
     sched_all = json.loads((DATA / "schedule.json").read_text())
     for iso in sched_all:
+        try:
+            iso_d = date.fromisoformat(iso)
+        except ValueError:
+            continue
+        if iso_d < lookback or iso_d > lookahead:
+            continue
         f = PUZZLES / f"{iso}.json"
         if not f.exists():
+            stale_dates.append(iso_d)
             continue
         try:
             p = json.loads(f.read_text())
             n = len(base64.b64decode(p["scores"])) // 2
         except Exception:
+            stale_dates.append(iso_d)
             continue
         if n != len(vocab):
-            try:
-                stale_dates.append(date.fromisoformat(iso))
-            except ValueError:
-                pass
+            stale_dates.append(iso_d)
     if stale_dates:
         d0 = min(d0, min(stale_dates))
         d1 = max(d1, max(stale_dates))
-        print(f"Widened range to catch {len(stale_dates)} stale puzzles")
+        print(f"Widened range to catch {len(stale_dates)} stale/missing puzzles")
 
     print(f"Precomputing {(d1 - d0).days + 1} puzzles from {d0} to {d1}")
 
