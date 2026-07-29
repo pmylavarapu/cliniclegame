@@ -160,106 +160,52 @@ export async function submitLeaderboardEntry(
   const aT = adjTimeMs(s.timeMs, s.hints);
   const wonAt = Date.now();
 
-  const entryDoc = `projects/${cfg.projectId}/databases/(default)/documents/leaderboard_entries/${s.puzzleDate}/entries/${uid}`;
-  const userDoc = `projects/${cfg.projectId}/databases/(default)/documents/leaderboard_users/${uid}`;
-
-  const url = `https://firestore.googleapis.com/v1/projects/${cfg.projectId}/databases/(default)/documents:commit?key=${cfg.apiKey}`;
-
-  // The per-puzzle entry is the only write that matters for today's board.
-  // Send it in its own commit so any failure in the user-aggregate update
-  // can't take it down with it. currentDocument.exists = false removed:
-  // it was returning 400 FAILED_PRECONDITION whenever the doc already
-  // existed (from a prior partial submit). First-solve-wins is now
-  // enforced by (a) the local dedupe flag we set on success, and (b) the
-  // Firestore rule allowing only create on this collection.
-  const entryCommit = {
-    writes: [
-      {
-        update: {
-          name: entryDoc,
-          fields: {
-            name: { stringValue: name },
-            guesses: { integerValue: String(s.guesses) },
-            hints: { integerValue: String(s.hints) },
-            timeMs: { integerValue: String(Math.round(s.timeMs)) },
-            adjGuesses: { integerValue: String(aG) },
-            adjTimeMs: { integerValue: String(aT) },
-            wonAt: { integerValue: String(wonAt) },
-          },
-        },
-      },
-    ],
+  // Per-puzzle entry: use the dedicated createDocument endpoint (not
+  // :commit). Simpler payload, no writes array, no update wrapper. The
+  // documentId query param becomes the doc's ID under the parent
+  // collection. First-solve-wins is enforced by the create-only Firestore
+  // rule; an existing doc rejects create with 409.
+  const entryParent = `projects/${cfg.projectId}/databases/(default)/documents/leaderboard_entries/${s.puzzleDate}`;
+  const url = `https://firestore.googleapis.com/v1/${entryParent}/entries?documentId=${encodeURIComponent(uid)}&key=${cfg.apiKey}`;
+  const body = {
+    fields: {
+      name: { stringValue: name },
+      guesses: { integerValue: String(s.guesses) },
+      hints: { integerValue: String(s.hints) },
+      timeMs: { integerValue: String(Math.round(s.timeMs)) },
+      adjGuesses: { integerValue: String(aG) },
+      adjTimeMs: { integerValue: String(aT) },
+      wonAt: { integerValue: String(wonAt) },
+    },
   };
 
-  // All-time aggregates: one transform-only write on the user doc.
-  // Kept in a separate commit because combining update+updateMask+
-  // updateTransforms alongside another write in a single REST commit
-  // has returned 400 in this project's Firestore. Standalone transform
-  // writes are the boring path that works.
-  const userCounterCommit = {
-    writes: [
-      {
-        transform: {
-          document: userDoc,
-          fieldTransforms: [
-            { fieldPath: 'solves', increment: { integerValue: '1' } },
-            { fieldPath: 'sumGuesses', increment: { integerValue: String(s.guesses) } },
-            { fieldPath: 'sumHints', increment: { integerValue: String(s.hints) } },
-            { fieldPath: 'sumTimeMs', increment: { integerValue: String(Math.round(s.timeMs)) } },
-            { fieldPath: 'sumAdjGuesses', increment: { integerValue: String(aG) } },
-            { fieldPath: 'sumAdjTimeMs', increment: { integerValue: String(aT) } },
-          ],
-        },
-      },
-    ],
-  };
-
-  // Name update: plain update-with-updateMask (upsert single field).
-  // Only reason it's a separate commit is the same 400 gotcha above.
-  const userNameCommit = {
-    writes: [
-      {
-        update: {
-          name: userDoc,
-          fields: { name: { stringValue: name } },
-        },
-        updateMask: { fieldPaths: ['name'] },
-      },
-    ],
-  };
-
-  const post = async (
-    label: string,
-    body: object,
-  ): Promise<{ ok: boolean; status: number; text: string }> => {
+  try {
     const r = await fetch(url, {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(body),
     });
     const text = await r.text().catch(() => '');
-    if (!r.ok) {
-      // eslint-disable-next-line no-console
-      console.error(
-        `[leaderboard] ${label} write failed:`,
-        r.status,
-        text.slice(0, 800),
-        'sent body:',
-        JSON.stringify(body).slice(0, 800),
-      );
+    if (r.ok) {
+      localStorage.setItem(flagKey, '1');
+      return { kind: 'submitted' };
     }
-    return { ok: r.ok, status: r.status, text };
-  };
-
-  try {
-    const entryResp = await post('entry', entryCommit);
-    if (!entryResp.ok) {
-      return { kind: 'error', status: entryResp.status, body: entryResp.text };
+    // 409 = doc already exists — someone submitted for this uid+date
+    // already. Treat as success from the user's perspective so we stop
+    // re-prompting them.
+    if (r.status === 409) {
+      localStorage.setItem(flagKey, '1');
+      return { kind: 'submitted' };
     }
-    post('user-counter', userCounterCommit).catch(() => {});
-    post('user-name', userNameCommit).catch(() => {});
-    localStorage.setItem(flagKey, '1');
-    return { kind: 'submitted' };
+    // eslint-disable-next-line no-console
+    console.error(
+      '[leaderboard] entry create failed:',
+      r.status,
+      text.slice(0, 800),
+      'sent body:',
+      JSON.stringify(body).slice(0, 800),
+    );
+    return { kind: 'error', status: r.status, body: text };
   } catch (e) {
     return { kind: 'error', status: 0, body: String(e) };
   }
@@ -287,6 +233,8 @@ export type LbUser = {
   sumTimeMs: number;
   sumAdjGuesses: number;
   sumAdjTimeMs: number;
+  avgGuesses: number;
+  avgTimeMs: number;
 };
 
 function n(f: unknown): number {
@@ -327,32 +275,45 @@ export async function fetchPuzzleEntries(date: string): Promise<LbEntry[]> {
   }
 }
 
-export async function fetchUsers(): Promise<LbUser[]> {
+/**
+ * Aggregate all-time users by scanning per-puzzle entries across recent
+ * dates. Replaces the older /leaderboard_users collection so we don't
+ * need per-user counter writes on solve.
+ */
+export async function fetchUsers(recentDates: string[]): Promise<LbUser[]> {
   const cfg = config();
   if (!cfg) return [];
-  const url = `https://firestore.googleapis.com/v1/projects/${cfg.projectId}/databases/(default)/documents/leaderboard_users?key=${cfg.apiKey}&pageSize=1000`;
-  try {
-    const r = await fetch(url, { cache: 'no-store' });
-    if (!r.ok) return [];
-    const doc = await r.json();
-    const docs = (doc?.documents ?? []) as Array<{ name: string; fields?: Record<string, unknown> }>;
-    return docs.map((d) => {
-      const uid = d.name.split('/').pop() ?? '';
-      const f = (d.fields ?? {}) as Record<string, unknown>;
-      return {
-        uid,
-        name: str(f.name),
-        solves: n(f.solves),
-        sumGuesses: n(f.sumGuesses),
-        sumHints: n(f.sumHints),
-        sumTimeMs: n(f.sumTimeMs),
-        sumAdjGuesses: n(f.sumAdjGuesses) || n(f.sumGuesses),
-        sumAdjTimeMs: n(f.sumAdjTimeMs) || n(f.sumTimeMs),
+  const perDate = await Promise.all(recentDates.map((d) => fetchPuzzleEntries(d)));
+  const acc = new Map<string, LbUser>();
+  for (const dayEntries of perDate) {
+    for (const e of dayEntries) {
+      const u = acc.get(e.uid) ?? {
+        uid: e.uid,
+        name: e.name,
+        solves: 0,
+        sumGuesses: 0,
+        sumHints: 0,
+        sumTimeMs: 0,
+        sumAdjGuesses: 0,
+        sumAdjTimeMs: 0,
+        avgGuesses: 0,
+        avgTimeMs: 0,
       };
-    });
-  } catch {
-    return [];
+      u.name = e.name || u.name;
+      u.solves += 1;
+      u.sumGuesses += e.guesses;
+      u.sumHints += e.hints;
+      u.sumTimeMs += e.timeMs;
+      u.sumAdjGuesses += e.adjGuesses;
+      u.sumAdjTimeMs += e.adjTimeMs;
+      acc.set(e.uid, u);
+    }
   }
+  for (const u of acc.values()) {
+    u.avgGuesses = u.solves ? u.sumAdjGuesses / u.solves : 0;
+    u.avgTimeMs = u.solves ? u.sumAdjTimeMs / u.solves : 0;
+  }
+  return [...acc.values()];
 }
 
 /* -------- ranking helpers -------- */
@@ -373,15 +334,15 @@ export function topByFastestTime(entries: LbEntry[]): LbEntry[] {
 export function topByAvgGuesses(users: LbUser[]): Array<LbUser & { avg: number }> {
   return users
     .filter((u) => u.solves >= MIN_SOLVES_ALLTIME)
-    .map((u) => ({ ...u, avg: u.sumAdjGuesses / u.solves }))
+    .map((u) => ({ ...u, avg: u.avgGuesses }))
     .sort((a, b) => a.avg - b.avg || b.solves - a.solves)
     .slice(0, TOP_N);
 }
 
 export function topByAvgTime(users: LbUser[]): Array<LbUser & { avg: number }> {
   return users
-    .filter((u) => u.solves >= MIN_SOLVES_ALLTIME && u.sumAdjTimeMs > 0)
-    .map((u) => ({ ...u, avg: u.sumAdjTimeMs / u.solves }))
+    .filter((u) => u.solves >= MIN_SOLVES_ALLTIME && u.avgTimeMs > 0)
+    .map((u) => ({ ...u, avg: u.avgTimeMs }))
     .sort((a, b) => a.avg - b.avg || b.solves - a.solves)
     .slice(0, TOP_N);
 }

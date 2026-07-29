@@ -52,7 +52,19 @@ export default function LeaderboardPage() {
       setUsers([]);
       return;
     }
-    const [e, u] = await Promise.all([fetchPuzzleEntries(d), fetchUsers()]);
+    // All-time board aggregates from the last 30 days of per-puzzle
+    // entries. No separate user-aggregate collection to write to on solve.
+    const recent: string[] = [];
+    const base = new Date(d);
+    for (let i = 0; i < 30; i++) {
+      const dt = new Date(base.getFullYear(), base.getMonth(), base.getDate() - i);
+      const iso = `${dt.getFullYear()}-${String(dt.getMonth() + 1).padStart(2, '0')}-${String(dt.getDate()).padStart(2, '0')}`;
+      recent.push(iso);
+    }
+    const [e, u] = await Promise.all([
+      fetchPuzzleEntries(d),
+      fetchUsers(recent),
+    ]);
     setEntries(e);
     setUsers(u);
   };

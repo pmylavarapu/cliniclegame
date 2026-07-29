@@ -20,12 +20,6 @@ import { buildShareString } from '@/lib/share';
 import { checkNewlyUnlocked, type Achievement } from '@/lib/achievements';
 import { recordGuess, recordSolveStats } from '@/lib/adminStats';
 import {
-  computePercentile,
-  fetchDistribution,
-  leaderboardEnabled,
-  recordSolve,
-} from '@/lib/leaderboard';
-import {
   getStoredName,
   leaderboardEntriesEnabled,
   submitLeaderboardEntry,
@@ -922,7 +916,6 @@ function WinBanner({
       )}
 
       {puzzle.ai_result && <AiScoreLine ai={puzzle.ai_result} userGuesses={guesses.length} userWon={won} won={won} />}
-      {won && <GlobalPercentile date={puzzle.date} yourGuesses={guesses.length} onColor={won} />}
 
       <div
         className={[
@@ -989,73 +982,6 @@ function WinBanner({
           See leaderboard
         </a>
       )}
-    </div>
-  );
-}
-
-function GlobalPercentile({
-  date,
-  yourGuesses,
-  onColor,
-}: {
-  date: string;
-  yourGuesses: number;
-  onColor: boolean;
-}) {
-  const [state, setState] = useState<
-    | { kind: 'off' }
-    | { kind: 'loading' }
-    | { kind: 'ready'; pct: number; total: number }
-  >(() => (leaderboardEnabled() ? { kind: 'loading' } : { kind: 'off' }));
-  const submitted = useRef(false);
-
-  useEffect(() => {
-    if (!leaderboardEnabled()) return;
-    if (submitted.current) return;
-    submitted.current = true;
-    // Fire-and-forget record, then read the current distribution
-    (async () => {
-      await recordSolve(date, yourGuesses);
-      // Small delay so our own write is reflected
-      await new Promise((r) => setTimeout(r, 400));
-      const d = await fetchDistribution(date);
-      if (!d || d.total < 3) {
-        setState({ kind: 'off' });
-        return;
-      }
-      setState({
-        kind: 'ready',
-        pct: computePercentile(d.distribution, yourGuesses),
-        total: d.total,
-      });
-    })();
-  }, [date, yourGuesses]);
-
-  if (state.kind !== 'ready') return null;
-
-  return (
-    <div
-      className={[
-        'mb-6  px-4 py-3 flex items-center justify-between gap-3',
-        onColor ? 'bg-white/15 text-white' : 'bg-white text-fg',
-      ].join(' ')}
-    >
-      <div className="flex items-center gap-2 min-w-0">
-        <span className="text-lg leading-none" aria-hidden="true">
-          🌎
-        </span>
-        <span className="text-caption font-semibold truncate">
-          You beat {state.pct}% of players today
-        </span>
-      </div>
-      <div
-        className={[
-          'text-caption tabular font-semibold shrink-0',
-          onColor ? 'text-white/85' : 'text-muted',
-        ].join(' ')}
-      >
-        {state.total.toLocaleString()} solves
-      </div>
     </div>
   );
 }
