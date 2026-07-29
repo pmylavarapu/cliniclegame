@@ -219,24 +219,48 @@ export async function submitLeaderboardEntry(
     ],
   };
 
-  const post = (body: object) =>
-    fetch(url, {
+  const post = async (label: string, body: object): Promise<Response> => {
+    const r = await fetch(url, {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(body),
     });
+    if (!r.ok) {
+      // Loudly log the response body so we can see exactly why Firestore
+      // rejected the write. Cloning the body so callers can still consume
+      // it (they don't, but no reason to burn the body reader here).
+      const clone = r.clone();
+      let text = '';
+      try {
+        text = await clone.text();
+      } catch {
+        /* ignore */
+      }
+      // eslint-disable-next-line no-console
+      console.error(
+        `[leaderboard] ${label} write failed:`,
+        r.status,
+        text.slice(0, 800),
+        'sent body:',
+        body,
+      );
+    }
+    return r;
+  };
 
   try {
-    const entryResp = await post(entryCommit);
+    const entryResp = await post('entry', entryCommit);
     if (!entryResp.ok) return 'skipped';
     // Fire-and-forget the aggregates. Do not gate the local dedupe flag
     // on them: even if they fail (bad rules, schema drift), the
     // per-puzzle board still has the user.
-    post(userCounterCommit).catch(() => {});
-    post(userNameCommit).catch(() => {});
+    post('user-counter', userCounterCommit).catch(() => {});
+    post('user-name', userNameCommit).catch(() => {});
     localStorage.setItem(flagKey, '1');
     return 'submitted';
-  } catch {
+  } catch (e) {
+    // eslint-disable-next-line no-console
+    console.error('[leaderboard] submit threw:', e);
     return 'skipped';
   }
 }
