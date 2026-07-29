@@ -131,24 +131,30 @@ export type SolveSubmission = {
   timeMs: number;
 };
 
+export type SubmitResult =
+  | { kind: 'submitted' }
+  | { kind: 'skipped'; reason: string }
+  | { kind: 'error'; status: number; body: string };
+
 /**
- * Fire-and-forget submit. Silently no-ops if backend isn't configured or
- * this uid has already submitted for this puzzle. Idempotent per
- * (uid, date) on the server via currentDocument.exists = false.
+ * Submit. Returns detailed status so the UI can surface Firestore errors
+ * directly, without having to open DevTools.
  */
 export async function submitLeaderboardEntry(
   s: SolveSubmission,
-): Promise<'submitted' | 'skipped'> {
+): Promise<SubmitResult> {
   const cfg = config();
-  if (!cfg) return 'skipped';
-  if (typeof window === 'undefined') return 'skipped';
+  if (!cfg) return { kind: 'skipped', reason: 'no firebase config' };
+  if (typeof window === 'undefined')
+    return { kind: 'skipped', reason: 'ssr' };
 
   const uid = getOrCreateUserId();
   const name = getStoredName();
-  if (!name) return 'skipped';
+  if (!name) return { kind: 'skipped', reason: 'no name set' };
 
   const flagKey = `clinicle:lb:submitted:${s.puzzleDate}`;
-  if (localStorage.getItem(flagKey)) return 'skipped';
+  if (localStorage.getItem(flagKey))
+    return { kind: 'skipped', reason: 'already submitted (local flag)' };
 
   const aG = adjGuesses(s.guesses, s.hints);
   const aT = adjTimeMs(s.timeMs, s.hints);
@@ -161,7 +167,11 @@ export async function submitLeaderboardEntry(
 
   // The per-puzzle entry is the only write that matters for today's board.
   // Send it in its own commit so any failure in the user-aggregate update
-  // can't take it down with it.
+  // can't take it down with it. currentDocument.exists = false removed:
+  // it was returning 400 FAILED_PRECONDITION whenever the doc already
+  // existed (from a prior partial submit). First-solve-wins is now
+  // enforced by (a) the local dedupe flag we set on success, and (b) the
+  // Firestore rule allowing only create on this collection.
   const entryCommit = {
     writes: [
       {
@@ -177,7 +187,6 @@ export async function submitLeaderboardEntry(
             wonAt: { integerValue: String(wonAt) },
           },
         },
-        currentDocument: { exists: false },
       },
     ],
   };
@@ -219,49 +228,40 @@ export async function submitLeaderboardEntry(
     ],
   };
 
-  const post = async (label: string, body: object): Promise<Response> => {
+  const post = async (
+    label: string,
+    body: object,
+  ): Promise<{ ok: boolean; status: number; text: string }> => {
     const r = await fetch(url, {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(body),
     });
+    const text = await r.text().catch(() => '');
     if (!r.ok) {
-      // Loudly log the response body so we can see exactly why Firestore
-      // rejected the write. Cloning the body so callers can still consume
-      // it (they don't, but no reason to burn the body reader here).
-      const clone = r.clone();
-      let text = '';
-      try {
-        text = await clone.text();
-      } catch {
-        /* ignore */
-      }
       // eslint-disable-next-line no-console
       console.error(
         `[leaderboard] ${label} write failed:`,
         r.status,
         text.slice(0, 800),
         'sent body:',
-        body,
+        JSON.stringify(body).slice(0, 800),
       );
     }
-    return r;
+    return { ok: r.ok, status: r.status, text };
   };
 
   try {
     const entryResp = await post('entry', entryCommit);
-    if (!entryResp.ok) return 'skipped';
-    // Fire-and-forget the aggregates. Do not gate the local dedupe flag
-    // on them: even if they fail (bad rules, schema drift), the
-    // per-puzzle board still has the user.
+    if (!entryResp.ok) {
+      return { kind: 'error', status: entryResp.status, body: entryResp.text };
+    }
     post('user-counter', userCounterCommit).catch(() => {});
     post('user-name', userNameCommit).catch(() => {});
     localStorage.setItem(flagKey, '1');
-    return 'submitted';
+    return { kind: 'submitted' };
   } catch (e) {
-    // eslint-disable-next-line no-console
-    console.error('[leaderboard] submit threw:', e);
-    return 'skipped';
+    return { kind: 'error', status: 0, body: String(e) };
   }
 }
 

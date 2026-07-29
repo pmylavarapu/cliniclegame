@@ -44,6 +44,7 @@ export default function LeaderboardPage() {
   const [submitStatus, setSubmitStatus] = useState<
     'idle' | 'submitting' | 'submitted' | 'failed'
   >('idle');
+  const [submitError, setSubmitError] = useState<string>('');
 
   const refresh = async (d: string) => {
     if (!leaderboardEntriesEnabled()) {
@@ -91,16 +92,23 @@ export default function LeaderboardPage() {
       return;
     }
     setSubmitStatus('submitting');
+    setSubmitError('');
     const r = await submitLeaderboardEntry({
       puzzleDate: date,
       guesses: pendingSolve.guesses,
       hints: pendingSolve.hints,
       timeMs: pendingSolve.timeMs,
     });
-    setSubmitStatus(r === 'submitted' ? 'submitted' : 'failed');
-    if (r === 'submitted') {
+    if (r.kind === 'submitted') {
+      setSubmitStatus('submitted');
       setPendingSolve(null);
       await refresh(date);
+    } else if (r.kind === 'error') {
+      setSubmitStatus('failed');
+      setSubmitError(`HTTP ${r.status}\n${r.body}`);
+    } else {
+      setSubmitStatus('failed');
+      setSubmitError(`skipped: ${r.reason}`);
     }
   };
 
@@ -228,9 +236,10 @@ export default function LeaderboardPage() {
       )}
       {submitStatus === 'failed' && (
         <div className="mb-4 p-3 border border-red-300 bg-red-50 text-red-700 text-caption">
-          Submit failed. Firestore rules may be blocking writes to{' '}
-          <code>leaderboard_entries</code> / <code>leaderboard_users</code>.
-          Open DevTools → Network for the exact response.
+          <div className="font-semibold mb-1">Submit failed.</div>
+          <pre className="whitespace-pre-wrap break-all text-[11px] leading-snug max-h-40 overflow-auto">
+            {submitError || '(no error details)'}
+          </pre>
         </div>
       )}
       {submitStatus === 'submitted' && (
