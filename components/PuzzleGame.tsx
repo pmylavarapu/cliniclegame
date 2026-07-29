@@ -26,7 +26,6 @@ import {
 } from '@/lib/leaderboardEntries';
 import NamePrompt from './NamePrompt';
 import ShareMenu from './ShareMenu';
-import GuessDistribution from './GuessDistribution';
 import NextPuzzleCountdown from './NextPuzzleCountdown';
 import AchievementToast from './AchievementToast';
 
@@ -904,16 +903,6 @@ function WinBanner({
           </>
         )}
       </div>
-
-      {won && (
-        <div className="mb-6">
-          <GuessDistribution
-            stats={stats}
-            today={{ guesses: guesses.length, won }}
-            variant="oncolor"
-          />
-        </div>
-      )}
 
       {puzzle.ai_result && <AiScoreLine ai={puzzle.ai_result} userGuesses={guesses.length} userWon={won} won={won} />}
 
