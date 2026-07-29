@@ -157,58 +157,85 @@ export async function submitLeaderboardEntry(
   const entryDoc = `projects/${cfg.projectId}/databases/(default)/documents/leaderboard_entries/${s.puzzleDate}/entries/${uid}`;
   const userDoc = `projects/${cfg.projectId}/databases/(default)/documents/leaderboard_users/${uid}`;
 
-  // Two atomic writes:
-  //   1. Per-puzzle entry (create-only via currentDocument.exists = false).
-  //   2. User doc — set name AND increment counters in a single write using
-  //      updateTransforms so we don't have to combine transform-only and
-  //      update writes on the same doc in one commit (which returns 400).
-  const writes = [
-    {
-      update: {
-        name: entryDoc,
-        fields: {
-          name: { stringValue: name },
-          guesses: { integerValue: String(s.guesses) },
-          hints: { integerValue: String(s.hints) },
-          timeMs: { integerValue: String(Math.round(s.timeMs)) },
-          adjGuesses: { integerValue: String(aG) },
-          adjTimeMs: { integerValue: String(aT) },
-          wonAt: { integerValue: String(wonAt) },
+  const url = `https://firestore.googleapis.com/v1/projects/${cfg.projectId}/databases/(default)/documents:commit?key=${cfg.apiKey}`;
+
+  // The per-puzzle entry is the only write that matters for today's board.
+  // Send it in its own commit so any failure in the user-aggregate update
+  // can't take it down with it.
+  const entryCommit = {
+    writes: [
+      {
+        update: {
+          name: entryDoc,
+          fields: {
+            name: { stringValue: name },
+            guesses: { integerValue: String(s.guesses) },
+            hints: { integerValue: String(s.hints) },
+            timeMs: { integerValue: String(Math.round(s.timeMs)) },
+            adjGuesses: { integerValue: String(aG) },
+            adjTimeMs: { integerValue: String(aT) },
+            wonAt: { integerValue: String(wonAt) },
+          },
+        },
+        currentDocument: { exists: false },
+      },
+    ],
+  };
+
+  // All-time aggregates: one transform-only write on the user doc.
+  // Kept in a separate commit because combining update+updateMask+
+  // updateTransforms alongside another write in a single REST commit
+  // has returned 400 in this project's Firestore. Standalone transform
+  // writes are the boring path that works.
+  const userCounterCommit = {
+    writes: [
+      {
+        transform: {
+          document: userDoc,
+          fieldTransforms: [
+            { fieldPath: 'solves', increment: { integerValue: '1' } },
+            { fieldPath: 'sumGuesses', increment: { integerValue: String(s.guesses) } },
+            { fieldPath: 'sumHints', increment: { integerValue: String(s.hints) } },
+            { fieldPath: 'sumTimeMs', increment: { integerValue: String(Math.round(s.timeMs)) } },
+            { fieldPath: 'sumAdjGuesses', increment: { integerValue: String(aG) } },
+            { fieldPath: 'sumAdjTimeMs', increment: { integerValue: String(aT) } },
+          ],
         },
       },
-      currentDocument: { exists: false },
-    },
-    {
-      update: {
-        name: userDoc,
-        fields: { name: { stringValue: name } },
-      },
-      updateMask: { fieldPaths: ['name'] },
-      updateTransforms: [
-        { fieldPath: 'solves', increment: { integerValue: '1' } },
-        { fieldPath: 'sumGuesses', increment: { integerValue: String(s.guesses) } },
-        { fieldPath: 'sumHints', increment: { integerValue: String(s.hints) } },
-        { fieldPath: 'sumTimeMs', increment: { integerValue: String(Math.round(s.timeMs)) } },
-        { fieldPath: 'sumAdjGuesses', increment: { integerValue: String(aG) } },
-        { fieldPath: 'sumAdjTimeMs', increment: { integerValue: String(aT) } },
-      ],
-    },
-  ];
+    ],
+  };
 
-  const url = `https://firestore.googleapis.com/v1/projects/${cfg.projectId}/databases/(default)/documents:commit?key=${cfg.apiKey}`;
-  try {
-    const r = await fetch(url, {
+  // Name update: plain update-with-updateMask (upsert single field).
+  // Only reason it's a separate commit is the same 400 gotcha above.
+  const userNameCommit = {
+    writes: [
+      {
+        update: {
+          name: userDoc,
+          fields: { name: { stringValue: name } },
+        },
+        updateMask: { fieldPaths: ['name'] },
+      },
+    ],
+  };
+
+  const post = (body: object) =>
+    fetch(url, {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
-      body: JSON.stringify({ writes }),
+      body: JSON.stringify(body),
     });
-    if (r.ok) {
-      localStorage.setItem(flagKey, '1');
-      return 'submitted';
-    }
-    // Don't set the local dedupe flag on failure so a fixed rule /
-    // schema can be retried without hand-editing localStorage.
-    return 'skipped';
+
+  try {
+    const entryResp = await post(entryCommit);
+    if (!entryResp.ok) return 'skipped';
+    // Fire-and-forget the aggregates. Do not gate the local dedupe flag
+    // on them: even if they fail (bad rules, schema drift), the
+    // per-puzzle board still has the user.
+    post(userCounterCommit).catch(() => {});
+    post(userNameCommit).catch(() => {});
+    localStorage.setItem(flagKey, '1');
+    return 'submitted';
   } catch {
     return 'skipped';
   }
