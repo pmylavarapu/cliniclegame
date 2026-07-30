@@ -115,7 +115,14 @@ export default function StatsPage() {
         {todayDoc && todayDoc.solves > 0 ? (
           <StatGrid s={todayDoc} />
         ) : (
-          <p className="text-caption text-muted">No solves yet today.</p>
+          <div className="text-caption text-muted">
+            <p>No solves yet today.</p>
+            <p className="mt-1 text-[11px]">
+              (Doc <code>stats/puzzles/{date}</code> is empty. If you just
+              solved and it&apos;s still blank, the recordSolveStats write
+              may be blocked by Firestore rules.)
+            </p>
+          </div>
         )}
       </section>
 

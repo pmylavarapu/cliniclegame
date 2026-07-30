@@ -792,9 +792,14 @@ function WinBanner({
 }) {
   const stats = loadStats();
   const bestMs = fastestSolveMs(stats);
+  // Use the same numbering as the on-page header (puzzleNumberFromDate,
+  // epoch 2026-07-24) rather than puzzle.num from the JSON (epoch
+  // 2026-01-01) so the tweet's "Clinicle #N" matches what the player
+  // just saw.
+  const displayNum = puzzleNumberFromDate(puzzle.date);
   const shareText = buildShareString(
     { date: puzzle.date, guesses, hintsUsed, gaveUp, won, timeMs },
-    puzzle.num,
+    displayNum,
     puzzle.difficulty,
   );
 
@@ -911,7 +916,7 @@ function WinBanner({
         <div className="flex-1">
           <ShareMenu
             text={shareText}
-            title={`Clinicle #${puzzle.num}`}
+            title={`Clinicle #${displayNum}`}
             variant={won ? 'oncolor' : 'default'}
           />
         </div>
