@@ -104,31 +104,17 @@ export async function recordGuess(date: string): Promise<void> {
   await bumpBoth(date, { guesses: 1 });
 }
 
-/** Called once when the user wins. Also bumps a per-country aggregate. */
+/** Called once when the user wins. */
 export async function recordSolveStats(
   date: string,
   guesses: number,
   timeMs: number,
 ): Promise<void> {
-  const deltas = {
+  await bumpBoth(date, {
     solves: 1,
     totalGuessCount: guesses,
     totalSolveTimeMs: Math.max(0, Math.round(timeMs)),
-  };
-  await bumpBoth(date, deltas);
-  // Fire-and-forget country write. If geo lookup fails, skip.
-  const cfg = config();
-  if (!cfg) return;
-  try {
-    const { getCountry } = await import('./geo');
-    const country = await getCountry();
-    if (!country) return;
-    const fields = increments(deltas);
-    if (!fields.length) return;
-    await commit([fieldTransforms(cfg, `country_stats/${country}`, fields)]);
-  } catch {
-    /* silent */
-  }
+  });
 }
 
 /**
@@ -208,36 +194,3 @@ export async function fetchAllPuzzleStats(): Promise<
   }
 }
 
-/** List all-time per-country aggregates. */
-export async function fetchCountryStats(): Promise<
-  Array<{ country: string; stats: StatsDoc }>
-> {
-  const cfg = config();
-  if (!cfg) return [];
-  const url = `https://firestore.googleapis.com/v1/projects/${cfg.projectId}/databases/(default)/documents/country_stats?key=${cfg.apiKey}&pageSize=300`;
-  try {
-    const r = await fetch(url, { cache: 'no-store' });
-    if (!r.ok) return [];
-    const doc = await r.json();
-    const docs = (doc?.documents ?? []) as Array<{
-      name: string;
-      fields?: Record<string, unknown>;
-    }>;
-    return docs.map((d) => {
-      const country = d.name.split('/').pop() ?? '';
-      const f = (d.fields ?? {}) as Record<string, unknown>;
-      return {
-        country,
-        stats: {
-          pageviews: num(f.pageviews),
-          guesses: num(f.guesses),
-          solves: num(f.solves),
-          totalGuessCount: num(f.totalGuessCount),
-          totalSolveTimeMs: num(f.totalSolveTimeMs),
-        },
-      };
-    });
-  } catch {
-    return [];
-  }
-}
