@@ -86,7 +86,7 @@ async function bumpBoth(date: string, deltas: Record<string, number>): Promise<v
   if (!fields.length) return;
   await commit([
     fieldTransforms(cfg, 'stats/global', fields),
-    fieldTransforms(cfg, `stats/puzzles/${date}`, fields),
+    fieldTransforms(cfg, `puzzle_stats/${date}`, fields),
   ]);
 }
 
@@ -125,7 +125,7 @@ export async function recordSolveStats(
     if (!country) return;
     const fields = increments(deltas);
     if (!fields.length) return;
-    await commit([fieldTransforms(cfg, `stats/countries/${country}`, fields)]);
+    await commit([fieldTransforms(cfg, `country_stats/${country}`, fields)]);
   } catch {
     /* silent */
   }
@@ -153,7 +153,7 @@ function num(v: unknown): number {
 export async function fetchStats(date?: string): Promise<StatsDoc | null> {
   const cfg = config();
   if (!cfg) return null;
-  const path = date ? `stats/puzzles/${date}` : 'stats/global';
+  const path = date ? `puzzle_stats/${date}` : 'stats/global';
   const url = `https://firestore.googleapis.com/v1/projects/${cfg.projectId}/databases/(default)/documents/${path}?key=${cfg.apiKey}`;
   try {
     const r = await fetch(url, { cache: 'no-store' });
@@ -178,7 +178,7 @@ export async function fetchAllPuzzleStats(): Promise<
 > {
   const cfg = config();
   if (!cfg) return [];
-  const url = `https://firestore.googleapis.com/v1/projects/${cfg.projectId}/databases/(default)/documents/stats/puzzles?key=${cfg.apiKey}&pageSize=300`;
+  const url = `https://firestore.googleapis.com/v1/projects/${cfg.projectId}/databases/(default)/documents/puzzle_stats?key=${cfg.apiKey}&pageSize=300`;
   try {
     const r = await fetch(url, { cache: 'no-store' });
     if (!r.ok) return [];
@@ -214,7 +214,7 @@ export async function fetchCountryStats(): Promise<
 > {
   const cfg = config();
   if (!cfg) return [];
-  const url = `https://firestore.googleapis.com/v1/projects/${cfg.projectId}/databases/(default)/documents/stats/countries?key=${cfg.apiKey}&pageSize=300`;
+  const url = `https://firestore.googleapis.com/v1/projects/${cfg.projectId}/databases/(default)/documents/country_stats?key=${cfg.apiKey}&pageSize=300`;
   try {
     const r = await fetch(url, { cache: 'no-store' });
     if (!r.ok) return [];

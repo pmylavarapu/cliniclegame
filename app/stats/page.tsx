@@ -118,7 +118,7 @@ export default function StatsPage() {
           <div className="text-caption text-muted">
             <p>No solves yet today.</p>
             <p className="mt-1 text-[11px]">
-              (Doc <code>stats/puzzles/{date}</code> is empty. If you just
+              (Doc <code>puzzle_stats/{date}</code> is empty. If you just
               solved and it&apos;s still blank, the recordSolveStats write
               may be blocked by Firestore rules.)
             </p>
