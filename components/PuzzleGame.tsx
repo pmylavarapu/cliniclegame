@@ -899,8 +899,8 @@ function WinBanner({
           target="_blank"
           rel="noopener noreferrer"
           className={[
-            'flex-1 w-full inline-flex items-center justify-center gap-2 h-14 sm:h-12 text-ui font-bold hover:brightness-110 active:scale-[0.98] transition-[transform,filter]',
-            won ? 'bg-white text-fg' : 'bg-fg text-white',
+            'flex-1 w-full h-14 sm:h-12 rounded-lg text-ui font-bold hover:brightness-110 active:scale-[0.98] transition-[transform,filter] inline-flex items-center justify-center gap-2',
+            won ? 'bg-white text-fg' : 'bg-primary text-white',
           ].join(' ')}
         >
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
